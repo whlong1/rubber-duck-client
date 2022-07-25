@@ -17,3 +17,12 @@ export const themeOptions = {
     }
   }
 }
+
+export const ratingOptions = {
+  '& .MuiRating-iconFilled': {
+    color: '#50C878'
+  },
+  '& .MuiRating-iconHover': {
+    color: '#307a49'
+  },
+}
