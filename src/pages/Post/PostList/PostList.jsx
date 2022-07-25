@@ -5,6 +5,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Skeleton from '@mui/material/Skeleton'
 import Button from '@mui/material/Button'
+import Pagination from '@mui/material/Pagination'
 import { seedData } from '../../../assets/seedData/seedData'
 
 const PostList = ({ user }) => {
@@ -36,12 +37,21 @@ const PostList = ({ user }) => {
   return ( 
     <Box style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: '3rem'}}>
       <Button onClick={() => setLoading(!loading)}> Toggle Loading </Button>
-      <Box style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+      <Box style={{ 
+        display: 'flex', 
+        gap: '1rem', 
+        flexWrap: 'wrap', 
+        marginBottom: '1.5rem' 
+      }}>
         { loading 
           ? skeleton
           : seedPosts
         }
       </Box>
+      <Pagination 
+        count={5}
+        color="primary"
+      />
     </Box>
    );
 }
