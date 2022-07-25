@@ -10,7 +10,7 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import PostList from './pages/Post/PostList/PostList'
 import * as authService from './services/authService'
-
+import './App.css'
 
 
 const App = () => {
@@ -18,7 +18,9 @@ const App = () => {
   const navigate = useNavigate()
   const theme = createTheme(themeOptions)
 
-  const handleLogout = () => {
+  const handleLogout = (link) => {
+    if(link !== '') return
+    console.log('logging out!')
     authService.logout()
     setUser(null)
     navigate('/')
