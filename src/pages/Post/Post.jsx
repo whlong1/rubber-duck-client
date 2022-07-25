@@ -21,7 +21,13 @@ const Post = ({ user, post }) => {
       <Card sx={{ maxWidth: 275, minHeight: 225 }}>
         <CardContent>
           <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            <Typography sx={{ 
+            fontSize: '14',
+            WebkitBoxOrient: 'vertical', 
+            WebkitLineClamp: 1, 
+            overflow: 'hidden', 
+            display: '-webkit-box',} 
+          } color="text.secondary" gutterBottom>
               {post.post}
             </Typography>
             <StyledRating 
