@@ -14,14 +14,17 @@ import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
-import AdbIcon from '@mui/icons-material/Adb'
 
 const pages = [
   {name: 'Browse', link: ''}, 
   {name: 'Posts', link: '/post'}, 
   {name: 'Topics', link: ''}
 ]
-const settings = ['Profile', 'Logout']
+const settings = [
+  {name: 'Profile', link:'/profiles'},
+  {name: 'Logout', link: ''},
+  {name: 'Change Password', link:'/changePassword'}
+]
 
 const NavBar = ({ user, handleLogout }) => {
   const [anchorElNav, setAnchorElNav] = useState(null)
@@ -101,14 +104,14 @@ const NavBar = ({ user, handleLogout }) => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page, id) => (
-                <MenuItem key={id} onClick={handleCloseNavMenu}>
-                    <Link to={page.link} style={{ textDecoration: 'none', color: 'white' }}>
+              {pages.map((page, uuid) => (
+                <Link to={page.link} key={uuid} style={{ textDecoration: 'none', color: 'white' }}>
+                  <MenuItem onClick={handleCloseNavMenu}>
                       <Typography textAlign="center">
                           {page.name}
                       </Typography>
-                    </Link>
                   </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
@@ -140,9 +143,8 @@ const NavBar = ({ user, handleLogout }) => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, uuid) => (
-              <Link to={page.link} style={{ textDecoration: 'none', color: 'white' }}>
+              <Link to={page.link} key={uuid} style={{ textDecoration: 'none', color: 'white' }}>
                 <Button
-                  key={uuid}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
@@ -174,10 +176,12 @@ const NavBar = ({ user, handleLogout }) => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+              {settings.map((setting, uuid) => (
+                <Link to={setting.link} key={uuid} onClick={() => handleLogout(setting.link)}>
+                  <MenuItem  onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">{setting.name}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
@@ -197,27 +201,6 @@ const NavBar = ({ user, handleLogout }) => {
         </Toolbar>
       </Container>
     </AppBar>
-
-
-    //   {user ?
-    //     <nav>
-    //       <ul>
-    //         <li>Welcome, {user.name}</li>
-    //         <li><Link to="/profiles">Profiles</Link></li>
-    //         <li><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
-    //         <li><Link to="/changePassword">Change Password</Link></li>
-    //       </ul>
-    //     </nav>
-    //   :
-    //     <nav>
-    //       <ul>
-    //         <li><Link to="/login">Log In</Link></li>
-    //         <li><Link to="/signup">Sign Up</Link></li>
-    //         <li><Link to="/post">Test Post</Link></li>
-    //       </ul>
-    //     </nav>
-    //   }
-    // </>
   )
 }
 
