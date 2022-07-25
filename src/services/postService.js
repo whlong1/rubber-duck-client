@@ -65,7 +65,7 @@ export const incrementViews = async (id) => {
   }
 }
 
-export const bookmarkPost = async (post) => {
+export const bookmarkPost = async (id) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}/bookmarks`, {
       method: "POST",
@@ -80,11 +80,61 @@ export const bookmarkPost = async (post) => {
   }
 }
 
+export const removeBookmark = async (id) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}/bookmarks`, {
+      method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+export const newIteration = async (id) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}/iterations`, {
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+export const createIteration = async (iteration) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}/iterations`, {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: JSON.stringify(iteration),
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
 export {
   create,
   index,
   show,
-  incrementViews
+  incrementViews,
+  bookmarkPost,
+  removeBookmark,
+  newIteration,
+  createIteration
 
 
- }
+}
