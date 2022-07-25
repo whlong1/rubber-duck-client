@@ -9,8 +9,8 @@ import Rating from '@mui/material/Rating'
 
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorderOutlined'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
-import DiamondRoundedIcon from '@mui/icons-material/DiamondRounded'
-import DiamondOutlinedIcon from '@mui/icons-material/DiamondOutlined'
+import LabelImportantIcon from '@mui/icons-material/LabelImportant'
+import LabelImportantTwoToneIcon from '@mui/icons-material/LabelImportantTwoTone';
 
 import { ratingOptions } from '../../styles/theme'
 import { styled } from '@mui/material/styles'
@@ -34,8 +34,8 @@ const Post = ({ user }) => {
               readOnly 
               max={4}
               defaultValue={4}
-              icon={<DiamondRoundedIcon fontSize='inherit' />} 
-              emptyIcon={<DiamondOutlinedIcon fontSize="inherit" />}
+              icon={<LabelImportantIcon fontSize='inherit' />} 
+              emptyIcon={<LabelImportantTwoToneIcon fontSize="inherit" />}
             />
           </Box>
           <Typography sx={{ 
