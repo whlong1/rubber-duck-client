@@ -8,7 +8,7 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
-import Post from './pages/Post/Post'
+import PostList from './pages/Post/PostList/PostList'
 import * as authService from './services/authService'
 
 
@@ -46,7 +46,7 @@ const App = () => {
           path="/profiles"
           element={user ? <Profiles /> : <Navigate to="/login" />}
         />
-        <Route path="/post" element={<Post user={user} />} />
+        <Route path="/post" element={<PostList user={user} />} />
       </Routes>
     </ThemeProvider>
   )

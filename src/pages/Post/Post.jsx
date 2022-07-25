@@ -1,4 +1,3 @@
-import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
 import Box from '@mui/material/Box'
 import CardContent from '@mui/material/CardContent'
@@ -17,20 +16,17 @@ import { styled } from '@mui/material/styles'
 
 const StyledRating = styled(Rating)(ratingOptions)
 
-const Post = ({ user }) => {
-  const value = 3
+const Post = ({ user, post }) => {
   return (
-    <main>
-      <h1>Sup, {user ? user.name : 'duck?'}</h1>
-      <Card sx={{ maxWidth: 275 }}>
+      <Card sx={{ maxWidth: 275, minHeight: 225 }}>
         <CardContent>
           <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              Post Modernism
+              {post.post}
             </Typography>
             <StyledRating 
               name="rating" 
-              value={value} 
+              value={post.rating} 
               readOnly 
               max={4}
               defaultValue={4}
@@ -44,18 +40,17 @@ const Post = ({ user }) => {
             overflow: 'hidden', 
             display: '-webkit-box',} 
           }>
-            If one examines precultural libertarianism, one is faced with a choice: either accept rationalism or conclude that context is a product of the masses, given that Marxs essay on precultural libertarianism is invalid. The subject is contextualised into a precapitalist dematerialism that includes culture as a reality.
+           {post.text}
           </Typography>
         </CardContent>
         <CardActions style={{ display: 'flex', justifyContent:'space-between' }}>
-          <Button size="small">Details</Button>
+          <p>08/07/22</p>
           <CheckBox
             icon={<BookmarkBorderIcon />}
             checkedIcon={<BookmarkIcon />}
           />
         </CardActions>
       </Card>
-    </main>
   )
 }
  
