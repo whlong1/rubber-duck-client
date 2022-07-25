@@ -3,3 +3,31 @@
   align-items: center;
   flex-direction: column;
 }
+
+.bodyContainer{
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.freynman{
+  background-image: url('../../assets/feynman.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+  min-height: 100vh;
+}
+
+.logoH1 {
+  text-align: center;
+  color: white;
+}
+.feynmanText {
+  display: flex;
+  
+}
