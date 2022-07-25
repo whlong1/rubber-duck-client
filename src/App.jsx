@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import themeOptions from './styles/theme'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
@@ -11,6 +13,7 @@ import * as authService from './services/authService'
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
+  const theme = createTheme(themeOptions)
 
   const handleLogout = () => {
     authService.logout()
@@ -23,7 +26,7 @@ const App = () => {
   }
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
@@ -50,7 +53,7 @@ const App = () => {
           }
         />
       </Routes>
-    </>
+    </ThemeProvider>
   )
 }
 
