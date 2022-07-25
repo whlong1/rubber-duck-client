@@ -164,6 +164,24 @@ export const undoVote = async (postId, iterationId) => {
   }
 }
 
+export const createComment = async (postId, iterationId, comment) => {
+  try {
+    const path = `${BASE_URL}/${postId}/iterations/${iterationId}/comments`
+    const res = await fetch(path, {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: JSON.stringify(comment),
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
 export {
   create,
   index,
@@ -173,7 +191,8 @@ export {
   removeBookmark,
   newIteration,
   createIteration,
-  undoVote
+  undoVote,
+  createComment
 
 
 }
