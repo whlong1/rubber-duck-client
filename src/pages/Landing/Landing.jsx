@@ -3,6 +3,9 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import CardActions from '@mui/material/CardActions'
+import CheckBox from '@mui/material/Checkbox'
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorderIcon'
+import BookmarkIcon from '@mui/icons-material/BookmarkIcon'
 import styles from './Landing.module.css'
 
 const Landing = ({ user }) => {
@@ -12,7 +15,7 @@ const Landing = ({ user }) => {
       <Button>TEST</Button>
       <Button color="success" variant="contained">TEST</Button>
       <Button color="error" variant="outlined">TEST!</Button>
-      <Card sx={{ minWidth: 275 }}>
+      <Card sx={{ maxWidth: 275 }}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             Post Modernism
@@ -22,7 +25,11 @@ const Landing = ({ user }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <button size="small">Details</button>
+          <Button size="small">Details</Button>
+          <CheckBox
+            icon={<BookmarkBorderIcon />}
+            checkedIcon={<BookmarkIcon />}
+          />
         </CardActions>
       </Card>
     </main>
