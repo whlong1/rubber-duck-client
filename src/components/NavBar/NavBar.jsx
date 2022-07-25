@@ -41,6 +41,7 @@ const NavBar = ({ user, handleLogout }) => {
   }
 
   return (
+    user ? 
     <>
      <AppBar position="static">
       <Container maxWidth="xl">
@@ -183,28 +184,40 @@ const NavBar = ({ user, handleLogout }) => {
         </Toolbar>
       </Container>
     </AppBar>
-
-
-
-      {user ?
-        <nav>
-          <ul>
-            <li>Welcome, {user.name}</li>
-            <li><Link to="/profiles">Profiles</Link></li>
-            <li><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
-            <li><Link to="/changePassword">Change Password</Link></li>
-          </ul>
-        </nav>
-      :
-        <nav>
-          <ul>
-            <li><Link to="/login">Log In</Link></li>
-            <li><Link to="/signup">Sign Up</Link></li>
-            <li><Link to="/post">Test Post</Link></li>
-          </ul>
-        </nav>
-      }
     </>
+    :
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <Box style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
+            <Link to="/login"><MenuItem>Log In</MenuItem></Link>
+            <Link to="/signup"><MenuItem>Sign Up</MenuItem></Link>
+            <Link to="/post"><MenuItem>PostList</MenuItem></Link>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+
+
+    //   {user ?
+    //     <nav>
+    //       <ul>
+    //         <li>Welcome, {user.name}</li>
+    //         <li><Link to="/profiles">Profiles</Link></li>
+    //         <li><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
+    //         <li><Link to="/changePassword">Change Password</Link></li>
+    //       </ul>
+    //     </nav>
+    //   :
+    //     <nav>
+    //       <ul>
+    //         <li><Link to="/login">Log In</Link></li>
+    //         <li><Link to="/signup">Sign Up</Link></li>
+    //         <li><Link to="/post">Test Post</Link></li>
+    //       </ul>
+    //     </nav>
+    //   }
+    // </>
   )
 }
 
