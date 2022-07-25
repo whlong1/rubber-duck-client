@@ -5,13 +5,26 @@ import FormControl from '@mui/material/FormControl'
 import NativeSelect from '@mui/material/NativeSelect'
 import Autocomplete from '@mui/material/Autocomplete'
 import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
+import Stack from '@mui/material/Stack'
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 
 const PostTopMenu = ({ postTitles }) => {
   return ( 
-    <Box style={{ display: 'flex', justifyContent: 'space-between', marginBotton: '1rem' }}>
-      <Box style={{ display: 'flex', gap: '1rem' }}>
-        <Button>New Post</Button>
+    <Box style={{ display: 'flex', justifyContent: 'space-between', marginBotton: '1rem', width: '100%' }}>
+      <Box>
+        <Stack>
+          <Typography variant='h5'>
+            Literature
+          </Typography>
+          <Typography variant='h2'>
+            PostModernism
+          </Typography>
+        </Stack>
+      </Box>
+      <Box style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <Button variant="contained" endIcon={<AddCircleOutlineIcon />}>New Post</Button>
         <Box sx={{ minWidth: 120 }}>
           <FormControl fullWidth>
             <InputLabel variant="standard" htmlFor="uncontrolled-native">
