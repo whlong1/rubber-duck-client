@@ -11,22 +11,24 @@ const Landing = ({ user }) => {
         <h1 className={styles.logoH1}>Rubber Duck</h1>
       </div>
 
-      <div>
-        <img src={rectangle} alt="rectangle" style={{height: 50, width: 50}} />
+      <div className={styles.logoH1}>
+        <img src={rectangle} alt="rectangle" style={{height: 30, width: 70}} />
         <h1 className={styles.logoH1}>What the FUCK is Rubber Duck? </h1>
         <div className={styles.flex}>
           <div>
             <p>
+              Rubber duck is a way to to use the Feynman Learning Technique for everyday learning tasks. 
+              There are four key steps to the Feynman Technique:<br/>
+              Step 1 Choose a concept you want to learn about<br/>
+              Step 2 Explain it to a 12 year old<br/>
+              Step 3 Reflect, Refine, and Simplify<br/>
+              Step 4 Organize and Review<br/>
             </p>
           </div>
-          <div>
+          <div className={styles.feynmanText}>
             <p>
-              Richard Feynman was a Nobel prize-winning physicist. His real superpower, however, was his ability to explain complicated subjects to others in simple terms. He realized that jargon, vague words, and complexity reveal a lack of understanding.
-              There are four key steps to the Feynman Technique:
-              Step 1 Choose a concept you want to learn about
-              Step 2 Explain it to a 12 year old
-              Step 3 Reflect, Refine, and Simplify
-              Step 4 Organize and Review
+              Richard Feynman was a Nobel prize-winning physicist. <br/>His real superpower, however, was his ability to explain complicated subjects to others in simple terms. <br/>He realized that jargon, vague words, and complexity reveal a lack of understanding.
+           
             </p>
           </div>
         </div>
