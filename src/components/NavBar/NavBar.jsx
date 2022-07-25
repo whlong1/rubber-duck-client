@@ -16,7 +16,11 @@ import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 import AdbIcon from '@mui/icons-material/Adb'
 
-const pages = ['Browse', 'Posts', 'Topics']
+const pages = [
+  {name: 'Browse', link: ''}, 
+  {name: 'Posts', link: '/post'}, 
+  {name: 'Topics', link: ''}
+]
 const settings = ['Profile', 'Logout']
 
 const NavBar = ({ user, handleLogout }) => {
@@ -39,14 +43,16 @@ const NavBar = ({ user, handleLogout }) => {
   return (
     <>
      <AppBar position="static">
-      <Container maxWidth="xl" paddingLeft='0'>
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img 
-            src={duckLogo} 
-            height='50px' 
-            alt='rubber duck' 
-            sx={{ display: { xs: 'flex', md: 'none' } }} 
-          />
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <img 
+              src={duckLogo} 
+              height='50px' 
+              alt='rubber duck' 
+              sx={{ display: { xs: 'flex', md: 'none' } }} 
+            />
+          </Box>
           <Typography
             variant="h6"
             noWrap
@@ -94,14 +100,25 @@ const NavBar = ({ user, handleLogout }) => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
+              {pages.map((page, id) => (
+                <MenuItem key={id} onClick={handleCloseNavMenu}>
+                    <Link to={page.link} style={{ textDecoration: 'none', color: 'white' }}>
+                      <Typography textAlign="center">
+                          {page.name}
+                      </Typography>
+                    </Link>
+                  </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <img 
+              src={duckLogo} 
+              height='50px' 
+              alt='rubber duck' 
+              sx={{ display: { xs: 'flex', md: 'none' } }} 
+            />
+          </Box>
           <Typography
             variant="h5"
             noWrap
@@ -111,24 +128,26 @@ const NavBar = ({ user, handleLogout }) => {
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: 'roboto',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Rubber Duck
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+            {pages.map((page, uuid) => (
+              <Link to={page.link} style={{ textDecoration: 'none', color: 'white' }}>
+                <Button
+                  key={uuid}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page.name}
+                </Button>
+              </Link>
             ))}
           </Box>
 
