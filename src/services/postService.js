@@ -2,7 +2,7 @@ import * as tokenService from '../services/tokenService'
 
 const BASE_URL = `${process.env.REACT_APP_BACK_END_SERVER_URL}/api/posts`
 
-export const create = async (post) => {
+const create = async (post) => {
   // this service function requires a topicId in submitted formData
   try {
     const res = await fetch(BASE_URL, {
@@ -20,7 +20,7 @@ export const create = async (post) => {
   }
 }
 
-export const index = async () => {
+const index = async () => {
   // controller built to accept queries:
   // search, page, sort
   try {
@@ -36,7 +36,7 @@ export const index = async () => {
   }
 }
 
-export const show = async (id) => {
+const show = async (id) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}`, {
       headers: {
@@ -50,7 +50,7 @@ export const show = async (id) => {
   }
 }
 
-export const incrementViews = async (id) => {
+const incrementViews = async (id) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}/views`, {
       method: "PATCH",
@@ -65,7 +65,7 @@ export const incrementViews = async (id) => {
   }
 }
 
-export const bookmarkPost = async (id) => {
+const bookmarkPost = async (id) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}/bookmarks`, {
       method: "POST",
@@ -80,7 +80,7 @@ export const bookmarkPost = async (id) => {
   }
 }
 
-export const removeBookmark = async (id) => {
+const removeBookmark = async (id) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}/bookmarks`, {
       method: "DELETE",
@@ -95,7 +95,7 @@ export const removeBookmark = async (id) => {
   }
 }
 
-export const newIteration = async (postId) => {
+const newIteration = async (postId) => {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/iterations`, {
       headers: {
@@ -109,7 +109,7 @@ export const newIteration = async (postId) => {
   }
 }
 
-export const createIteration = async (postId, iteration) => {
+const createIteration = async (postId, iteration) => {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/iterations`, {
       method: "POST",
@@ -126,7 +126,7 @@ export const createIteration = async (postId, iteration) => {
   }
 }
 
-export const castVote = async (postId, iterationId, vote) => {
+const castVote = async (postId, iterationId, vote) => {
   // controller expects the following:
   // req.body.vote: 1    OR    req.body.vote: -1
   // controller responds with updated iteration object
@@ -147,7 +147,7 @@ export const castVote = async (postId, iterationId, vote) => {
   }
 }
 
-export const undoVote = async (postId, iterationId) => {
+const undoVote = async (postId, iterationId) => {
   // controller returns updated iteration
   try {
     const path = `${BASE_URL}/${postId}/iterations/${iterationId}/votes`
@@ -164,7 +164,7 @@ export const undoVote = async (postId, iterationId) => {
   }
 }
 
-export const createComment = async (postId, iterationId, comment) => {
+const createComment = async (postId, iterationId, comment) => {
   try {
     const path = `${BASE_URL}/${postId}/iterations/${iterationId}/comments`
     const res = await fetch(path, {

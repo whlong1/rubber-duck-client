@@ -2,7 +2,7 @@ import * as tokenService from '../services/tokenService'
 
 const BASE_URL = `${process.env.REACT_APP_BACK_END_SERVER_URL}/api/topics`
 
-export const create = async (topic) => {
+const create = async (topic) => {
   try {
     const res = await fetch(BASE_URL, {
       method: "POST",
@@ -19,7 +19,7 @@ export const create = async (topic) => {
   }
 }
 
-export const index = async () => {
+const index = async () => {
   try {
     const res = await fetch(BASE_URL, {
       headers: {
@@ -33,7 +33,7 @@ export const index = async () => {
   }
 }
 
-export const show = async (id) => {
+const show = async (id) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}`, {
       headers: {

@@ -33,7 +33,7 @@ const follow = async (id) => {
   }
 }
 
-export const unfollow = async (id) => {
+const unfollow = async (id) => {
   // follower is found through req.user.profile
   // followee is found through req.params.id
   // response: msg: `You are no longer following ${followee.name}.`
@@ -50,9 +50,6 @@ export const unfollow = async (id) => {
     throw error
   }
 }
-
-
-
 
 export {
   index,
