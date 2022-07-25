@@ -4,8 +4,8 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import CardActions from '@mui/material/CardActions'
 import CheckBox from '@mui/material/Checkbox'
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorderIcon'
-import BookmarkIcon from '@mui/icons-material/BookmarkIcon'
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorderOutlined'
+import BookmarkIcon from '@mui/icons-material/Bookmark'
 import styles from './Landing.module.css'
 
 const Landing = ({ user }) => {
@@ -20,7 +20,12 @@ const Landing = ({ user }) => {
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             Post Modernism
           </Typography>
-          <Typography>
+          <Typography sx={{ 
+            WebkitBoxOrient: 'vertical', 
+            WebkitLineClamp: 4, 
+            overflow: 'hidden', 
+            display: '-webkit-box',} 
+          }>
             If one examines precultural libertarianism, one is faced with a choice: either accept rationalism or conclude that context is a product of the masses, given that Marxs essay on precultural libertarianism is invalid. The subject is contextualised into a precapitalist dematerialism that includes culture as a reality.
           </Typography>
         </CardContent>
