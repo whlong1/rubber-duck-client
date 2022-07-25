@@ -65,7 +65,20 @@ export const incrementViews = async (id) => {
   }
 }
 
-
+export const bookmarkPost = async (post) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}/bookmarks`, {
+      method: "POST",
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
 
 export {
   create,
