@@ -35,7 +35,7 @@ export const index = async () => {
 
 export const show = async (id) => {
   try {
-    const res = await fetch(`${BASE_URL}${id}`, {
+    const res = await fetch(`${BASE_URL}/${id}`, {
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`
       },
