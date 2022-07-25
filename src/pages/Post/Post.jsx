@@ -9,7 +9,6 @@ import Rating from '@mui/material/Rating'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorderOutlined'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
 import LabelImportantIcon from '@mui/icons-material/LabelImportant'
-import LabelImportantTwoToneIcon from '@mui/icons-material/LabelImportantTwoTone';
 
 import { ratingOptions } from '../../styles/theme'
 import { styled } from '@mui/material/styles'
@@ -51,7 +50,7 @@ const Post = ({ user, post }) => {
               max={4}
               defaultValue={4}
               icon={<LabelImportantIcon fontSize='inherit' />} 
-              emptyIcon={<LabelImportantTwoToneIcon fontSize="inherit" />}
+              emptyIcon={<LabelImportantIcon fontSize="inherit" />}
             />
           </Box>
           <Typography sx={{ 

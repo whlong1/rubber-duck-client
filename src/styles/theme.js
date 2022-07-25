@@ -24,6 +24,7 @@ export const ratingOptions = {
     marginRight: '-5px',
   },
   '& .MuiRating-iconEmpty': {
+    color: '#5d5d5d',
     marginRight: '-5px',
   },
   '& .MuiRating-iconHover': {
