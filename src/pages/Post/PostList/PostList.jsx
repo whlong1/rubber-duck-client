@@ -25,7 +25,7 @@ const PostList = ({ user }) => {
   ))
 
   return ( 
-    <>
+    <Box style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: '3rem'}}>
       <Button onClick={() => setLoading(!loading)}> Toggle Loading </Button>
       <Box style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
         { loading 
@@ -33,7 +33,7 @@ const PostList = ({ user }) => {
           : seedPosts
         }
       </Box>
-    </>
+    </Box>
    );
 }
  

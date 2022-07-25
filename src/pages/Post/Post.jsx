@@ -18,16 +18,30 @@ const StyledRating = styled(Rating)(ratingOptions)
 
 const Post = ({ user, post }) => {
   return (
-      <Card sx={{ maxWidth: 275, minHeight: 225 }}>
+      <Card 
+        sx={{ maxWidth: 275, minHeight: 325 }} 
+        style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          flexDirection: 'column'
+        }}>
         <CardContent>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
-            <Typography sx={{ 
-            fontSize: '14',
-            WebkitBoxOrient: 'vertical', 
-            WebkitLineClamp: 1, 
-            overflow: 'hidden', 
-            display: '-webkit-box',} 
-          } color="text.secondary" gutterBottom>
+          <Box sx={{ 
+              display: 'flex', 
+              justifyContent: 'space-between', 
+              marginBottom: '1rem'
+          }}>
+            <Typography 
+              sx={{ 
+                fontSize: '14',
+                WebkitBoxOrient: 'vertical', 
+                WebkitLineClamp: 1, 
+                overflow: 'hidden', 
+                display: '-webkit-box'
+              }} 
+              color="text.secondary"
+              gutterBottom
+            >
               {post.post}
             </Typography>
             <StyledRating 
@@ -42,7 +56,7 @@ const Post = ({ user, post }) => {
           </Box>
           <Typography sx={{ 
             WebkitBoxOrient: 'vertical', 
-            WebkitLineClamp: 3, 
+            WebkitLineClamp: 6, 
             overflow: 'hidden', 
             display: '-webkit-box',} 
           }>
