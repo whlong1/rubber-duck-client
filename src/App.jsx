@@ -15,7 +15,6 @@ import * as authService from './services/authService'
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
-  console.log(themeOptions)
   const theme = createTheme(themeOptions)
 
   const handleLogout = () => {
