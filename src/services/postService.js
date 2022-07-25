@@ -193,6 +193,4 @@ export {
   createIteration,
   undoVote,
   createComment
-
-
 }
