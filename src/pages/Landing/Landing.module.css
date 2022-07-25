@@ -27,7 +27,14 @@
   text-align: center;
   color: white;
 }
+
 .feynmanText {
   display: flex;
-  
+  flex-direction: column;
+  border-left: 5px solid white; 
+  padding: 10px; 
+}
+
+.flex{
+  display: flex;
 }
