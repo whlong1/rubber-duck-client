@@ -9,9 +9,12 @@ const SignupForm = props => {
     name: '',
     email: '',
     password: '',
+    dob:'',
+    occupation:'',
+    zip:'',
+    education:'',
     passwordConf: '',
   })
-  const [photoData, setPhotoData] = useState({})
 
   const handleChange = e => {
     props.updateMessage('')
@@ -19,10 +22,6 @@ const SignupForm = props => {
       ...formData,
       [e.target.name]: e.target.value,
     })
-  }
-
-  const handleChangePhoto = (evt) => {
-    setPhotoData({ photo: evt.target.files[0] })
   }
 
   const handleSubmit = async e => {
@@ -95,16 +94,50 @@ const SignupForm = props => {
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="photo-upload" className={styles.label}>
-          Upload Photo
+        <label htmlFor="occupation" className={styles.label}>
+        Occupation: 
         </label>
         <input
-          type="file"
-          id="photo-upload"
-          name="photo"
-          onChange={handleChangePhoto}
+          type="text"
+          id="occupation"
+          name="occupation"
+          onChange={handleChange}
         />
       </div>
+      <div className={styles.inputContainer}>
+        <label htmlFor="dob" className={styles.label}>
+        Date of Birth: 
+        </label>
+        <input
+          type="date"
+          id="dob"
+          name="dob"
+          onChange={handleChange}
+        />
+      </div>
+      <div className={styles.inputContainer}>
+        <label htmlFor="zip" className={styles.label}>
+        Postal Zip Code: 
+        </label>
+        <input
+          type="number"
+          id="zip"
+          name="zip"
+          onChange={handleChange}
+        />
+      </div>
+      <div className={styles.inputContainer}>
+        <label htmlFor="education" className={styles.label}>
+        Education: 
+        </label>
+        <input
+          type="text"
+          id="education"
+          name="education"
+          onChange={handleChange}
+        />
+      </div>
+  
       <div className={styles.inputContainer}>
         <button disabled={isFormInvalid()} className={styles.button}>
           Sign Up
