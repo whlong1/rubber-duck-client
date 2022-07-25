@@ -27,7 +27,7 @@ const SignupForm = props => {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      await authService.signup(formData, photoData.photo)
+      await authService.signup(formData)
       props.handleSignupOrLogin()
       navigate('/')
     } catch (err) {
