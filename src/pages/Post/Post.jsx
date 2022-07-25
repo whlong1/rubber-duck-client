@@ -36,7 +36,7 @@ const Post = ({ user, post }) => {
                 fontSize: '14',
                 WebkitBoxOrient: 'vertical', 
                 WebkitLineClamp: 1, 
-                overflow: 'hidden', 
+                overflow: 'hidden',
                 display: '-webkit-box'
               }} 
               color="text.secondary"
