@@ -6,14 +6,20 @@ import CardContent from '@mui/material/CardContent'
 import Skeleton from '@mui/material/Skeleton'
 import Button from '@mui/material/Button'
 import Pagination from '@mui/material/Pagination'
+import PostTopMenu from './components/PostTopMenu'
 import { seedData } from '../../../assets/seedData/seedData'
 
 const PostList = ({ user }) => {
   const [loading, setLoading] = useState(true)
+  const [postTitles, setPostTitles] = useState([])
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000)
   }, [])
+
+  useEffect(() => {
+    setPostTitles(seedData.map(post => post.post))
+  }, [seedData])
 
   const seedPosts = seedData.map((post, uuid) => (
     <Post key={uuid} post={post} />
@@ -36,6 +42,10 @@ const PostList = ({ user }) => {
 
   return ( 
     <Box style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: '3rem'}}>
+      {/* This should get split into two, or maybe three components*/}
+      {/* First Component */}
+      <PostTopMenu postTitles={postTitles} />
+      {/* Second Component */}
       <Button onClick={() => setLoading(!loading)}> Toggle Loading </Button>
       <Box style={{ 
         display: 'flex', 
