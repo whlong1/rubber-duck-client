@@ -95,9 +95,9 @@ export const removeBookmark = async (id) => {
   }
 }
 
-export const newIteration = async (id) => {
+export const newIteration = async (postId) => {
   try {
-    const res = await fetch(`${BASE_URL}/${id}/iterations`, {
+    const res = await fetch(`${BASE_URL}/${postId}/iterations`, {
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`
       },
@@ -109,15 +109,36 @@ export const newIteration = async (id) => {
   }
 }
 
-export const createIteration = async (iteration) => {
+export const createIteration = async (postId, iteration) => {
   try {
-    const res = await fetch(`${BASE_URL}/${id}/iterations`, {
+    const res = await fetch(`${BASE_URL}/${postId}/iterations`, {
       method: "POST",
       headers: {
         'content-type': 'application/json',
         'Authorization': `Bearer ${tokenService.getToken()}`
       },
       body: JSON.stringify(iteration),
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+export const castVote = async (postId, iterationId, vote) => {
+  // controller expects the following:
+  // req.body.vote: 1    OR    req.body.vote: -1
+  // controller responds with updated iteration object
+  try {
+    const path = `${BASE_URL}/${postId}/iterations/${iterationId}/votes`
+    const res = await fetch(path, {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: JSON.stringify(vote),
     })
     return await res.json()
   } catch (error) {
