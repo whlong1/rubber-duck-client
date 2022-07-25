@@ -147,6 +147,23 @@ export const castVote = async (postId, iterationId, vote) => {
   }
 }
 
+export const undoVote = async (postId, iterationId) => {
+  // controller returns updated iteration
+  try {
+    const path = `${BASE_URL}/${postId}/iterations/${iterationId}/votes`
+    const res = await fetch(path, {
+      method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
 export {
   create,
   index,
@@ -155,7 +172,8 @@ export {
   bookmarkPost,
   removeBookmark,
   newIteration,
-  createIteration
+  createIteration,
+  undoVote
 
 
 }
