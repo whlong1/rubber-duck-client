@@ -1,4 +1,3 @@
-import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
 import Box from '@mui/material/Box'
 import CardContent from '@mui/material/CardContent'
@@ -9,53 +8,68 @@ import Rating from '@mui/material/Rating'
 
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorderOutlined'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
-import DiamondRoundedIcon from '@mui/icons-material/DiamondRounded'
-import DiamondOutlinedIcon from '@mui/icons-material/DiamondOutlined'
+import LabelImportantIcon from '@mui/icons-material/LabelImportant'
 
 import { ratingOptions } from '../../styles/theme'
 import { styled } from '@mui/material/styles'
 
 const StyledRating = styled(Rating)(ratingOptions)
 
-const Post = ({ user }) => {
-  const value = 3
+const Post = ({ user, post }) => {
   return (
-    <main>
-      <h1>Sup, {user ? user.name : 'duck?'}</h1>
-      <Card sx={{ maxWidth: 275 }}>
+      <Card 
+        sx={{ maxWidth: 275, minHeight: 325 }} 
+        style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          flexDirection: 'column'
+        }}>
         <CardContent>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              Post Modernism
+          <Box sx={{ 
+              display: 'flex', 
+              justifyContent: 'space-between', 
+              marginBottom: '1rem'
+          }}>
+            <Typography 
+              sx={{ 
+                fontSize: '14',
+                WebkitBoxOrient: 'vertical', 
+                WebkitLineClamp: 1, 
+                overflow: 'hidden',
+                display: '-webkit-box'
+              }} 
+              color="text.secondary"
+              gutterBottom
+            >
+              {post.post}
             </Typography>
             <StyledRating 
               name="rating" 
-              value={value} 
+              value={post.rating} 
               readOnly 
               max={4}
               defaultValue={4}
-              icon={<DiamondRoundedIcon fontSize='inherit' />} 
-              emptyIcon={<DiamondOutlinedIcon fontSize="inherit" />}
+              icon={<LabelImportantIcon fontSize='inherit' />} 
+              emptyIcon={<LabelImportantIcon fontSize="inherit" />}
             />
           </Box>
           <Typography sx={{ 
             WebkitBoxOrient: 'vertical', 
-            WebkitLineClamp: 3, 
+            WebkitLineClamp: 6, 
             overflow: 'hidden', 
             display: '-webkit-box',} 
           }>
-            If one examines precultural libertarianism, one is faced with a choice: either accept rationalism or conclude that context is a product of the masses, given that Marxs essay on precultural libertarianism is invalid. The subject is contextualised into a precapitalist dematerialism that includes culture as a reality.
+           {post.text}
           </Typography>
         </CardContent>
         <CardActions style={{ display: 'flex', justifyContent:'space-between' }}>
-          <Button size="small">Details</Button>
+          <p>08/07/22</p>
           <CheckBox
             icon={<BookmarkBorderIcon />}
             checkedIcon={<BookmarkIcon />}
           />
         </CardActions>
       </Card>
-    </main>
   )
 }
  
