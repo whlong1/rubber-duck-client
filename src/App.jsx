@@ -8,6 +8,7 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
+import Post from './pages/Post/Post'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 
@@ -55,6 +56,7 @@ const App = () => {
             )
           }
         />
+        <Route path="/post" element={<Post user={user} />} />
       </Routes>
     </ThemeProvider>
   )

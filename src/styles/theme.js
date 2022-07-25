@@ -20,7 +20,7 @@ export const themeOptions = {
 
 export const ratingOptions = {
   '& .MuiRating-iconFilled': {
-    color: '#50C878'
+    color: '#4caf50'
   },
   '& .MuiRating-iconHover': {
     color: '#307a49'
