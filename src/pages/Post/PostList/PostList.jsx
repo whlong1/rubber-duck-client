@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState, useEffect } from 'react'
 import Post from '../Post'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
@@ -9,6 +9,10 @@ import { seedData } from '../../../assets/seedData/seedData'
 
 const PostList = ({ user }) => {
   const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000)
+  }, [])
 
   const seedPosts = seedData.map((post, uuid) => (
     <Post key={uuid} post={post} />
