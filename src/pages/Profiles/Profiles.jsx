@@ -6,7 +6,7 @@ const Profiles = () => {
 
   useEffect(() => {
     const fetchProfiles = async () => {
-      const profileData = await profileService.getAllProfiles()
+      const profileData = await profileService.index()
       setProfiles(profileData)
     }
     fetchProfiles()
