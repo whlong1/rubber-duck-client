@@ -44,9 +44,9 @@ const NavBar = ({ user, handleLogout }) => {
   }
 
   return (
-    user ? 
+    !user ? 
     <>
-     <AppBar position="static">
+     <AppBar position="static" style={{ backgroundColor: '#121212' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
@@ -178,7 +178,7 @@ const NavBar = ({ user, handleLogout }) => {
             >
               {settings.map((setting, uuid) => (
                 <Link to={setting.link} key={uuid} onClick={() => handleLogout(setting.link)}>
-                  <MenuItem  onClick={handleCloseUserMenu}>
+                  <MenuItem onClick={handleCloseUserMenu}>
                       <Typography textAlign="center">{setting.name}</Typography>
                   </MenuItem>
                 </Link>
@@ -190,7 +190,7 @@ const NavBar = ({ user, handleLogout }) => {
     </AppBar>
     </>
     :
-    <AppBar position="static">
+    <AppBar position="static" style={{ backgroundColor: '#121212' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
