@@ -22,10 +22,12 @@ const CategoryList = (props) => {
             label={name}
             icon={icon}
             sx={{ 
-              height: { lg: 32, md: 32, sm: 32, xs: 32 },
+              height: 34,
               width: { lg: 150, md: 150, sm: 250, xs: 250 }, 
               backgroundColor: color,
-              "& .MuiChip-label": { fontFamily: 'abril-display', fontSize: 14 }
+              "& .MuiChip-root": { position: 'relative' },
+              "& .MuiChip-label": { fontWeight: 700, fontSize: 15 },
+              "& .MuiChip-icon": { position: 'absolute', left: 2 }
             }}
             onClick={() => props.setSelected(name)}
           >
