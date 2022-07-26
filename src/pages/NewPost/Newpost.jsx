@@ -28,8 +28,6 @@ function NewPost(props) {
     'CompSci',
   ]
 
-  console.log('TOPIC FORM', topicForm)
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     const newPost = await postService.create({ topic: topic._id })
@@ -43,8 +41,6 @@ function NewPost(props) {
   const submitTopic = async (e) => {
     e.preventDefault()
     const newTopic = await topicService.create(topicForm)
-    console.log('NEW TOPIC', newTopic)
-
     if (newTopic.msg) {
       setMsg(newTopic.msg)
     } else {
@@ -87,16 +83,16 @@ function NewPost(props) {
       ))}
       {dropdown
         ? <form onSubmit={submitTopic}>
-          <h3>Enter your new topic</h3>
-          <input placeholder='Title' name="title" value={topicForm.title} required={true} onChange={(e) => setTopicForm({ ...topicForm, title: e.target.value })} />
-          <select name="category" onChange={(e) => setTopicForm({ ...topicForm, category: e.target.value })}>
-            {categories.map((category, idx) => (
-              <option key={idx} value={category}>{category}</option>
-            ))}
-          </select>
-          <button disabled={!topicForm.title} type='submit' onClick={submitTopic}>Submit</button>
-          <button type='button' onClick={() => setDropdown(false)}>Cancel</button>
-        </form>
+            <h3>Enter your new topic</h3>
+            <input placeholder='Title' name="title" value={topicForm.title} required={true} onChange={(e) => setTopicForm({ ...topicForm, title: e.target.value })} />
+            <select name="category" onChange={(e) => setTopicForm({ ...topicForm, category: e.target.value })}>
+              {categories.map((category, idx) => (
+                <option key={idx} value={category}>{category}</option>
+              ))}
+            </select>
+            <button disabled={!topicForm.title} type='submit' onClick={submitTopic}>Submit</button>
+            <button type='button' onClick={() => setDropdown(false)}>Cancel</button>
+          </form>
         : <button onClick={() => setDropdown(true)}>Add A Topic</button>
       }
 
