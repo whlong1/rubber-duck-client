@@ -24,7 +24,7 @@ const NavBar = ({ user, handleLogout }) => {
     {name: 'Topics', link: ''}
   ]
   const logOutSettings = [
-    {name: 'Profile', link:`/profiles/${user.profile}`},
+    {name: 'Profile', link:`/profiles/${user?.profile}`},
     {name: 'Logout', link: ''},
     {name: 'Change Password', link:'/changePassword'},
   ]
