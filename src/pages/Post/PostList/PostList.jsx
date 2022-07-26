@@ -26,7 +26,7 @@ const PostList = ({ user }) => {
       setPosts(data)
       setLoading(false)
     }
-    return () => fetchPosts()
+    fetchPosts()
   }, [selectedTopic])
   console.log('POSTS STATE::::', posts)
 
