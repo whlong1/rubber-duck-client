@@ -1,14 +1,13 @@
-import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const TopicList = (props) => {
-  const navigate = useNavigate()
   return (
     <>
-      TopicList
+      TopicList 
       {props.topics.map((topic) => (
-        <button key={topic._id} onClick={() => navigate(`/topics/${topic._id}`)}>
+        <Link key={topic._id} to={`/topics/${topic._id}`}>
           {topic.title}
-        </button>
+        </Link>
       ))}
     </>
   )
