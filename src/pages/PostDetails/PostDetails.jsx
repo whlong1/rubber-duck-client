@@ -23,15 +23,16 @@ const PostDetails = (props) => {
 
   const handleVote = async(vote)=>{
     const postData = await postService.castVote(postId, post.iterations[0]._id, vote)
-    console.log(postData);
   }
 
+  console.log(post);
   
   console.log(post);
   return (  
     <>
       <h1>Post details</h1>
       {post?.topic?.title}
+      {post?.topic?.category}
       {post?.author?.name}
       {post?.author?.occupation}
       {post?.iterations?.map((iteration) => 

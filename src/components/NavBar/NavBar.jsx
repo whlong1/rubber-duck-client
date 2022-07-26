@@ -20,13 +20,14 @@ import PersonIcon from '@mui/icons-material/Person';
 const NavBar = ({ user, handleLogout }) => {
   const pages = [
     {name: 'Browse', link: '/browse'}, 
-    {name: 'Posts', link: '/post'}, 
-    {name: 'Topics', link: ''}
+    {name: 'New Posts', link: '/newPost'}, 
+    
   ]
   const logOutSettings = [
     {name: 'Profile', link:`/profiles/${user?.profile}`},
     {name: 'Logout', link: ''},
     {name: 'Change Password', link:'/changePassword'},
+    
   ]
   const logInSettings = [
     {name: 'Login', link: 'login'},
@@ -75,35 +76,7 @@ const NavBar = ({ user, handleLogout }) => {
               sx={{ display: { xs: 'flex', md: 'none' } }} 
             />
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
+          
               {pages.map((page, uuid) => (
                 <Link to={page.link} key={uuid} style={{ textDecoration: 'none', color: 'white' }}>
                   <MenuItem onClick={handleCloseNavMenu}>
@@ -113,8 +86,6 @@ const NavBar = ({ user, handleLogout }) => {
                   </MenuItem>
                 </Link>
               ))}
-            </Menu>
-          </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, uuid) => (
               <Link to={page.link} key={uuid} style={{ textDecoration: 'none', color: 'white' }}>
