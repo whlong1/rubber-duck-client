@@ -8,9 +8,9 @@ import Rating from '@mui/material/Rating'
 import SvgIcon from '@mui/material/SvgIcon'
 import { ReactComponent as Diamond } from '../../assets/diamond-icon.svg'
 
+
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorderOutlined'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
-import LabelImportantIcon from '@mui/icons-material/LabelImportant'
 
 import { ratingOptions } from '../../styles/theme'
 import { styled } from '@mui/material/styles'
