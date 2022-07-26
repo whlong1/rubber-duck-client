@@ -23,6 +23,7 @@ const create = async (post) => {
 const index = async () => {
   // controller built to accept queries:
   // search, page, sort
+  // search will only allow a user to filter posts by topic id
   try {
     const res = await fetch(BASE_URL, {
       headers: {
@@ -37,6 +38,7 @@ const index = async () => {
 }
 
 const show = async (id) => {
+  // returns post, all iterations, and associated comments with each iteration
   try {
     const res = await fetch(`${BASE_URL}/${id}`, {
       headers: {
@@ -51,6 +53,8 @@ const show = async (id) => {
 }
 
 const incrementViews = async (id) => {
+  // Call within Postdetails component after X seconds
+  // only returns an ok message, state will need to be updated
   try {
     const res = await fetch(`${BASE_URL}/${id}/views`, {
       method: "PATCH",
