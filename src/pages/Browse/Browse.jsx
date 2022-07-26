@@ -17,7 +17,7 @@ const Browse = (props) => {
     'Science',
     'History',
     'Literature',
-    'Computer Science',
+    'CompSci',
   ]
 
   useEffect(() => {
