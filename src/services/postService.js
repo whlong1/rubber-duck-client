@@ -101,9 +101,9 @@ const removeBookmark = async (id) => {
   }
 }
 
-const findKeywords = async (postId) => {
+const findKeywords = async (topicId, postId) => {
   try {
-    const res = await fetch(`${BASE_URL}/${postId}/iterations`, {
+    const res = await fetch(`${BASE_URL}/${postId}/iterations?search=${topicId}`, {
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`
       },

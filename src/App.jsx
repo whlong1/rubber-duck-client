@@ -12,6 +12,8 @@ import PostList from './pages/Post/PostList/PostList'
 import PostDetails from './pages/PostDetails/PostDetails'
 import ProfileDetail from './pages/ProfileDetail/ProfileDetail'
 import Browse from './pages/Browse/Browse'
+import NewPost from './pages/NewPost/Newpost'
+import NewIteration from './pages/NewIteration/NewIteration'
 import * as authService from './services/authService'
 import './App.css'
 
@@ -53,11 +55,13 @@ const App = () => {
         />
         <Route
           path="/profiles/:profileId"
-          element={user ? <ProfileDetail user={user}/> : <Navigate to="/login" />}
+          element={user ? <ProfileDetail user={user} /> : <Navigate to="/login" />}
         />
+        <Route path="/posts/new" element={<NewPost user={user} />} />
         <Route path="/posts/:postId" element={<PostDetails user={user} />} />
         <Route path="/topics/:topicId" element={<PostList user={user} />} />
         <Route path="/browse" element={<Browse user={user} />} />
+        <Route path="/topics/:topicId/posts/:postId/iterations" element={<NewIteration user={user} />} />
       </Routes>
     </ThemeProvider>
   )
