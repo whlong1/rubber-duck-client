@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+
 import Post from '../Post'
 import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
@@ -7,37 +9,49 @@ import PostTopMenu from './components/PostTopMenu'
 
 import TungstenIcon from '@mui/icons-material/Tungsten';
 
-import { seedData } from '../../../assets/seedData/seedData'
+import * as postService from '../../../services/postService'
+
 
 const PostList = ({ user }) => {
+  const { topicId } = useParams()
+  const [page, setPage] = useState(0)
+  const [sort, setSort] = useState('recent') // sort values: 'recent' or 'popular'
+  const [selectedTopic, setSelectedTopic] = useState(topicId) // <<<< use for search
+
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const data = await postService.index(page, sort, selectedTopic)
+      setPosts(data)
+      setLoading(false)
+    }
+    return () => fetchPosts()
+  }, [selectedTopic])
+  console.log('POSTS STATE::::', posts)
+
+  // =======================
+
   const [loading, setLoading] = useState(true)
   const [postTitles, setPostTitles] = useState([])
 
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 1000)
-  }, [])
-
-  useEffect(() => {
-    setPostTitles(seedData.map(post => post.post))
-  }, [seedData])
-
-  const seedPosts = seedData.map((post, uuid) => (
-    <Post key={uuid} post={post} />
+  const postList = posts?.map((post) => (
+    <Post key={post._id} post={post} />
   ))
 
-  return ( 
-    <Box style={{ 
-      display: 'flex', 
-      flexDirection: 'column', 
-      justifyContent: 'center', 
-      alignItems: 'center', 
+  return (
+    <Box style={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
       margin: '3rem'
     }}>
       <PostTopMenu postTitles={postTitles} />
       <Divider textAlign="left" sx={{ color: 'primary', width: '100%', marginBottom: '1rem' }}><TungstenIcon color="primary" /></Divider>
-      <PaginatedList loading={loading} setLoading={setLoading} seedPosts={seedPosts} />
+      <PaginatedList loading={loading} setLoading={setLoading} postList={postList} />
     </Box>
-   );
+  );
 }
- 
+
 export default PostList;

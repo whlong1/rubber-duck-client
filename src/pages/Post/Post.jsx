@@ -8,9 +8,9 @@ import Rating from '@mui/material/Rating'
 import SvgIcon from '@mui/material/SvgIcon'
 import { ReactComponent as Diamond } from '../../assets/diamond-icon.svg'
 
+
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorderOutlined'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
-import LabelImportantIcon from '@mui/icons-material/LabelImportant'
 
 import { ratingOptions } from '../../styles/theme'
 import { styled } from '@mui/material/styles'
@@ -24,7 +24,9 @@ const Post = ({ user, post }) => {
         style={{ 
           display: 'flex', 
           justifyContent: 'space-between', 
-          flexDirection: 'column'
+          flexDirection: 'column',
+          backgroundColor: 'rgb(18,18,18)',
+          backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09))'
         }}>
         <CardContent>
           <Box sx={{ 
@@ -51,6 +53,7 @@ const Post = ({ user, post }) => {
               readOnly 
               max={4}
               defaultValue={4}
+              style={{ display: 'flex', alignItems: 'center' }}
               icon={ <SvgIcon fontSize='inherit'> <Diamond /> </SvgIcon> }
               emptyIcon={< SvgIcon fontSize='inherit'> <Diamond /> </SvgIcon> }
             />
