@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import Typography from '@mui/material/Typography'
-import { StyledCard } from './mui/StyledCard'
+import { StyledCard } from './mui/StyledComponents'
 
 const TopicList = (props) => {
   return (
