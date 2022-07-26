@@ -20,7 +20,7 @@ const StyledRating = styled(Rating)(ratingOptions)
 const Post = ({ user, post }) => {
   return (
       <Card 
-        sx={{ width: 275, minHeight: 325 }} 
+        sx={{ width: { xs: 400, md: 275 }, minHeight: { xs: 300, md: 325 } }} 
         style={{ 
           display: 'flex', 
           justifyContent: 'space-between', 
