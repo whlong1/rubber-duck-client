@@ -24,10 +24,10 @@ const PostTopMenu = ({ postTitles }) => {
         </Stack>
       </Box>
       <Box style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-        <Button variant="contained" endIcon={<AddCircleOutlineIcon />}>New Post</Button>
+        
         <Box sx={{ minWidth: 120 }}>
           <FormControl fullWidth>
-            <InputLabel variant="standard" htmlFor="uncontrolled-native">
+            <InputLabel htmlFor="uncontrolled-native">
               Filter by:
             </InputLabel>
             <NativeSelect
@@ -49,8 +49,10 @@ const PostTopMenu = ({ postTitles }) => {
         options={postTitles?.map((option) => option)}
         renderInput={(params) => <TextField {...params} label="Search input" />}
         disablePortal
+        size='small'
         sx={{ width: 200 }}
       />
+      <Button variant="contained" sx={{ height: 40 }} endIcon={<AddCircleOutlineIcon />}>New Post</Button>
       </Box>
     </Box>
    );
