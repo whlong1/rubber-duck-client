@@ -1,15 +1,7 @@
 import Stack from '@mui/material/Stack'
 import Chip from '@mui/material/Chip'
 
-import FunctionsIcon from '@mui/icons-material/Functions';
-import AutoStoriesIcon from '@mui/icons-material/AutoStories';
-import PublicIcon from '@mui/icons-material/Public';
-import ScienceIcon from '@mui/icons-material/Science';
-import CodeIcon from '@mui/icons-material/Code';
-
-
 const CategoryList = (props) => {
-  const categoryColors = ['#F75847', '#00B1C6', '#7E7568', '#0CBA6E', '#FFB201']
   return (
     <>
       Categories:
