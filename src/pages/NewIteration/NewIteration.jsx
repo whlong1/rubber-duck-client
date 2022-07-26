@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 // import * as postService from '../../services/postService'
 
 function NewIteration(props) {
-  
+  const {postId} = useParams()
 
   // http://localhost:3001/api/posts/62e02cda944d8893bcbcb337/iterations
 
