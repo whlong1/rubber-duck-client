@@ -15,28 +15,28 @@ import * as postService from '../../../services/postService'
 const PostList = ({ user }) => {
   const { topicId } = useParams()
   const [page, setPage] = useState(0)
+  const [topic, setTopic] = useState()
+  const [posts, setPosts] = useState([])
   const [sort, setSort] = useState('recent') // sort values: 'recent' or 'popular'
   const [selectedTopic, setSelectedTopic] = useState(topicId) // <<<< use for search
-
-  const [posts, setPosts] = useState([])
 
   useEffect(() => {
     const fetchPosts = async () => {
       const data = await postService.index(page, sort, selectedTopic)
       setPosts(data)
       setLoading(false)
+      setTopic(data[0].topic)
     }
     fetchPosts()
-  }, [selectedTopic])
-  console.log('POSTS STATE::::', posts)
-
-  // =======================
+  }, [selectedTopic, sort, page])
 
   const [loading, setLoading] = useState(true)
-  const [postTitles, setPostTitles] = useState([])
 
   const postList = posts?.map((post) => (
-    <Post key={post._id} post={post} />
+    <Post
+      post={post}
+      key={post._id}
+    />
   ))
 
   return (
@@ -47,8 +47,8 @@ const PostList = ({ user }) => {
       alignItems: 'center',
       margin: '3rem'
     }}>
-      <PostTopMenu postTitles={postTitles} />
-      <Divider textAlign="left" sx={{ color: 'primary', width: '100%', margin: '1rem', visibility: {xs: 'hidden', md: 'visible'} }}><TungstenIcon color="primary" /></Divider>
+      <PostTopMenu topic={topic} setSort={setSort} />
+      <Divider textAlign="left" sx={{ color: 'primary', width: '100%', margin: '1rem', visibility: { xs: 'hidden', md: 'visible' } }}><TungstenIcon color="primary" /></Divider>
       <PaginatedList loading={loading} setLoading={setLoading} postList={postList} />
     </Box>
   );
