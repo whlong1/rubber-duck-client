@@ -20,15 +20,15 @@ const create = async (post) => {
   }
 }
 
-const index = async () => {
-  // controller built to accept queries:
-  // search, page, sort
-  // search will only allow a user to filter posts by topic id
+const index = async (page, sort, search) => {
+  // NOTE search will only allow a user to filter posts by topic id
+
+  // sort values: 'recent' or 'popular'
+  // search value: topic._id
   try {
-    const res = await fetch(BASE_URL, {
-      headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`
-      },
+    const path = `${BASE_URL}?page=${page}&&sort=${sort}&&search=${search}`
+    const res = await fetch(path, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` }
     })
     return await res.json()
   } catch (error) {
