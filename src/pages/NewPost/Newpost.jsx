@@ -12,6 +12,7 @@ function NewPost(props) {
   const [topics, setTopics] = useState([])
   const [topic, setTopic] = useState()
   const [selected, setSelected] = useState()
+  const [dropdown, setDropdown] = useState(false)
   const [msg, setMsg] = useState('')
 
   const categories = [
@@ -69,6 +70,18 @@ function NewPost(props) {
           {topic.title}
         </button>
       ))}
+      <button>Add A Topic</button>
+
+      {dropdown
+        ? <form>
+            <h3>Topic Form</h3>
+
+          </form>
+        : <button>Add A Topic</button>
+      }
+
+
+
       <button disabled={!topic} onClick={handleSubmit}>Confirm</button>
     </div>
   )
