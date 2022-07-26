@@ -29,7 +29,7 @@ const Browse = (props) => {
 
   useEffect(() => {
     const fetchTopics = async () => {
-      const data = await topicService.index(selected)
+      const data = await topicService.index(selected.name)
       setTopics(data)
     }
     fetchTopics()
