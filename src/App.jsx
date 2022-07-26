@@ -54,8 +54,9 @@ const App = () => {
         />
         <Route
           path="/profiles/:profileId"
-          element={user ? <ProfileDetail user={user}/> : <Navigate to="/login" />}
+          element={user ? <ProfileDetail user={user} /> : <Navigate to="/login" />}
         />
+        <Route path="/posts/new" element={<NewPost user={user} />} />
         <Route path="/posts/:postId" element={<PostDetails user={user} />} />
         <Route path="/topics/:topicId" element={<PostList user={user} />} />
         <Route path="/browse" element={<Browse user={user} />} />

@@ -8,12 +8,14 @@ import TopicList from '../Browse/components/TopicList'
 
 import * as postService from '../../services/postService'
 
+import * as topicService from '../../services/topicService'
+
 function NewPost(props) {
   // const [text, setText] = useState('')
   // const [keywords, setKeywords] = useState([])
   const [topics, setTopics] = useState([])
   const [topicId, setTopicId] = useState('')
-  const [selected, setSelected] = useState('')
+  const [selected, setSelected] = useState()
 
   const categories = [
     'Math',
@@ -29,17 +31,13 @@ function NewPost(props) {
     console.log(data)
   }
 
-  const validForm = selected && topicId
-  console.timeLog(validForm)
-
-
-  // useEffect(() => {
-  //   const fetchTopics = async () => {
-  //     const data = await topicService.index(selected)
-  //     setTopics(data)
-  //   }
-  //   fetchTopics()
-  // }, [selected])
+  useEffect(() => {
+    const fetchTopics = async () => {
+      const data = await topicService.index(selected)
+      setTopics(data)
+    }
+    if (selected) fetchTopics()
+  }, [selected])
 
   // useEffect(() => {
   //   const fetchKeyWords = () => {
@@ -52,16 +50,20 @@ function NewPost(props) {
 
   return (
     <div>
-      <h1>Category</h1>
+      <h1>PICK CATEGORY</h1>
       <CategoryList
         categories={categories}
         setSelected={setSelected}
       />
-      <h3>Topic</h3>
-      <TopicList topics={topics} />
+      <h3>PICK A TOPIC TO WRITE ABOUT</h3>
+      {topics?.map((topic) => (
+        <button onClick={() => setTopicId(topic._id)} key={topic._id} to={`/topics/${topic._id}`}>
+          {topic.title}
+        </button>
+      ))}
       {/* <PostForm text={text} setText={setText} handleSubmit={handleSubmit} />
       <Analysis text={text} keywords={keywords} /> */}
-      <button onClick={handleSubmit}>Confirm</button>
+      <button disabled={topicId === ''} onClick={handleSubmit}>Confirm</button>
     </div>
   )
 }
