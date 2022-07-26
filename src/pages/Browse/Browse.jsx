@@ -12,7 +12,9 @@ const Browse = (props) => {
   const categories = [
     'Math',
     'Science',
-    'Computer Science'
+    'History',
+    'Literature',
+    'Computer Science',
   ]
 
   useEffect(() => {
