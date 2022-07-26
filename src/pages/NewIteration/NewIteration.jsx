@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
 
 // Components
-import PostForm from './components/PostForm/PostForm'
-import Analysis from './components/Analysis/Analysis'
-import * as postService from '../../services/postService'
+// import PostForm from './components/PostForm/PostForm'
+// import Analysis from './components/Analysis/Analysis'
+// import * as postService from '../../services/postService'
 
 function NewIteration(props) {
 
   // http://localhost:3001/api/posts/62e02cda944d8893bcbcb337/iterations
-  
+
   // const [text, setText] = useState('')
   // const [keywords, setKeywords] = useState([])
 
@@ -47,4 +47,4 @@ function NewIteration(props) {
   )
 }
 
-export default NewPost
+export default NewIteration
