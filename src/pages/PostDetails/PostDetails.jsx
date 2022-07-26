@@ -21,20 +21,18 @@ const PostDetails = (props) => {
  
   }, [])
 
-  const handleVote =(vote)=>{
-
-    
+  const handleVote = async(vote)=>{
+    const postData = await postService.castVote(postId, post.iterations[0]._id, vote)
   }
-// const castVote = async (postId, iterationId, vote) => {
-//   try {
-//     const path = `${BASE_URL}/${postId}/iterations/${iterationId}/votes`
- 
+
+  console.log(post);
   
   console.log(post);
   return (  
     <>
       <h1>Post details</h1>
       {post?.topic?.title}
+      {post?.topic?.category}
       {post?.author?.name}
       {post?.author?.occupation}
       {post?.iterations?.map((iteration) => 
