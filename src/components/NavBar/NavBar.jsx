@@ -52,6 +52,7 @@ const NavBar = ({ user, handleLogout }) => {
 
   window.onscroll = function(ev) {
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+      console.log('bottom');
       handleToggle()
     }
   }
