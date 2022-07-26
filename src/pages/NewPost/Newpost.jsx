@@ -19,7 +19,7 @@ function NewPost(props) {
     'Science',
     'History',
     'Literature',
-    'Computer Science',
+    'CompSci',
   ]
 
   const handleSubmit = async (e) => {

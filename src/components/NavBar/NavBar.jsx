@@ -20,7 +20,7 @@ import PersonIcon from '@mui/icons-material/Person';
 const NavBar = ({ user, handleLogout }) => {
   const pages = [
     {name: 'Browse', link: '/browse'}, 
-    {name: 'New Posts', link: '/newPost'}, 
+    {name: 'New Posts', link: '/posts/new'}, 
     
   ]
   const logOutSettings = [

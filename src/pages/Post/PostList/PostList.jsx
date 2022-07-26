@@ -10,7 +10,7 @@ import PostTopMenu from './components/PostTopMenu'
 import TungstenIcon from '@mui/icons-material/Tungsten';
 
 import * as postService from '../../../services/postService'
-
+import * as topicService from '../../../services/topicService'
 
 const PostList = ({ user }) => {
   const { topicId } = useParams()
@@ -23,9 +23,10 @@ const PostList = ({ user }) => {
   useEffect(() => {
     const fetchPosts = async () => {
       const data = await postService.index(page, sort, selectedTopic)
+      const topicData = await topicService.show(topicId)
       setPosts(data)
       setLoading(false)
-      setTopic(data[0].topic)
+      setTopic(topicData)
     }
     fetchPosts()
   }, [selectedTopic, sort, page])
@@ -34,12 +35,12 @@ const PostList = ({ user }) => {
 
   const postList = posts?.map((post) => (
     post.iterations.length ?
-    <Post
-      post={post}
-      key={post._id}
-    />
-    :
-    ''
+      <Post
+        post={post}
+        key={post._id}
+      />
+      :
+      ''
   ))
 
   return (
