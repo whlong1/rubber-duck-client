@@ -13,7 +13,7 @@ import CategoryList from '../Browse/components/CategoryList'
 import * as postService from '../../services/postService'
 import * as topicService from '../../services/topicService'
 
-function NewPost(props) {
+function NewPost() {
   const navigate = useNavigate()
   const [topics, setTopics] = useState([])
   const [topic, setTopic] = useState()
@@ -59,7 +59,7 @@ function NewPost(props) {
 
   useEffect(() => {
     const fetchTopics = async () => {
-      const data = await topicService.index(selected)
+      const data = await topicService.index(selected.name)
       setTopics(data)
     }
     if (selected) fetchTopics()
@@ -69,7 +69,7 @@ function NewPost(props) {
     return (
       <div>
         <h1>{msg}</h1>
-        <button onClick={() => { setMsg(''); setTopic(); setSelected(''); setTopicForm({ title: '', category: 'Math' }) }}>Go back</button>
+        <button onClick={() => { setMsg(''); setTopic(); setSelected(); setTopicForm({ title: '', category: 'Math' }) }}>Go back</button>
       </div>
     )
   }
@@ -90,10 +90,10 @@ function NewPost(props) {
       {dropdown
         ? <form onSubmit={submitTopic}>
             <h3>Enter your new topic</h3>
-            <input placeholder='Title' name="title" value={topicForm.title} required={true} onChange={(e) => setTopicForm({ ...topicForm, title: e.target.value })} />
+            <input placeholder='Title' name="title" value={topicForm.title} onChange={(e) => setTopicForm({ ...topicForm, title: e.target.value })} />
             <select name="category" onChange={(e) => setTopicForm({ ...topicForm, category: e.target.value })}>
               {categories.map((category, idx) => (
-                <option key={idx} value={category}>{category}</option>
+                <option key={idx} value={category.name}>{category.name}</option>
               ))}
             </select>
             <button disabled={!topicForm.title} type='submit' onClick={submitTopic}>Submit</button>
