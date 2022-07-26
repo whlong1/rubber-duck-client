@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react'
 import writeGood from 'write-good'
 
-// Components
-import Feedback from './components/Feedback'
-
 // Utils
 import { findWordCount, writingTips } from '../../utils/utils'
 
@@ -23,7 +20,17 @@ function Analysis({ text, keywords }) {
 
   return (
     <div>
-      <Feedback tips={tips} warnings={warnings} wordCount={wordCount} keywords={keywords} />
+      Feedback:
+      {tips.map((obj, idx) => (
+        <p style={{ color: '#e36350' }}>{obj.reason}</p>
+      ))}
+      {warnings.map((obj, idx) => (
+        <p style={{ color: '#e36350' }}>{obj.reason}</p>
+      ))}
+      {keywords.map((word, idx) => (
+        <p style={{ color: '#e36350' }}>{word}</p>
+      ))}
+      <p>{wordCount}</p>
     </div>
   )
 }

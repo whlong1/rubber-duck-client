@@ -8,10 +8,10 @@ import Analysis from './components/Analysis/Analysis'
 import * as postService from '../../services/postService'
 
 
-function NewPost() {
+function NewPost(props) {
   const { topicId } = useParams()
   const [text, setText] = useState('')
-  // const [keywords, setKeywords] = useState(null)
+  const [keywords, setKeywords] = useState([])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -31,8 +31,8 @@ function NewPost() {
     <div>
       <h1>Category</h1>
       <h3>Topic</h3>
-      {/* <PostForm text={text} setText={setText} handleSubmit={handleSubmit} />
-      <Analysis text={text} keywords={keywords} /> */}
+      <PostForm text={text} setText={setText} handleSubmit={handleSubmit} />
+      <Analysis text={text} keywords={keywords} />
     </div>
   )
 }
