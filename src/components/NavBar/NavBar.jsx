@@ -14,6 +14,7 @@ import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
+import PersonIcon from '@mui/icons-material/Person';
 
 const pages = [
   {name: 'Browse', link: '/browse'}, 
@@ -63,7 +64,7 @@ const NavBar = ({ user, handleLogout }) => {
      <AppBar position="relative" style={{ backgroundColor: '#121212' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }} style={{ marginRight: '1rem'}} >
             <img 
               src={duckLogo} 
               height='50px' 
@@ -71,24 +72,6 @@ const NavBar = ({ user, handleLogout }) => {
               sx={{ display: { xs: 'flex', md: 'none' } }} 
             />
           </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'roboto',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Rubber Duck
-          </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -129,32 +112,6 @@ const NavBar = ({ user, handleLogout }) => {
               ))}
             </Menu>
           </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <img 
-              src={duckLogo} 
-              height='50px' 
-              alt='rubber duck' 
-              sx={{ display: { xs: 'flex', md: 'none' } }} 
-            />
-          </Box>
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'roboto',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Rubber Duck
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, uuid) => (
               <Link to={page.link} key={uuid} style={{ textDecoration: 'none', color: 'white' }}>
@@ -171,7 +128,9 @@ const NavBar = ({ user, handleLogout }) => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="avatar">
+                  <PersonIcon />
+                </Avatar>
               </IconButton>
             </Tooltip>
             <Menu
@@ -282,7 +241,9 @@ const NavBar = ({ user, handleLogout }) => {
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                    <Avatar alt="avatar">
+                      <PersonIcon />
+                    </Avatar>
                   </IconButton>
                 </Tooltip>
                 <Menu
