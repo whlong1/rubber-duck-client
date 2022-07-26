@@ -49,7 +49,7 @@ const App = () => {
           path="/profiles"
           element={user ? <Profiles /> : <Navigate to="/login" />}
         />
-        <Route path="/post" element={<PostList user={user} />} />
+        <Route path="/topics/:topicId" element={<PostList user={user} />} />
         <Route path="/browse" element={<Browse user={user} />} />
       </Routes>
     </ThemeProvider>
