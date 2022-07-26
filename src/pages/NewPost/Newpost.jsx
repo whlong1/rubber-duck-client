@@ -59,6 +59,9 @@ function NewPost() {
     }
   }
 
+  useEffect(() => console.log(selected), [selected])
+ 
+
   useEffect(() => {
     const fetchTopics = async () => {
       const data = await topicService.index(selected.name)
@@ -90,7 +93,7 @@ function NewPost() {
         </button>
       ))}
       {dropdown
-        ? <NewPostForm topicForm={topicForm} submitTopic={submitTopic} setTopicForm={setTopicForm} categories={categories} setDropdown={setDropdown} />
+        ? <NewPostForm topicForm={topicForm} submitTopic={submitTopic} setTopicForm={setTopicForm} categories={categories} setDropdown={setDropdown} selected={selected} />
         : <Button variant="contained" onClick={() => setDropdown(true)}>Add A Topic</Button>
       }
 
