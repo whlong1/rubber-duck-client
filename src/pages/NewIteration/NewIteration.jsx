@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 // Components
 // import PostForm from './components/PostForm/PostForm'
@@ -6,6 +7,7 @@ import { useState, useEffect } from 'react'
 // import * as postService from '../../services/postService'
 
 function NewIteration(props) {
+  
 
   // http://localhost:3001/api/posts/62e02cda944d8893bcbcb337/iterations
 

@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // Components
 import CategoryList from '../Browse/components/CategoryList'
 
 import * as postService from '../../services/postService'
-
 import * as topicService from '../../services/topicService'
 
 function NewPost(props) {
-
+  const navigate = useNavigate()
   const [topics, setTopics] = useState([])
   const [topicId, setTopicId] = useState('')
   const [selected, setSelected] = useState()
@@ -24,24 +24,13 @@ function NewPost(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const data = await postService.create({ topic: topicId })
-    console.log(data)
-    if (data.msg) {
-      setMsg(data.msg)
+    const newPost = await postService.create({ topic: topicId })
+    if (newPost.msg) {
+      setMsg(newPost.msg)
     } else {
-
+      navigate(`/posts/${newPost._id}/iterations`)
     }
   }
-
-  //  author: "62e0260e1afec70fd4066e0a"
-  // createdAt: "2022-07-26T19:18:56.062Z"
-  // iterations: []
-  // topic: "62e026321afec70fd4066e16"
-  // updatedAt: "2022-07-26T19:18:56.062Z"
-  // viewers: []
-  // views: 0
-  // __v: 0
-  // _id: "62e03e20166d3c442f7bbaac"
 
   useEffect(() => {
     const fetchTopics = async () => {
