@@ -302,7 +302,7 @@ const NavBar = ({ user, handleLogout }) => {
                   onClose={handleCloseUserMenu}
                 >
                   {logInSettings.map((setting, uuid) => (
-                    <Link to={setting.link} key={uuid} onClick={() => handleLogout(setting.link)}>
+                    <Link to={setting.link} key={uuid}>
                       <MenuItem onClick={handleCloseUserMenu}>
                         <Typography textAlign="center">{setting.name}</Typography>
                       </MenuItem>
