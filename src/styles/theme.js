@@ -15,6 +15,9 @@ export const themeOptions = {
     success: {
       main: '#4caf50',
     }
+  },
+  typography: {
+    fontFamily: 'realistnarrow, san-serif'
   }
 }
 
