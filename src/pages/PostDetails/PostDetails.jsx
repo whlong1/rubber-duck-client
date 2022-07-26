@@ -22,7 +22,7 @@ const PostDetails = (props) => {
   }, [])
 
   const handleVote = async(vote)=>{
-    const postData = await postService.castVote(postId, post.iterations[0]._id, vote)
+    await postService.castVote(postId, post.iterations[0]._id, vote)
   }
 
   console.log(post);
