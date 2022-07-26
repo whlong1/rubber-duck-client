@@ -29,7 +29,7 @@ const Browse = (props) => {
 
   useEffect(() => {
     const fetchTopics = async () => {
-      const data = await topicService.index(selected)
+      const data = await topicService.index(selected.name)
       setTopics(data)
     }
     fetchTopics()
@@ -42,7 +42,6 @@ const Browse = (props) => {
         <CategoryList
           categories={categories}
           setSelected={setSelected}
-          selected={selected}
         />
       </CenteredBox>
       <Divider />

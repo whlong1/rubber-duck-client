@@ -6,6 +6,8 @@ import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import PublicIcon from '@mui/icons-material/Public';
 import ScienceIcon from '@mui/icons-material/Science';
 import CodeIcon from '@mui/icons-material/Code';
+import NewPostForm from './components/NewPostForm';
+import Button from '@mui/material/Button'
 
 // Components
 import CategoryList from '../Browse/components/CategoryList'
@@ -69,7 +71,7 @@ function NewPost() {
     return (
       <div>
         <h1>{msg}</h1>
-        <button onClick={() => { setMsg(''); setTopic(); setSelected(); setTopicForm({ title: '', category: 'Math' }) }}>Go back</button>
+        <Button onClick={() => { setMsg(''); setTopic(); setSelected(); setTopicForm({ title: '', category: 'Math' }) }}>Go back</Button>
       </div>
     )
   }
@@ -88,21 +90,11 @@ function NewPost() {
         </button>
       ))}
       {dropdown
-        ? <form onSubmit={submitTopic}>
-            <h3>Enter your new topic</h3>
-            <input placeholder='Title' name="title" value={topicForm.title} onChange={(e) => setTopicForm({ ...topicForm, title: e.target.value })} />
-            <select name="category" onChange={(e) => setTopicForm({ ...topicForm, category: e.target.value })}>
-              {categories.map((category, idx) => (
-                <option key={idx} value={category.name}>{category.name}</option>
-              ))}
-            </select>
-            <button disabled={!topicForm.title} type='submit' onClick={submitTopic}>Submit</button>
-            <button type='button' onClick={() => setDropdown(false)}>Cancel</button>
-          </form>
-        : <button onClick={() => setDropdown(true)}>Add A Topic</button>
+        ? <NewPostForm topicForm={topicForm} submitTopic={submitTopic} setTopicForm={setTopicForm} categories={categories} setDropdown={setDropdown} />
+        : <Button variant="contained" onClick={() => setDropdown(true)}>Add A Topic</Button>
       }
 
-      <button disabled={!topic} onClick={handleSubmit}>Confirm</button>
+      <Button disabled={!topic} onClick={handleSubmit}>Confirm</Button>
     </div>
   )
 }
