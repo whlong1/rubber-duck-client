@@ -9,6 +9,7 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import PostList from './pages/Post/PostList/PostList'
+import PostDetails from './pages/PostDetails/PostDetails'
 import ProfileDetail from './pages/ProfileDetail/ProfileDetail'
 import Browse from './pages/Browse/Browse'
 import * as authService from './services/authService'
@@ -54,7 +55,7 @@ const App = () => {
           path="/profiles/:profileId"
           element={user ? <ProfileDetail user={user}/> : <Navigate to="/login" />}
         />
-        <Route path="/post" element={<PostList user={user} />} />
+        <Route path="/posts/:postId" element={<PostDetails user={user} />} />
         <Route path="/topics/:topicId" element={<PostList user={user} />} />
         <Route path="/browse" element={<Browse user={user} />} />
       </Routes>
