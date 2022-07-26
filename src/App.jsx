@@ -9,8 +9,11 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import PostList from './pages/Post/PostList/PostList'
+import PostDetails from './pages/PostDetails/PostDetails'
+import ProfileDetail from './pages/ProfileDetail/ProfileDetail'
+import Browse from './pages/Browse/Browse'
 import * as authService from './services/authService'
-
+import './App.css'
 
 
 const App = () => {
@@ -18,7 +21,9 @@ const App = () => {
   const navigate = useNavigate()
   const theme = createTheme(themeOptions)
 
-  const handleLogout = () => {
+  const handleLogout = (link) => {
+    if (link !== '') return
+    console.log('logging out!')
     authService.logout()
     setUser(null)
     navigate('/')
@@ -46,7 +51,13 @@ const App = () => {
           path="/profiles"
           element={user ? <Profiles /> : <Navigate to="/login" />}
         />
-        <Route path="/post" element={<PostList user={user} />} />
+        <Route
+          path="/profiles/:profileId"
+          element={user ? <ProfileDetail user={user}/> : <Navigate to="/login" />}
+        />
+        <Route path="/posts/:postId" element={<PostDetails user={user} />} />
+        <Route path="/topics/:topicId" element={<PostList user={user} />} />
+        <Route path="/browse" element={<Browse user={user} />} />
       </Routes>
     </ThemeProvider>
   )

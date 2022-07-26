@@ -20,14 +20,17 @@ const create = async (post) => {
   }
 }
 
-const index = async () => {
-  // controller built to accept queries:
-  // search, page, sort
+const index = async (page, sort, search) => {
+  // NOTE search will only allow a user to filter posts by topic id
+
+  // sort values: 'recent' or 'popular'
+  // search value: topic._id
+
   try {
-    const res = await fetch(BASE_URL, {
-      headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`
-      },
+    const path = `${BASE_URL}?page=${page}&&sort=${sort}&&search=${search}`
+    console.log(path)
+    const res = await fetch(path, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` }
     })
     return await res.json()
   } catch (error) {
@@ -37,6 +40,7 @@ const index = async () => {
 }
 
 const show = async (id) => {
+  // returns post, all iterations, and associated comments with each iteration
   try {
     const res = await fetch(`${BASE_URL}/${id}`, {
       headers: {
@@ -51,6 +55,8 @@ const show = async (id) => {
 }
 
 const incrementViews = async (id) => {
+  // Call within Postdetails component after X seconds
+  // only returns an ok message, state will need to be updated
   try {
     const res = await fetch(`${BASE_URL}/${id}/views`, {
       method: "PATCH",
@@ -95,7 +101,7 @@ const removeBookmark = async (id) => {
   }
 }
 
-const newIteration = async (postId) => {
+const findKeywords = async (postId) => {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/iterations`, {
       headers: {
@@ -189,8 +195,9 @@ export {
   incrementViews,
   bookmarkPost,
   removeBookmark,
-  newIteration,
+  findKeywords,
   createIteration,
+  castVote,
   undoVote,
   createComment
 }

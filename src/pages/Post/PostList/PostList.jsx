@@ -1,49 +1,57 @@
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+
 import Post from '../Post'
 import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import Skeleton from '@mui/material/Skeleton'
-import Button from '@mui/material/Button'
-import { seedData } from '../../../assets/seedData/seedData'
+import Divider from '@mui/material/Divider'
+import PaginatedList from './components/PaginatedList'
+import PostTopMenu from './components/PostTopMenu'
+
+import TungstenIcon from '@mui/icons-material/Tungsten';
+
+import * as postService from '../../../services/postService'
+
 
 const PostList = ({ user }) => {
-  const [loading, setLoading] = useState(true)
+  const { topicId } = useParams()
+  const [page, setPage] = useState(0)
+  const [topic, setTopic] = useState()
+  const [posts, setPosts] = useState([])
+  const [sort, setSort] = useState('recent') // sort values: 'recent' or 'popular'
+  const [selectedTopic, setSelectedTopic] = useState(topicId) // <<<< use for search
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1000)
-  }, [])
+    const fetchPosts = async () => {
+      const data = await postService.index(page, sort, selectedTopic)
+      setPosts(data)
+      setLoading(false)
+      setTopic(data[0].topic)
+    }
+    fetchPosts()
+  }, [selectedTopic, sort, page])
 
-  const seedPosts = seedData.map((post, uuid) => (
-    <Post key={uuid} post={post} />
+  const [loading, setLoading] = useState(true)
+
+  const postList = posts?.map((post) => (
+    <Post
+      post={post}
+      key={post._id}
+    />
   ))
 
-  const skeleton = [...'placeholdr'].map((skeleton, uuid) => (
-    <Card 
-      sx={{ maxWidth: 275, height: 325 }} 
-      key={uuid} 
-      style={{ padding: '1rem' }}
-    >
-      <CardContent style={{ display: 'flex', justifyContent: 'space-between', padding: '0 0 16px 0'}}>
-        <Skeleton animation="wave" height={30} width="60%" />
-        <Skeleton animation="wave" height={30} width="30%" />
-      </CardContent>
-      <Skeleton variant="rectangular" animation="wave" width={245} height={180} />
-      <Skeleton animation="wave" width={245} height={60} style={{ marginTop: '12px' }} />
-    </Card>
-  ))
-
-  return ( 
-    <Box style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: '3rem'}}>
-      <Button onClick={() => setLoading(!loading)}> Toggle Loading </Button>
-      <Box style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-        { loading 
-          ? skeleton
-          : seedPosts
-        }
-      </Box>
+  return (
+    <Box style={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      margin: '3rem'
+    }}>
+      <PostTopMenu topic={topic} setSort={setSort} />
+      <Divider textAlign="left" sx={{ color: 'primary', width: '100%', margin: '1rem', visibility: { xs: 'hidden', md: 'visible' } }}><TungstenIcon color="primary" /></Divider>
+      <PaginatedList loading={loading} setLoading={setLoading} postList={postList} />
     </Box>
-   );
+  );
 }
- 
+
 export default PostList;
