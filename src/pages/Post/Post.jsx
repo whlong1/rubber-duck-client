@@ -63,7 +63,9 @@ const Post = ({ user, post }) => {
           </Typography>
         </CardContent>
         <CardActions style={{ display: 'flex', justifyContent:'space-between' }}>
-          <p>08/07/22</p>
+          <Typography>
+            08/07/22
+          </Typography>
           <CheckBox
             icon={<BookmarkBorderIcon />}
             checkedIcon={<BookmarkIcon />}

@@ -27,14 +27,14 @@ const PostTopMenu = ({ postTitles }) => {
         
         <Box sx={{ minWidth: 120 }}>
           <FormControl fullWidth>
-            <InputLabel htmlFor="uncontrolled-native">
+            <InputLabel htmlFor="controlled-native">
               Filter by:
             </InputLabel>
             <NativeSelect
               defaultValue={10}
               inputProps={{
                 name: 'filterBy',
-                id: 'uncontrolled-native',
+                id: 'controlled-native',
               }}
             >
               <option value={10}>New</option>
