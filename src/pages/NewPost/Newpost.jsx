@@ -28,7 +28,7 @@ function NewPost(props) {
     if (newPost.msg) {
       setMsg(newPost.msg)
     } else {
-      navigate(`/posts/${newPost._id}/iterations`)
+      navigate(`/topics/${topicId}/posts/${newPost._id}/iterations`)
     }
   }
 

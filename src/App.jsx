@@ -61,7 +61,7 @@ const App = () => {
         <Route path="/posts/:postId" element={<PostDetails user={user} />} />
         <Route path="/topics/:topicId" element={<PostList user={user} />} />
         <Route path="/browse" element={<Browse user={user} />} />
-        <Route path="/posts/:postId/iterations" element={<NewIteration user={user} />} />
+        <Route path="/topics/:topicId/posts/:postId/iterations" element={<NewIteration user={user} />} />
       </Routes>
     </ThemeProvider>
   )
