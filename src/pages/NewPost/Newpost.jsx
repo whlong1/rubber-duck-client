@@ -10,7 +10,7 @@ import * as topicService from '../../services/topicService'
 function NewPost(props) {
   const navigate = useNavigate()
   const [topics, setTopics] = useState([])
-  const [topicId, setTopicId] = useState('')
+  const [topic, setTopic] = useState()
   const [selected, setSelected] = useState()
   const [msg, setMsg] = useState('')
 
@@ -24,11 +24,11 @@ function NewPost(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const newPost = await postService.create({ topic: topicId })
+    const newPost = await postService.create({ topic: topic._id })
     if (newPost.msg) {
       setMsg(newPost.msg)
     } else {
-      navigate(`/topics/${topicId}/posts/${newPost._id}/iterations`)
+      navigate(`/topics/${topic._id}/posts/${newPost._id}/iterations`)
     }
   }
 
@@ -43,7 +43,7 @@ function NewPost(props) {
 
   const handleClear = () => {
     setMsg('')
-    setTopicId('')
+    setTopic()
     setSelected('')
   }
 
@@ -65,11 +65,11 @@ function NewPost(props) {
       />
       <h3>PICK A TOPIC TO WRITE ABOUT</h3>
       {topics?.map((topic) => (
-        <button onClick={() => setTopicId(topic._id)} key={topic._id} to={`/topics/${topic._id}`}>
+        <button onClick={() => setTopic(topic)} key={topic._id}>
           {topic.title}
         </button>
       ))}
-      <button disabled={topicId === ''} onClick={handleSubmit}>Confirm</button>
+      <button disabled={!topic} onClick={handleSubmit}>Confirm</button>
     </div>
   )
 }

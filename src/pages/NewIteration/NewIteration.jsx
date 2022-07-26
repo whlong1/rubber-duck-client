@@ -13,7 +13,7 @@ function NewIteration(props) {
   const { postId, topicId } = useParams()
 
   console.log(postId)
-
+  const [topic, setTopic] = useState()
   const [text, setText] = useState('')
   const [keywords, setKeywords] = useState([])
 
@@ -22,30 +22,25 @@ function NewIteration(props) {
 
   }
 
-  //  author: "62e0260e1afec70fd4066e0a"
-  // createdAt: "2022-07-26T19:18:56.062Z"
-  // iterations: []
-  // topic: "62e026321afec70fd4066e16"
-  // updatedAt: "2022-07-26T19:18:56.062Z"
-  // viewers: []
-  // views: 0
-  // __v: 0
-  // _id: "62e03e20166d3c442f7bbaac"
-
-
   useEffect(() => {
     const fetchKeyWords = async () => {
       const data = await postService.findKeywords(topicId, postId)
-      console.log('keyword data::::', data)
-      // setKeywords(arr)
+      setTopic(data.topic)
+      setKeywords(data.keywords)
     }
     fetchKeyWords()
-  }, [topicId])
+  }, [topicId, postId])
 
-
+  console.log(keywords, topic)
 
   return (
     <div>
+      <h3>
+        {topic.category}
+      </h3>
+      <h1>
+        {topic.title}
+      </h1>
       {/* <PostForm text={text} setText={setText} handleSubmit={handleSubmit} />
       <Analysis text={text} keywords={keywords} /> */}
     </div>
