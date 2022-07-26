@@ -25,7 +25,8 @@ const Post = ({ user, post }) => {
           display: 'flex', 
           justifyContent: 'space-between', 
           flexDirection: 'column',
-          backgroundColor: '#2a2a2a'
+          backgroundColor: 'rgb(18,18,18)',
+          backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09))'
         }}>
         <CardContent>
           <Box sx={{ 
@@ -52,6 +53,7 @@ const Post = ({ user, post }) => {
               readOnly 
               max={4}
               defaultValue={4}
+              style={{ display: 'flex', alignItems: 'center' }}
               icon={ <SvgIcon fontSize='inherit'> <Diamond /> </SvgIcon> }
               emptyIcon={< SvgIcon fontSize='inherit'> <Diamond /> </SvgIcon> }
             />
