@@ -22,13 +22,13 @@ function Analysis({ text, keywords }) {
     <div>
       Feedback:
       {tips.map((obj, idx) => (
-        <p style={{ color: '#e36350' }}>{obj.reason}</p>
+        <p key={idx} style={{ color: '#e36350' }}>{obj.reason}</p>
       ))}
       {warnings.map((obj, idx) => (
-        <p style={{ color: '#e36350' }}>{obj.reason}</p>
+        <p key={idx} style={{ color: '#e36350' }}>{obj.reason}</p>
       ))}
       {keywords.map((word, idx) => (
-        <p style={{ color: '#e36350' }}>{word}</p>
+        <p key={idx} style={{ color: '#e36350' }}>{word}</p>
       ))}
       <p>{wordCount}</p>
     </div>

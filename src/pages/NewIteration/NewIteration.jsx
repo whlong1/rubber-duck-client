@@ -6,20 +6,15 @@ import PostForm from './/components/PostForm/PostForm'
 import Analysis from './components/Analysis/Analysis'
 import * as postService from '../../services/postService'
 
-// createIteration
-// findKeywords
 
 function NewIteration(props) {
   const { postId, topicId } = useParams()
-
-  console.log(postId)
   const [topic, setTopic] = useState()
   const [text, setText] = useState('')
   const [keywords, setKeywords] = useState([])
 
-
   const handleSubmit = async (e) => {
-    const data = await postService.createIteration()
+    const data = await postService.createIteration(postId, { text: text })
   }
 
   useEffect(() => {
@@ -35,12 +30,9 @@ function NewIteration(props) {
 
   return (
     <div>
-      <h3>
-        {topic.category}
-      </h3>
-      <h1>
-        {topic.title}
-      </h1>
+      <h3>{topic?.category}</h3>
+      <h1>{topic?.title}</h1>
+
       <PostForm text={text} setText={setText} handleSubmit={handleSubmit} />
       <Analysis text={text} keywords={keywords} />
     </div>
