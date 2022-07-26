@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 // Components
-// import PostForm from './components/PostForm/PostForm'
-// import Analysis from './components/Analysis/Analysis'
+import PostForm from './/components/PostForm/PostForm'
+import Analysis from './components/Analysis/Analysis'
 import * as postService from '../../services/postService'
 
 // createIteration
@@ -19,7 +19,7 @@ function NewIteration(props) {
 
 
   const handleSubmit = async (e) => {
-
+    const data = await postService.createIteration()
   }
 
   useEffect(() => {
@@ -41,8 +41,8 @@ function NewIteration(props) {
       <h1>
         {topic.title}
       </h1>
-      {/* <PostForm text={text} setText={setText} handleSubmit={handleSubmit} />
-      <Analysis text={text} keywords={keywords} /> */}
+      <PostForm text={text} setText={setText} handleSubmit={handleSubmit} />
+      <Analysis text={text} keywords={keywords} />
     </div>
   )
 }
