@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 // Components
 import PostForm from './/components/PostForm/PostForm'
@@ -8,13 +8,16 @@ import * as postService from '../../services/postService'
 
 
 function NewIteration(props) {
+  const navigate = useNavigate()
   const { postId, topicId } = useParams()
   const [topic, setTopic] = useState()
   const [text, setText] = useState('')
   const [keywords, setKeywords] = useState([])
 
   const handleSubmit = async (e) => {
-    const data = await postService.createIteration(postId, { text: text })
+    e.preventDefault()
+    await postService.createIteration(postId, { text: text })
+    navigate(`/posts/${postId}`)
   }
 
   useEffect(() => {
@@ -25,8 +28,6 @@ function NewIteration(props) {
     }
     fetchKeyWords()
   }, [topicId, postId])
-
-  console.log(keywords, topic)
 
   return (
     <div>
