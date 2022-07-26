@@ -7,7 +7,7 @@ import CategoryList from './components/CategoryList'
 
 const Browse = (props) => {
   const [topics, setTopics] = useState([])
-  const [selected, setSelected] = useState('')
+  const [selected, setSelected] = useState('Math')
 
   const categories = [
     'Math',
@@ -20,7 +20,7 @@ const Browse = (props) => {
       const data = await topicService.index(selected)
       setTopics(data)
     }
-    return () => fetchTopics()
+    fetchTopics()
   }, [selected])
 
   return (
