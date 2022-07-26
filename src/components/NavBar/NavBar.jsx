@@ -16,21 +16,22 @@ import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 import PersonIcon from '@mui/icons-material/Person';
 
-const pages = [
-  {name: 'Browse', link: '/browse'}, 
-  {name: 'Posts', link: '/post'}, 
-  {name: 'Topics', link: ''}
-]
-const logOutSettings = [
-  {name: 'Profile', link:'/profiles'},
-  {name: 'Logout', link: ''},
-  {name: 'Change Password', link:'/changePassword'},
-]
-const logInSettings = [
-  {name: 'Login', link: 'login'}
-]
 
 const NavBar = ({ user, handleLogout }) => {
+  const pages = [
+    {name: 'Browse', link: '/browse'}, 
+    {name: 'Posts', link: '/post'}, 
+    {name: 'Topics', link: ''}
+  ]
+  const logOutSettings = [
+    {name: 'Profile', link:`/profiles/${user.profile}`},
+    {name: 'Logout', link: ''},
+    {name: 'Change Password', link:'/changePassword'},
+  ]
+  const logInSettings = [
+    {name: 'Login', link: 'login'}
+  ]
+
   const [anchorElNav, setAnchorElNav] = useState(null)
   const [anchorElUser, setAnchorElUser] = useState(null)
   const [toggle, setToggle] = useState (false)
