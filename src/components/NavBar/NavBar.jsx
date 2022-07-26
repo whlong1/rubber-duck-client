@@ -20,15 +20,19 @@ const pages = [
   {name: 'Posts', link: '/post'}, 
   {name: 'Topics', link: ''}
 ]
-const settings = [
+const logOutSettings = [
   {name: 'Profile', link:'/profiles'},
   {name: 'Logout', link: ''},
-  {name: 'Change Password', link:'/changePassword'}
+  {name: 'Change Password', link:'/changePassword'},
+]
+const logInSettings = [
+  {name: 'Login', link: 'login'}
 ]
 
 const NavBar = ({ user, handleLogout }) => {
   const [anchorElNav, setAnchorElNav] = useState(null)
   const [anchorElUser, setAnchorElUser] = useState(null)
+  const [toggle, setToggle] = useState (false)
 
   const handleOpenNavMenu = (e) => {
     setAnchorElNav(e.currentTarget)
@@ -42,11 +46,20 @@ const NavBar = ({ user, handleLogout }) => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
   }
+  const handleToggle = () => {
+    setToggle(true)
+  }
+
+  window.onscroll = function(ev) {
+    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+      handleToggle()
+    }
+  }
 
   return (
-    !user ? 
+    user ? 
     <>
-     <AppBar position="static" style={{ backgroundColor: '#121212' }}>
+     <AppBar position="fixed" style={{ backgroundColor: '#121212' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
@@ -176,7 +189,7 @@ const NavBar = ({ user, handleLogout }) => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting, uuid) => (
+              {logOutSettings.map((setting, uuid) => (
                 <Link to={setting.link} key={uuid} onClick={() => handleLogout(setting.link)}>
                   <MenuItem onClick={handleCloseUserMenu}>
                       <Typography textAlign="center">{setting.name}</Typography>
@@ -190,17 +203,117 @@ const NavBar = ({ user, handleLogout }) => {
     </AppBar>
     </>
     :
-    <AppBar position="static" style={{ backgroundColor: '#121212' }}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
-            <Link to="/login"><MenuItem>Log In</MenuItem></Link>
-            <Link to="/signup"><MenuItem>Sign Up</MenuItem></Link>
-            <Link to="/post"><MenuItem>PostList</MenuItem></Link>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+    <>
+      <div hidden={toggle ? false : true}>
+        <AppBar position="fixed" style={{ backgroundColor: '#121212' }}>
+          <Container maxWidth="xl">
+            <Toolbar disableGutters>
+              <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                <img 
+                  src={duckLogo} 
+                  height='50px' 
+                  alt='rubber duck' 
+                  sx={{ display: { xs: 'flex', md: 'none' } }} 
+                />
+              </Box>
+              <Typography
+                variant="h6"
+                noWrap
+                component="a"
+                href="/"
+                sx={{
+                  mr: 2,
+                  display: { xs: 'none', md: 'flex' },
+                  fontFamily: 'roboto',
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: 'inherit',
+                  textDecoration: 'none',
+                }}
+              >
+                Rubber Duck
+              </Typography>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: 'block', md: 'none' },
+                }}
+              >
+              </Menu>
+              <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                <img 
+                  src={duckLogo} 
+                  height='50px' 
+                  alt='rubber duck' 
+                  sx={{ display: { xs: 'flex', md: 'none' } }} 
+                />
+              </Box>
+              <Typography
+                variant="h5"
+                noWrap
+                component="a"
+                href=""
+                sx={{
+                  mr: 2,
+                  display: { xs: 'flex', md: 'none' },
+                  flexGrow: 1,
+                  fontFamily: 'roboto',
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: 'inherit',
+                  textDecoration: 'none',
+                }}
+              >
+                Rubber Duck
+              </Typography>
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {logInSettings.map((setting, uuid) => (
+                    <Link to={setting.link} key={uuid} onClick={() => handleLogout(setting.link)}>
+                      <MenuItem onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center">{setting.name}</Typography>
+                      </MenuItem>
+                    </Link>
+                  ))}
+                </Menu>
+              </Box>
+            </Toolbar>
+          </Container>
+        </AppBar>
+      </div>
+    </>
   )
 }
 
