@@ -33,10 +33,13 @@ const PostList = ({ user }) => {
   const [loading, setLoading] = useState(true)
 
   const postList = posts?.map((post) => (
+    post.iterations.length ?
     <Post
       post={post}
       key={post._id}
     />
+    :
+    ''
   ))
 
   return (
