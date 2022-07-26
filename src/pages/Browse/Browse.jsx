@@ -1,3 +1,6 @@
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+
 import { useState, useEffect } from 'react'
 import * as topicService from '../../services/topicService'
 
@@ -26,15 +29,15 @@ const Browse = (props) => {
   }, [selected])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <h1>Browse</h1>
-      <h3>Select a category:</h3>
+    <Box style={{ display: 'flex', flexDirection: 'column', padding: '2rem' }}>
+      <Typography variant='h2'>Browse</Typography>
+      <Typography variant='h6'>Select a category:</Typography>
       <CategoryList
         categories={categories}
         setSelected={setSelected}
       />
       <TopicList topics={topics} />
-    </div>
+    </Box>
   )
 }
 
