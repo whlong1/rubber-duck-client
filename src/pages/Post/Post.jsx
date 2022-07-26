@@ -22,7 +22,7 @@ const StyledRating = styled(Rating)(ratingOptions)
 const Post = ({ user, post }) => {
   const { author } = post
   const { text, rating } = post.iterations.length &&post.iterations[0]
-
+  
   return (
     <Link to={`/posts/${post._id}`}>
       <Card
@@ -51,7 +51,7 @@ const Post = ({ user, post }) => {
               color="text.secondary"
               gutterBottom
             >
-              {author.name}
+              {author?.name}
             </Typography>
             <StyledRating
               name="rating"
