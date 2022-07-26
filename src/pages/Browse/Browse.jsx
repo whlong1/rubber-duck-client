@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box'
+import { CenteredBox } from './components/mui/StyledComponents'
 import Typography from '@mui/material/Typography'
 import FunctionsIcon from '@mui/icons-material/Functions';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
@@ -36,13 +37,13 @@ const Browse = (props) => {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', padding: '2rem' }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '1rem', flexDirection: {sm: 'column', md: 'row', xs: 'column'} }}>
+      <CenteredBox sx={{ flexDirection: {sm: 'column', md: 'row', xs: 'column'} }}>
         <Typography variant='h2' style={{ fontFamily: 'abril-display' }}>Browse</Typography>
         <CategoryList
           categories={categories}
           setSelected={setSelected}
         />
-      </Box>
+      </CenteredBox>
       <Divider />
       <TopicList topics={topics} />
     </Box>

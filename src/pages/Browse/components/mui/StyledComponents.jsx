@@ -2,6 +2,14 @@ import { styled } from '@mui/material/styles'
 import Card from '@mui/material/Card'
 import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
+import Box from '@mui/material/Box'
+
+const CenteredBox = styled(Box)(() => ({
+  display: 'flex', 
+  alignItems: 'center', 
+  justifyContent: 'space-between', 
+  paddingBottom: '1rem', 
+}))
 
 const StyledCard = styled(Card)(() => ({
   width: 200, 
@@ -27,4 +35,4 @@ const StyledStack = styled(Stack)(() => ({
   justifyContent: 'space-evenly',
 }))
 
-export { StyledStack, StyledChip, StyledCard }
+export { StyledStack, StyledChip, StyledCard, CenteredBox }
