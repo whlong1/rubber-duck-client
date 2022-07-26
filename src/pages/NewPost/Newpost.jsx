@@ -48,6 +48,8 @@ function NewPost(props) {
     if (newTopic.msg) {
       setMsg(newTopic.msg)
     } else {
+      setSelected()
+      setTopics([])
       setTopicForm({ title: '', category: 'Math' })
       setDropdown(false)
     }
@@ -65,7 +67,7 @@ function NewPost(props) {
     return (
       <div>
         <h1>{msg}</h1>
-        <button onClick={() => { setMsg(''); setTopic(); setSelected('') }}>Go back</button>
+        <button onClick={() => { setMsg(''); setTopic(); setSelected(''); setTopicForm({ title: '', category: 'Math' }) }}>Go back</button>
       </div>
     )
   }
@@ -86,13 +88,13 @@ function NewPost(props) {
       {dropdown
         ? <form onSubmit={submitTopic}>
           <h3>Enter your new topic</h3>
-          <input name="title" value={topicForm.title} required onChange={(e) => setTopicForm({ ...topicForm, title: e.target.value })} />
+          <input placeholder='Title' name="title" value={topicForm.title} required={true} onChange={(e) => setTopicForm({ ...topicForm, title: e.target.value })} />
           <select name="category" onChange={(e) => setTopicForm({ ...topicForm, category: e.target.value })}>
             {categories.map((category, idx) => (
               <option key={idx} value={category}>{category}</option>
             ))}
           </select>
-          <button type='submit' onClick={submitTopic}>Submit</button>
+          <button disabled={!topicForm.title} type='submit' onClick={submitTopic}>Submit</button>
           <button type='button' onClick={() => setDropdown(false)}>Cancel</button>
         </form>
         : <button onClick={() => setDropdown(true)}>Add A Topic</button>
