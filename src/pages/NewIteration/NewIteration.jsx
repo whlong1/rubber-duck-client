@@ -7,12 +7,12 @@ import { useParams } from 'react-router-dom'
 // import * as postService from '../../services/postService'
 
 function NewIteration(props) {
-  const {postId} = useParams()
+  const { postId } = useParams()
 
-  // http://localhost:3001/api/posts/62e02cda944d8893bcbcb337/iterations
+  console.log(postId)
 
-  // const [text, setText] = useState('')
-  // const [keywords, setKeywords] = useState([])
+  const [text, setText] = useState('')
+  const [keywords, setKeywords] = useState([])
 
 
   const handleSubmit = async (e) => {
