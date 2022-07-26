@@ -21,14 +21,11 @@ const PostDetails = (props) => {
  
   }, [])
 
-  const handleVote =(vote)=>{
-
-    
+  const handleVote = async(vote)=>{
+    const postData = await postService.castVote(postId, post.iterations[0]._id, vote)
+    console.log(postData);
   }
-// const castVote = async (postId, iterationId, vote) => {
-//   try {
-//     const path = `${BASE_URL}/${postId}/iterations/${iterationId}/votes`
- 
+
   
   console.log(post);
   return (  

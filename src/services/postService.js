@@ -144,7 +144,7 @@ const castVote = async (postId, iterationId, vote) => {
         'content-type': 'application/json',
         'Authorization': `Bearer ${tokenService.getToken()}`
       },
-      body: JSON.stringify(vote),
+      body: JSON.stringify({vote:vote}),
     })
     return await res.json()
   } catch (error) {
