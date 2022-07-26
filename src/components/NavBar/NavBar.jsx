@@ -60,7 +60,7 @@ const NavBar = ({ user, handleLogout }) => {
   return (
     user ? 
     <>
-     <AppBar position="fixed" style={{ backgroundColor: '#121212' }}>
+     <AppBar position="relative" style={{ backgroundColor: '#121212' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
