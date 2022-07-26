@@ -16,9 +16,6 @@ import TopicList from './components/TopicList'
 import CategoryList from './components/CategoryList'
 
 const Browse = (props) => {
-  const [topics, setTopics] = useState([])
-  const [selected, setSelected] = useState('Math')
-
   const categories = [
     {name: 'Math', color:'#F75847', icon: <FunctionsIcon />},
     {name: 'Science', color:'#00B1C6', icon: <ScienceIcon />},
@@ -26,6 +23,9 @@ const Browse = (props) => {
     {name: 'Literature', color:'#0CBA6E', icon: <AutoStoriesIcon />},
     {name: 'CompSci', color:'#FFB201', icon: <CodeIcon />},
   ]
+
+  const [topics, setTopics] = useState([])
+  const [selected, setSelected] = useState(categories[0])
 
   useEffect(() => {
     const fetchTopics = async () => {
@@ -42,6 +42,7 @@ const Browse = (props) => {
         <CategoryList
           categories={categories}
           setSelected={setSelected}
+          selected={selected}
         />
       </CenteredBox>
       <Divider />
