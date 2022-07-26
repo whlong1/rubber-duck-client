@@ -5,6 +5,8 @@ import Typography from '@mui/material/Typography'
 import CardActions from '@mui/material/CardActions'
 import CheckBox from '@mui/material/Checkbox'
 import Rating from '@mui/material/Rating'
+import SvgIcon from '@mui/material/SvgIcon'
+import { ReactComponent as Diamond } from '../../assets/diamond-icon.svg'
 
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorderOutlined'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
@@ -49,8 +51,8 @@ const Post = ({ user, post }) => {
               readOnly 
               max={4}
               defaultValue={4}
-              icon={<LabelImportantIcon fontSize='inherit' />} 
-              emptyIcon={<LabelImportantIcon fontSize="inherit" />}
+              icon={ <SvgIcon fontSize='inherit'> <Diamond /> </SvgIcon> }
+              emptyIcon={< SvgIcon fontSize='inherit'> <Diamond /> </SvgIcon> }
             />
           </Box>
           <Typography sx={{ 
