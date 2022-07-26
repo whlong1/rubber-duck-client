@@ -29,7 +29,9 @@ const NavBar = ({ user, handleLogout }) => {
     {name: 'Change Password', link:'/changePassword'},
   ]
   const logInSettings = [
-    {name: 'Login', link: 'login'}
+    {name: 'Login', link: 'login'},
+    {name: 'Signup', link: 'signup'}
+
   ]
 
   const [anchorElNav, setAnchorElNav] = useState(null)
