@@ -28,8 +28,7 @@ function NewPost(props) {
     'CompSci',
   ]
 
-  // "title": "Trees",
-  // "category": "Computer Science"
+  console.log('TOPIC FORM', topicForm)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -43,12 +42,14 @@ function NewPost(props) {
 
   const submitTopic = async (e) => {
     e.preventDefault()
-    const newTopic = await topicService.create()
+    const newTopic = await topicService.create(topicForm)
+    console.log('NEW TOPIC', newTopic)
 
     if (newTopic.msg) {
       setMsg(newTopic.msg)
     } else {
-      // navigate(`/topics/${topic._id}/posts/${newPost._id}/iterations`)
+      setTopicForm({ title: '', category: 'Math' })
+      setDropdown(false)
     }
   }
 
@@ -60,13 +61,6 @@ function NewPost(props) {
     if (selected) fetchTopics()
   }, [selected])
 
-
-  const handleClear = () => {
-    setMsg('')
-    setTopic()
-    setSelected('')
-  }
-
   if (msg) {
     return (
       <div>
@@ -75,7 +69,6 @@ function NewPost(props) {
       </div>
     )
   }
-
 
   return (
     <div>
@@ -90,11 +83,9 @@ function NewPost(props) {
           {topic.title}
         </button>
       ))}
-      <button>Add A Topic</button>
-
       {dropdown
         ? <form onSubmit={submitTopic}>
-          <h3>Topic Form</h3>
+          <h3>Enter your new topic</h3>
           <input name="title" value={topicForm.title} required onChange={(e) => setTopicForm({ ...topicForm, title: e.target.value })} />
           <select name="category" onChange={(e) => setTopicForm({ ...topicForm, category: e.target.value })}>
             {categories.map((category, idx) => (
