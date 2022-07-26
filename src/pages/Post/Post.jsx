@@ -24,7 +24,8 @@ const Post = ({ user, post }) => {
         style={{ 
           display: 'flex', 
           justifyContent: 'space-between', 
-          flexDirection: 'column'
+          flexDirection: 'column',
+          backgroundColor: '#2a2a2a'
         }}>
         <CardContent>
           <Box sx={{ 
