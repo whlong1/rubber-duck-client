@@ -3,7 +3,7 @@ const CategoryList = (props) => {
     <>
       Categories:
       {props.categories.map((category, idx) => (
-        <button onClick={() => setSelected(category)}>{category}</button>
+        <button key={idx} onClick={() => props.setSelected(category)}>{category}</button>
       ))}
     </>
   )

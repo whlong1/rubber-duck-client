@@ -16,7 +16,7 @@ import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 
 const pages = [
-  {name: 'Browse', link: ''}, 
+  {name: 'Browse', link: '/browse'}, 
   {name: 'Posts', link: '/post'}, 
   {name: 'Topics', link: ''}
 ]

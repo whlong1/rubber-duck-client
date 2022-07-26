@@ -6,7 +6,7 @@ import * as topicService from '../../services/topicService'
 import TopicList from './components/TopicList'
 import CategoryList from './components/CategoryList'
 
-const Browse = () => {
+const Browse = (props) => {
   const [topics, setTopics] = useState([])
   const [selected, setSelected] = useState('')
   const categories = [
