@@ -21,12 +21,12 @@ const create = async (topic) => {
   }
 }
 
-const index = async () => {
+const index = async (search) => {
+  // search value: category string
+  // Example: 'Computer Science'
   try {
-    const res = await fetch(BASE_URL, {
-      headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`
-      },
+    const res = await fetch(`${BASE_URL}?search=${search}`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
     return await res.json()
   } catch (error) {
