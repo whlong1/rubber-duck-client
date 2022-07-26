@@ -12,7 +12,16 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 const PostTopMenu = ({ postTitles }) => {
   return ( 
-    <Box style={{ display: 'flex', justifyContent: 'space-between', marginBotton: '1rem', marginTop: '1.5rem', width: '100%' }}>
+    <Box 
+      style={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        marginBotton: '1rem', 
+        marginTop: '1.5rem', 
+        width: '100%' 
+      }}
+      sx={{ flexDirection: {xs: 'column', md: 'row'} }}
+    >
       <Box>
         <Stack>
           <Typography variant='h5'>
@@ -23,8 +32,13 @@ const PostTopMenu = ({ postTitles }) => {
           </Typography>
         </Stack>
       </Box>
-      <Box style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-        
+      <Box 
+        style={{ 
+          display: 'flex', 
+          gap: '1rem', 
+          alignItems: 'center'
+        }}
+      >
         <Box sx={{ minWidth: 120 }}>
           <FormControl fullWidth>
             <InputLabel htmlFor="controlled-native">
