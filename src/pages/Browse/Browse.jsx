@@ -1,3 +1,13 @@
+import Box from '@mui/material/Box'
+import { CenteredBox } from './components/mui/StyledComponents'
+import Typography from '@mui/material/Typography'
+import FunctionsIcon from '@mui/icons-material/Functions';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import PublicIcon from '@mui/icons-material/Public';
+import ScienceIcon from '@mui/icons-material/Science';
+import CodeIcon from '@mui/icons-material/Code';
+import Divider from '@mui/material/Divider'
+
 import { useState, useEffect } from 'react'
 import * as topicService from '../../services/topicService'
 
@@ -10,11 +20,11 @@ const Browse = (props) => {
   const [selected, setSelected] = useState('Math')
 
   const categories = [
-    'Math',
-    'Science',
-    'History',
-    'Literature',
-    'Computer Science',
+    {name: 'Math', color:'#F75847', icon: <FunctionsIcon />},
+    {name: 'Science', color:'#00B1C6', icon: <ScienceIcon />},
+    {name: 'History', color:'#7E7568', icon: <PublicIcon />},
+    {name: 'Literature', color:'#0CBA6E', icon: <AutoStoriesIcon />},
+    {name: 'CompSci', color:'#FFB201', icon: <CodeIcon />},
   ]
 
   useEffect(() => {
@@ -26,15 +36,17 @@ const Browse = (props) => {
   }, [selected])
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <h1>Browse</h1>
-      <h3>Select a category:</h3>
-      <CategoryList
-        categories={categories}
-        setSelected={setSelected}
-      />
+    <Box sx={{ display: 'flex', flexDirection: 'column', padding: '2rem' }}>
+      <CenteredBox sx={{ flexDirection: {sm: 'column', md: 'row', xs: 'column'} }}>
+        <Typography variant='h2' style={{ fontFamily: 'abril-display' }}>Browse</Typography>
+        <CategoryList
+          categories={categories}
+          setSelected={setSelected}
+        />
+      </CenteredBox>
+      <Divider />
       <TopicList topics={topics} />
-    </div>
+    </Box>
   )
 }
 
