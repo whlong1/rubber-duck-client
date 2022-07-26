@@ -16,9 +16,7 @@ const CategoryList = (props) => {
             icon={icon}
             sx={{ backgroundColor: color, width: { lg: 150, md: 150, sm: 250, xs: 250 } }}
             onClick={() => props.setSelected(name)}
-          >
-            {name}
-          </StyledChip>
+          />
       ))}
       </StyledStack>
     </Box>
