@@ -11,6 +11,15 @@ const CenteredBox = styled(Box)(() => ({
   paddingBottom: '1rem', 
 }))
 
+const StyledBox = styled(Box)(() => ({
+  display: 'flex', 
+  alignItems: 'center', 
+  justifyContent: 'flex-start',
+  flexWrap: 'wrap',
+  marginTop: '1rem',
+  gap: 10,
+}))
+
 const StyledCard = styled(Card)(() => ({
   width: 200, 
   height: 70, 
@@ -35,4 +44,4 @@ const StyledStack = styled(Stack)(() => ({
   justifyContent: 'space-evenly',
 }))
 
-export { StyledStack, StyledChip, StyledCard, CenteredBox }
+export { StyledStack, StyledChip, StyledCard, CenteredBox, StyledBox }
