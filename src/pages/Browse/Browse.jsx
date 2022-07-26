@@ -5,6 +5,7 @@ import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import PublicIcon from '@mui/icons-material/Public';
 import ScienceIcon from '@mui/icons-material/Science';
 import CodeIcon from '@mui/icons-material/Code';
+import Divider from '@mui/material/Divider'
 
 import { useState, useEffect } from 'react'
 import * as topicService from '../../services/topicService'
@@ -34,13 +35,15 @@ const Browse = (props) => {
   }, [selected])
 
   return (
-    <Box style={{ display: 'flex', flexDirection: 'column', padding: '2rem' }}>
-      <Typography variant='h2'>Browse</Typography>
-      <Typography variant='h6'>Select a category:</Typography>
-      <CategoryList
-        categories={categories}
-        setSelected={setSelected}
-      />
+    <Box sx={{ display: 'flex', flexDirection: 'column', padding: '2rem' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '1rem', flexDirection: {sm: 'column', md: 'row', xs: 'column'} }}>
+        <Typography variant='h2' style={{ fontFamily: 'abril-display' }}>Browse</Typography>
+        <CategoryList
+          categories={categories}
+          setSelected={setSelected}
+        />
+      </Box>
+      <Divider />
       <TopicList topics={topics} />
     </Box>
   )
