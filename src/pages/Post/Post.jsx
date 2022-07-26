@@ -21,7 +21,7 @@ const StyledRating = styled(Rating)(ratingOptions)
 
 const Post = ({ user, post }) => {
   const { author } = post
-  const { text, rating } = post.iterations[0]
+  const { text, rating } = post.iterations.length &&post.iterations[0]
 
   return (
     <Link to={`/posts/${post._id}`}>
