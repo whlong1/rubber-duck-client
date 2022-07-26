@@ -48,7 +48,7 @@ const PostList = ({ user }) => {
       margin: '3rem'
     }}>
       <PostTopMenu postTitles={postTitles} />
-      <Divider textAlign="left" sx={{ color: 'primary', width: '100%', marginBottom: '1rem' }}><TungstenIcon color="primary" /></Divider>
+      <Divider textAlign="left" sx={{ color: 'primary', width: '100%', marginBottom: '1rem', visibility: {xs: 'hidden', md: 'visible'} }}><TungstenIcon color="primary" /></Divider>
       <PaginatedList loading={loading} setLoading={setLoading} postList={postList} />
     </Box>
   );

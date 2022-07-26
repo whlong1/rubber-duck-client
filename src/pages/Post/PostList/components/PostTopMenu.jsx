@@ -17,7 +17,6 @@ const PostTopMenu = ({ postTitles }) => {
         display: 'flex', 
         justifyContent: 'space-between', 
         marginBotton: '1rem', 
-        marginTop: '1.5rem', 
         width: '100%' 
       }}
       sx={{ flexDirection: {xs: 'column', md: 'row'} }}
@@ -64,7 +63,7 @@ const PostTopMenu = ({ postTitles }) => {
         renderInput={(params) => <TextField {...params} label="Search input" />}
         disablePortal
         size='small'
-        sx={{ width: 200 }}
+        sx={{ width: 200, minWidth: 146 }}
       />
       <Button variant="contained" sx={{ height: 40, minWidth: 120 }} endIcon={<AddCircleOutlineIcon />}>
         New Post
