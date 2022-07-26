@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import FunctionsIcon from '@mui/icons-material/Functions';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import PublicIcon from '@mui/icons-material/Public';
+import ScienceIcon from '@mui/icons-material/Science';
+import CodeIcon from '@mui/icons-material/Code';
+
 // Components
 import CategoryList from '../Browse/components/CategoryList'
 
@@ -21,11 +27,11 @@ function NewPost(props) {
   })
 
   const categories = [
-    'Math',
-    'Science',
-    'History',
-    'Literature',
-    'CompSci',
+    {name: 'Math', color:'#F75847', icon: <FunctionsIcon />},
+    {name: 'Science', color:'#00B1C6', icon: <ScienceIcon />},
+    {name: 'History', color:'#7E7568', icon: <PublicIcon />},
+    {name: 'Literature', color:'#0CBA6E', icon: <AutoStoriesIcon />},
+    {name: 'CompSci', color:'#FFB201', icon: <CodeIcon />},
   ]
 
   const handleSubmit = async (e) => {
