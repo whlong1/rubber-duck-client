@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent'
 import Skeleton from '@mui/material/Skeleton'
 
 
-const PaginatedList = ({ loading, setLoading, seedPosts }) => {
+const PaginatedList = ({ loading, setLoading, postList }) => {
 
   const skeleton = [...'placeholdr'].map((_, uuid) => (
     <Card 
@@ -33,7 +33,7 @@ const PaginatedList = ({ loading, setLoading, seedPosts }) => {
         }}>
           { loading 
             ? skeleton
-            : seedPosts
+            : postList
           }
         </Box>
         <Button onClick={() => setLoading(!loading)}> Toggle Loading </Button>

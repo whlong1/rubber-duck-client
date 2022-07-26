@@ -25,8 +25,10 @@ const index = async (page, sort, search) => {
 
   // sort values: 'recent' or 'popular'
   // search value: topic._id
+
   try {
     const path = `${BASE_URL}?page=${page}&&sort=${sort}&&search=${search}`
+    console.log(path)
     const res = await fetch(path, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` }
     })

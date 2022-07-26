@@ -16,7 +16,7 @@ import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 
 const pages = [
-  {name: 'Browse', link: ''}, 
+  {name: 'Browse', link: '/browse'}, 
   {name: 'Posts', link: '/post'}, 
   {name: 'Topics', link: ''}
 ]
@@ -60,7 +60,7 @@ const NavBar = ({ user, handleLogout }) => {
   return (
     user ? 
     <>
-     <AppBar position="fixed" style={{ backgroundColor: '#121212' }}>
+     <AppBar position="relative" style={{ backgroundColor: '#121212' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
