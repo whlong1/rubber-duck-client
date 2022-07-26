@@ -12,29 +12,29 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 const PostTopMenu = ({ postTitles }) => {
   return ( 
-    <Box style={{ display: 'flex', justifyContent: 'space-between', marginBotton: '1rem', width: '100%' }}>
+    <Box style={{ display: 'flex', justifyContent: 'space-between', marginBotton: '1rem', marginTop: '1.5rem', width: '100%' }}>
       <Box>
         <Stack>
           <Typography variant='h5'>
             Literature
           </Typography>
-          <Typography variant='h2'>
+          <Typography style={{ fontFamily: 'abril-display'}} variant='h2'>
             PostModernism
           </Typography>
         </Stack>
       </Box>
       <Box style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-        <Button variant="contained" endIcon={<AddCircleOutlineIcon />}>New Post</Button>
+        
         <Box sx={{ minWidth: 120 }}>
           <FormControl fullWidth>
-            <InputLabel variant="standard" htmlFor="uncontrolled-native">
+            <InputLabel htmlFor="controlled-native">
               Filter by:
             </InputLabel>
             <NativeSelect
               defaultValue={10}
               inputProps={{
                 name: 'filterBy',
-                id: 'uncontrolled-native',
+                id: 'controlled-native',
               }}
             >
               <option value={10}>New</option>
@@ -49,8 +49,10 @@ const PostTopMenu = ({ postTitles }) => {
         options={postTitles?.map((option) => option)}
         renderInput={(params) => <TextField {...params} label="Search input" />}
         disablePortal
+        size='small'
         sx={{ width: 200 }}
       />
+      <Button variant="contained" sx={{ height: 40 }} endIcon={<AddCircleOutlineIcon />}>New Post</Button>
       </Box>
     </Box>
    );
