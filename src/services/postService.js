@@ -95,7 +95,7 @@ const removeBookmark = async (id) => {
   }
 }
 
-const newIteration = async (postId) => {
+const findKeywords = async (postId) => {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/iterations`, {
       headers: {
@@ -189,8 +189,9 @@ export {
   incrementViews,
   bookmarkPost,
   removeBookmark,
-  newIteration,
+  findKeywords,
   createIteration,
+  castVote,
   undoVote,
   createComment
 }

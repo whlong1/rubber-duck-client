@@ -47,8 +47,23 @@ const show = async (id) => {
   }
 }
 
+const findPostByTopic = async (topicId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}/posts`, {
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
 export {
   create,
   index,
-  show
+  show,
+  findPostByTopic
 }
