@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import writeGood from 'write-good'
 
 // Utils
-import { findWordCount, writingTips } from '../../utils/utils'
+import { findWordCount, writingTips } from '../../../NewPost/utils/utils'
 
 function Analysis({ text, keywords }) {
   const [tips, setTips] = useState([])

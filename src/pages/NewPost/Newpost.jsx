@@ -1,21 +1,18 @@
 import { useState, useEffect } from 'react'
 
 // Components
-import PostForm from './components/PostForm/PostForm'
-import Analysis from './components/Analysis/Analysis'
 import CategoryList from '../Browse/components/CategoryList'
-import TopicList from '../Browse/components/TopicList'
 
 import * as postService from '../../services/postService'
 
 import * as topicService from '../../services/topicService'
 
 function NewPost(props) {
-  // const [text, setText] = useState('')
-  // const [keywords, setKeywords] = useState([])
+
   const [topics, setTopics] = useState([])
   const [topicId, setTopicId] = useState('')
   const [selected, setSelected] = useState()
+  const [msg, setMsg] = useState('')
 
   const categories = [
     'Math',
@@ -29,7 +26,22 @@ function NewPost(props) {
     e.preventDefault()
     const data = await postService.create({ topic: topicId })
     console.log(data)
+    if (data.msg) {
+      setMsg(data.msg)
+    } else {
+
+    }
   }
+
+  //  author: "62e0260e1afec70fd4066e0a"
+  // createdAt: "2022-07-26T19:18:56.062Z"
+  // iterations: []
+  // topic: "62e026321afec70fd4066e16"
+  // updatedAt: "2022-07-26T19:18:56.062Z"
+  // viewers: []
+  // views: 0
+  // __v: 0
+  // _id: "62e03e20166d3c442f7bbaac"
 
   useEffect(() => {
     const fetchTopics = async () => {
@@ -39,14 +51,21 @@ function NewPost(props) {
     if (selected) fetchTopics()
   }, [selected])
 
-  // useEffect(() => {
-  //   const fetchKeyWords = () => {
-  //     const data = await postService.findKeywords(topicId)
-  //     console.log('keyword data::::', data)
-  //     // setKeywords(arr)
-  //   }
-  //   fetchKeyWords()
-  // }, [topicId])
+
+  const handleClear = () => {
+    setMsg('')
+    setTopicId('')
+    setSelected('')
+  }
+
+  if (msg) {
+    return (
+      <div>
+        <h1>{msg}</h1>
+        <button onClick={handleClear}>Go back</button>
+      </div>
+    )
+  }
 
   return (
     <div>
@@ -61,8 +80,6 @@ function NewPost(props) {
           {topic.title}
         </button>
       ))}
-      {/* <PostForm text={text} setText={setText} handleSubmit={handleSubmit} />
-      <Analysis text={text} keywords={keywords} /> */}
       <button disabled={topicId === ''} onClick={handleSubmit}>Confirm</button>
     </div>
   )
