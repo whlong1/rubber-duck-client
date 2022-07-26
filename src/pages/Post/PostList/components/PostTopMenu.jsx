@@ -12,13 +12,13 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 const PostTopMenu = ({ postTitles }) => {
   return ( 
-    <Box style={{ display: 'flex', justifyContent: 'space-between', marginBotton: '1rem', width: '100%' }}>
+    <Box style={{ display: 'flex', justifyContent: 'space-between', marginBotton: '1rem', marginTop: '1.5rem', width: '100%' }}>
       <Box>
         <Stack>
           <Typography variant='h5'>
             Literature
           </Typography>
-          <Typography variant='h2'>
+          <Typography style={{ fontFamily: 'abril-display'}} variant='h2'>
             PostModernism
           </Typography>
         </Stack>
