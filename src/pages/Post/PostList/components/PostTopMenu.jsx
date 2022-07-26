@@ -52,7 +52,9 @@ const PostTopMenu = ({ postTitles }) => {
         size='small'
         sx={{ width: 200 }}
       />
-      <Button variant="contained" sx={{ height: 40 }} endIcon={<AddCircleOutlineIcon />}>New Post</Button>
+      <Button variant="contained" sx={{ height: 40, minWidth: 120 }} endIcon={<AddCircleOutlineIcon />}>
+        New Post
+      </Button>
       </Box>
     </Box>
    );
