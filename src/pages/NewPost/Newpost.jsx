@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import FunctionsIcon from '@mui/icons-material/Functions';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import PublicIcon from '@mui/icons-material/Public';
+import ScienceIcon from '@mui/icons-material/Science';
+import CodeIcon from '@mui/icons-material/Code';
+
 // Components
 import CategoryList from '../Browse/components/CategoryList'
 
@@ -12,14 +18,20 @@ function NewPost(props) {
   const [topics, setTopics] = useState([])
   const [topic, setTopic] = useState()
   const [selected, setSelected] = useState()
+  const [dropdown, setDropdown] = useState(false)
   const [msg, setMsg] = useState('')
 
+  const [topicForm, setTopicForm] = useState({
+    title: '',
+    category: 'Math'
+  })
+
   const categories = [
-    'Math',
-    'Science',
-    'History',
-    'Literature',
-    'CompSci',
+    {name: 'Math', color:'#F75847', icon: <FunctionsIcon />},
+    {name: 'Science', color:'#00B1C6', icon: <ScienceIcon />},
+    {name: 'History', color:'#7E7568', icon: <PublicIcon />},
+    {name: 'Literature', color:'#0CBA6E', icon: <AutoStoriesIcon />},
+    {name: 'CompSci', color:'#FFB201', icon: <CodeIcon />},
   ]
 
   const handleSubmit = async (e) => {
@@ -32,6 +44,19 @@ function NewPost(props) {
     }
   }
 
+  const submitTopic = async (e) => {
+    e.preventDefault()
+    const newTopic = await topicService.create(topicForm)
+    if (newTopic.msg) {
+      setMsg(newTopic.msg)
+    } else {
+      setSelected()
+      setTopics([])
+      setTopicForm({ title: '', category: 'Math' })
+      setDropdown(false)
+    }
+  }
+
   useEffect(() => {
     const fetchTopics = async () => {
       const data = await topicService.index(selected)
@@ -40,18 +65,11 @@ function NewPost(props) {
     if (selected) fetchTopics()
   }, [selected])
 
-
-  const handleClear = () => {
-    setMsg('')
-    setTopic()
-    setSelected('')
-  }
-
   if (msg) {
     return (
       <div>
         <h1>{msg}</h1>
-        <button onClick={handleClear}>Go back</button>
+        <button onClick={() => { setMsg(''); setTopic(); setSelected(''); setTopicForm({ title: '', category: 'Math' }) }}>Go back</button>
       </div>
     )
   }
@@ -69,6 +87,21 @@ function NewPost(props) {
           {topic.title}
         </button>
       ))}
+      {dropdown
+        ? <form onSubmit={submitTopic}>
+            <h3>Enter your new topic</h3>
+            <input placeholder='Title' name="title" value={topicForm.title} required={true} onChange={(e) => setTopicForm({ ...topicForm, title: e.target.value })} />
+            <select name="category" onChange={(e) => setTopicForm({ ...topicForm, category: e.target.value })}>
+              {categories.map((category, idx) => (
+                <option key={idx} value={category}>{category}</option>
+              ))}
+            </select>
+            <button disabled={!topicForm.title} type='submit' onClick={submitTopic}>Submit</button>
+            <button type='button' onClick={() => setDropdown(false)}>Cancel</button>
+          </form>
+        : <button onClick={() => setDropdown(true)}>Add A Topic</button>
+      }
+
       <button disabled={!topic} onClick={handleSubmit}>Confirm</button>
     </div>
   )
