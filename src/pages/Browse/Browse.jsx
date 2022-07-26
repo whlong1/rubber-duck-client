@@ -18,11 +18,11 @@ const Browse = (props) => {
   const [selected, setSelected] = useState('Math')
 
   const categories = [
-    {name: 'Math', color:'#F75847', icon: FunctionsIcon},
-    {name: 'Science', color:'#00B1C6', icon: ScienceIcon},
-    {name: 'History', color:'#7E7568', icon: PublicIcon},
-    {name: 'Literature', color:'#0CBA6E', icon: AutoStoriesIcon},
-    {name: 'CompSci', color:'#FFB201', icon: CodeIcon},
+    {name: 'Math', color:'#F75847', icon: <FunctionsIcon />},
+    {name: 'Science', color:'#00B1C6', icon: <ScienceIcon />},
+    {name: 'History', color:'#7E7568', icon: <PublicIcon />},
+    {name: 'Literature', color:'#0CBA6E', icon: <AutoStoriesIcon />},
+    {name: 'CompSci', color:'#FFB201', icon: <CodeIcon />},
   ]
 
   useEffect(() => {

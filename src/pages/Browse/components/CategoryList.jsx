@@ -15,20 +15,21 @@ const CategoryList = (props) => {
           flexDirection: { lg: 'row', md: 'row', sm: 'column', xs: 'column' }
         }}
       >
-      {props.categories.map((category, idx) => (
+      {props.categories.map(({name, color, icon}, idx) => (
           <Chip
             key={idx} 
             variant="contained"
-            label={category}
+            label={name}
+            icon={icon}
             sx={{ 
               height: { lg: 85 },
               width: { lg: 250, md: 150 }, 
-              backgroundColor: categoryColors[idx],
+              backgroundColor: color,
               "& .MuiChip-label": { fontFamily: 'abril-display', fontSize: 14 }
             }}
-            onClick={() => props.setSelected(category)}
+            onClick={() => props.setSelected(name)}
           >
-              {category}
+              {name}
           </Chip>
       ))}
       </Stack>
