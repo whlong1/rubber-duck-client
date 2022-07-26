@@ -14,6 +14,7 @@ import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
+import PersonIcon from '@mui/icons-material/Person';
 
 const pages = [
   {name: 'Browse', link: '/browse'}, 
@@ -127,7 +128,9 @@ const NavBar = ({ user, handleLogout }) => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="avatar">
+                  <PersonIcon />
+                </Avatar>
               </IconButton>
             </Tooltip>
             <Menu
@@ -238,7 +241,9 @@ const NavBar = ({ user, handleLogout }) => {
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                    <Avatar alt="avatar">
+                      <PersonIcon />
+                    </Avatar>
                   </IconButton>
                 </Tooltip>
                 <Menu
