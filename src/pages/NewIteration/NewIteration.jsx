@@ -4,13 +4,13 @@ import { useParams } from 'react-router-dom'
 // Components
 // import PostForm from './components/PostForm/PostForm'
 // import Analysis from './components/Analysis/Analysis'
-// import * as postService from '../../services/postService'
+import * as postService from '../../services/postService'
 
 // createIteration
 // findKeywords
 
 function NewIteration(props) {
-  const { postId } = useParams()
+  const { postId, topicId } = useParams()
 
   console.log(postId)
 
@@ -33,14 +33,14 @@ function NewIteration(props) {
   // _id: "62e03e20166d3c442f7bbaac"
 
 
-  // useEffect(() => {
-  //   const fetchKeyWords = () => {
-  //     const data = await postService.findKeywords(topicId)
-  //     console.log('keyword data::::', data)
-  //     // setKeywords(arr)
-  //   }
-  //   fetchKeyWords()
-  // }, [topicId])
+  useEffect(() => {
+    const fetchKeyWords = async () => {
+      const data = await postService.findKeywords(topicId, postId)
+      console.log('keyword data::::', data)
+      // setKeywords(arr)
+    }
+    fetchKeyWords()
+  }, [topicId])
 
 
 
