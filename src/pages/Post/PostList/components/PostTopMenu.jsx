@@ -23,10 +23,10 @@ const PostTopMenu = ({ postTitles }) => {
     >
       <Box>
         <Stack>
-          <Typography variant='h5'>
+          <Typography variant='h5' sx={{ marginBottom: {md: '20px', sm: '0'} }}>
             Literature
           </Typography>
-          <Typography style={{ fontFamily: 'abril-display'}} variant='h2'>
+          <Typography style={{ fontFamily: 'abril-display' }} sx={{ lineHeight: {md: '.5', xs: '1.2'} }}variant='h2'>
             PostModernism
           </Typography>
         </Stack>
@@ -35,7 +35,7 @@ const PostTopMenu = ({ postTitles }) => {
         style={{ 
           display: 'flex', 
           gap: '1rem', 
-          alignItems: 'center'
+          alignItems: 'flex-end'
         }}
       >
         <Box sx={{ minWidth: 120 }}>
