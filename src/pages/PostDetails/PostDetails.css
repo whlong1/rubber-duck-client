@@ -1,0 +1,57 @@
+.iteration-display {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.iteration-text {
+  font-weight: 400;
+  font-size: 22px;
+  font-style: normal;
+  text-align: justify;
+  font-family: abril-display, serif;
+}
+
+.iteration-date {
+  margin: 0;
+  opacity: .4;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  font-family: realistnarrow, sans-serif;
+}
+
+.det-btn {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  padding: 20px;
+  font-size: 15px;
+  background: none;
+  font-style: normal;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  margin: 5px 0px 5px 0px;
+  color: rgb(155, 155, 155);
+  font-family: abril-display, serif;
+  border: 1px solid rgb(130, 130, 130);
+}
+
+#select-idx {
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: 22px;
+  color: rgb(210, 210, 210);
+  background: #2a2a2e; 
+  border: 1px solid rgb(175, 175, 175);
+}
+
+.det-btn:hover {
+  font-size: 20px;
+  background: #2a2a2e; 
+  transform: scale(1.08);
+  color: rgb(160, 160, 160);
+  -webkit-transform: scale(1.08);
+  border: 1px solid rgb(145, 145, 145);
+}

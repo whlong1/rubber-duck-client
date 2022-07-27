@@ -1,13 +1,30 @@
 import { useState, useEffect } from 'react'
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom"
 import * as postService from '../../services/postService'
+import './PostDetails.css'
 
+// Components
+import UserCard from '../../components/UserCard/UserCard'
+import DetailsTopMenu from './components/DetailsTopMenu'
+import IterationHandler from './components/IterationHandler/IterationHandler'
 
+// MUI
+import Box from '@mui/material/Box'
 
-const PostDetails = (props) => {
+const contentBoxStyle = {
+  margin: '3rem',
+  display: 'flex', flexDirection: 'column',
+  justifyContent: 'center', alignItems: 'center',
+}
+
+const userBoxStyle = {
+  margin: 0,
+  marginLeft: '3rem',
+}
+
+const PostDetails = ({ user }) => {
   const { postId } = useParams()
-  const [post, setPost] = useState([])
-  const [vote, setVote] = useState()
+  const [post, setPost] = useState()
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -15,33 +32,29 @@ const PostDetails = (props) => {
       setPost(postData)
     }
     fetchPosts()
-  }, [])
+  }, [postId])
 
-  useEffect(() => {
- 
-  }, [])
-
-  const handleVote = async(vote)=>{
-    await postService.castVote(postId, post.iterations[0]._id, vote)
+  if (!post) {
+    return <div>Holdon, we're just getting our ducks in a row...</div>
   }
 
-  return (  
+  return (
+    post &&
     <>
-      <h1>Post details</h1>
-      {post?.topic?.title}
-      {post?.topic?.category}
-      {post?.author?.name}
-      {post?.author?.occupation}
-      {post?.iterations?.map((iteration) => 
-        <div key={iteration._id}>
-          <ul>{iteration.text}</ul>
-          <ul>{iteration.createdAt}</ul>
-        </div>
-      )}
-      <button onClick={()=>handleVote(1)}>UpVote</button>
-      <button onClick={()=>handleVote(-1)}>DownVote</button>
+      <DetailsTopMenu topic={post.topic} />
+      <Box style={userBoxStyle}>
+        <UserCard author={post.author} />
+      </Box>
+      <Box style={contentBoxStyle}>
+        <IterationHandler
+          user={user}
+          postId={postId}
+          iterations={post.iterations}
+        />
+      </Box>
     </>
   )
 }
- 
+
 export default PostDetails
+

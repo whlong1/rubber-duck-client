@@ -42,7 +42,6 @@ const Browse = (props) => {
         <CategoryList
           categories={categories}
           setSelected={setSelected}
-          selected={selected}
         />
       </CenteredBox>
       <Divider />

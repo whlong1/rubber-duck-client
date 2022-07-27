@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
+
 // Components
 import PostForm from './/components/PostForm/PostForm'
 import Analysis from './components/Analysis/Analysis'
@@ -14,10 +18,27 @@ function NewIteration(props) {
   const [text, setText] = useState('')
   const [keywords, setKeywords] = useState([])
 
+  function isDeleteKey(e){
+    let charCode = e.keyCode || e.which
+    return charCode === 8 || charCode === 46
+  }
+  const characterLimit = 200
+
+  const handleCheckText = (e, text) => {
+    if(text.length > characterLimit && !isDeleteKey(e)) return
+    setText(text)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     await postService.createIteration(postId, { text: text })
     navigate(`/posts/${postId}`)
+  }
+
+  const handleClickSuggestion = (suggestion) => {
+    if(text.length + (suggestion.length + 1) < characterLimit){
+      setText(`${text.trim()} ${suggestion}`)
+    }
   }
 
   useEffect(() => {
@@ -30,13 +51,27 @@ function NewIteration(props) {
   }, [topicId, postId])
 
   return (
-    <div>
-      <h3>{topic?.category}</h3>
-      <h1>{topic?.title}</h1>
-
-      <PostForm text={text} setText={setText} handleSubmit={handleSubmit} />
-      <Analysis text={text} keywords={keywords} />
-    </div>
+    <Box sx={{ padding: '1.5rem' }}>
+      <Typography 
+        variant='h5'
+      >
+        {topic?.category}
+      </Typography>
+      <Typography variant="h2" sx={{ fontFamily: 'abril-display'}}>
+        {topic?.title}
+      </Typography>
+      <Divider sx={{ marginTop: '1rem' }} />
+      <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '298px', marginTop: '5rem' }}>
+        <PostForm 
+          text={text} 
+          setText={setText} 
+          handleSubmit={handleSubmit}
+          characterLimit={characterLimit}
+          handleCheckText={handleCheckText}
+        />
+        <Analysis text={text} keywords={keywords} handleClickSuggestion={handleClickSuggestion} />
+      </Box>
+    </Box>
   )
 }
 
