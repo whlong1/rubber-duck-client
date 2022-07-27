@@ -1,7 +1,9 @@
-const SideNav = (props) => {
+const SideNav = ({ index, setIndex, iterations }) => {
   return (
-    <div>
-
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      {iterations.map((iteration, idx) =>
+        <button onClick={() => setIndex(idx)} key={iteration._id}>{idx}</button>
+      )}
     </div>
   )
 }

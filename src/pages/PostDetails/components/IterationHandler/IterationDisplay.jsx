@@ -1,7 +1,7 @@
-const IterationDisplay = () => {
+const IterationDisplay = ({ iteration }) => {
   return (
     <div>
-
+      <p>{iteration.text}</p>
     </div>
   )
 }
