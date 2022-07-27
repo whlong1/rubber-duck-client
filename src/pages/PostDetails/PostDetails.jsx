@@ -5,7 +5,6 @@ import * as postService from '../../services/postService'
 const PostDetails = () => {
   const { postId } = useParams()
   const [post, setPost] = useState()
-  // const [vote, setVote] = useState()
 
   useEffect(() => {
     const fetchPosts = async () => {
