@@ -22,11 +22,26 @@
 }
 
 .idx-btns {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  padding: 20px;
+  font-size: 15px;
+  background: none;
   font-style: normal;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: rgb(155, 155, 155);
   font-family: abril-display, serif;
+  border: 1px solid rgb(130, 130, 130);
+  margin: 5px 0px 5px 0px;
 }
 
 #select-idx {
+  font-size: 20px;
   font-weight: 600;
-  font-size: 16px;
+  padding-top: 22px;
+  color: rgb(170, 170, 170);
+  border: 1px solid rgb(150, 150, 150);
 }

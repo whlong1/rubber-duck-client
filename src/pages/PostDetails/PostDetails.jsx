@@ -8,6 +8,22 @@ import UserCard from '../../components/UserCard/UserCard'
 import DetailsTopMenu from './components/DetailsTopMenu'
 import IterationHandler from './components/IterationHandler/IterationHandler'
 
+// MUI
+import Box from '@mui/material/Box'
+
+const contentBoxStyle = {
+  margin: '3rem',
+  display: 'flex', flexDirection: 'column',
+  justifyContent: 'center', alignItems: 'center',
+}
+
+const userBoxStyle = {
+  margin: 0,
+  marginLeft: '3rem',
+  // display: 'flex', flexDirection: 'column',
+  // justifyContent: 'center', alignItems: 'center',
+}
+
 const PostDetails = ({ user }) => {
   const { postId } = useParams()
   const [post, setPost] = useState()
@@ -28,8 +44,16 @@ const PostDetails = ({ user }) => {
     post &&
     <>
       <DetailsTopMenu topic={post.topic} />
-      <UserCard author={post.author} />
-      <IterationHandler user={user} postId={postId} iterations={post.iterations} />
+      <Box style={userBoxStyle}>
+        <UserCard author={post.author} />
+      </Box>
+      <Box style={contentBoxStyle}>
+        <IterationHandler
+          user={user}
+          postId={postId}
+          iterations={post.iterations}
+        />
+      </Box>
     </>
   )
 }

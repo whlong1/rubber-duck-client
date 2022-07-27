@@ -7,7 +7,7 @@ import Divider from '@mui/material/Divider'
 
 const DetailsTopMenu = ({ topic }) => {
   return (
-    <Box style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: '3rem' }}>
+    <Box style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: '3rem', marginBottom: 0 }}>
       <Box style={{ display: 'flex', justifyContent: 'space-between', marginBotton: '1rem', width: '100%' }} sx={{ flexDirection: { xs: 'column', md: 'row' } }}>
         <Box>
           <Stack>
