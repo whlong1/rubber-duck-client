@@ -22,7 +22,8 @@ const NavBar = ({ user, handleLogout }) => {
     { name: 'New Post', link: '/posts/new' },
   ]
   const logOutSettings = [
-    { name: 'Profile', link: `/profiles/${user?.profile}` },
+    { name: 'My Profile', link: `/profiles/${user?.profile}` },
+    { name: 'Profile', link: `/profiles` },
     { name: 'Logout', link: '' },
   ]
   const logInSettings = [
