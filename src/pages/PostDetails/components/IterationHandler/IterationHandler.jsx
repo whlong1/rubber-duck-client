@@ -1,5 +1,6 @@
 import { useState } from "react"
 
+// Components
 import SideNav from "./SideNav"
 import VoteHandler from "./VoteHandler"
 import IterationDisplay from "./IterationDisplay"
@@ -7,20 +8,19 @@ import IterationDisplay from "./IterationDisplay"
 const IterationHandler = ({ user, postId, iterations }) => {
   const [index, setIndex] = useState(0)
   const [iterationsArr, setIterationsArr] = useState(iterations)
-
   const selectedIteration = iterationsArr[index]
-
-  console.log(iterations)
-
-
-
-  // const highestRated = iterations.sort((a, b) => b.rating - a.rating)
 
   return (
     <div style={{ display: 'flex' }}>
-      <SideNav setIndex={setIndex} iterations={iterationsArr} />
+      <SideNav index={index} setIndex={setIndex} iterations={iterationsArr} />
       <IterationDisplay iteration={selectedIteration} />
-      <VoteHandler user={user} postId={postId} iterationsArr={iterationsArr} setIterationsArr={setIterationsArr} iteration={selectedIteration} />
+      <VoteHandler
+        user={user}
+        postId={postId}
+        iterationsArr={iterationsArr}
+        iteration={selectedIteration}
+        setIterationsArr={setIterationsArr}
+      />
     </div>
   )
 }
