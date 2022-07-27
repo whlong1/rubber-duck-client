@@ -12,6 +12,7 @@ const VerticalTypography = styled(Typography)(() => ({
   transform: 'rotate(-180deg)',
   fontSize: '150px',
   fontFamily: 'abril-display',
+  marginLeft: '-20px',
   marginBottom: '0'
 }))
 
@@ -37,7 +38,12 @@ const Signup = props => {
         <p>{message}</p>
           <SignupForm {...props} updateMessage={updateMessage} />
         </Box>
-        <Box sx={{ display: {md: 'flex', sm: 'none', xs: 'none'}, justifyContent: 'center', alignItems: 'center', width: {md: '50%', sm: '0%', xs: '0%' } }}>
+        <Box sx={{ 
+          display: {md: 'flex', sm: 'none', xs: 'none'}, 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          width: {md: '50%', sm: '0%', xs: '0%' }
+        }}>
           <img src={logo} alt='logo' />
         </Box>
       </Box>

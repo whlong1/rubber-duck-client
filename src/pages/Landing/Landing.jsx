@@ -5,7 +5,7 @@ import rectangle from '../../assets/yellowRectangle.png'
 
 const Landing = ({ user }) => {
   return (
-    <>
+    <div className={styles.main}>
       <div className={styles.bodyContainer}>
         <img src={logo} alt='logo' />
         <h1 className={styles.logoH1}>Rubber Duck</h1>
@@ -13,7 +13,7 @@ const Landing = ({ user }) => {
 
       <div className={styles.logoH1}>
         <img src={rectangle} alt="rectangle" style={{ height: 30, width: 70 }} />
-        <h1 className={styles.WTFduck}>What the FUCK is Rubber Duck? </h1>
+        <h1 className={styles.WTFduck}>What the $%!# is Rubber Duck? </h1>
         <div className={styles.flex}>
           <div className={styles.feynmanText}>
             <p>
@@ -45,7 +45,7 @@ const Landing = ({ user }) => {
         </div>
       </div>
       <div className={styles.whitespace}></div>
-    </>
+    </div>
   )
 }
 

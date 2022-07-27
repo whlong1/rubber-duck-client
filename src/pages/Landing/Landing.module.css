@@ -4,6 +4,11 @@
   flex-direction: column;
 }
 
+.main {
+  scrollbar-color: #ffc82f dark;
+  overflow-x: hidden;
+}
+
 .bodyContainer{
   display: flex;
   flex-direction: column;
