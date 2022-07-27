@@ -6,8 +6,7 @@ import CardContent from '@mui/material/CardContent'
 import Skeleton from '@mui/material/Skeleton'
 
 
-const PaginatedList = ({ loading, setLoading, postList }) => {
-
+const PaginatedList = ({ loading, setLoading, postList, page, setPage }) => {
   const skeleton = [...'placeholdr'].map((_, uuid) => (
     <Card 
       sx={{ maxWidth: 275, height: 325 }} 
@@ -38,7 +37,8 @@ const PaginatedList = ({ loading, setLoading, postList }) => {
         </Box>
         <Button onClick={() => setLoading(!loading)}> Toggle Loading </Button>
         <Pagination 
-          count={5}
+          count={page + 1}
+          onChange={(e) => setPage(e.target.value)}
           color="primary"
         /> 
     </>
