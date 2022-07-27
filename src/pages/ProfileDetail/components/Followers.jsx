@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import * as profileService from '../../../services/profileService'
 
-const Followers = ({user, myFollowers, profileId }) => {
-  const [followers, setFollowers] = useState(myFollowers)
-  const followArr = myFollowers.map((f)=>f._id)
+const Followers = ({user, profileId, followers, setFollowers }) => {
   
+  const followArr = followers?.map((f)=>f._id)
+  console.log(followers.map((f)=>f._id).includes(user.profile));
   const addFollower = async () => {
     await profileService.follow(profileId)
-    setFollowers(...followers, user.profile)
+    setFollowers([...followers, user.profile])
   }
-
+  console.log(user);
   const removeFollower = async () => {
     await profileService.unfollow(profileId)
     setFollowers(followers.filter(follower => follower._id !== profileId))

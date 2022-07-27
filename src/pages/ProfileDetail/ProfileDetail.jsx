@@ -6,11 +6,13 @@ import Followers from './components/Followers'
 const ProfileDetail = ({ user }) => {
   const { profileId } = useParams()
   const [profile, setProfile] = useState()
+  const [followers, setFollowers] = useState([])
 
   useEffect(() => {
     const fetchProfile = async () => {
       const profileData = await profileService.show(profileId)
       setProfile(profileData)
+      setFollowers(profileData.followers)
     }
     fetchProfile()
   }, [profileId])
@@ -47,7 +49,7 @@ const ProfileDetail = ({ user }) => {
       Posts: {profile.posts?.map(post =>
         <ul key={post._id}>{post.name}</ul>
       )}
-      <Followers user={user} myFollowers={profile.followers} profileId={profileId}/>
+      <Followers user={user} followers={followers} setFollowers={setFollowers} myFollowers={profile.followers} profileId={profileId}/>
     </>
   )
 }
