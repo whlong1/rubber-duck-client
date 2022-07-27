@@ -7,6 +7,7 @@ const ProfileDetail = ({ user }) => {
   const { profileId } = useParams()
   const [profile, setProfile] = useState()
   const [followers, setFollowers] = useState([])
+  const [following, setFollowing] = useState([])
 
   console.log(profile, user.profile)
 
@@ -15,6 +16,7 @@ const ProfileDetail = ({ user }) => {
       const profileData = await profileService.show(profileId)
       setProfile(profileData)
       setFollowers(profileData.followers)
+      setFollowing(profileData.following)
     }
     fetchProfile()
   }, [profileId])
@@ -26,14 +28,12 @@ const ProfileDetail = ({ user }) => {
         Hello. This is {profile._id === user.profile ? 'my profile.' : `${profile.name}'s profile.`}
       </h1>
       Followers:
-      {profile?.followers?.map(follower =>
+      {followers.map(follower =>
         <ul key={follower._id}>{follower.name}</ul>
       )}
       Following:
-      {profile.following?.map(follower =>
-        <>
-          <ul key={follower._id}>{follower.name}</ul> 
-        </>
+      {following.map(follower =>
+        <ul key={follower._id}>{follower.name}</ul>
       )}
       Interests:
       {profile.interests?.map((interest) =>
@@ -51,7 +51,7 @@ const ProfileDetail = ({ user }) => {
       Posts: {profile.posts?.map(post =>
         <ul key={post._id}>{post.name}</ul>
       )}
-      <Followers user={user} followers={followers} setFollowers={setFollowers} myFollowers={profile.followers} profileId={profileId}/>
+      <Followers user={user} followers={followers} setFollowers={setFollowers} myFollowers={profile.followers} profileId={profileId} />
     </>
   )
 }
