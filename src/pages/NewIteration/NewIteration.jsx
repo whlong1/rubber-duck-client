@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
+import Box from '@mui/material/Box'
+
 // Components
 import PostForm from './/components/PostForm/PostForm'
 import Analysis from './components/Analysis/Analysis'
@@ -30,13 +32,12 @@ function NewIteration(props) {
   }, [topicId, postId])
 
   return (
-    <div>
+    <Box sx={{ width: '100%' }}>
       <h3>{topic?.category}</h3>
       <h1>{topic?.title}</h1>
-
       <PostForm text={text} setText={setText} handleSubmit={handleSubmit} />
       <Analysis text={text} keywords={keywords} />
-    </div>
+    </Box>
   )
 }
 
