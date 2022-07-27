@@ -8,6 +8,7 @@ import ScienceIcon from '@mui/icons-material/Science';
 import CodeIcon from '@mui/icons-material/Code';
 import NewPostForm from './components/NewPostForm';
 import Button from '@mui/material/Button'
+import { StyledCard, StyledBox } from '../Browse/components/mui/StyledComponents'
 
 // Components
 import CategoryList from '../Browse/components/CategoryList'
@@ -59,9 +60,6 @@ function NewPost() {
     }
   }
 
-  useEffect(() => console.log(selected), [selected])
- 
-
   useEffect(() => {
     const fetchTopics = async () => {
       const data = await topicService.index(selected.name)
@@ -87,17 +85,28 @@ function NewPost() {
         setSelected={setSelected}
       />
       <h3>PICK A TOPIC TO WRITE ABOUT</h3>
+      <StyledBox>
       {topics?.map((topic) => (
-        <button onClick={() => setTopic(topic)} key={topic._id}>
+        <StyledCard 
+          onClick={() => setTopic(topic)}
+          key={topic._id}
+        >
           {topic.title}
-        </button>
+        </StyledCard>
       ))}
-      {dropdown
-        ? <NewPostForm topicForm={topicForm} submitTopic={submitTopic} setTopicForm={setTopicForm} categories={categories} setDropdown={setDropdown} selected={selected} />
-        : <Button variant="contained" onClick={() => setDropdown(true)}>Add A Topic</Button>
-      }
-
+      </StyledBox>
       <Button disabled={!topic} onClick={handleSubmit}>Confirm</Button>
+      {dropdown
+        ? <NewPostForm 
+          topicForm={topicForm} 
+          submitTopic={submitTopic} 
+          setTopicForm={setTopicForm} 
+          categories={categories}
+          setDropdown={setDropdown} 
+          selected={selected} 
+          />
+        : <Button variant="contained" sx={{ backgroundColor: selected?.color, color: 'white' }}  onClick={() => setDropdown(true)}>Add A Topic</Button>
+      }
     </div>
   )
 }
