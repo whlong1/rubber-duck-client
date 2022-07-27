@@ -41,8 +41,9 @@ const LoginForm = props => {
     >
       <Box className={styles.inputContainer}>
         <TextField
+          fullWidth
           type="text"
-          lalbel="Email"
+          label="Email"
           autoComplete="off"
           id="email"
           value={formData.email}
@@ -55,6 +56,7 @@ const LoginForm = props => {
       </Box>
       <Box className={styles.inputContainer}>
         <TextField
+          fullWidth
           type="password"
           label="Password"
           autoComplete="off"
@@ -67,8 +69,8 @@ const LoginForm = props => {
           }}
         />
       </Box>
-      <Box>
-        <Button className={styles.button}>Log In</Button>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+        <Button fullWidth variant="contained" className={styles.button}>Log In</Button>
         <Link to="/">
           <Button color="warning">Cancel</Button>
         </Link>
