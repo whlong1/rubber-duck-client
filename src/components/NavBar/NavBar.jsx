@@ -160,7 +160,7 @@ const NavBar = ({ user, handleLogout }) => {
                   sx={{ display: { xs: 'flex', md: 'none' } }}
                 />
               </Box>
-              <Box sx={{ flexGrow: 0 }}>
+              <Box sx={{ flexGrow: 0 }} style={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar alt="avatar">
