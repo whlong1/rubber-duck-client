@@ -36,7 +36,6 @@ const NavBar = ({ user, handleLogout }) => {
 
   const [anchorElNav, setAnchorElNav] = useState(null)
   const [anchorElUser, setAnchorElUser] = useState(null)
-  const [toggle, setToggle] = useState (false)
 
   const handleOpenNavMenu = (e) => {
     setAnchorElNav(e.currentTarget)
@@ -50,17 +49,7 @@ const NavBar = ({ user, handleLogout }) => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
   }
-  const handleToggle = () => {
-    setToggle(true)
-  }
-
-  window.onscroll = function(ev) {
-    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-      console.log('bottom');
-      handleToggle()
-    }
-  }
-
+ 
   return (
     user ? 
     <>

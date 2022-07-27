@@ -2,27 +2,20 @@ import Card from '@mui/material/Card'
 import Box from '@mui/material/Box'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
-import CardActions from '@mui/material/CardActions'
-import CheckBox from '@mui/material/Checkbox'
 import Rating from '@mui/material/Rating'
 import SvgIcon from '@mui/material/SvgIcon'
 import { ReactComponent as Diamond } from '../../assets/diamond-icon.svg'
 
 import { Link } from 'react-router-dom'
-
-
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorderOutlined'
-import BookmarkIcon from '@mui/icons-material/Bookmark'
-
-import { ratingOptions } from '../../styles/theme'
 import { styled } from '@mui/material/styles'
+import { ratingOptions } from '../../styles/theme'
 
 const StyledRating = styled(Rating)(ratingOptions)
 
 const Post = ({ user, post }) => {
   const { author } = post
-  const { text, rating } = post.iterations.length &&post.iterations[0]
-  
+  const { text, rating } = post.iterations.length && post.iterations[0]
+
   return (
     <Link to={`/posts/${post._id}`}>
       <Card
@@ -74,15 +67,9 @@ const Post = ({ user, post }) => {
             {text}
           </Typography>
         </CardContent>
-        <CardActions style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Typography>
-            08/07/22
-          </Typography>
-          <CheckBox
-            icon={<BookmarkBorderIcon />}
-            checkedIcon={<BookmarkIcon />}
-          />
-        </CardActions>
+        <Typography>
+          08/07/22
+        </Typography>
       </Card>
     </Link>
   )

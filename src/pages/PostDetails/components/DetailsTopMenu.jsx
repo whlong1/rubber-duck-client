@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import Divider from '@mui/material/Divider'
 
-const DetailsTopMenu = ({ topic, post }) => {
+const DetailsTopMenu = ({ topic, post, user }) => {
   const navigate = useNavigate()
   return (
     <Box style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: '3rem', marginBottom: 0 }}>
@@ -19,11 +19,13 @@ const DetailsTopMenu = ({ topic, post }) => {
           </Stack>
         </Box>
         <Box style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end' }}>
-          <Button
-            onClick={() => navigate(`/topics/${topic._id}/posts/${post._id}/iterations`)}
-            variant="contained" sx={{ height: 40, minWidth: 120 }} endIcon={<AddCircleOutlineIcon/>}
-          >New Iteration
-          </Button>
+          {user.profile === post.author._id &&
+            <Button
+              onClick={() => navigate(`/topics/${topic._id}/posts/${post._id}/iterations`)}
+              variant="contained" sx={{ height: 40, minWidth: 120 }} endIcon={<AddCircleOutlineIcon />}
+            >New Iteration
+            </Button>
+          }
         </Box>
       </Box>
       <Divider textAlign="left" sx={{ color: 'primary', width: '100%', margin: '1rem', visibility: { xs: 'hidden', md: 'visible' } }}></Divider>
