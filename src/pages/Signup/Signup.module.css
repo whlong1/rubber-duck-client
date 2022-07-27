@@ -1,13 +1,10 @@
-body { 
-  overflow: hidden;
-}
-
-.container {
+.container {  
   display: flex;
   align-items: center;
   flex-direction: column;
   background-color: black;
   height: 100vh;
+  margin-top: -64px;
 }
 
 .signup {
