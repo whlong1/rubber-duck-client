@@ -41,7 +41,7 @@ const PostDetails = ({ user }) => {
   return (
     post &&
     <>
-      <DetailsTopMenu topic={post.topic} />
+      <DetailsTopMenu topic={post.topic} post={post} />
       <Box style={userBoxStyle}>
         <UserCard author={post.author} />
       </Box>
