@@ -4,9 +4,9 @@ import * as postService from '../../services/postService'
 import './PostDetails.css'
 
 // Components
-import IterationHandler from './components/IterationHandler/IterationHandler'
-import DetailsTopMenu from './components/DetailsTopMenu'
 import UserCard from '../../components/UserCard/UserCard'
+import DetailsTopMenu from './components/DetailsTopMenu'
+import IterationHandler from './components/IterationHandler/IterationHandler'
 
 const PostDetails = ({ user }) => {
   const { postId } = useParams()
@@ -19,9 +19,6 @@ const PostDetails = ({ user }) => {
     }
     fetchPosts()
   }, [postId])
-
-  console.log('RENDER')
-
 
   if (!post) {
     return <div>Holdon, we're just getting our ducks in a row...</div>
