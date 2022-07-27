@@ -3,12 +3,18 @@ import { useNavigate } from 'react-router-dom'
 
 import FunctionsIcon from '@mui/icons-material/Functions';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import AddIcon from '@mui/icons-material/Add'
 import PublicIcon from '@mui/icons-material/Public';
 import ScienceIcon from '@mui/icons-material/Science';
 import CodeIcon from '@mui/icons-material/Code';
 import NewPostForm from './components/NewPostForm';
 import Button from '@mui/material/Button'
+import Fab from '@mui/material/Fab'
+import Divider from '@mui/material/Divider'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
 import { StyledCard, StyledBox } from '../Browse/components/mui/StyledComponents'
+import CardActionArea from '@mui/material/CardActionArea'
 
 // Components
 import CategoryList from '../Browse/components/CategoryList'
@@ -78,36 +84,48 @@ function NewPost() {
   }
 
   return (
-    <div>
-      <h1>PICK CATEGORY</h1>
+    <Box sx={{ padding: '2rem' }}>
+      <Typography variant='h3' sx={{ fontFamily: "abril-display" }}>PICK CATEGORY</Typography>
       <CategoryList
         categories={categories}
         setSelected={setSelected}
       />
+      <Divider />
       <h3>PICK A TOPIC TO WRITE ABOUT</h3>
       <StyledBox>
       {topics?.map((topic) => (
-        <StyledCard 
-          onClick={() => setTopic(topic)}
-          key={topic._id}
-        >
-          {topic.title}
+        <StyledCard key={topic._id}>
+          <CardActionArea 
+            onClick={() => setTopic(topic)}
+            sx={{ height: '100%', width: '100%', display: 'flex', alignItems: 'center' }}
+          >
+            {topic.title}
+          </CardActionArea>
         </StyledCard>
       ))}
       </StyledBox>
       <Button disabled={!topic} onClick={handleSubmit}>Confirm</Button>
       {dropdown
         ? <NewPostForm 
-          topicForm={topicForm} 
-          submitTopic={submitTopic} 
-          setTopicForm={setTopicForm} 
-          categories={categories}
-          setDropdown={setDropdown} 
-          selected={selected} 
+            topicForm={topicForm} 
+            submitTopic={submitTopic} 
+            setTopicForm={setTopicForm} 
+            categories={categories}
+            setDropdown={setDropdown} 
+            selected={selected} 
           />
-        : <Button variant="contained" sx={{ backgroundColor: selected?.color, color: 'white' }}  onClick={() => setDropdown(true)}>Add A Topic</Button>
+        : 
+          <Fab 
+            variant="extended" 
+            color='success'
+            sx={{ backgroundColor: selected?.color, color: 'white' }}
+            onClick={() => setDropdown(true)}
+          >
+            <AddIcon sx={{ mr: 1 }} />
+            Add A Topic
+          </Fab>
       }
-    </div>
+    </Box>
   )
 }
 
