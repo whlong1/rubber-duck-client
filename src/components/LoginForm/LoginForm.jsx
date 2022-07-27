@@ -3,6 +3,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import styles from './LoginForm.module.css'
 import * as authService from '../../services/authService'
 
+import TextField from '@mui/material/TextField'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import InputAdornment from '@mui/material/InputAdornment'
+import EmailIcon from '@mui/icons-material/Email'
+import KeyIcon from '@mui/icons-material/Key';
+
 const LoginForm = props => {
   const [formData, setFormData] = useState({
     email: '',
@@ -32,34 +39,40 @@ const LoginForm = props => {
       onSubmit={handleSubmit}
       className={styles.container}
     >
-      <div className={styles.inputContainer}>
-        <label htmlFor="email" className={styles.label}>Email</label>
-        <input
+      <Box className={styles.inputContainer}>
+        <TextField
           type="text"
+          lalbel="Email"
           autoComplete="off"
           id="email"
           value={formData.email}
           name="email"
           onChange={handleChange}
+          InputProps={{
+            startAdornment: <InputAdornment position="start"><EmailIcon /></InputAdornment>,
+          }}
         />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
-        <input
+      </Box>
+      <Box className={styles.inputContainer}>
+        <TextField
           type="password"
+          label="Password"
           autoComplete="off"
           id="password"
           value={formData.pw}
           name="pw"
           onChange={handleChange}
+          InputProps={{
+            startAdornment: <InputAdornment position="start"><KeyIcon /></InputAdornment>,
+          }}
         />
-      </div>
-      <div>
-        <button className={styles.button}>Log In</button>
+      </Box>
+      <Box>
+        <Button className={styles.button}>Log In</Button>
         <Link to="/">
-          <button>Cancel</button>
+          <Button color="warning">Cancel</Button>
         </Link>
-      </div>
+      </Box>
     </form>
   )
 }
