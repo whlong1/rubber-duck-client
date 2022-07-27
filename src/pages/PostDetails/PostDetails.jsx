@@ -9,16 +9,6 @@ import Divider from '@mui/material/Divider'
 import DetailsTopMenu from './components/DetailsTopMenu'
 import UserCard from '../../components/UserCard/UserCard'
 
-const profileIconStyle = {
-  width: '36px',
-  height: '36px',
-  display: 'flex',
-  borderRadius: '50%',
-  alignItems: 'center',
-  justifyContent: 'center',
-  background: 'rgb(88, 88, 88)',
-}
-
 const PostDetails = () => {
   const { postId } = useParams()
   const [post, setPost] = useState()
@@ -29,7 +19,7 @@ const PostDetails = () => {
       setPost(postData)
     }
     fetchPosts()
-  }, [])
+  }, [postId])
 
   const handleVote = async (vote) => {
     await postService.castVote(postId, post.iterations[0]._id, vote)
@@ -38,9 +28,7 @@ const PostDetails = () => {
   console.log(post)
 
   if (!post) {
-    return (
-      <div>Holdon, we're just getting our ducks in a row...</div>
-    )
+    return <div>Holdon, we're just getting our ducks in a row...</div>
   }
 
 
