@@ -1,4 +1,4 @@
-const SideNav = ({ index, setIndex, iterations }) => {
+const SideNav = ({ setIndex, iterations }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       {iterations.map((iteration, idx) =>

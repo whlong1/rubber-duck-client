@@ -10,7 +10,7 @@ const IterationHandler = ({ iterations }) => {
 
   return (
     <div style={{display: 'flex'}}>
-      <SideNav index={index} setIndex={setIndex} iterations={iterations} />
+      <SideNav setIndex={setIndex} iterations={iterations} />
       <IterationDisplay iteration={selectedIteration}/>
       <VoteHandler />
     </div>

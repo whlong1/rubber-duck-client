@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom"
 import * as postService from '../../services/postService'
+import './PostDetails.css'
 
 // Components
 import IterationHandler  from './components/IterationHandler/IterationHandler'
