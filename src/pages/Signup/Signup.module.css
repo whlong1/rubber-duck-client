@@ -4,7 +4,7 @@
   flex-direction: column;
   background-color: black;
   height: 100vh;
-  overflow: hidden;
+  margin-top: -64px;
 }
 
 .signup {
