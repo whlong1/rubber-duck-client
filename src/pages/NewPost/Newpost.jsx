@@ -35,6 +35,8 @@ function NewPost() {
     category: 'Math'
   })
 
+  useEffect(() => setTopicForm({...topicForm, category: selected?.name || 'Math'}), [selected])
+
   const categories = [
     {name: 'Math', color:'#F75847', icon: <FunctionsIcon />},
     {name: 'Science', color:'#00B1C6', icon: <ScienceIcon />},
@@ -85,15 +87,17 @@ function NewPost() {
 
   return (
     <Box sx={{ padding: '2rem' }}>
-      <Box sx={{ padding: '2rem', display: 'flex' }}>
+      <Box sx={{ display: 'flex', justifyContent:'space-between' }}>
         <Box>
-          <Typography variant='h3' sx={{ fontFamily: "abril-display" }}>PICK CATEGORY</Typography>
+          <Typography variant='h3' sx={{ fontFamily: "abril-display" }}>
+            PICK CATEGORY
+          </Typography>
           <CategoryList
             categories={categories}
             setSelected={setSelected}
           />
         </Box>
-        <Box>
+        <Box sx={{ display: 'flex', alignItems: 'flex-end', paddingBottom: '1rem' }} >
         {dropdown
           ? <NewPostForm 
               topicForm={topicForm} 

@@ -1,3 +1,4 @@
+import {useEffect} from 'react'
 import TextField from '@mui/material/TextField'
 import Select from '@mui/material/Select'
 import Button from '@mui/material/Button'
@@ -10,16 +11,16 @@ const NewPostForm = ({ topicForm, submitTopic, setTopicForm, categories, setDrop
       <TextField 
         placeholder='Title' 
         name="title"
-        value={topicForm.title} 
+        value={topicForm.title ?? ''} 
         onChange={(e) => setTopicForm({ ...topicForm, title: e.target.value })} 
       />
       <Select
         name="category"
-        defaultValue={selected?.name || ''}
+        value={topicForm.category}
         sx={{ width: 120 }}
         onChange={(e) => setTopicForm({ ...topicForm, category: e.target.value })}>
         {categories.map((category, idx) => (
-          <MenuItem key={idx} value={category.name}>{category.name}</MenuItem>
+          <MenuItem key={idx} value={category.name ?? ''}>{category.name}</MenuItem>
         ))}
       </Select>
       <Button 
