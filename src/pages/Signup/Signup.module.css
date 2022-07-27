@@ -1,5 +1,19 @@
+body { 
+  overflow: hidden;
+}
+
 .container {
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-color: black;
+  height: 100vh;
+}
+
+.signup {
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  transform: rotate(-180deg);
+  font-size: 150px;
+  font-family: 'abril-display';
 }
