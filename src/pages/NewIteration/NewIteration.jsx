@@ -22,7 +22,7 @@ function NewIteration(props) {
     let charCode = e.keyCode || e.which
     return charCode === 8 || charCode === 46
   }
-  const characterLimit = 200
+  const characterLimit = 250
 
   const handleCheckText = (e, text) => {
     if(text.length > characterLimit && !isDeleteKey(e)) return
