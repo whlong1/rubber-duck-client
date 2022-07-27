@@ -5,10 +5,12 @@ import FormControl from '@mui/material/FormControl'
 import NativeSelect from '@mui/material/NativeSelect'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 
+import { useNavigate } from 'react-router-dom'
 
-const PostTopMenu = ({ postTitles, topic, setSort, handleNewPost }) => {
+const PostTopMenu = ({ topic, setSort }) => {
+  const navigate = useNavigate()
   return (
     <Box
       style={{
@@ -54,19 +56,10 @@ const PostTopMenu = ({ postTitles, topic, setSort, handleNewPost }) => {
             </NativeSelect>
           </FormControl>
         </Box>
-        {/* <Autocomplete
-          id="post-search"
-          freeSolo
-          options={postTitles?.map((option) => option)}
-          renderInput={(params) => <TextField {...params} label="Search input" />}
-          disablePortal
-          size='small'
-          sx={{ width: 200, minWidth: 146 }}
-        /> */}
-        <Button 
-          variant="contained" sx={{ height: 40, minWidth: 120 }} 
+        <Button
+          variant="contained" sx={{ height: 40, minWidth: 120 }}
           endIcon={<AddCircleOutlineIcon />}
-          onClick={handleNewPost}
+          onClick={() => navigate('/posts/new')}
         >
           New Post
         </Button>
