@@ -11,7 +11,7 @@ const StyledRating = styled(Rating)(ratingOptions)
 const IterationDisplay = ({ iteration }) => {
   const { rating, text, createdAt } = iteration
   return (
-    <div>
+    <div className='iteration-display'>
       <StyledRating
         readOnly
         max={4}
@@ -23,7 +23,7 @@ const IterationDisplay = ({ iteration }) => {
         emptyIcon={< SvgIcon fontSize='inherit'> <Diamond /> </SvgIcon>}
       />
       <p className='iteration-text'>{iteration.text}</p>
-      <p>{iteration.createdAt.slice(0, 10)}</p>
+      <p className='iteration-date'>{iteration.createdAt.slice(0, 10)}</p>
     </div>
   )
 }

@@ -1,7 +1,22 @@
+.iteration-display {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .iteration-text {
   font-weight: 400;
   font-size: 22px;
   font-style: normal;
   text-align: justify;
   font-family: abril-display, serif;
+}
+
+.iteration-date {
+  margin: 0;
+  opacity: .4;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  font-family: realistnarrow, sans-serif;
 }
