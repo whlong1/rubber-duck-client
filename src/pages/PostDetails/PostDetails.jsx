@@ -25,9 +25,6 @@ const PostDetails = (props) => {
     await postService.castVote(postId, post.iterations[0]._id, vote)
   }
 
-  console.log(post);
-  
-  console.log(post);
   return (  
     <>
       <h1>Post details</h1>
