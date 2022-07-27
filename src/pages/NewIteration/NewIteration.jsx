@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import LinearProgress from '@mui/material/LinearProgress'
 
 // Components
 import PostForm from './/components/PostForm/PostForm'
@@ -15,6 +17,17 @@ function NewIteration(props) {
   const [topic, setTopic] = useState()
   const [text, setText] = useState('')
   const [keywords, setKeywords] = useState([])
+
+  function isDeleteKey(e){
+    let charCode = e.keyCode || e.which
+    return charCode === 8 || charCode === 46
+  }
+  const characterLimit = 200
+
+  const handleCheckText = (e, text) => {
+    if(text.length > characterLimit && !isDeleteKey(e)) return
+    setText(text)
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -32,11 +45,26 @@ function NewIteration(props) {
   }, [topicId, postId])
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <h3>{topic?.category}</h3>
-      <h1>{topic?.title}</h1>
-      <PostForm text={text} setText={setText} handleSubmit={handleSubmit} />
-      <Analysis text={text} keywords={keywords} />
+    <Box sx={{ padding: '1rem' }}>
+      <Typography 
+        sx={{ fontFamily: 'abril-display'}}
+        variant='h5'
+      >
+        {topic?.category}
+      </Typography>
+      <Typography variant="h2">
+        {topic?.title}
+      </Typography>
+      <Box sx={{ width: '100%', display: 'flex', alignItems: 'center' }}>
+        <PostForm 
+          text={text} 
+          setText={setText} 
+          handleSubmit={handleSubmit}
+          characterLimit={characterLimit}
+          handleCheckText={handleCheckText}
+        />
+        <Analysis text={text} keywords={keywords} />
+      </Box>
     </Box>
   )
 }
