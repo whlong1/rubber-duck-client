@@ -1,0 +1,20 @@
+.author {
+  margin: 0;
+  opacity: .75;
+  font-weight: 600;
+  font-style: normal;
+  font-family: realistnarrow, sans-serif;
+}
+
+.occupation {
+  margin: 0;
+  opacity: .4;
+  font-weight: 600;
+  font-style: normal;
+  font-family: realistnarrow, sans-serif;
+}
+
+.profile-pic {
+  background-color: rgb(88, 88, 88);
+  border-radius: .5;
+}
