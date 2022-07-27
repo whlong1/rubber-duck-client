@@ -98,6 +98,7 @@ const SignupForm = props => {
         Occupation: 
         </label>
         <input
+          autoComplete='off'
           type="text"
           id="occupation"
           name="occupation"
@@ -109,6 +110,7 @@ const SignupForm = props => {
         Date of Birth: 
         </label>
         <input
+          autoComplete='off'
           type="date"
           id="dob"
           name="dob"
@@ -120,6 +122,7 @@ const SignupForm = props => {
         Postal Zip Code: 
         </label>
         <input
+          autoComplete='off'
           type="number"
           id="zip"
           name="zip"
@@ -131,6 +134,7 @@ const SignupForm = props => {
         Education: 
         </label>
         <input
+          autoComplete='off'
           type="text"
           id="education"
           name="education"
