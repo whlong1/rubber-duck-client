@@ -1,8 +1,10 @@
-.container {  display: flex;
+.container {  
+  display: flex;
   align-items: center;
   flex-direction: column;
   background-color: black;
   height: 100vh;
+  overflow: hidden;
 }
 
 .signup {
