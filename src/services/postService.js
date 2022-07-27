@@ -1,9 +1,7 @@
 import * as tokenService from '../services/tokenService'
-
 const BASE_URL = `${process.env.REACT_APP_BACK_END_SERVER_URL}/api/posts`
 
 const create = async (post) => {
-  // this service function requires a topicId in submitted formData
   try {
     const res = await fetch(BASE_URL, {
       method: "POST",
@@ -21,14 +19,8 @@ const create = async (post) => {
 }
 
 const index = async (page, sort, search) => {
-  // NOTE search will only allow a user to filter posts by topic id
-
-  // sort values: 'recent' or 'popular'
-  // search value: topic._id
-
   try {
     const path = `${BASE_URL}?page=${page}&&sort=${sort}&&search=${search}`
-    console.log(path)
     const res = await fetch(path, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` }
     })
@@ -40,7 +32,6 @@ const index = async (page, sort, search) => {
 }
 
 const show = async (id) => {
-  // returns post, all iterations, and associated comments with each iteration
   try {
     const res = await fetch(`${BASE_URL}/${id}`, {
       headers: {
@@ -55,8 +46,6 @@ const show = async (id) => {
 }
 
 const incrementViews = async (id) => {
-  // Call within Postdetails component after X seconds
-  // only returns an ok message, state will need to be updated
   try {
     const res = await fetch(`${BASE_URL}/${id}/views`, {
       method: "PATCH",
@@ -133,9 +122,6 @@ const createIteration = async (postId, iteration) => {
 }
 
 const castVote = async (postId, iterationId, vote) => {
-  // controller expects the following:
-  // req.body.vote: 1    OR    req.body.vote: -1
-  // controller responds with updated iteration object
   try {
     const path = `${BASE_URL}/${postId}/iterations/${iterationId}/votes`
     const res = await fetch(path, {
@@ -154,7 +140,6 @@ const castVote = async (postId, iterationId, vote) => {
 }
 
 const undoVote = async (postId, iterationId) => {
-  // controller returns updated iteration
   try {
     const path = `${BASE_URL}/${postId}/iterations/${iterationId}/votes`
     const res = await fetch(path, {

@@ -16,9 +16,6 @@ const show = async (id) => {
 }
 
 const follow = async (id) => {
-  // follower is found through req.user.profile
-  // followee is found through req.params.id
-  // response: msg: `You are now following ${followee.name}.`
   try {
     const res = await fetch(`${BASE_URL}/${id}`, {
       method: "POST",
@@ -34,9 +31,6 @@ const follow = async (id) => {
 }
 
 const unfollow = async (id) => {
-  // follower is found through req.user.profile
-  // followee is found through req.params.id
-  // response: msg: `You are no longer following ${followee.name}.`
   try {
     const res = await fetch(`${BASE_URL}/${id}`, {
       method: "DELETE",
