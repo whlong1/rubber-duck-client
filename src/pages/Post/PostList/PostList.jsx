@@ -32,10 +32,6 @@ const PostList = ({ user }) => {
 
   const [loading, setLoading] = useState(true)
 
-  const handleNewPost = () => {
-    console.log('in new post');
-  }
-
   const postList = posts?.map((post) => (
     post.iterations.length ?
       <Post
@@ -54,7 +50,7 @@ const PostList = ({ user }) => {
       alignItems: 'center',
       margin: '3rem'
     }}>
-      <PostTopMenu topic={topic} setSort={setSort} handleNewPost={handleNewPost} />
+      <PostTopMenu topic={topic} setSort={setSort} />
       <Divider textAlign="left" sx={{ color: 'primary', width: '100%', margin: '1rem', visibility: { xs: 'hidden', md: 'visible' } }}><TungstenIcon color="primary" /></Divider>
       <PaginatedList loading={loading} setLoading={setLoading} postList={postList} page={page} setPage={setPage} />
     </Box>
