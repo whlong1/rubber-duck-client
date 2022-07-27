@@ -68,6 +68,7 @@ const SignupForm = props => {
           <TextField
             variant="filled"
             fullWidth
+            required
             type="text"
             label='Name'
             autoComplete="off"
@@ -81,6 +82,7 @@ const SignupForm = props => {
           <TextField
             variant="filled"
             fullWidth
+            required
             type="text"
             label="Email"
             autoComplete="off"
@@ -98,6 +100,7 @@ const SignupForm = props => {
               name='password'
               type={showPassword ? 'text' : 'password'}
               value={password}
+              required
               onChange={handleChange}
               endAdornment={
                 <InputAdornment position="end">
@@ -123,6 +126,7 @@ const SignupForm = props => {
               name='passwordConf'
               type={showConfPassword ? 'text' : 'password'}
               value={passwordConf}
+              required
               onChange={handleChange}
               endAdornment={
                 <InputAdornment position="end">
@@ -143,6 +147,7 @@ const SignupForm = props => {
         <Box className={styles.inputContainer}>
           <TextField
             fullWidth
+            required
             variant="filled"
             label="Occupation"
             type="text"
@@ -154,6 +159,7 @@ const SignupForm = props => {
         <Box className={styles.inputContainer}>
           <TextField
             fullWidth
+            required
             variant="filled"
             helperText="Date of Birth (MM/DD/YY)"
             type="date"
@@ -165,6 +171,7 @@ const SignupForm = props => {
         <Box className={styles.inputContainer}>
           <TextField
             fullWidth
+            required
             variant="filled"
             label="Postal Zip Code"
             type="number"
