@@ -61,7 +61,7 @@ function NewPost() {
     if (newTopic.msg) {
       setMsg(newTopic.msg)
     } else {
-      setSelected()
+      setSelected({ ...selected })
       setTopics([])
       setTopicForm({ title: '', category: 'Math' })
       setDropdown(false)
@@ -90,7 +90,7 @@ function NewPost() {
       <Box sx={{ display: 'flex', justifyContent:'space-between' }}>
         <Box>
           <Typography variant='h3' sx={{ fontFamily: "abril-display" }}>
-            PICK CATEGORY
+            Select Category
           </Typography>
           <CategoryList
             categories={categories}

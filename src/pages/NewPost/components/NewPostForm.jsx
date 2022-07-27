@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem'
 
 const NewPostForm = ({ topicForm, submitTopic, setTopicForm, categories, setDropdown, selected }) => {
   return ( 
-    <form onSubmit={submitTopic}>
+    <form onSubmit={(e) => submitTopic(e, selected)}>
       <h3>Enter your new topic</h3>
       <TextField 
         placeholder='Title' 
@@ -26,7 +26,6 @@ const NewPostForm = ({ topicForm, submitTopic, setTopicForm, categories, setDrop
       <Button 
         disabled={!topicForm.title} 
         type='submit' 
-        onClick={submitTopic}
       >
         Submit
       </Button>
