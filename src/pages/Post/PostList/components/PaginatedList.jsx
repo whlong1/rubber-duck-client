@@ -35,7 +35,6 @@ const PaginatedList = ({ loading, setLoading, postList, page, setPage }) => {
             : postList
           }
         </Box>
-        <Button onClick={() => setLoading(!loading)}> Toggle Loading </Button>
         <Pagination 
           count={page + 1}
           onChange={(e) => setPage(e.target.value)}
