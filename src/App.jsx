@@ -25,7 +25,6 @@ const App = () => {
 
   const handleLogout = (link) => {
     if (link !== '') return
-    console.log('logging out!')
     authService.logout()
     setUser(null)
     navigate('/')
