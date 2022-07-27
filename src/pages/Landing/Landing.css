@@ -12,21 +12,27 @@
 .splash-container {
   width: 100%;
   display: flex;
-  min-height: 100vh;
+  min-height: 95vh;
+  flex-direction: column;
+  background-color: #101013;
+}
+
+.splash-content {
+  width: 100%;
+  display: flex;
+  min-height: 80vh;
+  padding-top: 140px;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  background-color: #101013;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
-.splash-container h1 {
+.splash-content h1 {
   font-size: 95px;
   margin-top: 35px;
 }
 
-.splash-container img {
+.splash-content img {
   height: 95px;
 }
 

@@ -1,22 +1,34 @@
-import'./Landing.css'
-// import logo from '../../assets/rubberDuckLogo.png'
+import './Landing.css'
 import logo from '../../assets/logo-icon.svg'
 import feynman from '../../assets/feynman.png'
 import rectangle from '../../assets/yellowRectangle.png'
 
-import Arrow from './Arrow'
+
+import Lottie from "lottie-react"
+import arrow from '../../assets/arrow-anim.json'
+
+
+const style = {
+  height: 150,
+}
 
 const Landing = ({ user }) => {
   return (
     <div className='container'>
-      <div className='splash-container'>
-        <img src={logo} alt='logo' />
-        <h1 className='logoTitle'>Rubber Duck</h1>
-      </div>
-      <Arrow/>
 
-      {/* <div className={styles.logoH1}>
-        <img src={rectangle} alt="rectangle" style={{ height: 30, width: 70 }} />
+      <div className='splash-container'>
+        <div className='splash-content'>
+          <img src={logo} alt='logo' />
+          <h1 className='logoTitle'>Rubber Duck</h1>
+        </div>
+        <Lottie animationData={arrow} loop={true} style={style} />
+      </div>
+
+
+
+      <div>
+        <h1 className='WTFduck'>What the $%!# is Rubber Duck? </h1>
+        {/* <img src={rectangle} alt="rectangle" style={{ height: 30, width: 70 }} />
         <h1 className={styles.WTFduck}>What the $%!# is Rubber Duck? </h1>
         <div className={styles.flex}>
           <div className={styles.feynmanText}>
@@ -36,12 +48,12 @@ const Landing = ({ user }) => {
             </p>
           </div>
         </div>
-        <div className={styles.whitespace}></div>
+        <div className={styles.whitespace}></div> */}
       </div>
 
 
 
-      <div className={styles.flex}>
+      {/* <div className={styles.flex}>
         <img src={feynman} alt='feynman' style={{ width: 250, height: 250, borderRadius: 400 / 2, margin: 40 }} />
         <div className={styles.feynmanText}>
           <h1><img src={rectangle} alt="rectangle" style={{ height: 50, width: 20 }} />The Feynman Technique</h1>
