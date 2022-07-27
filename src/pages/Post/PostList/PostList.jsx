@@ -57,7 +57,7 @@ const PostList = ({ user }) => {
     }}>
       <PostTopMenu topic={topic} setSort={setSort} handleNewPost={handleNewPost} />
       <Divider textAlign="left" sx={{ color: 'primary', width: '100%', margin: '1rem', visibility: { xs: 'hidden', md: 'visible' } }}><TungstenIcon color="primary" /></Divider>
-      <PaginatedList loading={loading} setLoading={setLoading} postList={postList} />
+      <PaginatedList loading={loading} setLoading={setLoading} postList={postList} page={page} setPage={setPage} />
     </Box>
   );
 }
