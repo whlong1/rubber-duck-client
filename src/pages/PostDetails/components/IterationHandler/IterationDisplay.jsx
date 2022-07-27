@@ -23,7 +23,7 @@ const IterationDisplay = ({ iteration }) => {
         emptyIcon={< SvgIcon fontSize='inherit'> <Diamond /> </SvgIcon>}
       />
       <p className='iteration-text'>{iteration.text}</p>
-      <p className='iteration-date'>{iteration.createdAt.slice(0, 10)}</p>
+      <p className='iteration-date'>{iteration.createdAt?.slice(0, 10)}</p>
     </div>
   )
 }

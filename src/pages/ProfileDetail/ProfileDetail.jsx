@@ -8,6 +8,8 @@ const ProfileDetail = ({ user }) => {
   const [profile, setProfile] = useState()
   const [followers, setFollowers] = useState([])
 
+  console.log(profile, user.profile)
+
   useEffect(() => {
     const fetchProfile = async () => {
       const profileData = await profileService.show(profileId)
