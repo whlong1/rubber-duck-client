@@ -2,6 +2,23 @@ import { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom"
 import * as postService from '../../services/postService'
 
+
+import Box from '@mui/material/Box'
+import Divider from '@mui/material/Divider'
+
+import DetailsTopMenu from './components/DetailsTopMenu'
+import UserCard from '../../components/UserCard/UserCard'
+
+const profileIconStyle = {
+  width: '36px',
+  height: '36px',
+  display: 'flex',
+  borderRadius: '50%',
+  alignItems: 'center',
+  justifyContent: 'center',
+  background: 'rgb(88, 88, 88)',
+}
+
 const PostDetails = () => {
   const { postId } = useParams()
   const [post, setPost] = useState()
@@ -30,18 +47,20 @@ const PostDetails = () => {
   return (
     post &&
     <>
-      <h1>DETAILS</h1>
-      <h1>Post details</h1>
-      {post.topic.title}
-      {post.topic.category}
-      {post.author.name}
-      {post.author.occupation}
+      <Box style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: '3rem' }}>
+        <DetailsTopMenu topic={post.topic} />
+        <Divider textAlign="left" sx={{ color: 'primary', width: '100%', margin: '1rem', visibility: { xs: 'hidden', md: 'visible' } }}></Divider>
+      </Box>
+
+      <UserCard author={post.author} />
+
       {post.iterations?.map((iteration) =>
         <div key={iteration._id}>
           <ul>{iteration.text}</ul>
           <ul>{iteration.createdAt}</ul>
         </div>
       )}
+
       <button onClick={() => handleVote(1)}>UpVote</button>
       <button onClick={() => handleVote(-1)}>DownVote</button>
     </>
