@@ -21,13 +21,10 @@ const NavBar = ({ user, handleLogout }) => {
   const pages = [
     {name: 'Browse', link: '/browse'}, 
     {name: 'New Posts', link: '/posts/new'}, 
-    
   ]
   const logOutSettings = [
     {name: 'Profile', link:`/profiles/${user?.profile}`},
     {name: 'Logout', link: ''},
-    {name: 'Change Password', link:'/changePassword'},
-    
   ]
   const logInSettings = [
     {name: 'Login', link: '/login'},
