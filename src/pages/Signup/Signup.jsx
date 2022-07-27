@@ -13,7 +13,7 @@ const VerticalTypography = styled(Typography)(() => ({
   fontSize: '150px',
   fontFamily: 'abril-display',
   marginLeft: '-20px',
-  marginBottom: '0'
+  marginBottom: '-120px'
 }))
 
 const Signup = props => {
@@ -32,6 +32,7 @@ const Signup = props => {
           alignItems:'center', 
           width: {md: '50%', sm: '100%', xs: '100%'},
           height: '100%',
+          marginTop: '64px',
           backgroundColor:'#3c3c3c'
         }}>
         <VerticalTypography sx={{ fontSize: {lg: '150px', md: '100px', sm: '45px', xs: '0px'} }}>Signup</VerticalTypography>
@@ -41,7 +42,7 @@ const Signup = props => {
         <Box sx={{ 
           display: {md: 'flex', sm: 'none', xs: 'none'}, 
           justifyContent: 'center', 
-          alignItems: 'center', 
+          alignItems: 'center',
           width: {md: '50%', sm: '0%', xs: '0%' }
         }}>
           <img src={logo} alt='logo' />

@@ -42,6 +42,7 @@ const LoginForm = props => {
       <Box className={styles.inputContainer}>
         <TextField
           fullWidth
+          required
           type="text"
           label="Email"
           autoComplete="off"
@@ -57,6 +58,7 @@ const LoginForm = props => {
       <Box className={styles.inputContainer}>
         <TextField
           fullWidth
+          required
           type="password"
           label="Password"
           autoComplete="off"
