@@ -1,4 +1,5 @@
 import * as profileService from '../../../services/profileService'
+import Button from '@mui/material/Button'
 
 const Followers = ({ user, followers, setFollowers, profileId }) => {
 
@@ -15,11 +16,12 @@ const Followers = ({ user, followers, setFollowers, profileId }) => {
   }
 
   return (
+    user.profile !== profileId &&
     <>
       {followers.map((f) => f._id).includes(user.profile) ?
-        <button onClick={removeFollower}>Unfollow</button>
+        <Button variant="outlined" onClick={removeFollower}>Unfollow</Button>
         :
-        <button onClick={addFollower}>Follow User</button>
+        <Button variant="contained" onClick={addFollower}>Follow User</Button>
       }
     </>
   )

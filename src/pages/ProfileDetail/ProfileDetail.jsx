@@ -2,6 +2,19 @@ import { useState, useEffect } from 'react'
 import * as profileService from '../../services/profileService'
 import { useParams } from 'react-router-dom'
 import Followers from './components/Followers'
+import UserCard from '../../components/UserCard/UserCard'
+import Stack from '@mui/material/Stack'
+import Box from '@mui/material/Box'
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import EmailIcon from '@mui/icons-material/Email';
+import WorkIcon from '@mui/icons-material/Work';
+import SchoolIcon from '@mui/icons-material/School';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Divider from '@mui/material/Divider'
+import { StyledCard, CenteredBox } from '../../pages/Browse/components/mui/StyledComponents'
 
 const ProfileDetail = ({ user }) => {
   const { profileId } = useParams()
@@ -21,36 +34,109 @@ const ProfileDetail = ({ user }) => {
 
   return (
     profile &&
-    <>
+    <CenteredBox sx={{ flexDirection: 'column' }}>
       <h1 style={{ color: 'white' }}>
-        Hello. This is {profile._id === user.profile ? 'my profile.' : `${profile.name}'s profile.`}
+        Hello. This is {profile._id === user.profile ? 'your profile.' : `${profile.name}'s profile.`}
       </h1>
       Followers:
-      {followers.map(follower =>
-        <ul key={follower._id}>{follower.name}</ul>
-      )}
+      <Stack 
+        spacing={2} 
+        direction='row' 
+        sx={{ marginBottom: '2rem' }}
+        divider={<Divider orientation="vertical" flexItem />}
+      >
+        {followers.map(follower =>
+          <UserCard author={follower} key={follower._id}/>
+        )}
+      </Stack>
       Following:
-      {following.map(follower =>
-        <ul key={follower._id}>{follower.name}</ul>
-      )}
+      <Stack 
+        spacing={2} 
+        divider={<Divider orientation="vertical" flexItem />} 
+        direction='row' 
+        sx={{ marginBottom: '2rem' }} 
+      >
+        {following.map(follower =>
+          <UserCard author={follower} key={follower._id} />
+        )}
+      </Stack>
       Interests:
-      {profile.interests?.map((interest) =>
-        <ul key={interest._id}>{interest.name}</ul>
-      )}
-      Occupation: {profile.occupation}
-      Email: {profile.email}
-      Education: {profile.education}
-      Zip: {profile.zip}
-      Bookmarks:
-      {profile.bookmarks?.map(bookmark =>
-        <ul key={bookmark._id}>{bookmark}</ul>
-      )}
-      Date of Birth: {profile.dob}<br />
-      Posts: {profile.posts?.map(post =>
-        <ul key={post._id}>{post.name}</ul>
-      )}
-      <Followers user={user} followers={followers} setFollowers={setFollowers} myFollowers={profile.followers} profileId={profileId} />
-    </>
+      <Stack spacing={2} direction='row'>
+        {profile.interests?.map((interest) =>
+          <StyledCard key={interest._id}>{interest.name}</StyledCard>
+        )}
+      </Stack>
+      <Box sx={{ marginBottom: '2rem' }}>
+        <List 
+          sx={{
+          maxWidth: '600px',
+          padding: '2rem',
+          borderTopRightRadius: '4%',
+          borderTopLeftRadius: '1%',
+          borderBottomLeftRadius: '4%',
+          borderBottomRightRadius: '1%',
+          bgcolor: 'background.paper'
+          }}
+          elevation={10}
+          aria-label="details"
+        >
+          <ListItem disablePadding>
+            <ListItemIcon>
+              <WorkIcon />
+            </ListItemIcon>
+            <ListItemText primary={`Occupation: ${profile.occupation}`} />
+          </ListItem>
+          <Divider />
+          <ListItem disablePadding>
+            <ListItemIcon>
+              <EmailIcon />
+            </ListItemIcon>
+            <ListItemText primary={`Email: ${profile.email}`} />
+          </ListItem>
+          {profile.education && 
+          <>
+            <Divider />
+            <ListItem disablePadding>
+              <ListItemIcon>
+                <SchoolIcon />
+              </ListItemIcon>
+              <ListItemText primary={`Education: ${profile.education}`} />
+            </ListItem>
+          </>
+          }
+          <Divider />
+          <ListItem disablePadding>
+            <ListItemIcon>
+              <LocationOnIcon />
+            </ListItemIcon>
+            <ListItemText primary={`Zip: ${profile.zip}`} />
+          </ListItem>
+          <Divider />
+          <ListItem disablePadding>
+            <ListItemIcon>
+              <LocationOnIcon />
+            </ListItemIcon>
+            <ListItemText primary={`Date of Birth: ${profile.dob.slice(0, 10)}`} />
+          </ListItem>
+        </List>
+      </Box>
+      {/* Code to implement User Posts */}
+      {/* <CenteredBox sx={{ marginTop: '1rem', flexDirection: 'column' }}>
+        Posts:
+        <Stack spacing={1} direction='row' sx={{ flexWrap: 'wrap', margin: '2rem 0 2rem 0' }}>
+          {profile.posts?.map((post) =>
+            <StyledCard key={post._id}>{post.topic.title}</StyledCard>
+          )}
+        </Stack>
+      </CenteredBox> */}
+      <Followers 
+        user={user} 
+        followers={followers} 
+        setFollowers={setFollowers} 
+        myFollowers={profile.followers} 
+        profileId={profileId} 
+      />
+    </CenteredBox>
   )
 }
 
