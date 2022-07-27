@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import duckLogo from '../../assets/rubberDuckLogo.png'
+// import duckLogo from '../../assets/rubberDuckLogo.png'
+import logo from '../../assets/logo-icon.svg'
 import MenuIcon from '@mui/icons-material/Menu'
 
 import AppBar from '@mui/material/AppBar'
@@ -50,12 +51,12 @@ const NavBar = ({ user, handleLogout }) => {
   return (
     user ? 
     <>
-     <AppBar position="relative" style={{ backgroundColor: '#121212' }}>
+     <AppBar position="relative" style={{ backgroundColor: '#121212', padding: '0px 20px 0px 20px' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }} style={{ marginRight: '1rem'}} >
             <img 
-              src={duckLogo} 
+              src={logo} 
               height='50px' 
               alt='rubber duck' 
               sx={{ display: { xs: 'flex', md: 'none' } }} 
@@ -155,7 +156,7 @@ const NavBar = ({ user, handleLogout }) => {
         <Toolbar disableGutters>
       <Box style={{ marginRight: '1rem'}} >
           <img 
-            src={duckLogo} 
+            src={logo} 
             height='50px' 
             alt='rubber duck' 
             sx={{ display: { xs: 'flex', md: 'none' } }} 
