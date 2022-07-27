@@ -2,6 +2,7 @@ import styles from './Landing.module.css'
 import logo from '../../assets/rubberDuckLogo.png'
 import feynman from '../../assets/feynman.png'
 import rectangle from '../../assets/yellowRectangle.png'
+import DuckAnimation from '../../components/DuckAnimation/DuckAnimation'
 
 const Landing = ({ user }) => {
   return (
@@ -9,6 +10,7 @@ const Landing = ({ user }) => {
       <div className={styles.bodyContainer}>
         <img src={logo} alt='logo' />
         <h1 className={styles.logoH1}>Rubber Duck</h1>
+        <DuckAnimation/>
       </div>
 
       <div className={styles.logoH1}>
