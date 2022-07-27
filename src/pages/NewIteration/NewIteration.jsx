@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
 
 // Components
 import PostForm from './/components/PostForm/PostForm'
@@ -50,7 +51,7 @@ function NewIteration(props) {
   }, [topicId, postId])
 
   return (
-    <Box sx={{ padding: '1rem' }}>
+    <Box sx={{ padding: '1.5rem' }}>
       <Typography 
         variant='h5'
       >
@@ -59,7 +60,8 @@ function NewIteration(props) {
       <Typography variant="h2" sx={{ fontFamily: 'abril-display'}}>
         {topic?.title}
       </Typography>
-      <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', height: '298px', marginTop: '5rem' }}>
+      <Divider sx={{ marginTop: '1rem' }} />
+      <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '298px', marginTop: '5rem' }}>
         <PostForm 
           text={text} 
           setText={setText} 

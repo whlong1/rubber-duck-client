@@ -24,7 +24,7 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
   }, [text])
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start', height: '100%'}}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start', height: '100%', maxWidth: '500px'}}>
       {tips.map((obj, idx) => (
         <Box sx={{ display: 'flex', alignItems: "center", marginBottom: '5px'}} key={idx}>
           <Fade in={true} timeout={1000}>
@@ -63,13 +63,13 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
         {keywords.map((word, idx) => (
             <Chip 
               key={idx} 
-              label={word} 
-              style={{ color: '#e36350' }}
+              label={word}
+              variant='outlined'
+              color='success'
               onClick={() => handleClickSuggestion(word)}
             />
         ))}
       </Box>
-      <p>{wordCount}</p>
     </Box>
   )
 }
