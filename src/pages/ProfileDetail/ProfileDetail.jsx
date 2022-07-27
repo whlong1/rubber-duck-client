@@ -13,7 +13,8 @@ import EmailIcon from '@mui/icons-material/Email';
 import WorkIcon from '@mui/icons-material/Work';
 import SchoolIcon from '@mui/icons-material/School';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { StyledCard } from '../../pages/Browse/components/mui/StyledComponents'
+import Divider from '@mui/material/Divider'
+import { StyledCard, CenteredBox } from '../../pages/Browse/components/mui/StyledComponents'
 
 const ProfileDetail = ({ user }) => {
   const { profileId } = useParams()
@@ -33,7 +34,7 @@ const ProfileDetail = ({ user }) => {
 
   return (
     profile &&
-    <>
+    <CenteredBox sx={{ flexDirection: 'column' }}>
       <h1 style={{ color: 'white' }}>
         Hello. This is {profile._id === user.profile ? 'your profile.' : `${profile.name}'s profile.`}
       </h1>
@@ -58,9 +59,15 @@ const ProfileDetail = ({ user }) => {
       <Box>
         <List 
           sx={{
-          maxWidth: '500px',
+          maxWidth: '600px',
+          padding: '2rem',
+          borderTopRightRadius: '4%',
+          borderTopLeftRadius: '1%',
+          borderBottomLeftRadius: '4%',
+          borderBottomRightRadius: '1%',
           bgcolor: 'background.paper'
           }}
+          elevation={10}
           aria-label="details"
         >
           <ListItem disablePadding>
@@ -69,6 +76,7 @@ const ProfileDetail = ({ user }) => {
             </ListItemIcon>
             <ListItemText primary={`Occupation: ${profile.occupation}`} />
           </ListItem>
+          <Divider />
           <ListItem disablePadding>
             <ListItemIcon>
               <EmailIcon />
@@ -76,19 +84,24 @@ const ProfileDetail = ({ user }) => {
             <ListItemText primary={`Email: ${profile.email}`} />
           </ListItem>
           {profile.education && 
-          <ListItem disablePadding>
-            <ListItemIcon>
-              <SchoolIcon />
-            </ListItemIcon>
-            <ListItemText primary={`Education: ${profile.education}`} />
-          </ListItem>
+          <>
+            <Divider />
+            <ListItem disablePadding>
+              <ListItemIcon>
+                <SchoolIcon />
+              </ListItemIcon>
+              <ListItemText primary={`Education: ${profile.education}`} />
+            </ListItem>
+          </>
           }
+          <Divider />
           <ListItem disablePadding>
             <ListItemIcon>
               <LocationOnIcon />
             </ListItemIcon>
             <ListItemText primary={`Zip: ${profile.zip}`} />
           </ListItem>
+          <Divider />
           <ListItem disablePadding>
             <ListItemIcon>
               <LocationOnIcon />
@@ -98,14 +111,13 @@ const ProfileDetail = ({ user }) => {
         </List>
       </Box>
 
-        Bookmarks:
-        {profile.bookmarks?.map(bookmark =>
-          <ul key={bookmark._id}>{bookmark}</ul>
+      Posts:
+      <Stack spacing={1} direction='row' sx={{ flexWrap: 'wrap'}}>
+        {profile.posts?.map((post) =>
+          <StyledCard key={post._id}>{post.name}</StyledCard>
         )}
+      </Stack>
 
-      Posts: {profile.posts?.map(post =>
-        <ul key={post._id}>{post.name}</ul>
-      )}
       <Followers 
         user={user} 
         followers={followers} 
@@ -113,7 +125,8 @@ const ProfileDetail = ({ user }) => {
         myFollowers={profile.followers} 
         profileId={profileId} 
       />
-    </>
+      
+    </CenteredBox>
   )
 }
 

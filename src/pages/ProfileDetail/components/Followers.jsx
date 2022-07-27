@@ -15,6 +15,7 @@ const Followers = ({ user, followers, setFollowers, profileId }) => {
   }
 
   return (
+    user.profile !== profileId &&
     <>
       {followers.map((f) => f._id).includes(user.profile) ?
         <button onClick={removeFollower}>Unfollow</button>
