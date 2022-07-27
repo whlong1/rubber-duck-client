@@ -67,7 +67,14 @@ const Post = ({ user, post }) => {
             {text}
           </Typography>
         </CardContent>
-        <Typography>
+        <Typography
+          style={{
+            width: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '75px', opacity: '.5'
+          }}>
           08/07/22
         </Typography>
       </Card>
