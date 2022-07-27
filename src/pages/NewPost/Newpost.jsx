@@ -85,11 +85,37 @@ function NewPost() {
 
   return (
     <Box sx={{ padding: '2rem' }}>
-      <Typography variant='h3' sx={{ fontFamily: "abril-display" }}>PICK CATEGORY</Typography>
-      <CategoryList
-        categories={categories}
-        setSelected={setSelected}
-      />
+      <Box sx={{ padding: '2rem', display: 'flex' }}>
+        <Box>
+          <Typography variant='h3' sx={{ fontFamily: "abril-display" }}>PICK CATEGORY</Typography>
+          <CategoryList
+            categories={categories}
+            setSelected={setSelected}
+          />
+        </Box>
+        <Box>
+        {dropdown
+          ? <NewPostForm 
+              topicForm={topicForm} 
+              submitTopic={submitTopic} 
+              setTopicForm={setTopicForm} 
+              categories={categories}
+              setDropdown={setDropdown} 
+              selected={selected} 
+            />
+          : 
+            <Fab 
+              variant="extended" 
+              color='success'
+              sx={{ backgroundColor: selected?.color, color: 'white' }}
+              onClick={() => setDropdown(true)}
+            >
+              <AddIcon sx={{ mr: 1 }} />
+              Add A Topic
+            </Fab>
+        }
+        </Box>
+      </Box>
       <Divider />
       <h3>PICK A TOPIC TO WRITE ABOUT</h3>
       <StyledBox>
@@ -105,26 +131,6 @@ function NewPost() {
       ))}
       </StyledBox>
       <Button disabled={!topic} onClick={handleSubmit}>Confirm</Button>
-      {dropdown
-        ? <NewPostForm 
-            topicForm={topicForm} 
-            submitTopic={submitTopic} 
-            setTopicForm={setTopicForm} 
-            categories={categories}
-            setDropdown={setDropdown} 
-            selected={selected} 
-          />
-        : 
-          <Fab 
-            variant="extended" 
-            color='success'
-            sx={{ backgroundColor: selected?.color, color: 'white' }}
-            onClick={() => setDropdown(true)}
-          >
-            <AddIcon sx={{ mr: 1 }} />
-            Add A Topic
-          </Fab>
-      }
     </Box>
   )
 }
