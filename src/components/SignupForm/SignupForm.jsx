@@ -8,7 +8,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
-import OutlinedInput from '@mui/material/OutlinedInput'
+import FilledInput from '@mui/material/FilledInput'
 import Paper from '@mui/material/Paper'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
@@ -60,10 +60,6 @@ const SignupForm = props => {
   }
 
   return (
-    <Paper 
-      sx={{ width: '600px', height: '700px', paddingTop: '2rem', backgroundColor: '#000000' }} 
-      elevation={15}
-    >
       <form
         autoComplete="off"
         onSubmit={handleSubmit}
@@ -71,6 +67,7 @@ const SignupForm = props => {
       >
         <Box className={styles.inputContainer}>
           <TextField
+            variant="filled"
             fullWidth
             type="text"
             label='Name'
@@ -83,6 +80,7 @@ const SignupForm = props => {
         </Box>
         <Box className={styles.inputContainer}>
           <TextField
+            variant="filled"
             fullWidth
             type="text"
             label="Email"
@@ -94,10 +92,10 @@ const SignupForm = props => {
           />
         </Box>
         <Box className={styles.inputContainer}>
-        <FormControl sx={{ width: '400px'}} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-password"
+        <FormControl sx={{ width: '400px'}} variant="filled">
+            <InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
+            <FilledInput
+              id="filled-adornment-password"
               name='password'
               type={showPassword ? 'text' : 'password'}
               value={password}
@@ -119,10 +117,10 @@ const SignupForm = props => {
           </FormControl>
         </Box>
         <Box className={styles.inputContainer}>
-        <FormControl sx={{ width: '400px'}} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-conf-password"
+        <FormControl sx={{ width: '400px'}} variant="filled">
+            <InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
+            <FilledInput
+              id="filled-adornment-conf-password"
               name='passwordConf'
               type={showConfPassword ? 'text' : 'password'}
               value={passwordConf}
@@ -146,6 +144,7 @@ const SignupForm = props => {
         <Box className={styles.inputContainer}>
           <TextField
             fullWidth
+            variant="filled"
             label="Occupation"
             type="text"
             id="occupation"
@@ -156,6 +155,7 @@ const SignupForm = props => {
         <Box className={styles.inputContainer}>
           <TextField
             fullWidth
+            variant="filled"
             helperText="Date of Birth (MM/DD/YY)"
             type="date"
             id="dob"
@@ -166,6 +166,7 @@ const SignupForm = props => {
         <Box className={styles.inputContainer}>
           <TextField
             fullWidth
+            variant="filled"
             label="Postal Zip Code"
             type="number"
             id="zip"
@@ -176,6 +177,7 @@ const SignupForm = props => {
         <Box className={styles.inputContainer}>
           <TextField
             fullWidth
+            variant="filled"
             label="Education"
             type="text"
             id="education"
@@ -184,7 +186,7 @@ const SignupForm = props => {
           />
         </Box>
         <Box className={styles.inputContainer}>
-          <Button type="submit" disabled={isFormInvalid()} className={styles.button}>
+          <Button type='submit' disabled={isFormInvalid()} className={styles.button} fullWidth variant='contained'>
             Sign Up
           </Button>
           <Link to="/">
@@ -192,7 +194,6 @@ const SignupForm = props => {
           </Link>
         </Box>
       </form>
-    </Paper>
   )
 }
 
