@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import * as postService from '../../services/postService'
 
 // Components
-import IterationHandler  from './components/IterationHandler'
+import IterationHandler  from './components/IterationHandler/IterationHandler'
 import DetailsTopMenu from './components/DetailsTopMenu'
 import UserCard from '../../components/UserCard/UserCard'
 
@@ -23,7 +23,7 @@ const PostDetails = () => {
     await postService.castVote(postId, post.iterations[0]._id, vote)
   }
 
-  console.log(post)
+  console.log('RENDER')
 
   if (!post) {
     return <div>Holdon, we're just getting our ducks in a row...</div>

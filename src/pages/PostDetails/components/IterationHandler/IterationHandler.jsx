@@ -12,10 +12,14 @@ const IterationHandler = ({ iterations }) => {
         </div>
       )} */}
 
+  
 
   return (
     <div>
       <p>{selectedIteration.text}</p>
+
+      <button onClick={() => setIndex(index - 1)}>Next</button>
+      <button onClick={() => setIndex(index + 1)}>Next</button>
     </div>
   )
 }
