@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
@@ -5,7 +7,8 @@ import Typography from '@mui/material/Typography'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import Divider from '@mui/material/Divider'
 
-const DetailsTopMenu = ({ topic }) => {
+const DetailsTopMenu = ({ topic, post }) => {
+  const navigate = useNavigate()
   return (
     <Box style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: '3rem', marginBottom: 0 }}>
       <Box style={{ display: 'flex', justifyContent: 'space-between', marginBotton: '1rem', width: '100%' }} sx={{ flexDirection: { xs: 'column', md: 'row' } }}>
@@ -16,8 +19,10 @@ const DetailsTopMenu = ({ topic }) => {
           </Stack>
         </Box>
         <Box style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end' }}>
-          <Button variant="contained" sx={{ height: 40, minWidth: 120 }} endIcon={<AddCircleOutlineIcon />}>
-            New Iteration
+          <Button
+            onClick={() => navigate(`/topics/${topic._id}/posts/${post._id}/iterations`)}
+            variant="contained" sx={{ height: 40, minWidth: 120 }} endIcon={<AddCircleOutlineIcon/>}
+          >New Iteration
           </Button>
         </Box>
       </Box>
