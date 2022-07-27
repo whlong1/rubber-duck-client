@@ -9,7 +9,7 @@ import Fade from '@mui/material/Fade'
 // Utils
 import { findWordCount, writingTips } from '../../utils/utils'
 
-function Analysis({ text, keywords }) {
+function Analysis({ text, keywords, handleClickSuggestion }) {
   const [tips, setTips] = useState([])
   const [warnings, setWarnings] = useState([])
   const [wordCount, setWordCount] = useState(0)
@@ -61,7 +61,12 @@ function Analysis({ text, keywords }) {
       <Typography>Suggestions:</Typography>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '10px', paddingTop: '10px' }}>
         {keywords.map((word, idx) => (
-            <Chip key={idx} label={word} style={{ color: '#e36350' }} />
+            <Chip 
+              key={idx} 
+              label={word} 
+              style={{ color: '#e36350' }}
+              onClick={() => handleClickSuggestion(word)}
+            />
         ))}
       </Box>
       <p>{wordCount}</p>

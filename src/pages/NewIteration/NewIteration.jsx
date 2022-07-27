@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import LinearProgress from '@mui/material/LinearProgress'
 
 // Components
 import PostForm from './/components/PostForm/PostForm'
@@ -35,6 +34,12 @@ function NewIteration(props) {
     navigate(`/posts/${postId}`)
   }
 
+  const handleClickSuggestion = (suggestion) => {
+    if(text.length + (suggestion.length + 1) < characterLimit){
+      setText(`${text.trim()} ${suggestion}`)
+    }
+  }
+
   useEffect(() => {
     const fetchKeyWords = async () => {
       const data = await postService.findKeywords(topicId, postId)
@@ -62,7 +67,7 @@ function NewIteration(props) {
           characterLimit={characterLimit}
           handleCheckText={handleCheckText}
         />
-        <Analysis text={text} keywords={keywords} />
+        <Analysis text={text} keywords={keywords} handleClickSuggestion={handleClickSuggestion} />
       </Box>
     </Box>
   )
