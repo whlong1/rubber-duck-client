@@ -31,7 +31,6 @@ const PostDetails = () => {
     return <div>Holdon, we're just getting our ducks in a row...</div>
   }
 
-
   return (
     post &&
     <>
@@ -45,7 +44,7 @@ const PostDetails = () => {
       {post.iterations?.map((iteration) =>
         <div key={iteration._id}>
           <ul>{iteration.text}</ul>
-          <ul>{iteration.createdAt}</ul>
+          <ul>{iteration.createdAt.slice(0, 10)}</ul>
         </div>
       )}
 

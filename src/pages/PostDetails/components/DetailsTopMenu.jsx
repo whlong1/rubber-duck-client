@@ -1,8 +1,8 @@
 import Box from '@mui/material/Box'
+import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import Stack from '@mui/material/Stack'
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 
 const DetailsTopMenu = ({ topic }) => {
   return (
