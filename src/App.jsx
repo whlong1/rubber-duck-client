@@ -56,11 +56,26 @@ const App = () => {
           path="/profiles/:profileId"
           element={user ? <ProfileDetail user={user} /> : <Navigate to="/login" />}
         />
-        <Route path="/posts/new" element={<NewPost user={user} />} />
-        <Route path="/posts/:postId" element={<PostDetails user={user} />} />
-        <Route path="/topics/:topicId" element={<PostList user={user} />} />
-        <Route path="/browse" element={<Browse user={user} />} />
-        <Route path="/topics/:topicId/posts/:postId/iterations" element={<NewIteration user={user} />} />
+        <Route
+          path="/posts/new"
+          element={user ? <NewPost user={user} /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/posts/:postId"
+          element={user ? <PostDetails user={user} /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/topics/:topicId"
+          element={user ? <PostList user={user} /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/browse"
+          element={user ? <Browse user={user} /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/topics/:topicId/posts/:postId/iterations"
+          element={user ? <NewIteration user={user} /> : <Navigate to="/login" />}
+        />
       </Routes>
     </ThemeProvider>
   )
