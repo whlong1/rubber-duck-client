@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import * as profileService from '../../../services/profileService'
 
 const Followers = ({ user, followers, setFollowers, profileId }) => {
