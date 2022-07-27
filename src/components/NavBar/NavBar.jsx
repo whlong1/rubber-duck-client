@@ -57,7 +57,7 @@ const NavBar = ({ user, handleLogout }) => {
           <Box sx={{ display: { xs: 'none', md: 'flex' } }} style={{ marginRight: '1rem'}} >
             <img 
               src={logo} 
-              height='50px' 
+              height='30px' 
               alt='rubber duck' 
               sx={{ display: { xs: 'flex', md: 'none' } }} 
             />
@@ -151,13 +151,13 @@ const NavBar = ({ user, handleLogout }) => {
     </>
     :
     <>
-    <AppBar position="relative" style={{ backgroundColor: '#121212' }}>
+    <AppBar position="relative" style={{ backgroundColor: '#121212', padding: '0px 20px 0px 20px' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
       <Box style={{ marginRight: '1rem'}} >
           <img 
             src={logo} 
-            height='50px' 
+            height='30px'
             alt='rubber duck' 
             sx={{ display: { xs: 'flex', md: 'none' } }} 
           />
