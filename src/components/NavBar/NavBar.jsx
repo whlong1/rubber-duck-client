@@ -23,7 +23,7 @@ const NavBar = ({ user, handleLogout }) => {
   ]
   const logOutSettings = [
     { name: 'My Profile', link: `/profiles/${user?.profile}` },
-    { name: 'Profile', link: `/profiles` },
+    { name: 'Profiles', link: `/profiles` },
     { name: 'Logout', link: '' },
   ]
   const logInSettings = [
