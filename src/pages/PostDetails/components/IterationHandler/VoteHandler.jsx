@@ -2,6 +2,7 @@ import * as postService from '../../../../services/postService'
 
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import UndoIcon from '@mui/icons-material/Undo';
 
 const VoteHandler = ({ user, postId, iterationsArr, setIterationsArr, iteration }) => {
   const voteArr = iteration.votes.map((v) => v.profileId)
@@ -17,7 +18,7 @@ const VoteHandler = ({ user, postId, iterationsArr, setIterationsArr, iteration 
   }
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: '50px' }}>
       {!voteArr.includes(user.profile)
         ? <>
             <button className='det-btn' onClick={() => handleVote(1)}>
@@ -27,7 +28,9 @@ const VoteHandler = ({ user, postId, iterationsArr, setIterationsArr, iteration 
               <ArrowDropDownIcon />
             </button>
           </>
-        : <button onClick={undoVote}>Undo Vote</button>
+        : <button className='det-btn' onClick={undoVote}>
+            <UndoIcon />
+          </button>
       }
     </div>
   )
