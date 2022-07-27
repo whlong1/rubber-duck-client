@@ -8,6 +8,7 @@ function PostForm({ text, handleSubmit, handleCheckText, characterLimit }) {
     <Box sx={{ padding: '2rem', display: 'flex', flexDirection:'column', alignItems: 'center', justifyContent: 'center', width: 500 }}>
       <form onSubmit={handleSubmit} autoComplete="off" style={{ width: '100%' }}>
         <TextField
+          sx={{ backgroundColor: '#2e2e2e' }}
           required
           multiline
           fullWidth

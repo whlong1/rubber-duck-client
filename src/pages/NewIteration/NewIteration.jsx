@@ -47,15 +47,14 @@ function NewIteration(props) {
   return (
     <Box sx={{ padding: '1rem' }}>
       <Typography 
-        sx={{ fontFamily: 'abril-display'}}
         variant='h5'
       >
         {topic?.category}
       </Typography>
-      <Typography variant="h2">
+      <Typography variant="h2" sx={{ fontFamily: 'abril-display'}}>
         {topic?.title}
       </Typography>
-      <Box sx={{ width: '100%', display: 'flex', alignItems: 'center' }}>
+      <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', height: '298px', marginTop: '5rem' }}>
         <PostForm 
           text={text} 
           setText={setText} 
