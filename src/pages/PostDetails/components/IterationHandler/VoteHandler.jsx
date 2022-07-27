@@ -1,9 +1,17 @@
 import * as postService from '../../../../services/postService'
 
-const VoteHandler = ({ postId, iteration }) => {
+const VoteHandler = ({ postId, iterationsArr, setIterationsArr, iteration }) => {
+
+  console.log(iteration)
 
   const handleVote = async (vote) => {
-    await postService.castVote(postId, iteration._id, vote)
+    const res = await postService.castVote(postId, iteration._id, vote)
+    console.log(res)
+    setIterationsArr(iterationsArr.map((iter) => (
+      iter._id === iteration._id
+        ? res
+        : iter
+    )))
   }
 
   return (

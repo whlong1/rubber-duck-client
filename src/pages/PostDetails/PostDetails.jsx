@@ -20,11 +20,8 @@ const PostDetails = () => {
     fetchPosts()
   }, [postId])
 
-  const handleVote = async (vote) => {
-    await postService.castVote(postId, post.iterations[0]._id, vote)
-  }
-
   console.log('RENDER')
+
 
   if (!post) {
     return <div>Holdon, we're just getting our ducks in a row...</div>
