@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 
-const PostTopMenu = ({ postTitles, topic, setSort }) => {
+const PostTopMenu = ({ postTitles, topic, setSort, handleNewPost }) => {
   return (
     <Box
       style={{
@@ -63,7 +63,11 @@ const PostTopMenu = ({ postTitles, topic, setSort }) => {
           size='small'
           sx={{ width: 200, minWidth: 146 }}
         /> */}
-        <Button variant="contained" sx={{ height: 40, minWidth: 120 }} endIcon={<AddCircleOutlineIcon />}>
+        <Button 
+          variant="contained" sx={{ height: 40, minWidth: 120 }} 
+          endIcon={<AddCircleOutlineIcon />}
+          onClick={handleNewPost}
+        >
           New Post
         </Button>
       </Box>

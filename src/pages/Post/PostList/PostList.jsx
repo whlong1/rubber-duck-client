@@ -17,8 +17,8 @@ const PostList = ({ user }) => {
   const [page, setPage] = useState(0)
   const [topic, setTopic] = useState()
   const [posts, setPosts] = useState([])
-  const [sort, setSort] = useState('recent') // sort values: 'recent' or 'popular'
-  const [selectedTopic, setSelectedTopic] = useState(topicId) // <<<< use for search
+  const [sort, setSort] = useState('recent')
+  const [selectedTopic, setSelectedTopic] = useState(topicId) // <<<< use for search, maybe rm?
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -32,6 +32,10 @@ const PostList = ({ user }) => {
   }, [selectedTopic, sort, page])
 
   const [loading, setLoading] = useState(true)
+
+  const handleNewPost = () => {
+    console.log('in new post');
+  }
 
   const postList = posts?.map((post) => (
     post.iterations.length ?
@@ -51,7 +55,7 @@ const PostList = ({ user }) => {
       alignItems: 'center',
       margin: '3rem'
     }}>
-      <PostTopMenu topic={topic} setSort={setSort} />
+      <PostTopMenu topic={topic} setSort={setSort} handleNewPost={handleNewPost} />
       <Divider textAlign="left" sx={{ color: 'primary', width: '100%', margin: '1rem', visibility: { xs: 'hidden', md: 'visible' } }}><TungstenIcon color="primary" /></Divider>
       <PaginatedList loading={loading} setLoading={setLoading} postList={postList} />
     </Box>
