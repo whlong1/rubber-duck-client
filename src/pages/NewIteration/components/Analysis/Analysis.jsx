@@ -56,7 +56,10 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
         </Box>
       ))}
       <Divider sx={{ fontSize: '1rem' }} />
-      <Typography>Suggestions:</Typography>
+      {keywords.length 
+        ? <Typography>Suggestions:</Typography>
+        : ''
+      }
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '10px', paddingTop: '10px' }}>
         {keywords.map((word, idx) => (
             <Chip 

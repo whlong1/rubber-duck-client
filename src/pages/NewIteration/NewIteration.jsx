@@ -62,14 +62,23 @@ function NewIteration(props) {
       </Typography>
       <Divider sx={{ marginTop: '1rem' }} />
       <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '298px', marginTop: '5rem' }}>
-        <PostForm 
+      <Box sx={{ width: '50%', display: 'flex', justifyContent: 'flex-end' }}>
+      <PostForm 
           text={text} 
           setText={setText} 
           handleSubmit={handleSubmit}
           characterLimit={characterLimit}
           handleCheckText={handleCheckText}
         />
-        <Analysis text={text} keywords={keywords} handleClickSuggestion={handleClickSuggestion} />
+      </Box>
+      <Box sx={{ width: '50%', display: 'flex', justifyContent: 'flex-start', alignItems:'flex-start', height: '100%' }}>
+        <Analysis 
+            text={text} 
+            keywords={keywords} 
+            handleClickSuggestion={handleClickSuggestion}
+        />
+      </Box>
+
       </Box>
     </Box>
   )
