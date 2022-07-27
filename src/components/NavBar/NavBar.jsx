@@ -167,6 +167,14 @@ const NavBar = ({ user, handleLogout }) => {
     <AppBar position="relative" style={{ backgroundColor: '#121212' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+      <Box style={{ marginRight: '1rem'}} >
+          <img 
+            src={duckLogo} 
+            height='50px' 
+            alt='rubber duck' 
+            sx={{ display: { xs: 'flex', md: 'none' } }} 
+          />
+        </Box>
         <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -203,7 +211,6 @@ const NavBar = ({ user, handleLogout }) => {
         </Toolbar>
       </Container>
     </AppBar>
-      
     </>
   )
 }
