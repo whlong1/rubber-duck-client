@@ -1,5 +1,6 @@
 import { useState } from "react"
 
+import SideNav from "./SideNav"
 
 const IterationHandler = ({ iterations }) => {
   const [index, setIndex] = useState(0)
@@ -12,14 +13,16 @@ const IterationHandler = ({ iterations }) => {
         </div>
       )} */}
 
-  
+
 
   return (
     <div>
+      <SideNav index={index} iterations={iterations} />
+
+
       <p>{selectedIteration.text}</p>
 
-      <button onClick={() => setIndex(index - 1)}>Next</button>
-      <button onClick={() => setIndex(index + 1)}>Next</button>
+
     </div>
   )
 }
