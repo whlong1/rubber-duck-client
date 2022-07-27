@@ -14,7 +14,7 @@ const profileIconStyle = {
 
 const UserCard = ({ author }) => {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', margin: 0 }}>
+    <div style={{ display: 'flex', alignItems: 'center' }}>
       <Box style={profileIconStyle}><PersonIcon style={{ opacity: .75 }} /></Box>
       <div style={{ display: 'flex', flexDirection: 'column', paddingLeft: '10px' }}>
         <h5 className='author'>
