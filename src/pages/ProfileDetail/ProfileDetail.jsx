@@ -66,7 +66,7 @@ const ProfileDetail = ({ user }) => {
           <StyledCard key={interest._id}>{interest.name}</StyledCard>
         )}
       </Stack>
-      <Box>
+      <Box sx={{ marginBottom: '2rem' }}>
         <List 
           sx={{
           maxWidth: '600px',
@@ -120,14 +120,15 @@ const ProfileDetail = ({ user }) => {
           </ListItem>
         </List>
       </Box>
-      {console.log(profile.posts)}
-      Posts:
-      <Stack spacing={1} direction='row' sx={{ flexWrap: 'wrap', margin: '2rem 0 2rem 0' }}>
-        {profile.posts?.map((post) =>
-          <StyledCard key={post._id}>{post.topic.title}</StyledCard>
-        )}
-      </Stack>
-      
+      {/* Code to implement User Posts */}
+      {/* <CenteredBox sx={{ marginTop: '1rem', flexDirection: 'column' }}>
+        Posts:
+        <Stack spacing={1} direction='row' sx={{ flexWrap: 'wrap', margin: '2rem 0 2rem 0' }}>
+          {profile.posts?.map((post) =>
+            <StyledCard key={post._id}>{post.topic.title}</StyledCard>
+          )}
+        </Stack>
+      </CenteredBox> */}
       <Followers 
         user={user} 
         followers={followers} 
@@ -135,7 +136,6 @@ const ProfileDetail = ({ user }) => {
         myFollowers={profile.followers} 
         profileId={profileId} 
       />
-
     </CenteredBox>
   )
 }
