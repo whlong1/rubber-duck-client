@@ -4,11 +4,11 @@ import * as postService from '../../services/postService'
 import './PostDetails.css'
 
 // Components
-import IterationHandler  from './components/IterationHandler/IterationHandler'
+import IterationHandler from './components/IterationHandler/IterationHandler'
 import DetailsTopMenu from './components/DetailsTopMenu'
 import UserCard from '../../components/UserCard/UserCard'
 
-const PostDetails = () => {
+const PostDetails = ({ user }) => {
   const { postId } = useParams()
   const [post, setPost] = useState()
 
@@ -32,7 +32,7 @@ const PostDetails = () => {
     <>
       <DetailsTopMenu topic={post.topic} />
       <UserCard author={post.author} />
-      <IterationHandler postId={postId} iterations={post.iterations} />
+      <IterationHandler user={user} postId={postId} iterations={post.iterations} />
     </>
   )
 }

@@ -4,11 +4,13 @@ import SideNav from "./SideNav"
 import VoteHandler from "./VoteHandler"
 import IterationDisplay from "./IterationDisplay"
 
-const IterationHandler = ({ postId, iterations }) => {
+const IterationHandler = ({ user, postId, iterations }) => {
   const [index, setIndex] = useState(0)
   const [iterationsArr, setIterationsArr] = useState(iterations)
 
   const selectedIteration = iterationsArr[index]
+
+  console.log(iterations)
 
 
 
@@ -18,7 +20,7 @@ const IterationHandler = ({ postId, iterations }) => {
     <div style={{ display: 'flex' }}>
       <SideNav setIndex={setIndex} iterations={iterationsArr} />
       <IterationDisplay iteration={selectedIteration} />
-      <VoteHandler postId={postId} iterationsArr={iterationsArr} setIterationsArr={setIterationsArr} iteration={selectedIteration} />
+      <VoteHandler user={user} postId={postId} iterationsArr={iterationsArr} setIterationsArr={setIterationsArr} iteration={selectedIteration} />
     </div>
   )
 }
