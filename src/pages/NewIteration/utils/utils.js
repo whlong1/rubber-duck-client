@@ -25,7 +25,7 @@ export const writingTips = {
       }
       return suggestions
     },
-    explanation: 'The sentence might be stronger with this word omitted.'
+    explanation: 'Consider omitting this word.'
   },
   assumptions: {
     fn: function (text) {
@@ -38,7 +38,7 @@ export const writingTips = {
       }
       return suggestions
     },
-    explanation: 'Try to avoid making assumptions about what your reader knows.'
+    explanation: 'Try to avoid making assumptions.'
   },
   profanity: {
     fn: function (text) {

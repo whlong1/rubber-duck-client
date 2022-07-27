@@ -20,8 +20,6 @@ const contentBoxStyle = {
 const userBoxStyle = {
   margin: 0,
   marginLeft: '3rem',
-  // display: 'flex', flexDirection: 'column',
-  // justifyContent: 'center', alignItems: 'center',
 }
 
 const PostDetails = ({ user }) => {
