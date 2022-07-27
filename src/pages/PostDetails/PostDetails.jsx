@@ -35,12 +35,7 @@ const PostDetails = () => {
     <>
       <DetailsTopMenu topic={post.topic} />
       <UserCard author={post.author} />
-
-      <IterationHandler iterations={post.iterations} />
-
-
-      <button onClick={() => handleVote(1)}>UpVote</button>
-      <button onClick={() => handleVote(-1)}>DownVote</button>
+      <IterationHandler postId={postId} iterations={post.iterations} />
     </>
   )
 }
