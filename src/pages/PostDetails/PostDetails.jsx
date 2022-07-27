@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import * as postService from '../../services/postService'
 
 // Components
-import Iteration from './components/Iteration'
+import IterationHandler  from './components/IterationHandler'
 import DetailsTopMenu from './components/DetailsTopMenu'
 import UserCard from '../../components/UserCard/UserCard'
 
@@ -35,14 +35,8 @@ const PostDetails = () => {
       <DetailsTopMenu topic={post.topic} />
       <UserCard author={post.author} />
 
-      <Iteration />
+      <IterationHandler iterations={post.iterations} />
 
-      {post.iterations?.map((iteration) =>
-        <div key={iteration._id}>
-          <ul>{iteration.text}</ul>
-          <ul>{iteration.createdAt.slice(0, 10)}</ul>
-        </div>
-      )}
 
       <button onClick={() => handleVote(1)}>UpVote</button>
       <button onClick={() => handleVote(-1)}>DownVote</button>
