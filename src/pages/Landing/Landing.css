@@ -9,15 +9,25 @@
   overflow-x: hidden;
 }
 
-.bodyContainer{
+.splash-container {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  background-color: black;
-  background-position: center;
-  background-repeat: no-repeat;
   min-height: 100vh;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
+  background-color: #101013;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.splash-container h1 {
+  font-size: 95px;
+  margin-top: 35px;
+}
+
+.splash-container img {
+  height: 95px;
 }
 
 .freynman{
@@ -57,4 +67,9 @@
 
 p {
   font-size: 25px;
+}
+
+
+.logoTitle {
+  font-size: 72px;
 }
