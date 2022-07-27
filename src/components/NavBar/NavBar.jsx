@@ -105,9 +105,11 @@ const NavBar = ({ user, handleLogout }) => {
               }}
             >
               {pages.map((page, id) => (
+                <Link to={page.link} key={id}>
                 <MenuItem key={id} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
+                </Link>
               ))}
           </Menu>
           </Box>
