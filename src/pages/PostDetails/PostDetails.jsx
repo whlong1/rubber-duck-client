@@ -2,10 +2,8 @@ import { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom"
 import * as postService from '../../services/postService'
 
-
-import Box from '@mui/material/Box'
-import Divider from '@mui/material/Divider'
-
+// Components
+import Iteration from './components/Iteration'
 import DetailsTopMenu from './components/DetailsTopMenu'
 import UserCard from '../../components/UserCard/UserCard'
 
@@ -34,12 +32,10 @@ const PostDetails = () => {
   return (
     post &&
     <>
-      <Box style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: '3rem' }}>
-        <DetailsTopMenu topic={post.topic} />
-        <Divider textAlign="left" sx={{ color: 'primary', width: '100%', margin: '1rem', visibility: { xs: 'hidden', md: 'visible' } }}></Divider>
-      </Box>
-
+      <DetailsTopMenu topic={post.topic} />
       <UserCard author={post.author} />
+
+      <Iteration />
 
       {post.iterations?.map((iteration) =>
         <div key={iteration._id}>
