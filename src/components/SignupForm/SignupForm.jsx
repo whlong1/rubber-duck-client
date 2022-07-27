@@ -3,8 +3,21 @@ import { Link, useNavigate } from 'react-router-dom'
 import styles from './SignupForm.module.css'
 import * as authService from '../../services/authService'
 
+import TextField from '@mui/material/TextField'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
+import OutlinedInput from '@mui/material/OutlinedInput'
+import InputAdornment from '@mui/material/InputAdornment'
+import IconButton from '@mui/material/IconButton'
+import Visibility from '@mui/icons-material/Visibility'
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
+
 const SignupForm = props => {
   const navigate = useNavigate()
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfPassword, setShowConfPassword] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,6 +48,10 @@ const SignupForm = props => {
     }
   }
 
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   const { name, email, password, passwordConf, zip, occupation, education, dob } = formData
 
   const isFormInvalid = () => {
@@ -47,105 +64,128 @@ const SignupForm = props => {
       onSubmit={handleSubmit}
       className={styles.container}
     >
-      <div className={styles.inputContainer}>
-        <label htmlFor="name" className={styles.label}>Name</label>
-        <input
+      <Box className={styles.inputContainer}>
+        <TextField
+          fullWidth
           type="text"
+          label='Name'
           autoComplete="off"
           id="name"
           value={name}
           name="name"
           onChange={handleChange}
         />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="email" className={styles.label}>Email</label>
-        <input
+      </Box>
+      <Box className={styles.inputContainer}>
+        <TextField
+          fullWidth
           type="text"
+          label="Email"
           autoComplete="off"
           id="email"
           value={email}
           name="email"
           onChange={handleChange}
         />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
-        <input
-          type="password"
-          autoComplete="off"
-          id="password"
-          value={password}
-          name="password"
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="confirm" className={styles.label}>
-          Confirm Password
-        </label>
-        <input
-          type="password"
-          autoComplete="off"
-          id="confirm"
-          value={passwordConf}
-          name="passwordConf"
-          onChange={handleChange}
-        />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="occupation" className={styles.label}>
-        Occupation: 
-        </label>
-        <input
+      </Box>
+      <Box className={styles.inputContainer}>
+      <FormControl sx={{ width: '400px'}} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            name='password'
+            type={showPassword ? 'text' : 'password'}
+            value={password}
+            onChange={handleChange}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={() => setShowPassword(!showPassword)}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+          />
+        </FormControl>
+      </Box>
+      <Box className={styles.inputContainer}>
+      <FormControl sx={{ width: '400px'}} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-conf-password"
+            name='passwordConf'
+            type={showConfPassword ? 'text' : 'password'}
+            value={passwordConf}
+            onChange={handleChange}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={() => setShowConfPassword(!showConfPassword)}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showConfPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+          />
+        </FormControl>
+      </Box>
+      <Box className={styles.inputContainer}>
+        <TextField
+          fullWidth
+          label="Occupation"
           type="text"
           id="occupation"
           name="occupation"
           onChange={handleChange}
         />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="dob" className={styles.label}>
-        Date of Birth: 
-        </label>
-        <input
+      </Box>
+      <Box className={styles.inputContainer}>
+        <TextField
+          fullWidth
+          helperText="Date of Birth"
           type="date"
           id="dob"
           name="dob"
           onChange={handleChange}
         />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="zip" className={styles.label}>
-        Postal Zip Code: 
-        </label>
-        <input
+      </Box>
+      <Box className={styles.inputContainer}>
+        <TextField
+          fullWidth
+          label="Postal Zip Code"
           type="number"
           id="zip"
           name="zip"
           onChange={handleChange}
         />
-      </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="education" className={styles.label}>
-        Education: 
-        </label>
-        <input
+      </Box>
+      <Box className={styles.inputContainer}>
+        <TextField
+          fullWidth
+          label="Education"
           type="text"
           id="education"
           name="education"
           onChange={handleChange}
         />
-      </div>
-  
-      <div className={styles.inputContainer}>
-        <button disabled={isFormInvalid()} className={styles.button}>
+      </Box>
+      <Box className={styles.inputContainer}>
+        <Button disabled={isFormInvalid()} className={styles.button}>
           Sign Up
-        </button>
+        </Button>
         <Link to="/">
-          <button>Cancel</button>
+          <Button color="warning">Cancel</Button>
         </Link>
-      </div>
+      </Box>
     </form>
   )
 }
