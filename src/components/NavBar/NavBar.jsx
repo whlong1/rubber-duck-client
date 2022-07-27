@@ -51,6 +51,7 @@ const NavBar = ({ user, handleLogout }) => {
     setAnchorElUser(null)
   }
   const handleToggle = () => {
+    console.log(toggle)
     setToggle(true)
   }
 

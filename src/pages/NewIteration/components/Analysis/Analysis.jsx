@@ -7,17 +7,15 @@ import Divider from '@mui/material/Divider'
 import Fade from '@mui/material/Fade'
 
 // Utils
-import { findWordCount, writingTips } from '../../utils/utils'
+import { writingTips } from '../../utils/utils'
 
 function Analysis({ text, keywords, handleClickSuggestion }) {
   const [tips, setTips] = useState([])
   const [warnings, setWarnings] = useState([])
-  const [wordCount, setWordCount] = useState(0)
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setWarnings(writeGood(text))
-      setWordCount(findWordCount(text))
       setTips(writeGood(text, { checks: writingTips }))
     }, 1000)
     return () => clearTimeout(timer)

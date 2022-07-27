@@ -1,12 +1,10 @@
 import { useState } from "react"
 
-// Components
 import SideNav from "./SideNav"
 import VoteHandler from "./VoteHandler"
 import IterationDisplay from "./IterationDisplay"
 
 const IterationHandler = ({ user, postId, iterations }) => {
-  console.log(iterations)
   const [index, setIndex] = useState(0)
   const [iterationsArr, setIterationsArr] = useState(iterations)
   const selectedIteration = iterationsArr[index]

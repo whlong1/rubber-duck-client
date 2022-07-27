@@ -18,18 +18,17 @@ const PostList = ({ user }) => {
   const [topic, setTopic] = useState()
   const [posts, setPosts] = useState([])
   const [sort, setSort] = useState('recent')
-  const [selectedTopic, setSelectedTopic] = useState(topicId) // <<<< use for search, maybe rm?
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const data = await postService.index(page, sort, selectedTopic)
+      const data = await postService.index(page, sort, topicId)
       const topicData = await topicService.show(topicId)
       setPosts(data)
       setLoading(false)
       setTopic(topicData)
     }
     fetchPosts()
-  }, [selectedTopic, sort, page])
+  }, [topicId, sort, page])
 
   const [loading, setLoading] = useState(true)
 

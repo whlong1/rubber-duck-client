@@ -9,7 +9,7 @@ import { ratingOptions } from '../../../../styles/theme'
 const StyledRating = styled(Rating)(ratingOptions)
 
 const IterationDisplay = ({ iteration }) => {
-  const { rating, text, createdAt } = iteration
+  const { rating } = iteration
   return (
     <div className='iteration-display'>
       <StyledRating
