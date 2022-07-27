@@ -70,7 +70,7 @@ const LoginForm = props => {
         />
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-        <Button fullWidth variant="contained" className={styles.button}>Log In</Button>
+        <Button type="submit" fullWidth variant="contained" className={styles.button}>Log In</Button>
         <Link to="/">
           <Button color="warning">Cancel</Button>
         </Link>

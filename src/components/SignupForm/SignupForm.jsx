@@ -184,7 +184,7 @@ const SignupForm = props => {
           />
         </Box>
         <Box className={styles.inputContainer}>
-          <Button disabled={isFormInvalid()} className={styles.button}>
+          <Button type="submit" disabled={isFormInvalid()} className={styles.button}>
             Sign Up
           </Button>
           <Link to="/">
