@@ -1,29 +1,17 @@
 import './Landing.css'
 import logo from '../../assets/logo-icon.svg'
-import feynman from '../../assets/feynman.png'
+// import feynman from '../../assets/feynman.png'
 import rectangle from '../../assets/yellowRectangle.png'
 
 import Divider from '@mui/material/Divider'
+import Splash from './Splash'
 
-import Lottie from "lottie-react"
-import arrow from '../../assets/arrow-anim.json'
-
-
-const style = {
-  height: 150,
-}
 
 const Landing = ({ user }) => {
   return (
     <div className='container'>
 
-      <div className='splash-container'>
-        <div className='splash-content'>
-          <img src={logo} alt='logo' />
-          <h1 className='logoTitle'>Rubber Duck</h1>
-        </div>
-        <Lottie animationData={arrow} loop={true} style={style} />
-      </div>
+      <Splash />
 
 
 
@@ -34,16 +22,14 @@ const Landing = ({ user }) => {
           <h1>What the $%!# is Rubber Duck? </h1>
         </div>
         <div className='about-content'>
-          <div className='about-textblock' style={{padding: '20px 20px 20px 80px'}}>
+          <div className='about-textblock' style={{ padding: '20px 20px 20px 80px' }}>
             <h3>Why not some lorem ipsum?</h3>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut cursus elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur et convallis metus. Cras felis nisi, scelerisque dapibus orci semper, interdum egestas risus. Etiam molestie nibh ut erat pellentesque, non malesuada lorem sagittis.
             </p>
           </div>
-
           <Divider style={{ background: 'black', width: '1px', opacity: '.25' }} />
-
-          <div className='about-textblock' style={{padding: '20px 80px 20px 20px'}}>
+          <div className='about-textblock' style={{ padding: '20px 80px 20px 20px' }}>
             <h3>Why not some lorem ipsum?</h3>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut cursus elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur et convallis metus. Cras felis nisi, scelerisque dapibus orci semper, interdum egestas risus. Etiam molestie nibh ut erat pellentesque, non malesuada lorem sagittis.
