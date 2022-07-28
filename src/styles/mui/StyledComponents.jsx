@@ -69,3 +69,11 @@ export const StyledBoxColCenter = styled(Box)(() => ({
   alignItems: 'center',
   margin: '3rem'
 }))
+
+export const StyledBoxFlexStart = styled(Box)(() => ({
+  width: '50%', 
+  display: 'flex', 
+  justifyContent: 'flex-start', 
+  alignItems:'flex-start', 
+  height: '100%'
+}))

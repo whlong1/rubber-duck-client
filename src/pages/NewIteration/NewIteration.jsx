@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
+import { StyledBoxFlexStart } from '../../styles/mui/StyledComponents'
 
 // Components
 import PostForm from './/components/PostForm/PostForm'
@@ -23,6 +24,8 @@ function NewIteration(props) {
     return charCode === 8 || charCode === 46
   }
   const characterLimit = 250
+
+  const handleClear = () => setText('')
 
   const handleCheckText = (e, text) => {
     if(text.length > characterLimit && !isDeleteKey(e)) return
@@ -52,9 +55,7 @@ function NewIteration(props) {
 
   return (
     <Box sx={{ padding: '1.5rem' }}>
-      <Typography 
-        variant='h5'
-      >
+      <Typography variant='h5'>
         {topic?.category}
       </Typography>
       <Typography variant="h2" sx={{ fontFamily: 'abril-display'}}>
@@ -66,19 +67,19 @@ function NewIteration(props) {
       <PostForm 
           text={text} 
           setText={setText} 
+          handleClear={handleClear}
           handleSubmit={handleSubmit}
           characterLimit={characterLimit}
           handleCheckText={handleCheckText}
         />
       </Box>
-      <Box sx={{ width: '50%', display: 'flex', justifyContent: 'flex-start', alignItems:'flex-start', height: '100%' }}>
+      <StyledBoxFlexStart>
         <Analysis 
             text={text} 
             keywords={keywords} 
             handleClickSuggestion={handleClickSuggestion}
         />
-      </Box>
-
+      </StyledBoxFlexStart>
       </Box>
     </Box>
   )

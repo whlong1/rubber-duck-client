@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 
-function PostForm({ text, handleSubmit, handleCheckText, characterLimit }) {
+function PostForm({ text, handleSubmit, handleCheckText, characterLimit, handleClear }) {
   return (
     <Box sx={{ padding: '2rem', display: 'flex', flexDirection:'column', alignItems: 'center', justifyContent: 'center', width: 500 }}>
       <form onSubmit={handleSubmit} autoComplete="off" style={{ width: '100%' }}>
@@ -21,7 +21,10 @@ function PostForm({ text, handleSubmit, handleCheckText, characterLimit }) {
           onChange={(e) => handleCheckText(e, e.target.value)}
         />
         <Box sx={{ display: 'flex', justifyContent: 'flex-end'}}>
-          <Typography sx={{ color: text.length > (characterLimit * .8) ? 'red' : 'white' }}>
+          <Button onClick={handleClear}>Clear</Button>
+          <Typography 
+            sx={{ color: text.length > (characterLimit * .8) ? 'red' : 'white' }}
+          >
             {`${text.length}/${characterLimit}`}
           </Typography>
         </Box>
