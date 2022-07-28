@@ -1,24 +1,13 @@
 import Pagination from '@mui/material/Pagination'
-import Box from '@mui/material/Box'
+import { StyledBox } from './mui/StyledBox'
 import Skeleton from './mui/Skeleton'
 
-
 const PaginatedList = ({ loading, postList, page, setPage }) => {
-  
-
   return ( 
     <>
-        <Box style={{ 
-          display: 'flex', 
-          gap: '1rem', 
-          flexWrap: 'wrap', 
-          marginBottom: '1.5rem' 
-        }}>
-          { loading 
-            ? Skeleton
-            : postList
-          }
-        </Box>
+        <StyledBox>
+          { loading ? Skeleton : postList }
+        </StyledBox>
         <Pagination 
           count={page + 1}
           onChange={(e) => setPage(e.target.value)}
@@ -28,4 +17,4 @@ const PaginatedList = ({ loading, postList, page, setPage }) => {
   );
 }
  
-export default PaginatedList;
+export default PaginatedList
