@@ -3,6 +3,7 @@ import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import Rating from '@mui/material/Rating'
+import Paper from '@mui/material/Paper'
 
 export const StyledRating = styled(Rating)(() => ({
     '& .MuiRating-iconFilled': {
@@ -85,4 +86,9 @@ export const StyledPostFormContainer = styled(Box)(() => ({
   alignItems: 'center', 
   justifyContent: 'center',
   width: 500
+}))
+
+export const StyledPaper = styled(Paper)(() => ({
+  height: '100%',
+  width: '100%'
 }))
