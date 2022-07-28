@@ -101,7 +101,8 @@ export const StyledAnalysisContainer = styled(Box)(() => ({
 export const StyledPaper = styled(Paper)(() => ({
   marginTop: '1rem',
   height: '100%',
-  width: '100%'
+  width: '100%',
+  maxHeight: '490px'
 }))
 
 export const StyledMessageBox = styled(Box)(() => ({

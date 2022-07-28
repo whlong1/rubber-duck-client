@@ -3,6 +3,7 @@ import Box from '@mui/material/Box'
 import Popper from '@mui/material/Popper'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+import Grow from '@mui/material/Grow'
 import { ReactComponent as DuckIcon } from '../../../../assets/logo-icon.svg'
 import { StyledMessageBox } from '../../../../styles/mui/StyledComponents'
 
@@ -29,12 +30,17 @@ const AnalysisPopper = ({ tips, warnings }) => {
         open={open} 
         anchorEl={anchorEl || null} 
         placement='left'
+      >
+        <Grow
+          in={true}
+          timeout={1500}
         >
-        <StyledMessageBox sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
+          <StyledMessageBox sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
           <Typography>
-            Quack! You have some issues! Idiot!
+            Quack! You have some issues!
           </Typography>
         </StyledMessageBox>
+        </Grow>
       </Popper>
     </Box>
   )
