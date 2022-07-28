@@ -2,10 +2,12 @@ import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
+import { StyledPostFormContainer } from '../../../../styles/mui/StyledComponents'
 
 function PostForm({ text, handleSubmit, handleCheckText, characterLimit, handleClear }) {
+  const hasText = text.trim().length <= 0
   return (
-    <Box sx={{ padding: '2rem', display: 'flex', flexDirection:'column', alignItems: 'center', justifyContent: 'center', width: 500 }}>
+    <StyledPostFormContainer>
       <form onSubmit={handleSubmit} autoComplete="off" style={{ width: '100%' }}>
         <TextField
           sx={{ backgroundColor: '#2e2e2e' }}
@@ -29,7 +31,7 @@ function PostForm({ text, handleSubmit, handleCheckText, characterLimit, handleC
           </Typography>
         </Box>
         <Button
-          disabled={text.trim().length <= 0}
+          disabled={hasText}
           type="submit" 
           fullWidth 
           variant='contained' 
@@ -38,7 +40,7 @@ function PostForm({ text, handleSubmit, handleCheckText, characterLimit, handleC
           Submit
         </Button>
       </form>
-    </Box>
+    </StyledPostFormContainer>
   )
 }
 

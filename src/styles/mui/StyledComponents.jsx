@@ -77,3 +77,12 @@ export const StyledBoxFlexStart = styled(Box)(() => ({
   alignItems:'flex-start', 
   height: '100%'
 }))
+
+export const StyledPostFormContainer = styled(Box)(() => ({
+  padding: '2rem', 
+  display: 'flex', 
+  flexDirection:'column', 
+  alignItems: 'center', 
+  justifyContent: 'center',
+  width: 500
+}))
