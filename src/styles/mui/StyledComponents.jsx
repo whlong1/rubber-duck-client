@@ -103,3 +103,23 @@ export const StyledPaper = styled(Paper)(() => ({
   height: '100%',
   width: '100%'
 }))
+
+export const StyledMessageBox = styled(Box)(() => ({
+    position: 'relative',
+    background: '#f2f2f2',
+    borderRadius: '.4em',
+    right: 20,
+      "&::after": {
+      content: '""',
+      position: 'absolute',
+      right: 20,
+      top: '100%',
+      width: 0,
+      height: 0,
+      border: '10px solid transparent',
+      borderLeftColor: '#f2f2f2',
+      borderRight: 0,
+      marginTop: '-30px',
+      marginRight: '-30px',
+      }
+}))
