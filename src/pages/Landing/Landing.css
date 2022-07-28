@@ -111,15 +111,14 @@
 
 
 .history-container {
-  border-top: 1px solid red;
   width: 100%;
   display: flex;
   color: black;
   min-height: 80vh;
   align-items: center;
-  background: #f0eaea;
+  background: #e5e5e5;
   justify-content: center;
-  padding: 130px 100px 200px 100px;
+  padding: 120px 100px 180px 100px;
 }
 
 .history-container p { 
@@ -136,8 +135,8 @@
 }
 
 .history-container img {
-  width: 350px;
-  height: 350px;
+  width: 400px;
+  height: 400px;
 }
 
 .history-container .right {
