@@ -64,7 +64,6 @@ function NewIteration(props) {
       <Divider sx={{ marginTop: '1rem' }} />
       <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <Box sx={{ width: '50%', display: 'flex', justifyContent: 'flex-end' }}>
-        <Divider orientation="vertical" variant="middle" light flexItem sx={{ marginRight:"1rem", bgcolor: "primary.dark", opacity: '.3' }} />
         <PostForm 
             text={text} 
             setText={setText} 
@@ -74,6 +73,7 @@ function NewIteration(props) {
             handleCheckText={handleCheckText}
           />
       </Box>
+      <Divider orientation="vertical" flexItem sx={{ marginRight:"1rem", bgcolor: "background", margin: "1rem 1rem 0 1rem" }}  />
       <StyledBoxFlexStart>
         <Analysis 
             text={text} 

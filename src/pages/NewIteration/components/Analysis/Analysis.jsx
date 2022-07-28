@@ -5,6 +5,7 @@ import Chip from '@mui/material/Chip'
 import writeGood from 'write-good'
 import Divider from '@mui/material/Divider'
 import Fade from '@mui/material/Fade'
+import { StyledAnalysisContainer, StyledPaper } from '../../../../styles/mui/StyledComponents'
 
 // Utils
 import { writingTips } from '../../utils/utils'
@@ -22,56 +23,58 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
   }, [text])
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start', height: '100%', maxWidth: '500px'}}>
-      {tips.map((obj, idx) => (
-        <Box sx={{ display: 'flex', alignItems: "center", marginBottom: '5px'}} key={idx}>
-          <Fade in={true} timeout={1000}>
-            <Chip 
-              label="suggestion" 
-              variant="outlined" 
-              color="warning" 
-              style={{height: '20px', marginRight: '10px'}} 
-            />
-          </Fade>
-          <Fade in={true} timeout={1000}>
-            <Typography style={{ color: "#bcbcbc" }}>
-              {obj.reason}
-            </Typography>
-          </Fade>
-        </Box>
-      ))}
-      {warnings.map((obj, idx) => (
-        <Box sx={{ display: 'flex', alignItems: "center", marginBottom: '5px'}} key={idx}>
-          <Fade in={true} timeout={1000}>
-            <Chip 
-              label="warning" 
-              variant="outlined" 
-              color="error" 
-              style={{ height: '20px', width:'80px', marginRight: '10px'}}
-            />
-          </Fade>
-          <Fade in={true} timeout={1000}>
-            <Typography style={{ color: "#bcbcbc" }}> {obj.reason} </Typography>
-          </Fade>
-        </Box>
-      ))}
-      <Divider sx={{ fontSize: '1rem' }} />
-      {keywords.length 
-        ? <Typography>Suggestions:</Typography>
-        : ''
-      }
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '10px', paddingTop: '10px' }}>
-        {keywords.map((word, idx) => (
-            <Chip 
-              key={idx} 
-              label={word}
-              variant='outlined'
-              color='success'
-              onClick={() => handleClickSuggestion(word)}
-            />
+    <StyledPaper elevation={0}>
+      <StyledAnalysisContainer>
+        {tips.map((obj, idx) => (
+          <Box sx={{ display: 'flex', alignItems: "center", marginBottom: '5px'}} key={idx}>
+            <Fade in={true} timeout={1000}>
+              <Chip 
+                label="suggestion" 
+                variant="outlined" 
+                color="warning" 
+                style={{height: '20px', marginRight: '10px'}} 
+              />
+            </Fade>
+            <Fade in={true} timeout={1000}>
+              <Typography style={{ color: "#bcbcbc" }}>
+                {obj.reason}
+              </Typography>
+            </Fade>
+          </Box>
         ))}
-      </Box>
-    </Box>
+        {warnings.map((obj, idx) => (
+          <Box sx={{ display: 'flex', alignItems: "center", marginBottom: '5px'}} key={idx}>
+            <Fade in={true} timeout={1000}>
+              <Chip 
+                label="warning" 
+                variant="outlined" 
+                color="error" 
+                style={{ height: '20px', width:'80px', marginRight: '10px'}}
+              />
+            </Fade>
+            <Fade in={true} timeout={1000}>
+              <Typography style={{ color: "#bcbcbc" }}> {obj.reason} </Typography>
+            </Fade>
+          </Box>
+        ))}
+        <Divider sx={{ fontSize: '1rem' }} />
+        {keywords.length 
+          ? <Typography>Suggestions:</Typography>
+          : ''
+        }
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '10px', paddingTop: '10px' }}>
+          {keywords.map((word, idx) => (
+              <Chip 
+                key={idx} 
+                label={word}
+                variant='outlined'
+                color='success'
+                onClick={() => handleClickSuggestion(word)}
+              />
+          ))}
+        </Box>
+      </StyledAnalysisContainer>
+    </StyledPaper>
   )
 }
 

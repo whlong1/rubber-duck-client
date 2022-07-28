@@ -9,10 +9,10 @@ function PostForm({ text, handleSubmit, handleCheckText, characterLimit, handleC
   return (
     <StyledPaper elevation={10}>
       <StyledBoxSpaceBetween>
-        <Box>
+        <Box style={{ padding: '1rem' }}>
          Title
         </Box>
-        <Box>
+        <Box style={{ padding: '1rem' }}>
          Iteration
         </Box>
       </StyledBoxSpaceBetween>
