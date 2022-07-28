@@ -1,7 +1,6 @@
 import Lottie from "lottie-react"
-import logo from '../../assets/logo-icon.svg'
-import arrow from '../../assets/arrow-anim.json'
-
+import logo from '../../../assets/logo-icon.svg'
+import arrow from '../../../assets/arrow-anim.json'
 
 const Splash = () => {
   return (
