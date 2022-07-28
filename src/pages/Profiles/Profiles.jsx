@@ -21,7 +21,7 @@ const Profiles = () => {
       <h1>All our ducks in a row: </h1>
       {profiles.length
         ?
-          <Stack direction='row' space={2}>
+          <Stack direction='row' space={2} sx={{ flexWrap: 'wrap' }}>
             {profiles.map((profile) =>
               <Link key={profile._id} to={`/profiles/${profile._id}`}>
                 <ProfileCard profile={profile} />
