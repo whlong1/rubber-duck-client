@@ -54,7 +54,7 @@ function NewIteration(props) {
   }, [topicId, postId])
 
   return (
-    <Box sx={{ padding: '1.5rem' }}>
+    <Box sx={{ padding: '1.5rem', height: 'calc(100vh - 70px)',  overflow: 'hidden'  }}>
       <Typography variant='h5'>
         {topic?.category}
       </Typography>
@@ -62,9 +62,9 @@ function NewIteration(props) {
         {topic?.title}
       </Typography>
       <Divider sx={{ marginTop: '1rem' }} />
-      <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '298px', marginTop: '5rem'}}>
+      <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <Box sx={{ width: '50%', display: 'flex', justifyContent: 'flex-end' }}>
-        <Divider orientation="vertical" variant="middle" light flexItem sx={{ marginRight:"1rem", bgcolor: "primary.dark" }} />
+        <Divider orientation="vertical" variant="middle" light flexItem sx={{ marginRight:"1rem", bgcolor: "primary.dark", opacity: '.3' }} />
         <PostForm 
             text={text} 
             setText={setText} 

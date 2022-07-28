@@ -85,10 +85,11 @@ export const StyledPostFormContainer = styled(Box)(() => ({
   flexDirection:'column', 
   alignItems: 'center', 
   justifyContent: 'center',
-  width: 500
+  width: '100%',
 }))
 
 export const StyledPaper = styled(Paper)(() => ({
+  marginTop: '1rem',
   height: '100%',
   width: '100%'
 }))

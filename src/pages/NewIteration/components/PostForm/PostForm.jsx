@@ -2,16 +2,25 @@ import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import { StyledPostFormContainer, StyledPaper } from '../../../../styles/mui/StyledComponents'
+import { StyledPostFormContainer, StyledPaper, StyledBoxSpaceBetween } from '../../../../styles/mui/StyledComponents'
 
 function PostForm({ text, handleSubmit, handleCheckText, characterLimit, handleClear }) {
   const hasText = text.trim().length <= 0
   return (
     <StyledPaper elevation={10}>
+      <StyledBoxSpaceBetween>
+        <Box>
+         Title
+        </Box>
+        <Box>
+         Iteration
+        </Box>
+      </StyledBoxSpaceBetween>
       <StyledPostFormContainer>
         <form onSubmit={handleSubmit} autoComplete="off" style={{ width: '100%' }}>
           <TextField
-            sx={{ backgroundColor: '#2e2e2e' }}
+            inputProps={{ style: {fontSize: 24, lineHeight: 1.2} }}
+            sx={{ backgroundColor: '#2e2e2e'}}
             required
             multiline
             fullWidth
