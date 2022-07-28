@@ -21,10 +21,12 @@ const AnalysisPopper = ({ tips, warnings }) => {
   const id = open ? 'simple-popper' : undefined
 
   return (
-    <Box sx={{ padding: '1rem', display: 'flex', justifyContent: 'flex-end' }}>
-      <Button aria-describedby={id} type="button">
-        <DuckIcon aria-describedby={id} ref={duckEl} style={{  transform: 'rotateY(180deg)' }} />
-      </Button>
+    <Box sx={{ padding: '1.2rem', display: 'flex', justifyContent: 'flex-end' }}>
+      <DuckIcon 
+          aria-describedby={id} 
+          ref={duckEl} 
+          style={{  transform: 'rotateY(180deg)' }} 
+      />
       <Popper 
         id={id}
         open={open} 

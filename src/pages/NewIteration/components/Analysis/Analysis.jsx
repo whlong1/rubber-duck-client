@@ -32,6 +32,16 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
     <StyledPaper elevation={0}>
       <AnalysisPopper tips={tips} warnings={warnings} />
       <StyledAnalysisContainer>
+        <Box sx={{ minHeight: '160px', maxHeight: '160px', width: '100%', overflowY: 'scroll', '&::-webkit-scrollbar': {
+    width: '0.4em'
+  },
+  '&::-webkit-scrollbar-track': {
+    boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+    webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
+  },
+  '&::-webkit-scrollbar-thumb': {
+    backgroundColor: 'rgba(0,0,0,.1)',
+  }}}>
         {tips.map((obj, idx) => (
           <Box sx={{ display: 'flex', alignItems: "center", marginBottom: '5px'}} key={idx}>
             <Fade in={true} timeout={1000}>
@@ -55,7 +65,14 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
           </Box>
         ))}
         {warnings.map((obj, idx) => (
-          <Box sx={{ display: 'flex', alignItems: "center", marginBottom: '5px'}} key={idx}>
+          <Box 
+            sx={{
+              display: 'flex', 
+              alignItems: "center", 
+              marginBottom: '5px'
+            }} 
+            key={idx}
+          >
             <Fade in={true} timeout={1000}>
               <Chip 
                 label="warning" 
@@ -76,11 +93,11 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
             </Fade>
           </Box>
         ))}
-        <Divider sx={{ fontSize: '1rem' }} />
-        {keywords.length 
-          ? <Typography>Suggestions:</Typography>
-          : ''
-        }
+        </Box>
+        <Divider sx={{ fontSize: '1rem' }} flexItem />
+        <Box sx={{ marginTop: '1rem', width: '100%' }}>
+        { !!keywords.length && <Typography>Suggestions:</Typography> }
+        </Box>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '10px', paddingTop: '10px' }}>
           {keywords.map((word, idx) => (
               <Chip 

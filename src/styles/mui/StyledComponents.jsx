@@ -95,7 +95,7 @@ export const StyledAnalysisContainer = styled(Box)(() => ({
   justifyContent: 'flex-start',
   padding: '1rem',
   height: '490px',
-  maxWidth: '500px',
+  maxWidth: '100%',
 }))
 
 export const StyledPaper = styled(Paper)(() => ({
@@ -123,4 +123,21 @@ export const StyledMessageBox = styled(Box)(() => ({
       marginTop: '-30px',
       marginRight: '-30px',
       }
+}))
+
+export const StyledFeedbackBox = styled(Box)(() => ({
+  minHeight: '160px', 
+  maxHeight: '160px', 
+  width: '100%', 
+  overflowY: 'scroll', 
+  '&::-webkit-scrollbar': {
+    width: '0.4em'
+  },
+  '&::-webkit-scrollbar-track': {
+    boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+    webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
+  },
+  '&::-webkit-scrollbar-thumb': {
+    backgroundColor: 'rgba(0,0,0,.1)',
+  }
 }))

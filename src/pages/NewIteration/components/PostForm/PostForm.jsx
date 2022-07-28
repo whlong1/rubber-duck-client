@@ -7,7 +7,7 @@ import { StyledPostFormContainer, StyledPaper, StyledBoxSpaceBetween } from '../
 function PostForm({ text, handleSubmit, handleCheckText, characterLimit, handleClear }) {
   const hasText = text.trim().length <= 0
   return (
-    <StyledPaper elevation={10}>
+    <StyledPaper elevation={15}>
       <StyledBoxSpaceBetween>
         <Box style={{ padding: '1rem' }}>
          Title
