@@ -55,3 +55,9 @@ export const DateTypography = styled(Typography)(() => ({
   height: '75px', 
   opacity: '.5'
 }))
+
+export const StyledBoxSpaceBetween = styled(Box)(() => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  marginBottom: '1rem'
+}))
