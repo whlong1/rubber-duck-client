@@ -1,18 +1,9 @@
-import Card from '@mui/material/Card'
+import { Link } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
-import Rating from '@mui/material/Rating'
 import SvgIcon from '@mui/material/SvgIcon'
 import { ReactComponent as Diamond } from '../../assets/diamond-icon.svg'
-
-import { AuthTypography, BodyTypography, PostCard, DateTypography } from './mui/StyledComponents'
-
-import { Link } from 'react-router-dom'
-import { styled } from '@mui/material/styles'
-import { ratingOptions } from '../../styles/theme'
-
-const StyledRating = styled(Rating)(ratingOptions)
+import { AuthTypography, BodyTypography, PostCard, DateTypography, StyledRating } from '../../styles/mui/StyledComponents'
 
 const Post = ({ user, post }) => {
   const { author } = post
@@ -36,16 +27,13 @@ const Post = ({ user, post }) => {
               readOnly
               max={4}
               defaultValue={4}
-              style={{ display: 'flex', alignItems: 'center' }}
               icon={<SvgIcon fontSize='inherit'> <Diamond /> </SvgIcon>}
               emptyIcon={< SvgIcon fontSize='inherit'> <Diamond /> </SvgIcon>}
             />
           </Box>
           <BodyTypography> {text} </BodyTypography>
         </CardContent>
-        <DateTypography>
-          08/07/22
-        </DateTypography>
+        <DateTypography> 08/07/22 </DateTypography>
       </PostCard>
     </Link>
   )

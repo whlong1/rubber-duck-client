@@ -1,12 +1,6 @@
 import { ReactComponent as Diamond } from '../../../../assets/diamond-icon.svg'
-
-import Rating from '@mui/material/Rating'
 import SvgIcon from '@mui/material/SvgIcon'
-
-import { styled } from '@mui/material/styles'
-import { ratingOptions } from '../../../../styles/theme'
-
-const StyledRating = styled(Rating)(ratingOptions)
+import { StyledRating } from '../../../../styles/mui/StyledComponents'
 
 const IterationDisplay = ({ iteration }) => {
   const { rating } = iteration
@@ -18,7 +12,6 @@ const IterationDisplay = ({ iteration }) => {
         name="rating"
         value={rating}
         defaultValue={4}
-        style={{ display: 'flex', alignItems: 'center' }}
         icon={<SvgIcon fontSize='inherit'><Diamond /></SvgIcon>}
         emptyIcon={< SvgIcon fontSize='inherit'> <Diamond /> </SvgIcon>}
       />

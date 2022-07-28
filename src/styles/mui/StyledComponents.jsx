@@ -2,6 +2,20 @@ import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
+import Rating from '@mui/material/Rating'
+
+export const StyledRating = styled(Rating)(() => ({
+    '& .MuiRating-iconFilled': {
+      color: '#82bf88',
+      marginRight: '-10px',
+    },
+    '& .MuiRating-iconEmpty': {
+      color: '#5d5d5d',
+      marginRight: '-10px',
+    },
+    display: 'flex', 
+    alignItems: 'center'
+}))
 
 export const StyledBox = styled(Box)(() => ({
   display: 'flex', 
