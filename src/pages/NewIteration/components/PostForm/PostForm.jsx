@@ -20,15 +20,23 @@ function PostForm({ text, handleSubmit, handleCheckText, characterLimit, handleC
           spellCheck="true"
           onChange={(e) => handleCheckText(e, e.target.value)}
         />
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end'}}>
-          <Button onClick={handleClear}>Clear</Button>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
+          <Button onClick={handleClear} color="secondary">Clear</Button>
           <Typography 
             sx={{ color: text.length > (characterLimit * .8) ? 'red' : 'white' }}
           >
             {`${text.length}/${characterLimit}`}
           </Typography>
         </Box>
-        <Button type="submit" fullWidth variant='contained' sx={{ marginTop: '1rem' }}>Submit</Button>
+        <Button
+          disabled={text.trim().length <= 0}
+          type="submit" 
+          fullWidth 
+          variant='contained' 
+          sx={{ marginTop: '1rem' }}
+        >
+          Submit
+        </Button>
       </form>
     </Box>
   )
