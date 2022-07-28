@@ -21,7 +21,7 @@ const AnalysisPopper = ({ tips, warnings }) => {
   const id = open ? 'simple-popper' : undefined
 
   return (
-    <Box sx={{ padding: '1.2rem', display: 'flex', justifyContent: 'flex-end' }}>
+    <Box sx={{ padding: '1.2rem', marginBottom: '.2rem', display: 'flex', justifyContent: 'flex-end' }}>
       <DuckIcon 
           aria-describedby={id} 
           ref={duckEl} 
