@@ -34,6 +34,8 @@
   font-family: abril-display, serif;
 }
 
+/* SPLASH COMPONENT */
+
 .splash-container {
   width: 100%;
   display: flex;
@@ -61,7 +63,7 @@
   height: 95px;
 }
 
-
+/* ABOUT COMPONENT */
 
 .about-container {
   width: 100%;
@@ -108,7 +110,7 @@
   justify-content: center;
 }
 
-
+/* HISTORY COMPONENT */
 
 .history-container {
   width: 100%;
@@ -118,6 +120,7 @@
   align-items: center;
   background: #e5e5e5;
   justify-content: center;
+  border-top: 1px solid #dadada;
   padding: 120px 100px 180px 100px;
 }
 
