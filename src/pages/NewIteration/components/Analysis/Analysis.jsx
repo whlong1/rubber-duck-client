@@ -64,7 +64,7 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
             </Fade>
             <Fade in={true} timeout={1000}>
               <Typography style={{ color: "#ffffff" }}>
-                {shapeText(obj.reason)[0]}
+                {shapeText(obj.reason)[0]} 
               </Typography>
             </Fade>
             <Fade in={true} timeout={1000}>

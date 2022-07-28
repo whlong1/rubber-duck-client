@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
+import Skeleton from '@mui/material/Skeleton'
 import { StyledBoxFlexStart } from '../../styles/mui/StyledComponents'
 
 // Components
@@ -55,12 +56,21 @@ function NewIteration(props) {
 
   return (
     <Box sx={{ padding: '1.5rem', height: 'calc(100vh - 70px)',  overflow: 'hidden'  }}>
-      <Typography variant='h5'>
-        {topic?.category}
-      </Typography>
-      <Typography variant="h2" sx={{ fontFamily: 'abril-display'}}>
-        {topic?.title}
-      </Typography>
+      {topic 
+      ? <>
+          <Typography variant='h5'>
+            {topic.category}
+          </Typography>
+          <Typography variant="h2" sx={{ fontFamily: 'abril-display'}}>
+            {topic.title}
+          </Typography>
+        </>
+      :
+      <>
+        <Skeleton height={32.02} width={100} />
+        <Skeleton height={72} animation="wave" width={350} />
+      </>
+      }
       <Divider sx={{ marginTop: '1rem' }} />
       <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <Box sx={{ width: '50%', display: 'flex', justifyContent: 'flex-end' }}>
