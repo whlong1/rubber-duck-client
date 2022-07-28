@@ -62,16 +62,17 @@ function NewIteration(props) {
         {topic?.title}
       </Typography>
       <Divider sx={{ marginTop: '1rem' }} />
-      <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '298px', marginTop: '5rem' }}>
+      <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '298px', marginTop: '5rem'}}>
       <Box sx={{ width: '50%', display: 'flex', justifyContent: 'flex-end' }}>
-      <PostForm 
-          text={text} 
-          setText={setText} 
-          handleClear={handleClear}
-          handleSubmit={handleSubmit}
-          characterLimit={characterLimit}
-          handleCheckText={handleCheckText}
-        />
+        <Divider orientation="vertical" variant="middle" light flexItem sx={{ marginRight:"1rem", bgcolor: "primary.dark" }} />
+        <PostForm 
+            text={text} 
+            setText={setText} 
+            handleClear={handleClear}
+            handleSubmit={handleSubmit}
+            characterLimit={characterLimit}
+            handleCheckText={handleCheckText}
+          />
       </Box>
       <StyledBoxFlexStart>
         <Analysis 
