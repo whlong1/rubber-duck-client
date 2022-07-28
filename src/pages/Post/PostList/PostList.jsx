@@ -39,8 +39,24 @@ const PostList = ({ user }) => {
   return (
     <StyledBoxColCenter>
       <PostTopMenu topic={topic} setSort={setSort} />
-      <Divider textAlign="left" sx={{ color: 'primary', width: '100%', margin: '1rem', visibility: { xs: 'hidden', md: 'visible' } }}><TungstenIcon color="primary" /></Divider>
-      <PaginatedList loading={loading} setLoading={setLoading} postList={postList} page={page} setPage={setPage} />
+      <Divider 
+        textAlign="left" 
+        sx={{ 
+          color: 'primary',
+          width: '100%', 
+          margin: '1rem', 
+          visibility: { xs: 'hidden', md: 'visible' } 
+        }}
+      >
+        <TungstenIcon color="primary" />
+      </Divider>
+      <PaginatedList 
+        page={page}
+        loading={loading} 
+        setPage={setPage}
+        postList={postList} 
+        setLoading={setLoading} 
+      />
     </StyledBoxColCenter>
   );
 }

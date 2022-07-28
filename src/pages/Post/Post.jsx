@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import Box from '@mui/material/Box'
 import CardContent from '@mui/material/CardContent'
 import SvgIcon from '@mui/material/SvgIcon'
 import { ReactComponent as Diamond } from '../../assets/diamond-icon.svg'
