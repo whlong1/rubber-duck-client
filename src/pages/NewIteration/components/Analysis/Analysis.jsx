@@ -22,6 +22,11 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
     return () => clearTimeout(timer)
   }, [text])
 
+  const shapeText = (string) => {
+    let caughtWord = string.match(/(?:"[^"]*"|^[^"]*$)/)[0].replace(/"/g, "")
+    return [caughtWord, string.slice(caughtWord.length + 3)]
+  }
+
   return (
     <StyledPaper elevation={0}>
       <StyledAnalysisContainer>
@@ -36,8 +41,13 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
               />
             </Fade>
             <Fade in={true} timeout={1000}>
+              <Typography style={{ color: "#ffffff" }}>
+                {shapeText(obj.reason)[0]}
+              </Typography>
+            </Fade>
+            <Fade in={true} timeout={1000}>
               <Typography style={{ color: "#bcbcbc" }}>
-                {obj.reason}
+                {shapeText(obj.reason)[1]}
               </Typography>
             </Fade>
           </Box>
@@ -53,7 +63,14 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
               />
             </Fade>
             <Fade in={true} timeout={1000}>
-              <Typography style={{ color: "#bcbcbc" }}> {obj.reason} </Typography>
+              <Typography style={{ color: "#ffffff" }}>
+                {shapeText(obj.reason)[0]}
+              </Typography>
+            </Fade>
+            <Fade in={true} timeout={1000}>
+              <Typography style={{ color: "#bcbcbc"}}>
+                {shapeText(obj.reason)[1]}
+              </Typography>
             </Fade>
           </Box>
         ))}
