@@ -139,5 +139,8 @@ export const StyledFeedbackBox = styled(Box)(() => ({
   },
   '&::-webkit-scrollbar-thumb': {
     backgroundColor: 'rgba(0,0,0,.1)',
+  },
+  '&::after':{
+    backgroundImage : 'linear-gradient(to bottom, rgba(255,255,255, 0),rgba(255,255,255, 1) 90%)'
   }
 }))

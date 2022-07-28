@@ -5,8 +5,9 @@ import Chip from '@mui/material/Chip'
 import writeGood from 'write-good'
 import Divider from '@mui/material/Divider'
 import Fade from '@mui/material/Fade'
+import Paper from '@mui/material/Paper'
 import AnalysisPopper from './AnalysisPopper'
-import { StyledAnalysisContainer, StyledPaper } from '../../../../styles/mui/StyledComponents'
+import { StyledAnalysisContainer, StyledFeedbackBox, StyledPaper } from '../../../../styles/mui/StyledComponents'
 
 // Utils
 import { writingTips } from '../../utils/utils'
@@ -32,16 +33,8 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
     <StyledPaper elevation={0}>
       <AnalysisPopper tips={tips} warnings={warnings} />
       <StyledAnalysisContainer>
-        <Box sx={{ minHeight: '160px', maxHeight: '160px', width: '100%', overflowY: 'scroll', '&::-webkit-scrollbar': {
-    width: '0.4em'
-  },
-  '&::-webkit-scrollbar-track': {
-    boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
-    webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
-  },
-  '&::-webkit-scrollbar-thumb': {
-    backgroundColor: 'rgba(0,0,0,.1)',
-  }}}>
+        <StyledFeedbackBox>
+          <Paper>
         {tips.map((obj, idx) => (
           <Box sx={{ display: 'flex', alignItems: "center", marginBottom: '5px'}} key={idx}>
             <Fade in={true} timeout={1000}>
@@ -93,9 +86,10 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
             </Fade>
           </Box>
         ))}
-        </Box>
-        <Divider sx={{ fontSize: '1rem' }} flexItem />
-        <Box sx={{ marginTop: '1rem', width: '100%' }}>
+        </Paper>
+        </StyledFeedbackBox>
+        <Divider sx={{ fontSize: '1rem', marginTop: '.5rem' }} flexItem />
+        <Box sx={{ marginTop: '.5rem', width: '100%' }}>
         { !!keywords.length && <Typography>Suggestions:</Typography> }
         </Box>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '10px', paddingTop: '10px' }}>
