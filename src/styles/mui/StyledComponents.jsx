@@ -61,3 +61,11 @@ export const StyledBoxSpaceBetween = styled(Box)(() => ({
   justifyContent: 'space-between',
   marginBottom: '1rem'
 }))
+
+export const StyledBoxColCenter = styled(Box)(() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  margin: '3rem'
+}))
