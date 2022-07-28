@@ -36,7 +36,7 @@ const AnalysisPopper = ({ tips, warnings }) => {
           timeout={1500}
         >
           <StyledMessageBox sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
-          <Typography>
+          <Typography style={{ fontFamily: 'abril-display' }}>
             Quack! You have {tips.length + warnings.length} issue{tips.length + warnings.length > 1 ? 's' : ''}!
           </Typography>
         </StyledMessageBox>
