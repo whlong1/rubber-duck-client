@@ -5,6 +5,7 @@ import Chip from '@mui/material/Chip'
 import writeGood from 'write-good'
 import Divider from '@mui/material/Divider'
 import Fade from '@mui/material/Fade'
+import AnalysisPopper from './AnalysisPopper'
 import { StyledAnalysisContainer, StyledPaper } from '../../../../styles/mui/StyledComponents'
 
 // Utils
@@ -29,6 +30,7 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
 
   return (
     <StyledPaper elevation={0}>
+      <AnalysisPopper tips={tips} warnings={warnings} />
       <StyledAnalysisContainer>
         {tips.map((obj, idx) => (
           <Box sx={{ display: 'flex', alignItems: "center", marginBottom: '5px'}} key={idx}>
