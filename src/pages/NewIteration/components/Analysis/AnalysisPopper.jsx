@@ -37,7 +37,7 @@ const AnalysisPopper = ({ tips, warnings }) => {
         >
           <StyledMessageBox sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
           <Typography>
-            Quack! You have some issues!
+            Quack! You have {tips.length + warnings.length} issue{tips.length + warnings.length > 1 ? 's' : ''}!
           </Typography>
         </StyledMessageBox>
         </Grow>
