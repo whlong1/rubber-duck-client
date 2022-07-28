@@ -20,18 +20,3 @@ export const themeOptions = {
     fontFamily: 'realistnarrow, san-serif'
   }
 }
-
-export const ratingOptions = {
-  '& .MuiRating-iconFilled': {
-    color: '#82bf88',
-    marginRight: '-10px',
-  },
-  '& .MuiRating-iconEmpty': {
-    color: '#5d5d5d',
-    marginRight: '-10px',
-  },
-  '& .MuiRating-iconHover': {
-    color: '#307a49',
-    marginRight: '-8px',
-  },
-}

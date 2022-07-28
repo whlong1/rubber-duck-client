@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import Post from '../Post'
-import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
 import PaginatedList from './components/PaginatedList'
 import PostTopMenu from './components/PostTopMenu'
@@ -11,6 +10,7 @@ import TungstenIcon from '@mui/icons-material/Tungsten';
 
 import * as postService from '../../../services/postService'
 import * as topicService from '../../../services/topicService'
+import { StyledBoxColCenter } from '../../../styles/mui/StyledComponents'
 
 const PostList = ({ user }) => {
   const { topicId } = useParams()
@@ -33,27 +33,31 @@ const PostList = ({ user }) => {
   const [loading, setLoading] = useState(true)
 
   const postList = posts?.map((post) => (
-    post.iterations.length ?
-      <Post
-        post={post}
-        key={post._id}
-      />
-      :
-      ''
+    !!post.iterations.length && <Post post={post} key={post._id} />
   ))
 
   return (
-    <Box style={{
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      margin: '3rem'
-    }}>
+    <StyledBoxColCenter>
       <PostTopMenu topic={topic} setSort={setSort} />
-      <Divider textAlign="left" sx={{ color: 'primary', width: '100%', margin: '1rem', visibility: { xs: 'hidden', md: 'visible' } }}><TungstenIcon color="primary" /></Divider>
-      <PaginatedList loading={loading} setLoading={setLoading} postList={postList} page={page} setPage={setPage} />
-    </Box>
+      <Divider 
+        textAlign="left" 
+        sx={{ 
+          color: 'primary',
+          width: '100%', 
+          margin: '1rem', 
+          visibility: { xs: 'hidden', md: 'visible' } 
+        }}
+      >
+        <TungstenIcon color="primary" />
+      </Divider>
+      <PaginatedList 
+        page={page}
+        loading={loading} 
+        setPage={setPage}
+        postList={postList} 
+        setLoading={setLoading} 
+      />
+    </StyledBoxColCenter>
   );
 }
 
