@@ -55,7 +55,7 @@ function NewIteration(props) {
   }, [topicId, postId])
 
   return (
-    <Box sx={{ padding: '1.5rem', height: 'calc(100vh - 70px)',  overflow: 'hidden'  }}>
+    <Box sx={{ padding: '1.5rem', height: 'calc(100vh - 71px)',  overflow: 'hidden'  }}>
       {topic 
       ? <>
           <Typography variant='h5'>
