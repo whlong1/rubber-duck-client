@@ -19,15 +19,13 @@ import NewIteration from './pages/NewIteration/NewIteration'
 import ProfileDetail from './pages/ProfileDetail/ProfileDetail'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
-
 // Services
 import * as authService from './services/authService'
 
-
 const App = () => {
-  const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
   const theme = createTheme(themeOptions)
+  const [user, setUser] = useState(authService.getUser())
 
   const handleLogout = (link) => {
     if (link !== '') return
@@ -55,17 +53,21 @@ const App = () => {
           element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
         />
 
-
         <Route path="/profiles" element={
           <ProtectedRoute user={user}>
             <Profiles />
           </ProtectedRoute>
         } />
 
-
         <Route path="/profiles/:profileId" element={
           <ProtectedRoute user={user}>
             <ProfileDetail user={user} />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/browse" element={
+          <ProtectedRoute user={user}>
+            <Browse user={user} />
           </ProtectedRoute>
         } />
 
@@ -75,24 +77,15 @@ const App = () => {
           </ProtectedRoute>
         } />
 
-
         <Route path="/posts/:postId" element={
           <ProtectedRoute user={user}>
             <PostDetails user={user} />
           </ProtectedRoute>
         } />
 
-
         <Route path="/topics/:topicId" element={
           <ProtectedRoute user={user}>
             <PostList user={user} />
-          </ProtectedRoute>
-        } />
-
-
-        <Route path="/browse" element={
-          <ProtectedRoute user={user}>
-            <Browse user={user} />
           </ProtectedRoute>
         } />
 
@@ -102,8 +95,6 @@ const App = () => {
           </ProtectedRoute>
         } />
       </Routes>
-
-
     </ThemeProvider>
   )
 }
