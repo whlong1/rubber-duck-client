@@ -1,14 +1,11 @@
 import { Link } from 'react-router-dom'
 import Rating from './components/Rating'
 import Author from './components/Author'
+import BodyText from './components/BodyText'
 import DateDisplay from './components/DateDisplay'
 import CardContent from '@mui/material/CardContent'
 
-import {
-  Post,
-  BodyTypography,
-  StyledBoxSpaceBetween
-} from '../../styles/mui/StyledComponents'
+import { Post, StyledBoxSpaceBetween } from '../../styles/mui/StyledComponents'
 
 const PostCard = ({ post }) => {
   const { author } = post
@@ -22,9 +19,7 @@ const PostCard = ({ post }) => {
             <Author author={author} />
             <Rating rating={rating} />
           </StyledBoxSpaceBetween>
-          <BodyTypography>
-            {text}
-          </BodyTypography>
+          <BodyText text={text} />
         </CardContent>
         <DateDisplay createdAt={createdAt} />
       </Post>
