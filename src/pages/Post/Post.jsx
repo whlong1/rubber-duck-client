@@ -12,16 +12,16 @@ import {
   StyledBoxSpaceBetween
 } from '../../styles/mui/StyledComponents'
 
-const Post = ({ user, post }) => {
+const Post = ({ post }) => {
   const { author } = post
-  const { text, rating } = post.iterations.length && post.iterations[0]
+  const { text, rating, createdAt } = post.iterations.length && post.iterations[0]
 
   return (
     <Link to={`/posts/${post._id}`}>
       <PostCard sx={{ width: { xs: 400, md: 275 }, minHeight: { xs: 300, md: 325 } }}>
         <CardContent>
           <StyledBoxSpaceBetween>
-            <AuthTypography color="text.secondary" gutterBottom >
+            <AuthTypography color="text.secondary" gutterBottom>
               {author?.name}
             </AuthTypography>
             <StyledRating
@@ -30,13 +30,13 @@ const Post = ({ user, post }) => {
               name="rating"
               value={rating}
               defaultValue={4}
-              icon={<SvgIcon fontSize='inherit'> <Diamond /> </SvgIcon>}
-              emptyIcon={< SvgIcon fontSize='inherit'> <Diamond /> </SvgIcon>}
+              icon={<SvgIcon fontSize='inherit'><Diamond /></SvgIcon>}
+              emptyIcon={< SvgIcon fontSize='inherit'><Diamond /></SvgIcon>}
             />
           </StyledBoxSpaceBetween>
           <BodyTypography>{text}</BodyTypography>
         </CardContent>
-        <DateTypography>08/07/22</DateTypography>
+        <DateTypography>{createdAt.slice(0, 10)}</DateTypography>
       </PostCard>
     </Link>
   )
