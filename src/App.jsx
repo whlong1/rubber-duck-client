@@ -1,21 +1,25 @@
+import './App.css'
 import { useState } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import { themeOptions } from './styles/theme'
-import NavBar from './components/NavBar/NavBar'
-import Signup from './pages/Signup/Signup'
+
+// Components
 import Login from './pages/Login/Login'
+import Signup from './pages/Signup/Signup'
+import Browse from './pages/Browse/Browse'
 import Landing from './pages/Landing/Landing'
+import NewPost from './pages/NewPost/Newpost'
+import NavBar from './components/NavBar/NavBar'
 import Profiles from './pages/Profiles/Profiles'
 import PostList from './pages/Post/PostList/PostList'
 import PostDetails from './pages/PostDetails/PostDetails'
-import ProfileDetail from './pages/ProfileDetail/ProfileDetail'
-import Browse from './pages/Browse/Browse'
-import NewPost from './pages/NewPost/Newpost'
 import NewIteration from './pages/NewIteration/NewIteration'
+import ProfileDetail from './pages/ProfileDetail/ProfileDetail'
+
+// Services
 import * as authService from './services/authService'
-import './App.css'
 
 
 const App = () => {
