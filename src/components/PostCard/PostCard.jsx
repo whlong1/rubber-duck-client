@@ -3,9 +3,10 @@ import SvgIcon from '@mui/material/SvgIcon'
 import CardContent from '@mui/material/CardContent'
 import { ReactComponent as Diamond } from '../../assets/diamond-icon.svg'
 
+import Rating from './components/Rating'
+
 import {
-  Post, // *********
-  StyledRating,
+  Post,
   BodyTypography,
   DateTypography,
   AuthTypography,
@@ -24,15 +25,7 @@ const PostCard = ({ post }) => {
             <AuthTypography color="text.secondary" gutterBottom>
               {author?.name}
             </AuthTypography>
-            <StyledRating
-              readOnly
-              max={4}
-              name="rating"
-              value={rating}
-              defaultValue={4}
-              icon={<SvgIcon fontSize='inherit'><Diamond /></SvgIcon>}
-              emptyIcon={< SvgIcon fontSize='inherit'><Diamond /></SvgIcon>}
-            />
+            <Rating rating={rating} />
           </StyledBoxSpaceBetween>
           <BodyTypography>{text}</BodyTypography>
         </CardContent>
