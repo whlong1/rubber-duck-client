@@ -69,18 +69,27 @@ const App = () => {
           </ProtectedRoute>
         } />
 
-        <Route
-          path="/posts/new"
-          element={user ? <NewPost user={user} /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/posts/:postId"
-          element={user ? <PostDetails user={user} /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/topics/:topicId"
-          element={user ? <PostList user={user} /> : <Navigate to="/login" />}
-        />
+        <Route path="/posts/new" element={
+          <ProtectedRoute user={user}>
+            <NewPost user={user} />
+          </ProtectedRoute>
+        } />
+
+
+        <Route path="/posts/:postId" element={
+          <ProtectedRoute user={user}>
+            <PostDetails user={user} />
+          </ProtectedRoute>
+        } />
+
+
+        <Route path="/topics/:topicId" element={
+          <ProtectedRoute user={user}>
+            <PostList user={user} />
+          </ProtectedRoute>
+        } />
+
+
         <Route
           path="/browse"
           element={user ? <Browse user={user} /> : <Navigate to="/login" />}
