@@ -11,8 +11,8 @@ const History = () => {
           <div className='history-header'>
             <div id='decorative-rec'></div>
             <div className='header-content'>
-              <h4>A METHOD OF LEARNING</h4>
-              <h1>The Feynman Technique</h1>
+              <h4 id="method">A METHOD OF LEARNING</h4>
+              <h1 id="feynman-technique">The Feynman Technique</h1>
             </div>
           </div>
           <div className='history-textblock'>

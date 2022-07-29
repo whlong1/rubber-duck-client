@@ -55,8 +55,10 @@
 }
 
 .splash-content .logotype {
+  width: 100%;
   font-size: 95px;
   margin-top: 30px;
+  text-align: center;
 }
 
 .splash-content img {
@@ -108,6 +110,13 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+}
+
+#column-one {
+  padding: 20px 20px 20px 100px;
+}
+#column-two {
+  padding: 20px 100px 20px 20px;
 }
 
 /* HISTORY COMPONENT */
@@ -163,7 +172,7 @@
 }
 
 .history-header h4 {
-  margin: 20px 0px 0px 0px;
+  margin: 16px 0px 0px 0px;
 }
 
 .header-content {
@@ -194,24 +203,260 @@
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1170px) {
   .history-container img {
-    width: 390px;
-    height: 390px;
-    margin-right: 60px;
+    width: 34vw;
+    height: 34vw;
+    padding-right: 10px;
+  }
+  #feynman-technique{
+    letter-spacing: -.75px;
+  }
+}
+
+@media only screen and (max-width: 1140px) {
+  #feynman-technique{
+    font-size: 36px;
+    letter-spacing: -.75px;
+  }
+}
+
+@media only screen and (max-width: 1095px) {
+  #feynman-technique{
+    font-size: 35px;
+    letter-spacing: -1px;
+  }
+  .history-container {
+    padding: 120px 50px 180px 50px;
+  }
+  #column-one {
+    padding: 20px 25px 20px 50px;
+  }
+  #column-two {
+    padding: 20px 50px 20px 25px;
+  }
+}
+
+@media only screen and (max-width: 1060px) {
+  #feynman-technique{
+    font-size: 33px;
+    letter-spacing: -1px;
+  }
+  #method {
+    font-size: 15px;
+  }
+  .history-container img {
+    width: 36vw;
+    height: 36vw;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .history-container {
+    padding: 120px 40px 180px 40px;
+  }
+  #column-one {
+    padding: 20px 20px 20px 40px;
+  }
+  #column-two {
+    padding: 20px 40px 20px 20px;
   }
   .container h1 {
-    font-size: 32px;
+    font-size: 33px;
     line-height: 1.2;
   }
   .container h4 {
-    font-size: 14px;
-    margin-top: 5px;
+    font-size: 15px;
+    margin-bottom: 5px;
   }
   .container h3 {
     font-size: 24px;
   }
   .container p {
     font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 1015px) { 
+  #feynman-technique{
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 940px) { 
+  .history-container {
+    padding: 120px 30px 180px 30px;
+  }
+  #column-one {
+    padding: 20px 20px 20px 30px;
+  }
+  #column-two {
+    padding: 20px 30px 20px 20px;
+  }
+  .history-container img {
+    width: 38vw;
+    height: 38vw;
+  }
+}
+
+@media only screen and (max-width: 880px) { 
+  .splash-content .logotype {
+    font-size: 5.5rem;
+  }
+  .splash-content img {
+    height: 10vw;
+  }
+  .container h1 {
+    width: 100%;
+    font-size: 44px;
+    line-height: normal;
+  }
+  .container h4 {
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .about-content {
+    flex-direction: column;
+    padding: 20px 60px;
+  }
+  .about-header {
+    padding-left: 60px;
+    padding-right: 60px;
+    align-items: flex-start;
+  }
+  .about-textblock {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  #column-one {
+    padding: 0px;
+  }
+  #column-two {
+    padding: 20px 0px;
+  }
+  .history-container {
+    padding: 80px 60px;
+    flex-direction: column;
+  }
+  .history-container .right,
+  .history-container .right {
+    width: 100%;
+  }
+  #feynman-technique {
+    font-size: 44px;
+  }
+  #method {
+    font-size: 16px;
+  }
+  .history-container img {
+    width: 50vw;
+    height: 50vw;
+  }
+  .history-textblock {
+    padding-top: 20px;
+  }
+  .container p {
+    line-height: 32px;
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 760px) { 
+  .container h1 {
+    letter-spacing: -.95px;
+    font-size: 40px;
+    overflow-wrap: normal;
+  }
+  #feynman-technique {
+    font-size: 40px;
+  }
+}
+
+@media only screen and (max-width: 670px) { 
+  .container h1,  #feynman-technique {
+    font-size: 38px;
+  }
+  .container h4, #method {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 640px) { 
+  .about-content {
+    padding: 20px 40px;
+  }
+  .about-header {
+    padding: 40px 40px 0px;
+  }
+  .history-container {
+    padding: 80px 40px;
+  }
+}
+
+@media only screen and (max-width: 600px) { 
+  .splash-content .logotype {
+    font-size: 5rem;
+  }
+  .container h1,  #feynman-technique {
+    font-size: 36px;
+  }
+  .container h4, #method {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 575px) { 
+  .about-content {
+    padding: 20px 30px;
+  }
+  .about-header {
+    padding: 40px 30px 0px;
+  }
+  .history-container {
+    padding: 80px 30px;
+  }
+}
+
+@media only screen and (max-width: 550px) { 
+  .splash-content .logotype {
+    font-size: 4.5rem;
+  }
+  .history-container img {
+    width: 65vw;
+    height: 65vw;
+  }
+  .container h1,  #feynman-technique {
+    font-size: 35px;
+  }
+  .container h4, #method {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 535px) { 
+  .about-content {
+    padding: 20px 20px;
+  }
+  .about-header {
+    padding: 40px 20px 0px;
+  }
+  .history-container {
+    padding: 80px 20px;
+  }
+}
+
+@media only screen and (max-width: 515px) { 
+  .container h1,  #feynman-technique {
+    font-size: 32px;
+  }
+  .container h3 {
+    font-size: 20px;
+  }
+  .container h4, #method {
+    font-size: 14px;
+  }
+  .container p {
+    font-size: 16px;
   }
 }
