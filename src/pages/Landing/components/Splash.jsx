@@ -7,7 +7,7 @@ const Splash = () => {
     <div className='splash-container'>
       <div className='splash-content'>
         <img src={logo} alt='duck logo' />
-        <h1>Rubber Duck</h1>
+        <h1 className='logotype'>Rubber Duck</h1>
       </div>
       <Lottie animationData={arrow} loop={true} style={{ height: 110 }} />
     </div>

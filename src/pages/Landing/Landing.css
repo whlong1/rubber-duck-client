@@ -15,7 +15,7 @@
 
 .container h1 {
   opacity: .85;
-  font-size: 44px;
+  font-size: 45px;
   margin: 0px 0px 20px 0px;
 }
 
@@ -54,7 +54,7 @@
   justify-content: center;
 }
 
-.splash-content h1 {
+.splash-content .logotype {
   font-size: 95px;
   margin-top: 30px;
 }
@@ -97,7 +97,7 @@
   flex-direction: column;
 }
 
-.about-content{
+.about-content {
   display: flex;
   padding: 20px;
 }
@@ -124,7 +124,7 @@
   padding: 120px 100px 180px 100px;
 }
 
-.history-container p { 
+.history-container p {
   margin-top: 10px;
 }
 
@@ -174,4 +174,12 @@
 
 .history-textblock {
   padding-left: 40px;
+}
+
+
+
+@media only screen and (max-width: 1330px) {
+  .container h1 {
+    font-size: 42px;
+  }
 }
