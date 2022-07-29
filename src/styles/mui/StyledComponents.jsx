@@ -6,23 +6,23 @@ import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 
 export const StyledRating = styled(Rating)(() => ({
-    '& .MuiRating-iconFilled': {
-      color: '#82bf88',
-      marginRight: '-10px',
-    },
-    '& .MuiRating-iconEmpty': {
-      color: '#5d5d5d',
-      marginRight: '-10px',
-    },
-    display: 'flex', 
-    alignItems: 'center'
+  '& .MuiRating-iconFilled': {
+    color: '#82bf88',
+    marginRight: '-10px',
+  },
+  '& .MuiRating-iconEmpty': {
+    color: '#5d5d5d',
+    marginRight: '-10px',
+  },
+  display: 'flex',
+  alignItems: 'center'
 }))
 
 export const StyledBox = styled(Box)(() => ({
-  display: 'flex', 
-  gap: '1rem', 
-  flexWrap: 'wrap', 
-  marginBottom: '1.5rem' 
+  display: 'flex',
+  gap: '1rem',
+  flexWrap: 'wrap',
+  marginBottom: '1.5rem'
 }))
 
 export const Post = styled(Card)(() => ({
@@ -53,7 +53,7 @@ export const DateTypography = styled(Typography)(() => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '75px', 
+  height: '75px',
   opacity: '.5'
 }))
 
@@ -72,26 +72,26 @@ export const StyledBoxColCenter = styled(Box)(() => ({
 }))
 
 export const StyledBoxFlexStart = styled(Box)(() => ({
-  width: '50%', 
-  display: 'flex', 
-  justifyContent: 'flex-start', 
-  alignItems:'flex-start', 
+  width: '50%',
+  display: 'flex',
+  justifyContent: 'flex-start',
+  alignItems: 'flex-start',
   height: '100%'
 }))
 
 export const StyledPostFormContainer = styled(Box)(() => ({
-  padding: '2rem', 
-  display: 'flex', 
-  flexDirection:'column', 
-  alignItems: 'center', 
+  padding: '2rem',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
   justifyContent: 'center',
   width: '100%',
 }))
 
 export const StyledAnalysisContainer = styled(Box)(() => ({
-  display: 'flex', 
-  flexDirection: 'column', 
-  alignItems: 'flex-start', 
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
   justifyContent: 'flex-start',
   padding: '1rem',
   height: '490px',
@@ -106,30 +106,30 @@ export const StyledPaper = styled(Paper)(() => ({
 }))
 
 export const StyledMessageBox = styled(Box)(() => ({
-    position: 'relative',
-    background: '#f2f2f2',
-    borderRadius: '.4em',
+  position: 'relative',
+  background: '#f2f2f2',
+  borderRadius: '.4em',
+  right: 20,
+  "&::after": {
+    content: '""',
+    position: 'absolute',
     right: 20,
-      "&::after": {
-      content: '""',
-      position: 'absolute',
-      right: 20,
-      top: '100%',
-      width: 0,
-      height: 0,
-      border: '10px solid transparent',
-      borderLeftColor: '#f2f2f2',
-      borderRight: 0,
-      marginTop: '-30px',
-      marginRight: '-30px',
-      }
+    top: '100%',
+    width: 0,
+    height: 0,
+    border: '10px solid transparent',
+    borderLeftColor: '#f2f2f2',
+    borderRight: 0,
+    marginTop: '-30px',
+    marginRight: '-30px',
+  }
 }))
 
 export const StyledFeedbackBox = styled(Box)(() => ({
-  minHeight: '160px', 
-  maxHeight: '160px', 
-  width: '100%', 
-  overflowY: 'scroll', 
+  minHeight: '160px',
+  maxHeight: '160px',
+  width: '100%',
+  overflowY: 'scroll',
   '&::-webkit-scrollbar': {
     width: '0.4em'
   },
@@ -140,7 +140,7 @@ export const StyledFeedbackBox = styled(Box)(() => ({
   '&::-webkit-scrollbar-thumb': {
     backgroundColor: 'rgba(0,0,0,.1)',
   },
-  '&::after':{
-    backgroundImage : 'linear-gradient(to bottom, rgba(255,255,255, 0),rgba(255,255,255, 1) 90%)'
+  '&::after': {
+    backgroundImage: 'linear-gradient(to bottom, rgba(255,255,255, 0),rgba(255,255,255, 1) 90%)'
   }
 }))
