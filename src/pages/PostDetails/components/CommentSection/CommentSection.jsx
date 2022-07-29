@@ -1,7 +1,11 @@
+import NewComment from "./NewComment"
+import CommentList from "./CommentList"
+
 const CommentSection = () => {
   return (
     <div>
-      New Comment
+      <NewComment />
+      <CommentList />
     </div>
   )
 }
