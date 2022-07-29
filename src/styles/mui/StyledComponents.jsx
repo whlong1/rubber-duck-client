@@ -80,7 +80,7 @@ export const StyledBoxFlexStart = styled(Box)(() => ({
 }))
 
 export const StyledPostFormContainer = styled(Box)(() => ({
-  padding: '2rem',
+  padding: '1rem 2rem 2rem 2rem',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',

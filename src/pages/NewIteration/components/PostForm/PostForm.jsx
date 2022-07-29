@@ -4,16 +4,18 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import { StyledPostFormContainer, StyledPaper, StyledBoxSpaceBetween } from '../../../../styles/mui/StyledComponents'
 
-function PostForm({ text, handleSubmit, handleCheckText, characterLimit, handleClear }) {
+function PostForm({ text, handleSubmit, handleCheckText, characterLimit, handleClear, iterations }) {
   const hasText = text.trim().length <= 0
   return (
     <StyledPaper elevation={15}>
-      <StyledBoxSpaceBetween>
+      <StyledBoxSpaceBetween sx={{ margin: '0'}}>
         <Box style={{ padding: '1rem' }}>
-         Title
+         
         </Box>
-        <Box style={{ padding: '1rem' }}>
-         Iteration
+        <Box style={{ padding: '1rem 2rem 1rem 1rem' }}>
+          <Typography variant="h5">
+           Iteration {iterations}
+          </Typography>
         </Box>
       </StyledBoxSpaceBetween>
       <StyledPostFormContainer>

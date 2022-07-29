@@ -17,6 +17,7 @@ function NewIteration(props) {
   const navigate = useNavigate()
   const { postId, topicId } = useParams()
   const [topic, setTopic] = useState()
+  const [iterations, setIterations] = useState(0)
   const [text, setText] = useState('')
   const [keywords, setKeywords] = useState([])
 
@@ -44,6 +45,15 @@ function NewIteration(props) {
       setText(`${text.trim()} ${suggestion}`)
     }
   }
+
+  useEffect(() => {
+    const fetchIterations = async () => {
+      const data = await postService.show(postId)
+      console.log(data)
+      setIterations(data.iterations.length + 1)
+    }
+    fetchIterations()
+  }, [topicId, postId])
 
   useEffect(() => {
     const fetchKeyWords = async () => {
@@ -77,6 +87,7 @@ function NewIteration(props) {
         <PostForm 
             text={text} 
             setText={setText} 
+            iterations={iterations}
             handleClear={handleClear}
             handleSubmit={handleSubmit}
             characterLimit={characterLimit}
