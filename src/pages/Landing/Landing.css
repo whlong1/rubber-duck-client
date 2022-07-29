@@ -135,6 +135,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  border: 1px solid red;
 }
 
 .history-container img {
@@ -194,12 +195,15 @@
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1160px) {
   .history-container img {
-    width: 390px;
-    height: 390px;
-    margin-right: 60px;
+    width: 34vw;
+    height: 34vw;
+    padding-right: 10px;
   }
+}
+
+@media only screen and (max-width: 1024px) {
   .container h1 {
     font-size: 32px;
     line-height: 1.2;
