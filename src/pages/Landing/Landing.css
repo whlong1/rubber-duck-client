@@ -110,6 +110,13 @@
   justify-content: center;
 }
 
+#column-one {
+  padding: 20px 20px 20px 100px;
+}
+#column-two {
+  padding: 20px 100px 20px 20px;
+}
+
 /* HISTORY COMPONENT */
 
 .history-container {
