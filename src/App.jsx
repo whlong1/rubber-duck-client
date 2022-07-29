@@ -1,27 +1,31 @@
+import './App.css'
 import { useState } from 'react'
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import { themeOptions } from './styles/theme'
-import NavBar from './components/NavBar/NavBar'
-import Signup from './pages/Signup/Signup'
-import Login from './pages/Login/Login'
-import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
-import PostList from './pages/Post/PostList/PostList'
-import PostDetails from './pages/PostDetails/PostDetails'
-import ProfileDetail from './pages/ProfileDetail/ProfileDetail'
-import Browse from './pages/Browse/Browse'
-import NewPost from './pages/NewPost/Newpost'
-import NewIteration from './pages/NewIteration/NewIteration'
-import * as authService from './services/authService'
-import './App.css'
 
+// Components
+import Login from './pages/Login/Login'
+import Signup from './pages/Signup/Signup'
+import Browse from './pages/Browse/Browse'
+import Landing from './pages/Landing/Landing'
+import NewPost from './pages/NewPost/Newpost'
+import NavBar from './components/NavBar/NavBar'
+import Profiles from './pages/Profiles/Profiles'
+import PostList from './pages/PostList/PostList'
+import PostDetails from './pages/PostDetails/PostDetails'
+import NewIteration from './pages/NewIteration/NewIteration'
+import ProfileDetail from './pages/ProfileDetail/ProfileDetail'
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
+
+// Services
+import * as authService from './services/authService'
 
 const App = () => {
-  const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
   const theme = createTheme(themeOptions)
+  const [user, setUser] = useState(authService.getUser())
 
   const handleLogout = (link) => {
     if (link !== '') return
@@ -48,34 +52,48 @@ const App = () => {
           path="/login"
           element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
         />
-        <Route
-          path="/profiles"
-          element={user ? <Profiles /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/profiles/:profileId"
-          element={user ? <ProfileDetail user={user} /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/posts/new"
-          element={user ? <NewPost user={user} /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/posts/:postId"
-          element={user ? <PostDetails user={user} /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/topics/:topicId"
-          element={user ? <PostList user={user} /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/browse"
-          element={user ? <Browse user={user} /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/topics/:topicId/posts/:postId/iterations"
-          element={user ? <NewIteration user={user} /> : <Navigate to="/login" />}
-        />
+
+        <Route path="/profiles" element={
+          <ProtectedRoute user={user}>
+            <Profiles />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/profiles/:profileId" element={
+          <ProtectedRoute user={user}>
+            <ProfileDetail user={user} />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/browse" element={
+          <ProtectedRoute user={user}>
+            <Browse user={user} />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/posts/new" element={
+          <ProtectedRoute user={user}>
+            <NewPost user={user} />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/posts/:postId" element={
+          <ProtectedRoute user={user}>
+            <PostDetails user={user} />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/topics/:topicId" element={
+          <ProtectedRoute user={user}>
+            <PostList user={user} />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/topics/:topicId/posts/:postId/iterations" element={
+          <ProtectedRoute user={user}>
+            <NewIteration user={user} />
+          </ProtectedRoute>
+        } />
       </Routes>
     </ThemeProvider>
   )

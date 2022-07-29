@@ -1,23 +1,26 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import Post from '../Post'
 import Divider from '@mui/material/Divider'
-import PaginatedList from './components/PaginatedList'
+import TungstenIcon from '@mui/icons-material/Tungsten'
+import { StyledBoxColCenter } from '../../styles/mui/StyledComponents'
+
+// Components
 import PostTopMenu from './components/PostTopMenu'
+import PaginatedList from './components/PaginatedList'
+import PostCard from '../../components/PostCard/PostCard'
 
-import TungstenIcon from '@mui/icons-material/Tungsten';
+// Services
+import * as postService from '../../services/postService'
+import * as topicService from '../../services/topicService'
 
-import * as postService from '../../../services/postService'
-import * as topicService from '../../../services/topicService'
-import { StyledBoxColCenter } from '../../../styles/mui/StyledComponents'
-
-const PostList = ({ user }) => {
+const PostList = () => {
   const { topicId } = useParams()
   const [page, setPage] = useState(0)
   const [topic, setTopic] = useState()
   const [posts, setPosts] = useState([])
   const [sort, setSort] = useState('recent')
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -30,35 +33,33 @@ const PostList = ({ user }) => {
     fetchPosts()
   }, [topicId, sort, page])
 
-  const [loading, setLoading] = useState(true)
-
   const postList = posts?.map((post) => (
-    !!post.iterations.length && <Post post={post} key={post._id} />
+    !!post.iterations.length && <PostCard post={post} key={post._id} />
   ))
 
   return (
     <StyledBoxColCenter>
       <PostTopMenu topic={topic} setSort={setSort} />
-      <Divider 
-        textAlign="left" 
-        sx={{ 
+      <Divider
+        textAlign="left"
+        sx={{
           color: 'primary',
-          width: '100%', 
-          margin: '1rem', 
-          visibility: { xs: 'hidden', md: 'visible' } 
+          width: '100%',
+          margin: '1rem',
+          visibility: { xs: 'hidden', md: 'visible' }
         }}
       >
         <TungstenIcon color="primary" />
       </Divider>
-      <PaginatedList 
+      <PaginatedList
         page={page}
-        loading={loading} 
+        loading={loading}
         setPage={setPage}
-        postList={postList} 
-        setLoading={setLoading} 
+        postList={postList}
+        setLoading={setLoading}
       />
     </StyledBoxColCenter>
-  );
+  )
 }
 
-export default PostList;
+export default PostList

@@ -51,6 +51,6 @@ export const writingTips = {
       }
       return suggestions
     },
-    explanation: 'Please avoid using profanity.'
+    explanation: 'Please avoid using fowl language.'
   },
 }
