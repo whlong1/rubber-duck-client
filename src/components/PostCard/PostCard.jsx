@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
 import Rating from './components/Rating'
 import Author from './components/Author'
+import DateDisplay from './components/DateDisplay'
 import CardContent from '@mui/material/CardContent'
 
 import {
   Post,
   BodyTypography,
-  DateTypography,
   StyledBoxSpaceBetween
 } from '../../styles/mui/StyledComponents'
 
@@ -26,7 +26,7 @@ const PostCard = ({ post }) => {
             {text}
           </BodyTypography>
         </CardContent>
-        <DateTypography>{createdAt.slice(0, 10)}</DateTypography>
+        <DateDisplay createdAt={createdAt} />
       </Post>
     </Link>
   )
