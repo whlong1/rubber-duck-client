@@ -2,18 +2,22 @@ import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
+import Skeleton from '@mui/material/Skeleton'
 import { StyledPostFormContainer, StyledPaper, StyledBoxSpaceBetween } from '../../../../styles/mui/StyledComponents'
 
-function PostForm({ text, handleSubmit, handleCheckText, characterLimit, handleClear }) {
+function PostForm({ text, handleSubmit, handleCheckText, characterLimit, handleClear, iterations }) {
   const hasText = text.trim().length <= 0
   return (
     <StyledPaper elevation={15}>
-      <StyledBoxSpaceBetween>
+      <StyledBoxSpaceBetween sx={{ margin: '0'}}>
         <Box style={{ padding: '1rem' }}>
-         Title
+         
         </Box>
-        <Box style={{ padding: '1rem' }}>
-         Iteration
+        <Box style={{ padding: '1rem 2rem 1rem 1rem' }}>
+          {iterations 
+          ? <Typography variant="h5"> Iteration {iterations} </Typography>
+          : <Skeleton width={100} height={40} />
+        }
         </Box>
       </StyledBoxSpaceBetween>
       <StyledPostFormContainer>

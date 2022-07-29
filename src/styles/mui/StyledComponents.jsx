@@ -80,7 +80,7 @@ export const StyledBoxFlexStart = styled(Box)(() => ({
 }))
 
 export const StyledPostFormContainer = styled(Box)(() => ({
-  padding: '2rem',
+  padding: '1rem 2rem 2rem 2rem',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -100,7 +100,7 @@ export const StyledAnalysisContainer = styled(Box)(() => ({
 
 export const StyledPaper = styled(Paper)(() => ({
   marginTop: '1rem',
-  height: '100%',
+  height: '490px',
   width: '100%',
   maxHeight: '490px'
 }))
