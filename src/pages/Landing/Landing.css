@@ -176,10 +176,42 @@
   padding-left: 40px;
 }
 
-
-
 @media only screen and (max-width: 1330px) {
   .container h1 {
     font-size: 42px;
+  }
+}
+
+@media only screen and (max-width: 1260px) {
+  .container h1 {
+    font-size: 40px;
+  }
+}
+
+@media only screen and (max-width: 1215px) {
+  .container h1 {
+    font-size: 38px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .history-container img {
+    width: 390px;
+    height: 390px;
+    margin-right: 60px;
+  }
+  .container h1 {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+  .container h4 {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  .container h3 {
+    font-size: 24px;
+  }
+  .container p {
+    font-size: 18px;
   }
 }
