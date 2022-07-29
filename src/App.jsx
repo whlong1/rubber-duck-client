@@ -17,6 +17,8 @@ import PostList from './pages/Post/PostList/PostList'
 import PostDetails from './pages/PostDetails/PostDetails'
 import NewIteration from './pages/NewIteration/NewIteration'
 import ProfileDetail from './pages/ProfileDetail/ProfileDetail'
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
+
 
 // Services
 import * as authService from './services/authService'
@@ -52,14 +54,21 @@ const App = () => {
           path="/login"
           element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
         />
-        <Route
-          path="/profiles"
-          element={user ? <Profiles /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/profiles/:profileId"
-          element={user ? <ProfileDetail user={user} /> : <Navigate to="/login" />}
-        />
+
+
+        <Route path="/profiles" element={
+          <ProtectedRoute user={user}>
+            <Profiles />
+          </ProtectedRoute>
+        } />
+
+
+        <Route path="/profiles/:profileId" element={
+          <ProtectedRoute user={user}>
+            <ProfileDetail user={user} />
+          </ProtectedRoute>
+        } />
+
         <Route
           path="/posts/new"
           element={user ? <NewPost user={user} /> : <Navigate to="/login" />}
