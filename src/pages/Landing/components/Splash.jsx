@@ -6,10 +6,10 @@ const Splash = () => {
   return (
     <div className='splash-container'>
       <div className='splash-content'>
-        <img src={logo} alt='logo' />
-        <h1 className='logoTitle'>Rubber Duck</h1>
+        <img src={logo} alt='duck logo' />
+        <h1>Rubber Duck</h1>
       </div>
-      <Lottie animationData={arrow} loop={true} style={{ height: 150 }} />
+      <Lottie animationData={arrow} loop={true} style={{ height: 110 }} />
     </div>
   )
 }

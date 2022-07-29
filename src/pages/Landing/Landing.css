@@ -48,7 +48,7 @@
   width: 100%;
   display: flex;
   min-height: 80vh;
-  padding-top: 140px;
+  padding-top: 120px;
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -56,7 +56,7 @@
 
 .splash-content h1 {
   font-size: 95px;
-  margin-top: 35px;
+  margin-top: 30px;
 }
 
 .splash-content img {
