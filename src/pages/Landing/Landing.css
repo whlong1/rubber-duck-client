@@ -217,6 +217,9 @@
     font-size: 35px;
     letter-spacing: -1px;
   }
+  .history-container {
+    padding: 120px 50px 180px 50px;
+  }
 }
 
 @media only screen and (max-width: 1060px) {
@@ -227,9 +230,16 @@
   #method {
     font-size: 15px;
   }
+  .history-container img {
+    width: 36vw;
+    height: 36vw;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
+  .history-container {
+    padding: 120px 40px 180px 40px;
+  }
   .container h1 {
     font-size: 32px;
     line-height: 1.2;
@@ -247,11 +257,21 @@
 }
 
 @media only screen and (max-width: 1015px) { 
-  #decorative-rec {
-    height: 120px;
-  }
   #feynman-technique{
     margin-bottom: 10px;
-    letter-spacing: normal;
   }
 }
+
+@media only screen and (max-width: 940px) { 
+  .history-container {
+    padding: 120px 30px 180px 30px;
+  }
+  .history-container img {
+    width: 38vw;
+    height: 38vw;
+  }
+}
+
+/* 860 */
+
+
