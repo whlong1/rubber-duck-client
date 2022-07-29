@@ -90,15 +90,20 @@ const App = () => {
         } />
 
 
-        <Route
-          path="/browse"
-          element={user ? <Browse user={user} /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/topics/:topicId/posts/:postId/iterations"
-          element={user ? <NewIteration user={user} /> : <Navigate to="/login" />}
-        />
+        <Route path="/browse" element={
+          <ProtectedRoute user={user}>
+            <Browse user={user} />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/topics/:topicId/posts/:postId/iterations" element={
+          <ProtectedRoute user={user}>
+            <NewIteration user={user} />
+          </ProtectedRoute>
+        } />
       </Routes>
+
+
     </ThemeProvider>
   )
 }
