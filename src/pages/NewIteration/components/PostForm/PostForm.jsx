@@ -2,32 +2,56 @@ import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
+import { StyledPostFormContainer, StyledPaper, StyledBoxSpaceBetween } from '../../../../styles/mui/StyledComponents'
 
-function PostForm({ text, handleSubmit, handleCheckText, characterLimit }) {
+function PostForm({ text, handleSubmit, handleCheckText, characterLimit, handleClear }) {
+  const hasText = text.trim().length <= 0
   return (
-    <Box sx={{ padding: '2rem', display: 'flex', flexDirection:'column', alignItems: 'center', justifyContent: 'center', width: 500 }}>
-      <form onSubmit={handleSubmit} autoComplete="off" style={{ width: '100%' }}>
-        <TextField
-          sx={{ backgroundColor: '#2e2e2e' }}
-          required
-          multiline
-          fullWidth
-          minRows={8}
-          maxRows={20}
-          name="text"
-          type="text"
-          value={text}
-          spellCheck="true"
-          onChange={(e) => handleCheckText(e, e.target.value)}
-        />
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end'}}>
-          <Typography sx={{ color: text.length > (characterLimit * .8) ? 'red' : 'white' }}>
-            {`${text.length}/${characterLimit}`}
-          </Typography>
+    <StyledPaper elevation={15}>
+      <StyledBoxSpaceBetween>
+        <Box style={{ padding: '1rem' }}>
+         Title
         </Box>
-        <Button type="submit" fullWidth variant='contained' sx={{ marginTop: '1rem' }}>Submit</Button>
-      </form>
-    </Box>
+        <Box style={{ padding: '1rem' }}>
+         Iteration
+        </Box>
+      </StyledBoxSpaceBetween>
+      <StyledPostFormContainer>
+        <form onSubmit={handleSubmit} autoComplete="off" style={{ width: '100%' }}>
+          <TextField
+            inputProps={{ style: {fontSize: 24, lineHeight: 1.2} }}
+            sx={{ backgroundColor: '#2e2e2e'}}
+            required
+            multiline
+            fullWidth
+            minRows={8}
+            maxRows={20}
+            name="text"
+            type="text"
+            value={text}
+            spellCheck="true"
+            onChange={(e) => handleCheckText(e, e.target.value)}
+          />
+          <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
+            <Button onClick={handleClear} color="secondary">Clear</Button>
+            <Typography 
+              sx={{ color: text.length > (characterLimit * .8) ? 'red' : 'white' }}
+            >
+              {`${text.length}/${characterLimit}`}
+            </Typography>
+          </Box>
+          <Button
+            disabled={hasText}
+            type="submit" 
+            fullWidth 
+            variant='contained' 
+            sx={{ marginTop: '1rem' }}
+          >
+            Submit
+          </Button>
+        </form>
+      </StyledPostFormContainer>
+    </StyledPaper>
   )
 }
 

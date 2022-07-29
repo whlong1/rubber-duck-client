@@ -4,6 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
+import Skeleton from '@mui/material/Skeleton'
+import { StyledBoxFlexStart } from '../../styles/mui/StyledComponents'
 
 // Components
 import PostForm from './/components/PostForm/PostForm'
@@ -23,6 +25,8 @@ function NewIteration(props) {
     return charCode === 8 || charCode === 46
   }
   const characterLimit = 250
+
+  const handleClear = () => setText('')
 
   const handleCheckText = (e, text) => {
     if(text.length > characterLimit && !isDeleteKey(e)) return
@@ -51,34 +55,42 @@ function NewIteration(props) {
   }, [topicId, postId])
 
   return (
-    <Box sx={{ padding: '1.5rem' }}>
-      <Typography 
-        variant='h5'
-      >
-        {topic?.category}
-      </Typography>
-      <Typography variant="h2" sx={{ fontFamily: 'abril-display'}}>
-        {topic?.title}
-      </Typography>
+    <Box sx={{ padding: '1.5rem', height: 'calc(100vh - 70px)',  overflow: 'hidden'  }}>
+      {topic 
+      ? <>
+          <Typography variant='h5'>
+            {topic.category}
+          </Typography>
+          <Typography variant="h2" sx={{ fontFamily: 'abril-display'}}>
+            {topic.title}
+          </Typography>
+        </>
+      :
+      <>
+        <Skeleton height={32.02} width={100} />
+        <Skeleton height={72} animation="wave" width={350} />
+      </>
+      }
       <Divider sx={{ marginTop: '1rem' }} />
-      <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '298px', marginTop: '5rem' }}>
+      <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <Box sx={{ width: '50%', display: 'flex', justifyContent: 'flex-end' }}>
-      <PostForm 
-          text={text} 
-          setText={setText} 
-          handleSubmit={handleSubmit}
-          characterLimit={characterLimit}
-          handleCheckText={handleCheckText}
-        />
+        <PostForm 
+            text={text} 
+            setText={setText} 
+            handleClear={handleClear}
+            handleSubmit={handleSubmit}
+            characterLimit={characterLimit}
+            handleCheckText={handleCheckText}
+          />
       </Box>
-      <Box sx={{ width: '50%', display: 'flex', justifyContent: 'flex-start', alignItems:'flex-start', height: '100%' }}>
+      <Divider orientation="vertical" flexItem sx={{ marginRight:"1rem", bgcolor: "background", margin: "1rem 1rem 0 1rem" }}  />
+      <StyledBoxFlexStart>
         <Analysis 
             text={text} 
             keywords={keywords} 
             handleClickSuggestion={handleClickSuggestion}
         />
-      </Box>
-
+      </StyledBoxFlexStart>
       </Box>
     </Box>
   )
