@@ -297,6 +297,37 @@
   }
 }
 
-/* 860 */
+@media only screen and (max-width: 880px) { 
+  .container h1 {
+    font-size: 42px;
+    line-height: normal;
+  }
+  .container h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .about-content {
+    flex-direction: column;
+  }
+  .about-textblock {
+    width: 100%;
+  }
+  #column-one {
+    padding: 0px;
+  }
+  #column-two {
+    padding: 20px 0px;
+  }
 
+  .history-container {
+    padding: 80px 20px;
+    flex-direction: column;
+    border: 1px solid red;
+  }
 
+  .history-container .right,
+  .history-container .right {
+    width: 100%;
+  }
+
+}
