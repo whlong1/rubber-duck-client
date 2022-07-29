@@ -49,7 +49,6 @@ function NewIteration(props) {
   useEffect(() => {
     const fetchIterations = async () => {
       const data = await postService.show(postId)
-      console.log(data)
       setIterations(data.iterations.length + 1)
     }
     fetchIterations()
