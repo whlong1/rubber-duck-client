@@ -39,23 +39,23 @@ const PostList = ({ user }) => {
   return (
     <StyledBoxColCenter>
       <PostTopMenu topic={topic} setSort={setSort} />
-      <Divider 
-        textAlign="left" 
-        sx={{ 
+      <Divider
+        textAlign="left"
+        sx={{
           color: 'primary',
-          width: '100%', 
-          margin: '1rem', 
-          visibility: { xs: 'hidden', md: 'visible' } 
+          width: '100%',
+          margin: '1rem',
+          visibility: { xs: 'hidden', md: 'visible' }
         }}
       >
         <TungstenIcon color="primary" />
       </Divider>
-      <PaginatedList 
+      <PaginatedList
         page={page}
-        loading={loading} 
+        loading={loading}
         setPage={setPage}
-        postList={postList} 
-        setLoading={setLoading} 
+        postList={postList}
+        setLoading={setLoading}
       />
     </StyledBoxColCenter>
   );

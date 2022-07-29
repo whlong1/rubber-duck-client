@@ -1,9 +1,9 @@
-import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
-import Typography from '@mui/material/Typography'
-import Rating from '@mui/material/Rating'
 import Paper from '@mui/material/Paper'
+import Rating from '@mui/material/Rating'
+import { styled } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
 
 export const StyledRating = styled(Rating)(() => ({
     '& .MuiRating-iconFilled': {
