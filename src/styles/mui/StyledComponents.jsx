@@ -25,7 +25,7 @@ export const StyledBox = styled(Box)(() => ({
   marginBottom: '1.5rem' 
 }))
 
-export const PostCard = styled(Card)(() => ({
+export const Post = styled(Card)(() => ({
   display: 'flex',
   justifyContent: 'space-between',
   flexDirection: 'column',

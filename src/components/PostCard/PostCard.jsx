@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent'
 import { ReactComponent as Diamond } from '../../assets/diamond-icon.svg'
 
 import {
-  PostCard,
+  Post, // *********
   StyledRating,
   BodyTypography,
   DateTypography,
@@ -12,13 +12,13 @@ import {
   StyledBoxSpaceBetween
 } from '../../styles/mui/StyledComponents'
 
-const Post = ({ post }) => {
+const PostCard = ({ post }) => {
   const { author } = post
   const { text, rating, createdAt } = post.iterations.length && post.iterations[0]
 
   return (
     <Link to={`/posts/${post._id}`}>
-      <PostCard sx={{ width: { xs: 400, md: 275 }, minHeight: { xs: 300, md: 325 } }}>
+      <Post sx={{ width: { xs: 400, md: 275 }, minHeight: { xs: 300, md: 325 } }}>
         <CardContent>
           <StyledBoxSpaceBetween>
             <AuthTypography color="text.secondary" gutterBottom>
@@ -37,9 +37,9 @@ const Post = ({ post }) => {
           <BodyTypography>{text}</BodyTypography>
         </CardContent>
         <DateTypography>{createdAt.slice(0, 10)}</DateTypography>
-      </PostCard>
+      </Post>
     </Link>
   )
 }
 
-export default Post
+export default PostCard

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import Post from '../Post'
+import PostCard from '../../../components/PostCard/PostCard'
 import Divider from '@mui/material/Divider'
 import PaginatedList from './components/PaginatedList'
 import PostTopMenu from './components/PostTopMenu'
@@ -33,7 +33,7 @@ const PostList = ({ user }) => {
   const [loading, setLoading] = useState(true)
 
   const postList = posts?.map((post) => (
-    !!post.iterations.length && <Post post={post} key={post._id} />
+    !!post.iterations.length && <PostCard post={post} key={post._id} />
   ))
 
   return (
