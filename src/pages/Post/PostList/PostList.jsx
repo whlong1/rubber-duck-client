@@ -1,26 +1,30 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import PostCard from '../../../components/PostCard/PostCard'
 import Divider from '@mui/material/Divider'
-import PaginatedList from './components/PaginatedList'
-import PostTopMenu from './components/PostTopMenu'
-
-import TungstenIcon from '@mui/icons-material/Tungsten';
-
-import * as postService from '../../../services/postService'
-import * as topicService from '../../../services/topicService'
+import TungstenIcon from '@mui/icons-material/Tungsten'
 import { StyledBoxColCenter } from '../../../styles/mui/StyledComponents'
 
-const PostList = ({ user }) => {
+// Components
+import PostTopMenu from './components/PostTopMenu'
+import PaginatedList from './components/PaginatedList'
+import PostCard from '../../../components/PostCard/PostCard'
+
+// Services
+import * as postService from '../../../services/postService'
+import * as topicService from '../../../services/topicService'
+
+const PostList = () => {
   const { topicId } = useParams()
   const [page, setPage] = useState(0)
   const [topic, setTopic] = useState()
   const [posts, setPosts] = useState([])
   const [sort, setSort] = useState('recent')
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchPosts = async () => {
+      // combine these requests
       const data = await postService.index(page, sort, topicId)
       const topicData = await topicService.show(topicId)
       setPosts(data)
@@ -30,7 +34,6 @@ const PostList = ({ user }) => {
     fetchPosts()
   }, [topicId, sort, page])
 
-  const [loading, setLoading] = useState(true)
 
   const postList = posts?.map((post) => (
     !!post.iterations.length && <PostCard post={post} key={post._id} />
@@ -61,4 +64,4 @@ const PostList = ({ user }) => {
   );
 }
 
-export default PostList;
+export default PostList
