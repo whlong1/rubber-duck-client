@@ -135,7 +135,6 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid red;
 }
 
 .history-container img {
@@ -164,7 +163,7 @@
 }
 
 .history-header h4 {
-  margin: 20px 0px 0px 0px;
+  margin: 16px 0px 0px 0px;
 }
 
 .header-content {
@@ -195,11 +194,38 @@
   }
 }
 
-@media only screen and (max-width: 1160px) {
+@media only screen and (max-width: 1170px) {
   .history-container img {
     width: 34vw;
     height: 34vw;
     padding-right: 10px;
+  }
+  #feynman-technique{
+    letter-spacing: -.75px;
+  }
+}
+
+@media only screen and (max-width: 1140px) {
+  #feynman-technique{
+    font-size: 36px;
+    letter-spacing: -.75px;
+  }
+}
+
+@media only screen and (max-width: 1095px) {
+  #feynman-technique{
+    font-size: 35px;
+    letter-spacing: -1px;
+  }
+}
+
+@media only screen and (max-width: 1060px) {
+  #feynman-technique{
+    font-size: 33px;
+    letter-spacing: -1px;
+  }
+  #method {
+    font-size: 15px;
   }
 }
 
@@ -210,12 +236,22 @@
   }
   .container h4 {
     font-size: 14px;
-    margin-top: 5px;
+    margin-bottom: 5px;
   }
   .container h3 {
     font-size: 24px;
   }
   .container p {
     font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 1015px) { 
+  #decorative-rec {
+    height: 120px;
+  }
+  #feynman-technique{
+    margin-bottom: 10px;
+    letter-spacing: normal;
   }
 }
