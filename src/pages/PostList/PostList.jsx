@@ -3,16 +3,16 @@ import { useParams } from 'react-router-dom'
 
 import Divider from '@mui/material/Divider'
 import TungstenIcon from '@mui/icons-material/Tungsten'
-import { StyledBoxColCenter } from '../../../styles/mui/StyledComponents'
+import { StyledBoxColCenter } from '../../styles/mui/StyledComponents'
 
 // Components
 import PostTopMenu from './components/PostTopMenu'
 import PaginatedList from './components/PaginatedList'
-import PostCard from '../../../components/PostCard/PostCard'
+import PostCard from '../../components/PostCard/PostCard'
 
 // Services
-import * as postService from '../../../services/postService'
-import * as topicService from '../../../services/topicService'
+import * as postService from '../../services/postService'
+import * as topicService from '../../services/topicService'
 
 const PostList = () => {
   const { topicId } = useParams()
@@ -32,7 +32,6 @@ const PostList = () => {
     }
     fetchPosts()
   }, [topicId, sort, page])
-
 
   const postList = posts?.map((post) => (
     !!post.iterations.length && <PostCard post={post} key={post._id} />
@@ -60,7 +59,7 @@ const PostList = () => {
         setLoading={setLoading}
       />
     </StyledBoxColCenter>
-  );
+  )
 }
 
 export default PostList

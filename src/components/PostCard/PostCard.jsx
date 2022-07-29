@@ -4,7 +4,6 @@ import Author from './components/Author'
 import BodyText from './components/BodyText'
 import DateDisplay from './components/DateDisplay'
 import CardContent from '@mui/material/CardContent'
-
 import { Post, StyledBoxSpaceBetween } from '../../styles/mui/StyledComponents'
 
 const PostCard = ({ post }) => {
