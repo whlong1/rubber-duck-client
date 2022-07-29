@@ -15,7 +15,7 @@
 
 .container h1 {
   opacity: .85;
-  font-size: 48px;
+  font-size: 44px;
   margin: 0px 0px 20px 0px;
 }
 
@@ -48,7 +48,7 @@
   width: 100%;
   display: flex;
   min-height: 80vh;
-  padding-top: 120px;
+  padding-top: 115px;
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -145,7 +145,7 @@
 .history-container .right {
   width: 50%;
   display: flex;
-  padding: 40px 0px;
+  padding: 40px 20px 40px 0px;
   align-items: center;
   flex-direction: column;
   justify-content: center;
