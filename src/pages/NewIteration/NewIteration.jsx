@@ -13,7 +13,7 @@ import Analysis from './components/Analysis/Analysis'
 import * as postService from '../../services/postService'
 
 
-function NewIteration(props) {
+function NewIteration() {
   const navigate = useNavigate()
   const { postId, topicId } = useParams()
   const [topic, setTopic] = useState()

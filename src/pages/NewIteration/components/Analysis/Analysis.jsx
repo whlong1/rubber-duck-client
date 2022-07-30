@@ -10,7 +10,7 @@ import AnalysisPopper from './AnalysisPopper'
 import { StyledAnalysisContainer, StyledFeedbackBox, StyledPaper } from '../../../../styles/mui/StyledComponents'
 
 // Utils
-import { writingTips } from '../../utils/utils'
+import { writingTips } from './utils/utils'
 
 function Analysis({ text, keywords, handleClickSuggestion }) {
   const [tips, setTips] = useState([])
