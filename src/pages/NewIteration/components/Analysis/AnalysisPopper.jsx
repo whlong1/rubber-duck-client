@@ -8,15 +8,15 @@ import { ReactComponent as DuckIcon } from '../../../../assets/logo-icon.svg'
 import { StyledMessageBox } from '../../../../styles/mui/StyledComponents'
 
 
-const AnalysisPopper = ({ tips, warnings }) => {
+const AnalysisPopper = ({ warnings }) => {
   const duckEl = useRef()
   const [anchorEl, setAnchorEl] = useState(null)
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    setOpen(tips.length > 0 || warnings.length > 0)
+    setOpen(warnings.length > 0)
     setAnchorEl(duckEl.current)
-  }, [tips, warnings])
+  }, [ warnings])
 
   const id = open ? 'simple-popper' : undefined
 
@@ -39,7 +39,7 @@ const AnalysisPopper = ({ tips, warnings }) => {
         >
           <StyledMessageBox sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
           <Typography style={{ fontFamily: 'abril-display' }}>
-            Quack! You have {tips.length + warnings.length} issue{tips.length + warnings.length > 1 ? 's' : ''}!
+            Quack! You have {warnings.length} issue {warnings.length > 1 ? 's' : ''}!
           </Typography>
         </StyledMessageBox>
         </Grow>

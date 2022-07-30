@@ -1,8 +1,8 @@
-import { isTextWordy } from './too-wordy'
-import { clichesMatcher } from './no-cliches/cliches'
-import { checkPassive } from './passiveVoice/passive'
-import { matchAdverbs } from './adverb-where/adverbs'
-import { checkWeaselWords } from './weasel/weasel'
+import { isTextWordy } from './lib/too-wordy/too-wordy'
+import { clichesMatcher } from './lib/no-cliches/cliches'
+import { checkPassive } from './lib/passive-voice/passive'
+import { matchAdverbs } from './lib/adverb-where/adverbs'
+import { checkWeaselWords } from './lib/weasel/weasel'
 
 import { startsWithSo } from './lib/startsWithSo'
 import { lexicalIllusions } from './lib/lexicalIllustions'
@@ -103,13 +103,16 @@ function filter(text, suggestions, whitelistTerms = []) {
       const suggestionFrom = suggestion.index;
       const suggestionTo = suggestion.index + suggestion.offset;
       return (
+        // suggestion covers entire whitelist term
         suggestionFrom <= slice.from && suggestionTo >= slice.to
-        || suggestionFrom >= slice.from && suggestionFrom <= slice.to
-        || suggestionTo >= slice.from && suggestionTo <= slice.to
-      )
-    })) {
-      memo.push(suggestion)
-    }
+      ) || (
+          // suggestion starts within whitelist term
+          suggestionFrom >= slice.from && suggestionFrom <= slice.to
+        ) || (
+          // suggestion ends within whitelist term
+          suggestionTo >= slice.from && suggestionTo <= slice.to
+        )
+    })) { memo.push(suggestion) }
     return memo
   }, [])
 }
@@ -128,10 +131,13 @@ function dedup(suggestions) {
   }, [])
 }
 
-function reasonable(text, reason) {
+function makeSuggestion(text, check) {
+  // finalChecks[checkName].explanation
   return function reasonableSuggestion(suggestion) {
     // eslint-disable-next-line no-param-reassign
-    suggestion.reason = `"${text.substr(suggestion.index, suggestion.offset)}" ${reason}`
+    suggestion.color = check.color
+    suggestion.severity = check.severity
+    suggestion.reason = `"${text.substr(suggestion.index, suggestion.offset)}" ${check.explanation}`
     return suggestion
   }
 }
@@ -152,7 +158,7 @@ function writeGood(text, opts = {}) {
       suggestions = suggestions.concat(
         finalChecks[checkName]
           .fn(text)
-          .map(reasonable(text, finalChecks[checkName].explanation))
+          .map(makeSuggestion(text, finalChecks[checkName]))
       )
     }
   })

@@ -16,6 +16,8 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
   const [tips, setTips] = useState([])
   const [warnings, setWarnings] = useState([])
 
+  console.log(warnings)
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setWarnings(writeGood(text))
@@ -26,11 +28,11 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
 
   return (
     <StyledPaper elevation={0}>
-      <AnalysisPopper tips={tips} warnings={warnings} />
+      <AnalysisPopper warnings={warnings} />
       <StyledAnalysisContainer>
         <StyledFeedbackBox>
           <Paper elevation={2} sx={{ minWidth: '100%', minHeight: '95%', padding: '.5rem' }}>
-            {tips.map((obj, idx) => (
+            {/* {tips.map((obj, idx) => (
               <Box sx={{ display: 'flex', alignItems: "center", marginBottom: '5px' }} key={idx}>
                 <Fade in={true} timeout={1000}>
                   <Chip
@@ -51,7 +53,7 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
                   </Typography>
                 </Fade>
               </Box>
-            ))}
+            ))} */}
             {warnings.map((obj, idx) => (
               <Box
                 sx={{
@@ -63,7 +65,7 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
               >
                 <Fade in={true} timeout={1000}>
                   <Chip
-                    color="error"
+                    color={obj.color}
                     label="warning"
                     variant="outlined"
                     style={{ height: '20px', width: '80px', marginRight: '10px' }}
