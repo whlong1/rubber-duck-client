@@ -13,7 +13,6 @@ import { shapeText } from './utils/shapeText'
 import { writeGood } from './utils/write-good/write-good'
 
 function Analysis({ text, keywords, handleClickSuggestion }) {
-  const [tips, setTips] = useState([])
   const [warnings, setWarnings] = useState([])
 
   console.log(warnings)
@@ -21,7 +20,6 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setWarnings(writeGood(text))
-      // setTips(writeGood(text, { checks: writingTips }))
     }, 1000)
     return () => clearTimeout(timer)
   }, [text])

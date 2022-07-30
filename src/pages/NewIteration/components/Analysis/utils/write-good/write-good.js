@@ -2,7 +2,7 @@ import { isTextWordy } from './lib/too-wordy/too-wordy'
 import { clichesMatcher } from './lib/no-cliches/cliches'
 import { checkPassive } from './lib/passive-voice/passive'
 import { matchAdverbs } from './lib/adverb-where/adverbs'
-import { checkWeaselWords } from './lib/weasel/weasel'
+// import { checkWeaselWords } from './lib/weasel/weasel'
 
 import { startsWithSo } from './lib/startsWithSo'
 import { lexicalIllusions } from './lib/lexicalIllustions'
@@ -38,12 +38,12 @@ const defaultChecks = {
     fn: matchAdverbs,
     explanation: 'can weaken meaning',
   },
-  weasel: {
-    severity: 1,
-    color: 'warning',
-    fn: checkWeaselWords,
-    explanation: 'is a weasel word',
-  },
+  // weasel: {
+  //   severity: 1,
+  //   color: 'warning',
+  //   fn: checkWeaselWords,
+  //   explanation: 'is a weasel word',
+  // },
   passive: {
     severity: 1,
     color: 'warning',
@@ -164,7 +164,7 @@ function writeGood(text, opts = {}) {
   })
 
   const filtered = filter(text, suggestions, opts.whitelist)
-  return dedup(filtered).sort((a, b) => (a.index < b.index ? -1 : 1))
+  return dedup(filtered).sort((a, b) => (a.severity < b.severity ? -1 : 1))
 }
 
 export {
