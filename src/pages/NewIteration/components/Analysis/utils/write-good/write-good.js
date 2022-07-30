@@ -84,7 +84,7 @@ const defaultChecks = {
     severity: 1,
     color: 'warning',
     fn: checkObvious,
-    explanation: 'Not everything is as obvious as you might think.',
+    explanation: 'Is this obvious to the reader?',
   },
 }
 

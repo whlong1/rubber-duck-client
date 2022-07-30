@@ -1,11 +1,10 @@
 import { useEffect, useState, useRef } from 'react'
 import Box from '@mui/material/Box'
 import Popper from '@mui/material/Popper'
-import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Grow from '@mui/material/Grow'
-import { ReactComponent as DuckIcon } from '../../../../assets/logo-icon.svg'
-import { StyledMessageBox } from '../../../../styles/mui/StyledComponents'
+import { ReactComponent as DuckIcon } from '../../../../../assets/logo-icon.svg'
+import { StyledMessageBox } from '../../../../../styles/mui/StyledComponents'
 
 
 const AnalysisPopper = ({ issues }) => {
