@@ -13,24 +13,24 @@ import { shapeText } from './utils/shapeText'
 import { writeGood } from './utils/write-good/write-good'
 
 function Analysis({ text, keywords, handleClickSuggestion }) {
-  const [warnings, setWarnings] = useState([])
+  const [issues, setIssues] = useState([])
 
-  console.log(warnings)
+  console.log(issues)
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setWarnings(writeGood(text))
+      setIssues(writeGood(text))
     }, 1000)
     return () => clearTimeout(timer)
   }, [text])
 
   return (
     <StyledPaper elevation={0}>
-      <AnalysisPopper warnings={warnings} />
+      <AnalysisPopper issues={issues} />
       <StyledAnalysisContainer>
         <StyledFeedbackBox>
           <Paper elevation={2} sx={{ minWidth: '100%', minHeight: '95%', padding: '.5rem' }}>
-            {warnings.map((obj, idx) => (
+            {issues.map((obj, idx) => (
               <Box
                 sx={{
                   display: 'flex',
@@ -63,15 +63,15 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
         </StyledFeedbackBox>
         <Divider sx={{ fontSize: '1rem', marginTop: '.5rem' }} flexItem />
         <Box sx={{ marginTop: '.5rem', width: '100%', padding: '.5rem' }}>
-          {!!keywords.length && <Typography>Suggestions:</Typography>}
+          {!!keywords.length && <Typography>Keywords:</Typography>}
         </Box>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '10px', paddingTop: '10px' }}>
           {keywords.map((word, idx) => (
             <Chip
               key={idx}
               label={word}
-              variant='outlined'
               color='success'
+              variant='outlined'
               onClick={() => handleClickSuggestion(word)}
             />
           ))}
