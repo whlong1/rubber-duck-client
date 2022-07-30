@@ -1,4 +1,4 @@
-export default function profanity(text) {
+export function profanity(text) {
   const suggestions = []
   const positives = ['Fuck', 'Shit', 'Ass', 'Bitch']
   const regex = new RegExp('\\b(' + positives.join('|') + ')\\b', 'gi')

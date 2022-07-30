@@ -1,4 +1,4 @@
-export default function assumptions(text) {
+export function assumptions(text) {
   const suggestions = []
   const positives = ['Everyone knows', 'Everybody knows', 'As we all know', 'Easily', 'Easy', 'Assuming']
   const regex = new RegExp('\\b(' + positives.join('|') + ')\\b', 'gi')

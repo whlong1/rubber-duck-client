@@ -9,6 +9,7 @@ import Divider from '@mui/material/Divider'
 import Typography from '@mui/material/Typography'
 import { StyledAnalysisContainer, StyledFeedbackBox, StyledPaper } from '../../../../styles/mui/StyledComponents'
 
+import { shapeText } from './utils/shapeText'
 import { writeGood } from './utils/write-good/write-good'
 
 function Analysis({ text, keywords, handleClickSuggestion }) {
@@ -22,11 +23,6 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
     }, 1000)
     return () => clearTimeout(timer)
   }, [text])
-
-  const shapeText = (string) => {
-    let caughtWord = string.match(/(?:"[^"]*"|^[^"]*$)/)[0].replace(/"/g, "")
-    return [caughtWord, string.slice(caughtWord.length + 3)]
-  }
 
   return (
     <StyledPaper elevation={0}>

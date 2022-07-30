@@ -1,4 +1,4 @@
-export default function omit(text) {
+export function omit(text) {
   const suggestions = []
   const positives = ['Basically', 'Basic', 'Simply', 'Simple', 'Just']
   const regex = new RegExp('\\b(' + positives.join('|') + ')\\b', 'gi')
