@@ -1,6 +1,6 @@
-export function assumptions(text) {
+export function checkProfanity(text) {
   const suggestions = []
-  const positives = ['Everyone knows', 'Everybody knows', 'As we all know', 'Easily', 'Easy', 'Assuming']
+  const positives = ['Fuck', 'Shit', 'Ass', 'Bitch']
   const regex = new RegExp('\\b(' + positives.join('|') + ')\\b', 'gi')
   const match = regex.exec(text)
   if (match) {

@@ -1,42 +1,90 @@
-import { isTextWordy } from './tooWordy'
-import { clichesMatcher } from './noCliches'
-import { checkPassive } from './passiveVoice'
-import { matchAdverbs } from './adverbsWhere'
-import { checkWeaselWords } from './weaselWords'
+import { isTextWordy } from './too-wordy'
+import { clichesMatcher } from './no-cliches/cliches'
+import { checkPassive } from './passiveVoice/passive'
+import { matchAdverbs } from './adverb-where/adverbs'
+import { checkWeaselWords } from './weasel/weasel'
 
 import { startsWithSo } from './lib/startsWithSo'
 import { lexicalIllusions } from './lib/lexicalIllustions'
 import { startsWithThereIs } from './lib/startsWithThereIs'
 
-import { omit } from './writeGood/lib/custom/omit'
-import { obvious } from './writeGood/lib/custom/obvious'
-import { profanity } from './writeGood/lib/custom/profanity'
-import { assumptions } from './writeGood/lib/custom/assumptions'
+import { considerOmit } from './custom/omit'
+import { checkObvious } from './custom/obvious'
+import { checkProfanity } from './custom/profanity'
+import { checkAssumptions } from './custom/assumptions'
 
 const defaultChecks = {
-  so: { fn: startsWithSo, explanation: 'adds no meaning' },
-  cliches: { fn: clichesMatcher, explanation: 'is a cliche' },
-  illusion: { fn: lexicalIllusions, explanation: 'is repeated' },
-  adverb: { fn: matchAdverbs, explanation: 'can weaken meaning' },
-  weasel: { fn: checkWeaselWords, explanation: 'is a weasel word' },
-  passive: { fn: checkPassive, explanation: 'may be passive voice' },
-  tooWordy: { fn: isTextWordy, explanation: 'is wordy or unneeded' },
-  thereIs: { fn: startsWithThereIs, explanation: 'is unnecessary verbiage' },
+  so: {
+    severity: 1,
+    color: 'warning',
+    fn: startsWithSo,
+    explanation: 'adds no meaning',
+  },
+  cliches: {
+    severity: 1,
+    color: 'warning',
+    fn: clichesMatcher,
+    explanation: 'is a cliche',
+  },
+  illusion: {
+    severity: 2,
+    color: 'error',
+    fn: lexicalIllusions,
+    explanation: 'is repeated',
+  },
+  adverb: {
+    severity: 1,
+    color: 'warning',
+    fn: matchAdverbs,
+    explanation: 'can weaken meaning',
+  },
+  weasel: {
+    severity: 1,
+    color: 'warning',
+    fn: checkWeaselWords,
+    explanation: 'is a weasel word',
+  },
+  passive: {
+    severity: 1,
+    color: 'warning',
+    fn: checkPassive,
+    explanation: 'may be passive voice',
+  },
+  tooWordy: {
+    severity: 2,
+    color: 'error',
+    fn: isTextWordy,
+    explanation: 'is wordy or unneeded',
+  },
+  thereIs: {
+    fn: startsWithThereIs,
+    explanation: 'is unnecessary verbiage',
+    severity: 1,
+    color: 'warning',
+  },
   assumptions: {
-    fn: assumptions,
-    explanation: 'Try to avoid making assumptions.'
+    severity: 1,
+    color: 'warning',
+    fn: checkAssumptions,
+    explanation: 'Try to avoid making assumptions.',
   },
   profanity: {
-    fn: profanity,
-    explanation: 'Please avoid using fowl language.'
+    severity: 2,
+    color: 'error',
+    fn: checkProfanity,
+    explanation: 'Please avoid using fowl language.',
   },
   omit: {
-    fn: omit,
-    explanation: 'Consider omitting this word.'
+    severity: 1,
+    color: 'warning',
+    fn: considerOmit,
+    explanation: 'Consider omitting this word.',
   },
   obvious: {
-    fn: obvious,
-    explanation: 'Not everything is as obvious as you might think.'
+    severity: 1,
+    color: 'warning',
+    fn: checkObvious,
+    explanation: 'Not everything is as obvious as you might think.',
   },
 }
 

@@ -34,9 +34,9 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
               <Box sx={{ display: 'flex', alignItems: "center", marginBottom: '5px' }} key={idx}>
                 <Fade in={true} timeout={1000}>
                   <Chip
+                    color="warning"
                     label="suggestion"
                     variant="outlined"
-                    color="warning"
                     style={{ height: '20px', marginRight: '10px' }}
                   />
                 </Fade>
@@ -63,9 +63,9 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
               >
                 <Fade in={true} timeout={1000}>
                   <Chip
+                    color="error"
                     label="warning"
                     variant="outlined"
-                    color="error"
                     style={{ height: '20px', width: '80px', marginRight: '10px' }}
                   />
                 </Fade>

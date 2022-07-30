@@ -1,6 +1,6 @@
-export function omit(text) {
+export function checkObvious(text) {
   const suggestions = []
-  const positives = ['Basically', 'Basic', 'Simply', 'Simple', 'Just']
+  const positives = ['Obviously', 'Obvious', 'Of Course', 'Self Evident', 'Self-Evident', 'Clearly']
   const regex = new RegExp('\\b(' + positives.join('|') + ')\\b', 'gi')
   const match = regex.exec(text)
   if (match) {
