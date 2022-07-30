@@ -30,28 +30,6 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
       <StyledAnalysisContainer>
         <StyledFeedbackBox>
           <Paper elevation={2} sx={{ minWidth: '100%', minHeight: '95%', padding: '.5rem' }}>
-            {/* {tips.map((obj, idx) => (
-              <Box sx={{ display: 'flex', alignItems: "center", marginBottom: '5px' }} key={idx}>
-                <Fade in={true} timeout={1000}>
-                  <Chip
-                    color="warning"
-                    label="suggestion"
-                    variant="outlined"
-                    style={{ height: '20px', marginRight: '10px' }}
-                  />
-                </Fade>
-                <Fade in={true} timeout={1000}>
-                  <Typography style={{ color: "#ffffff" }}>
-                    {shapeText(obj.reason)[0]}&nbsp;
-                  </Typography>
-                </Fade>
-                <Fade in={true} timeout={1000}>
-                  <Typography style={{ color: "#bcbcbc" }}>
-                    {shapeText(obj.reason)[1]}
-                  </Typography>
-                </Fade>
-              </Box>
-            ))} */}
             {warnings.map((obj, idx) => (
               <Box
                 sx={{
@@ -64,8 +42,8 @@ function Analysis({ text, keywords, handleClickSuggestion }) {
                 <Fade in={true} timeout={1000}>
                   <Chip
                     color={obj.color}
-                    label="warning"
                     variant="outlined"
+                    label={obj.severity > 1 ? 'warning' : 'suggestion'}
                     style={{ height: '20px', width: '80px', marginRight: '10px' }}
                   />
                 </Fade>

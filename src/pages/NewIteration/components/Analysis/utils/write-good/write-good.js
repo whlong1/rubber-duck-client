@@ -57,10 +57,10 @@ const defaultChecks = {
     explanation: 'is wordy or unneeded',
   },
   thereIs: {
-    fn: startsWithThereIs,
-    explanation: 'is unnecessary verbiage',
     severity: 1,
     color: 'warning',
+    fn: startsWithThereIs,
+    explanation: 'is unnecessary verbiage',
   },
   assumptions: {
     severity: 1,
@@ -164,6 +164,7 @@ function writeGood(text, opts = {}) {
   })
 
   const filtered = filter(text, suggestions, opts.whitelist)
+  // return dedup(filtered).sort((a, b) => (a.index < b.index ? -1 : 1))
   return dedup(filtered).sort((a, b) => (a.severity < b.severity ? -1 : 1))
 }
 
