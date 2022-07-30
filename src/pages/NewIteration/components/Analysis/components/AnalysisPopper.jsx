@@ -38,7 +38,7 @@ const AnalysisPopper = ({ issues }) => {
         >
           <StyledMessageBox sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
             <Typography style={{ fontFamily: 'abril-display' }}>
-              Quack! You have {issues.length} issue {issues.length > 1 ? 's' : ''}!
+              Quack! You have {issues.length} issue{issues.length > 1 ? 's' : ''}!
             </Typography>
           </StyledMessageBox>
         </Grow>
