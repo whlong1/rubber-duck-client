@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
 import logo from '../../assets/logo-icon.svg'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -17,6 +17,12 @@ import MenuItem from '@mui/material/MenuItem'
 import PersonIcon from '@mui/icons-material/Person';
 
 const NavBar = ({ user, handleLogout }) => {
+  const { pathname } = useLocation()
+  console.log(pathname)
+
+  // pathname: "/"
+
+
   const pages = [
     { name: 'Browse', link: '/browse' },
     { name: 'New Post', link: '/posts/new' },
@@ -54,7 +60,7 @@ const NavBar = ({ user, handleLogout }) => {
           <Container maxWidth="xl">
             <Toolbar disableGutters>
               <Box sx={{ display: { xs: 'none', md: 'flex' } }} style={{ marginRight: '1rem' }}>
-                <Link to='/'>
+                <Link to='/' hidden={pathname === '/'}>
                   <img
                     src={logo}
                     height='30px'
