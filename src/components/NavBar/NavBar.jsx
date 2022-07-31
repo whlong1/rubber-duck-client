@@ -58,8 +58,9 @@ const NavBar = ({ user, handleLogout }) => {
               <Link to='/' hidden={pathname === '/'}>
                 <img
                   src={logo}
-                  height='30px'
+                  height='24px'
                   alt='rubber duck'
+                  style={{ opacity: '.85' }}
                   sx={{ display: { xs: 'flex', md: 'none' } }}
                 />
               </Link>
@@ -158,8 +159,9 @@ const NavBar = ({ user, handleLogout }) => {
               <Link to='/' hidden={pathname === '/'}>
                 <img
                   src={logo}
-                  height='30px'
+                  height='24px'
                   alt='rubber duck'
+                  style={{ opacity: '.85' }}
                   sx={{ display: { xs: 'flex', md: 'none' } }}
                 />
               </Link>
