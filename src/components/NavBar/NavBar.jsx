@@ -16,12 +16,11 @@ import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 import PersonIcon from '@mui/icons-material/Person';
 
+import PublicNav from './PublicNav'
+import ProtectedNav from './ProtectedNav'
+
 const NavBar = ({ user, handleLogout }) => {
   const { pathname } = useLocation()
-  console.log(pathname)
-
-  // pathname: "/"
-
 
   const pages = [
     { name: 'Browse', link: '/browse' },
@@ -161,13 +160,15 @@ const NavBar = ({ user, handleLogout }) => {
         <AppBar position="relative" style={{ backgroundColor: '#121212', padding: '0px 20px 0px 20px' }}>
           <Container maxWidth="xl">
             <Toolbar disableGutters>
-              <Box style={{ marginRight: '1rem' }} >
-                <img
-                  src={logo}
-                  height='30px'
-                  alt='rubber duck'
-                  sx={{ display: { xs: 'flex', md: 'none' } }}
-                />
+              <Box sx={{ display: { xs: 'none', md: 'flex' } }} style={{ marginRight: '1rem' }}>
+                <Link to='/' hidden={pathname === '/'}>
+                  <img
+                    src={logo}
+                    height='30px'
+                    alt='rubber duck'
+                    sx={{ display: { xs: 'flex', md: 'none' } }}
+                  />
+                </Link>
               </Box>
               <Box sx={{ flexGrow: 0 }} style={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
                 <Tooltip title="Open settings">
