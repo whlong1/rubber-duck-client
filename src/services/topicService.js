@@ -45,12 +45,11 @@ const show = async (id) => {
   }
 }
 
-const findPostByTopic = async (topicId) => {
+const findTopicAndPosts = async (topicId, search, sort, page) => {
   try {
-    const res = await fetch(`${BASE_URL}/${topicId}/posts`, {
-      headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`
-      },
+    const path = `${BASE_URL}/${topicId}/posts?search=${search}&sort=${sort}$page=${page}`
+    const res = await fetch(path, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` }
     })
     return await res.json()
   } catch (error) {
@@ -63,5 +62,5 @@ export {
   create,
   index,
   show,
-  findPostByTopic
+  findTopicAndPosts
 }
