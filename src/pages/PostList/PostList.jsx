@@ -19,16 +19,21 @@ const PostList = () => {
   const [page, setPage] = useState(0)
   const [topic, setTopic] = useState()
   const [posts, setPosts] = useState([])
+  const [search, setSearch] = useState('')
   const [sort, setSort] = useState('recent')
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const data = await postService.index(page, sort, topicId)
-      const topicData = await topicService.show(topicId)
-      setPosts(data)
-      setLoading(false)
-      setTopic(topicData)
+      // const data = await postService.index(page, sort, topicId)
+      // const topicData = await topicService.show(topicId)
+      // (topicId, search, sort, page)
+      const topicData = await topicService.findTopicAndPosts(topicId, search, sort, page)
+      console.log(topicData)
+
+      // setPosts(data)
+      // setLoading(false)
+      // setTopic(topicData)
     }
     fetchPosts()
   }, [topicId, sort, page])

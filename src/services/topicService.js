@@ -47,7 +47,7 @@ const show = async (id) => {
 
 const findTopicAndPosts = async (topicId, search, sort, page) => {
   try {
-    const path = `${BASE_URL}/${topicId}/posts?search=${search}&sort=${sort}$page=${page}`
+    const path = `${BASE_URL}/${topicId}/posts?search=${search}&sort=${sort}&page=${page}`
     const res = await fetch(path, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` }
     })
