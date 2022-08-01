@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import SignupForm from '../../components/SignupForm/SignupForm'
+import SignupForm from './SignupForm/SignupForm'
 import styles from './Signup.module.css'
 import logo from '../../assets/rubberDuckLogo.png'
 import Box from '@mui/material/Box'
