@@ -7,11 +7,9 @@ import CardContent from '@mui/material/CardContent'
 import { Post, StyledBoxSpaceBetween } from '../../styles/mui/StyledComponents'
 
 const PostCard = ({ post }) => {
-  const { author } = post
-  const { text, rating, createdAt } = post.iterations.length && post.iterations[0]
-
+  const { text, rating, createdAt, author, _id } = post
   return (
-    <Link to={`/posts/${post._id}`}>
+    <Link to={`/posts/${_id}`}>
       <Post sx={{ width: { xs: 400, md: 275 }, minHeight: { xs: 300, md: 325 } }}>
         <CardContent>
           <StyledBoxSpaceBetween>
