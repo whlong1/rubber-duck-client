@@ -24,12 +24,11 @@ import * as topicService from '../../services/topicService'
 
 function NewPost() {
   const navigate = useNavigate()
-  const [topics, setTopics] = useState([])
+  const [msg, setMsg] = useState('')
   const [topic, setTopic] = useState()
+  const [topics, setTopics] = useState([])
   const [selected, setSelected] = useState()
   const [dropdown, setDropdown] = useState(false)
-  const [msg, setMsg] = useState('')
-
   const [topicForm, setTopicForm] = useState({
     title: '',
     category: 'Math'
@@ -47,7 +46,7 @@ function NewPost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const newPost = await postService.create({ topic: topic._id })
+    const newPost = await topicService.createPost(topic._id )
     if (newPost.msg) {
       setMsg(newPost.msg)
     } else {

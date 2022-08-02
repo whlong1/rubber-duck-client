@@ -1,36 +1,6 @@
 import * as tokenService from '../services/tokenService'
 const BASE_URL = `${process.env.REACT_APP_BACK_END_SERVER_URL}/api/posts`
 
-const create = async (post) => {
-  try {
-    const res = await fetch(BASE_URL, {
-      method: "POST",
-      headers: {
-        'content-type': 'application/json',
-        'Authorization': `Bearer ${tokenService.getToken()}`
-      },
-      body: JSON.stringify(post),
-    })
-    return await res.json()
-  } catch (error) {
-    console.log(error)
-    throw error
-  }
-}
-
-const index = async (page, sort, search) => {
-  try {
-    const path = `${BASE_URL}?page=${page}&&sort=${sort}&&search=${search}`
-    const res = await fetch(path, {
-      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` }
-    })
-    return await res.json()
-  } catch (error) {
-    console.log(error)
-    throw error
-  }
-}
-
 const show = async (id) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}`, {
@@ -82,37 +52,6 @@ const removeBookmark = async (id) => {
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`
       },
-    })
-    return await res.json()
-  } catch (error) {
-    console.log(error)
-    throw error
-  }
-}
-
-const findKeywords = async (topicId, postId) => {
-  try {
-    const res = await fetch(`${BASE_URL}/${postId}/iterations?search=${topicId}`, {
-      headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`
-      },
-    })
-    return await res.json()
-  } catch (error) {
-    console.log(error)
-    throw error
-  }
-}
-
-const createIteration = async (postId, iteration) => {
-  try {
-    const res = await fetch(`${BASE_URL}/${postId}/iterations`, {
-      method: "POST",
-      headers: {
-        'content-type': 'application/json',
-        'Authorization': `Bearer ${tokenService.getToken()}`
-      },
-      body: JSON.stringify(iteration),
     })
     return await res.json()
   } catch (error) {
@@ -174,15 +113,11 @@ const createComment = async (postId, iterationId, comment) => {
 }
 
 export {
-  create,
-  index,
   show,
-  incrementViews,
-  bookmarkPost,
-  removeBookmark,
-  findKeywords,
-  createIteration,
   castVote,
   undoVote,
+  bookmarkPost,
+  removeBookmark,
+  incrementViews,
   createComment
 }
