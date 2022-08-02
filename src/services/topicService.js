@@ -49,11 +49,7 @@ const createPost = async (topicId) => {
   try {
     const res = await fetch(`${BASE_URL}/${topicId}/posts`, {
       method: "POST",
-      headers: {
-        // 'content-type': 'application/json',
-        'Authorization': `Bearer ${tokenService.getToken()}`
-      },
-      // body: JSON.stringify(post),
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
     return await res.json()
   } catch (error) {
@@ -87,8 +83,6 @@ const newIteration = async (topicId, postId) => {
   }
 }
 
-// /:topicId/posts/:postId/iterations'
-
 const createIteration = async (topicId, postId, iteration) => {
   try {
     const res = await fetch(`${BASE_URL}/${topicId}/posts/${postId}/iterations`, {
@@ -105,7 +99,6 @@ const createIteration = async (topicId, postId, iteration) => {
     throw error
   }
 }
-
 
 export {
   create,
