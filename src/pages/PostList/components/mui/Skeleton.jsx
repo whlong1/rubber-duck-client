@@ -2,7 +2,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Skeleton from '@mui/material/Skeleton'
 
-const skeleton = [...'placeholdr'].map((_, uuid) => (
+const skeleton = [...'placeholdr']?.map((_, uuid) => (
   <Card 
     sx={{ maxWidth: 275, height: 325 }} 
     key={uuid} 

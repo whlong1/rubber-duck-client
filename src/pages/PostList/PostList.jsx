@@ -33,7 +33,7 @@ const PostList = () => {
     fetchTopicAndPosts()
   }, [topicId, search, sort, page])
 
-  const postList = posts.map((post) => (
+  const postList = posts?.map((post) => (
     post.text && <PostCard key={post._id} post={post} />
   ))
 
