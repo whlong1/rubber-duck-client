@@ -6,10 +6,11 @@ import NativeSelect from '@mui/material/NativeSelect'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
+import AutoComplete from './mui/AutoComplete'
 
 import { useNavigate } from 'react-router-dom'
 
-const PostTopMenu = ({ topic, setSort }) => {
+const PostTopMenu = ({ topic, setSort, posts, setSearch }) => {
   const navigate = useNavigate()
   return (
     <Box
@@ -63,6 +64,7 @@ const PostTopMenu = ({ topic, setSort }) => {
         >
           New Post
         </Button>
+        <AutoComplete posts={posts} setSearch={setSearch} />
       </Box>
     </Box>
   );
