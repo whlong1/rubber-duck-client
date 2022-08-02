@@ -13,22 +13,22 @@ import PostForm from './/components/PostForm/PostForm'
 import Analysis from './components/Analysis/Analysis'
 
 // Services
-import * as postService from '../../services/postService'
+import * as topicService from '../../services/topicService'
 
 function NewIteration() {
   const navigate = useNavigate()
   const { postId, topicId } = useParams()
-
   const [text, setText] = useState('')
   const [topic, setTopic] = useState()
   const [keywords, setKeywords] = useState([])
   const [iterations, setIterations] = useState(0)
 
+  const characterLimit = 250
+
   function isDeleteKey(e) {
     let charCode = e.keyCode || e.which
     return charCode === 8 || charCode === 46
   }
-  const characterLimit = 250
 
   const handleClear = () => setText('')
 
@@ -39,7 +39,7 @@ function NewIteration() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await postService.createIteration(postId, { text: text })
+    await topicService.createIteration(topicId, postId, { text: text })
     navigate(`/posts/${postId}`)
   }
 
@@ -50,20 +50,13 @@ function NewIteration() {
   }
 
   useEffect(() => {
-    const fetchIterations = async () => {
-      const data = await postService.show(postId)
-      setIterations(data.iterations.length + 1)
-    }
-    fetchIterations()
-  }, [topicId, postId])
-
-  useEffect(() => {
-    const fetchKeyWords = async () => {
-      const data = await postService.findKeywords(topicId, postId)
+    const fetchNewIterationData = async () => {
+      const data = await topicService.newIteration(topicId, postId)
       setTopic(data.topic)
       setKeywords(data.keywords)
+      setIterations(data.index)
     }
-    fetchKeyWords()
+    fetchNewIterationData()
   }, [topicId, postId])
 
   return (

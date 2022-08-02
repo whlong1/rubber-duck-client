@@ -45,7 +45,20 @@ const show = async (id) => {
   }
 }
 
-const findTopicAndPosts = async (topicId, search, sort, page) => {
+const createPost = async (topicId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${topicId}/posts`, {
+      method: "POST",
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+const indexPosts = async (topicId, search, sort, page) => {
   try {
     const path = `${BASE_URL}/${topicId}/posts?search=${search}&sort=${sort}&page=${page}`
     const res = await fetch(path, {
@@ -58,9 +71,41 @@ const findTopicAndPosts = async (topicId, search, sort, page) => {
   }
 }
 
+const newIteration = async (topicId, postId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${topicId}/posts/${postId}/iterations`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+const createIteration = async (topicId, postId, iteration) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${topicId}/posts/${postId}/iterations`, {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: JSON.stringify(iteration),
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
 export {
   create,
   index,
   show,
-  findTopicAndPosts
+  createPost,
+  indexPosts,
+  newIteration,
+  createIteration,
 }

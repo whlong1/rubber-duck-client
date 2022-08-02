@@ -1,53 +1,52 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import FunctionsIcon from '@mui/icons-material/Functions';
-import AutoStoriesIcon from '@mui/icons-material/AutoStories';
-import AddIcon from '@mui/icons-material/Add'
-import PublicIcon from '@mui/icons-material/Public';
-import ScienceIcon from '@mui/icons-material/Science';
-import CodeIcon from '@mui/icons-material/Code';
-import NewPostForm from './components/NewPostForm';
-import Button from '@mui/material/Button'
-import Fab from '@mui/material/Fab'
-import Divider from '@mui/material/Divider'
-import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
-import { StyledCard, StyledBox } from '../Browse/components/mui/StyledComponents'
+import Fab from '@mui/material/Fab'
+import Button from '@mui/material/Button'
+import Divider from '@mui/material/Divider'
+import AddIcon from '@mui/icons-material/Add'
+import CodeIcon from '@mui/icons-material/Code'
+import Typography from '@mui/material/Typography'
+import PublicIcon from '@mui/icons-material/Public'
+import ScienceIcon from '@mui/icons-material/Science'
 import CardActionArea from '@mui/material/CardActionArea'
+import FunctionsIcon from '@mui/icons-material/Functions'
+import AutoStoriesIcon from '@mui/icons-material/AutoStories'
+import { StyledCard, StyledBox } from '../Browse/components/mui/StyledComponents'
 
 // Components
+import NewPostForm from './components/NewPostForm'
 import CategoryList from '../Browse/components/CategoryList'
 
-import * as postService from '../../services/postService'
+// Services
 import * as topicService from '../../services/topicService'
 
 function NewPost() {
   const navigate = useNavigate()
-  const [topics, setTopics] = useState([])
+  const [msg, setMsg] = useState('')
   const [topic, setTopic] = useState()
+  const [topics, setTopics] = useState([])
   const [selected, setSelected] = useState()
   const [dropdown, setDropdown] = useState(false)
-  const [msg, setMsg] = useState('')
-
   const [topicForm, setTopicForm] = useState({
     title: '',
     category: 'Math'
   })
 
-  useEffect(() => setTopicForm({...topicForm, category: selected?.name || 'Math'}), [selected])
+  useEffect(() => setTopicForm({ ...topicForm, category: selected?.name || 'Math' }), [selected])
 
   const categories = [
-    {name: 'Math', color:'#F75847', icon: <FunctionsIcon />},
-    {name: 'Science', color:'#00B1C6', icon: <ScienceIcon />},
-    {name: 'History', color:'#7E7568', icon: <PublicIcon />},
-    {name: 'Literature', color:'#0CBA6E', icon: <AutoStoriesIcon />},
-    {name: 'CompSci', color:'#FFB201', icon: <CodeIcon />},
+    { name: 'Math', color: '#F75847', icon: <FunctionsIcon /> },
+    { name: 'Science', color: '#00B1C6', icon: <ScienceIcon /> },
+    { name: 'History', color: '#7E7568', icon: <PublicIcon /> },
+    { name: 'Literature', color: '#0CBA6E', icon: <AutoStoriesIcon /> },
+    { name: 'CompSci', color: '#FFB201', icon: <CodeIcon /> },
   ]
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const newPost = await postService.create({ topic: topic._id })
+    const newPost = await topicService.createPost(topic._id)
     if (newPost.msg) {
       setMsg(newPost.msg)
     } else {
@@ -87,7 +86,7 @@ function NewPost() {
 
   return (
     <Box sx={{ padding: '2rem' }}>
-      <Box sx={{ display: 'flex', justifyContent:'space-between' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box>
           <Typography variant='h3' sx={{ fontFamily: "abril-display" }}>
             Select Category
@@ -98,41 +97,39 @@ function NewPost() {
           />
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'flex-end', paddingBottom: '1rem' }} >
-        {dropdown
-          ? <NewPostForm 
-              topicForm={topicForm} 
-              submitTopic={submitTopic} 
-              setTopicForm={setTopicForm} 
-              categories={categories}
-              setDropdown={setDropdown} 
-              selected={selected} 
-            />
-          : 
-            <Fab 
-              variant="extended" 
-              color='success'
-              sx={{ backgroundColor: selected?.color, color: 'white' }}
-              onClick={() => setDropdown(true)}
-            >
-              <AddIcon sx={{ mr: 1 }} />
-              Add A Topic
-            </Fab>
-        }
+          {dropdown
+            ? <NewPostForm
+                topicForm={topicForm}
+                submitTopic={submitTopic}
+                setTopicForm={setTopicForm}
+                categories={categories}
+                setDropdown={setDropdown}
+                selected={selected}
+              />
+            : <Fab 
+                color='success' 
+                variant="extended" 
+                onClick={() => setDropdown(true)}
+                sx={{ backgroundColor: selected?.color, color: 'white' }} 
+              >
+                <AddIcon sx={{ mr: 1 }} />Add A Topic
+              </Fab>
+          }
         </Box>
       </Box>
       <Divider />
       <h3>PICK A TOPIC TO WRITE ABOUT</h3>
       <StyledBox>
-      {topics?.map((topic) => (
-        <StyledCard key={topic._id}>
-          <CardActionArea 
-            onClick={() => setTopic(topic)}
-            sx={{ height: '100%', width: '100%', display: 'flex', alignItems: 'center' }}
-          >
-            {topic.title}
-          </CardActionArea>
-        </StyledCard>
-      ))}
+        {topics?.map((topic) => (
+          <StyledCard key={topic._id}>
+            <CardActionArea
+              onClick={() => setTopic(topic)}
+              sx={{ height: '100%', width: '100%', display: 'flex', alignItems: 'center' }}
+            >
+              {topic.title}
+            </CardActionArea>
+          </StyledCard>
+        ))}
       </StyledBox>
       <Button disabled={!topic} onClick={handleSubmit}>Confirm</Button>
     </Box>
