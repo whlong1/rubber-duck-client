@@ -26,6 +26,7 @@ const PostList = () => {
   useEffect(() => {
     const fetchTopicAndPosts = async () => {
       const data = await topicService.indexPosts(topicId, search, sort, page)
+      console.log(data)
       setLoading(false)
       setTopic(data.topic)
       setPosts(data.posts)

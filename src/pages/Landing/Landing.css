@@ -460,3 +460,24 @@
     font-size: 16px;
   }
 }
+
+@media only screen and (max-width: 500px) { 
+  .splash-content .logotype {
+    font-size: 3.65rem;
+  }
+  .splash-content img {
+    height: 13vw;
+  }
+  .container h1,  #feynman-technique {
+    font-size: 26px;
+  }
+  .container h3 {
+    font-size: 18px;
+  }
+  .container h4, #method {
+    font-size: 14px;
+  }
+  .container p {
+    font-size: 16px;
+  }
+}
