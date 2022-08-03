@@ -10,7 +10,7 @@ import AutoComplete from './mui/AutoComplete'
 
 import { useNavigate } from 'react-router-dom'
 
-const PostTopMenu = ({ topic, setSort, posts, setSearch }) => {
+const PostTopMenu = ({ topic, setSort , setSearch }) => {
   const navigate = useNavigate()
   return (
     <Box
@@ -64,7 +64,7 @@ const PostTopMenu = ({ topic, setSort, posts, setSearch }) => {
         >
           New Post
         </Button>
-        <AutoComplete posts={posts} setSearch={setSearch} />
+        <AutoComplete setSearch={setSearch} />
       </Box>
     </Box>
   );
