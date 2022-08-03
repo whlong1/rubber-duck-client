@@ -38,7 +38,9 @@ const Browse = (props) => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', padding: '2rem' }}>
       <CenteredBox sx={{ flexDirection: {sm: 'column', md: 'row', xs: 'column'} }}>
-        <Typography variant='h2' style={{ fontFamily: 'abril-display' }}>Browse</Typography>
+        <Typography variant='h2' style={{ fontFamily: 'abril-display' }}>
+          Browse
+        </Typography>
         <CategoryList
           categories={categories}
           setSelected={setSelected}

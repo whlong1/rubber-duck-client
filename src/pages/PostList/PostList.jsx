@@ -40,7 +40,7 @@ const PostList = () => {
 
   return (
     <StyledBoxColCenter>
-      <PostTopMenu topic={topic} setSort={setSort} />
+      <PostTopMenu topic={topic} setSort={setSort} posts={posts} setSearch={setSearch} />
       <Divider
         textAlign="left"
         sx={{
