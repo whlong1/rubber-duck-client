@@ -3,6 +3,7 @@ import About from './components/About'
 import Splash from './components/Splash'
 import History from './components/History'
 
+
 const Landing = () => {
   return (
     <div className='container'>
