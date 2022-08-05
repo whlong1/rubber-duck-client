@@ -25,13 +25,27 @@ const userBoxStyle = {
 const PostDetails = ({ user }) => {
   const { postId } = useParams()
   const [post, setPost] = useState()
+  const [views, setViews] = useState(0)
 
   useEffect(() => {
     const fetchPosts = async () => {
       const postData = await postService.show(postId)
       setPost(postData)
+      setViews(postData.views)
     }
     fetchPosts()
+  }, [postId])
+
+  useEffect(() => {
+    const incrementViews = async () => {
+      const res = await postService.incrementViews(postId)
+      res.success && setViews(views + 1)
+    }
+    
+    const timer = setTimeout(() => {
+      incrementViews()
+    }, 3000)
+    return () => clearTimeout(timer)
   }, [postId])
 
   if (!post) {
@@ -41,6 +55,7 @@ const PostDetails = ({ user }) => {
   return (
     post &&
     <>
+      <p>View Counter: {views}</p>
       <DetailsTopMenu user={user} topic={post.topic} post={post} />
       <Box style={userBoxStyle}>
         <UserCard author={post.author} />
