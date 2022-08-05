@@ -64,7 +64,7 @@ const PostTopMenu = ({ topic, setSort , setSearch }) => {
         >
           New Post
         </Button>
-        <AutoComplete setSearch={setSearch} />
+        {/* <AutoComplete setSearch={setSearch} /> */}
       </Box>
     </Box>
   );
