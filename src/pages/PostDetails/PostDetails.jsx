@@ -4,6 +4,7 @@ import * as postService from '../../services/postService'
 import './PostDetails.css'
 
 // Components
+import ViewCounter from './components/ViewCounter'
 import UserCard from '../../components/UserCard/UserCard'
 import DetailsTopMenu from './components/DetailsTopMenu'
 import IterationHandler from './components/IterationHandler/IterationHandler'
@@ -55,7 +56,7 @@ const PostDetails = ({ user }) => {
   return (
     post &&
     <>
-      <p>View Counter: {views}</p>
+      <ViewCounter views={views}/>
       <DetailsTopMenu user={user} topic={post.topic} post={post} />
       <Box style={userBoxStyle}>
         <UserCard author={post.author} />
