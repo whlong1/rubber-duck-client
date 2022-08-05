@@ -4,6 +4,7 @@ import * as postService from '../../services/postService'
 import './PostDetails.css'
 
 // Components
+import Bookmarker from './components/Bookmarker'
 import ViewCounter from './components/ViewCounter'
 import UserCard from '../../components/UserCard/UserCard'
 import DetailsTopMenu from './components/DetailsTopMenu'
@@ -29,8 +30,8 @@ const PostDetails = ({ user }) => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const postData = await postService.show(postId)
-      setPost(postData)
+      const post = await postService.show(postId)
+      setPost(post)
     }
     fetchPosts()
   }, [postId])
@@ -42,6 +43,7 @@ const PostDetails = ({ user }) => {
   return (
     post &&
     <>
+      <Bookmarker post={post} />
       <ViewCounter post={post} />
       <DetailsTopMenu user={user} topic={post.topic} post={post} />
       <Box style={userBoxStyle}>
