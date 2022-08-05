@@ -30,8 +30,8 @@ const PostDetails = ({ user }) => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const postData = await postService.show(postId)
-      setPost(postData)
+      const post = await postService.show(postId)
+      setPost(post)
     }
     fetchPosts()
   }, [postId])
