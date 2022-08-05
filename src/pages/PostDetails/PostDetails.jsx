@@ -43,7 +43,7 @@ const PostDetails = ({ user }) => {
   return (
     post &&
     <>
-      <Bookmarker />
+      <Bookmarker post={post} />
       <ViewCounter post={post} />
       <DetailsTopMenu user={user} topic={post.topic} post={post} />
       <Box style={userBoxStyle}>
