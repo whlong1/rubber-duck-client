@@ -1,26 +1,34 @@
 import { useState, useEffect } from 'react'
-import * as profileService from '../../services/profileService'
 import { useParams } from 'react-router-dom'
+
+// MUI
+import Box from '@mui/material/Box'
+import List from '@mui/material/List'
+import Stack from '@mui/material/Stack'
+import Divider from '@mui/material/Divider'
+import ListItem from '@mui/material/ListItem'
+import WorkIcon from '@mui/icons-material/Work'
+import EmailIcon from '@mui/icons-material/Email'
+import SchoolIcon from '@mui/icons-material/School'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import LocationOnIcon from '@mui/icons-material/LocationOn'
+import { StyledCard, CenteredBox } from '../../pages/Browse/components/mui/StyledComponents'
+
+// Components
+import Bookmarks from './components/Bookmarks'
 import Followers from './components/Followers'
 import UserCard from '../../components/UserCard/UserCard'
-import Stack from '@mui/material/Stack'
-import Box from '@mui/material/Box'
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import EmailIcon from '@mui/icons-material/Email';
-import WorkIcon from '@mui/icons-material/Work';
-import SchoolIcon from '@mui/icons-material/School';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import Divider from '@mui/material/Divider'
-import { StyledCard, CenteredBox } from '../../pages/Browse/components/mui/StyledComponents'
+
+// Services
+import * as profileService from '../../services/profileService'
 
 const ProfileDetail = ({ user }) => {
   const { profileId } = useParams()
   const [profile, setProfile] = useState()
   const [followers, setFollowers] = useState([])
   const [following, setFollowing] = useState([])
+  const [bookmarks, setBookmarks] = useState([])
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -28,6 +36,7 @@ const ProfileDetail = ({ user }) => {
       setProfile(profileData)
       setFollowers(profileData.followers)
       setFollowing(profileData.following)
+      setBookmarks(profileData.bookmarks)
     }
     fetchProfile()
   }, [profileId])
@@ -38,23 +47,24 @@ const ProfileDetail = ({ user }) => {
       <h1 style={{ color: 'white' }}>
         Hello. This is {profile._id === user.profile ? 'your profile.' : `${profile.name}'s profile.`}
       </h1>
+      <Bookmarks bookmarks={bookmarks} setBookmarks={setBookmarks} user={user} profile={profile} />
       Followers:
-      <Stack 
-        spacing={2} 
-        direction='row' 
+      <Stack
+        spacing={2}
+        direction='row'
         sx={{ marginBottom: '2rem' }}
         divider={<Divider orientation="vertical" flexItem />}
       >
         {followers.map(follower =>
-          <UserCard author={follower} key={follower._id}/>
+          <UserCard author={follower} key={follower._id} />
         )}
       </Stack>
       Following:
-      <Stack 
-        spacing={2} 
-        divider={<Divider orientation="vertical" flexItem />} 
-        direction='row' 
-        sx={{ marginBottom: '2rem' }} 
+      <Stack
+        spacing={2}
+        divider={<Divider orientation="vertical" flexItem />}
+        direction='row'
+        sx={{ marginBottom: '2rem' }}
       >
         {following.map(follower =>
           <UserCard author={follower} key={follower._id} />
@@ -67,15 +77,15 @@ const ProfileDetail = ({ user }) => {
         )}
       </Stack>
       <Box sx={{ marginBottom: '2rem' }}>
-        <List 
+        <List
           sx={{
-          maxWidth: '600px',
-          padding: '2rem',
-          borderTopRightRadius: '4%',
-          borderTopLeftRadius: '1%',
-          borderBottomLeftRadius: '4%',
-          borderBottomRightRadius: '1%',
-          bgcolor: 'background.paper'
+            maxWidth: '600px',
+            padding: '2rem',
+            borderTopRightRadius: '4%',
+            borderTopLeftRadius: '1%',
+            borderBottomLeftRadius: '4%',
+            borderBottomRightRadius: '1%',
+            bgcolor: 'background.paper'
           }}
           elevation={10}
           aria-label="details"
@@ -93,16 +103,16 @@ const ProfileDetail = ({ user }) => {
             </ListItemIcon>
             <ListItemText primary={`Email: ${profile.email}`} />
           </ListItem>
-          {profile.education && 
-          <>
-            <Divider />
-            <ListItem disablePadding>
-              <ListItemIcon>
-                <SchoolIcon />
-              </ListItemIcon>
-              <ListItemText primary={`Education: ${profile.education}`} />
-            </ListItem>
-          </>
+          {profile.education &&
+            <>
+              <Divider />
+              <ListItem disablePadding>
+                <ListItemIcon>
+                  <SchoolIcon />
+                </ListItemIcon>
+                <ListItemText primary={`Education: ${profile.education}`} />
+              </ListItem>
+            </>
           }
           <Divider />
           <ListItem disablePadding>
@@ -129,12 +139,12 @@ const ProfileDetail = ({ user }) => {
           )}
         </Stack>
       </CenteredBox> */}
-      <Followers 
-        user={user} 
-        followers={followers} 
-        setFollowers={setFollowers} 
-        myFollowers={profile.followers} 
-        profileId={profileId} 
+      <Followers
+        user={user}
+        followers={followers}
+        setFollowers={setFollowers}
+        myFollowers={profile.followers}
+        profileId={profileId}
       />
     </CenteredBox>
   )
