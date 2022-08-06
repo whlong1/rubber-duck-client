@@ -1,20 +1,23 @@
 import { useState, useEffect } from 'react'
-import * as profileService from '../../services/profileService'
 import { useParams } from 'react-router-dom'
+
+import Box from '@mui/material/Box'
+import List from '@mui/material/List'
+import Stack from '@mui/material/Stack'
+import Divider from '@mui/material/Divider'
+import ListItem from '@mui/material/ListItem'
+import WorkIcon from '@mui/icons-material/Work'
+import EmailIcon from '@mui/icons-material/Email'
+import SchoolIcon from '@mui/icons-material/School'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import LocationOnIcon from '@mui/icons-material/LocationOn'
+import { StyledCard, CenteredBox } from '../../pages/Browse/components/mui/StyledComponents'
+
 import Followers from './components/Followers'
 import UserCard from '../../components/UserCard/UserCard'
-import Stack from '@mui/material/Stack'
-import Box from '@mui/material/Box'
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import EmailIcon from '@mui/icons-material/Email';
-import WorkIcon from '@mui/icons-material/Work';
-import SchoolIcon from '@mui/icons-material/School';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import Divider from '@mui/material/Divider'
-import { StyledCard, CenteredBox } from '../../pages/Browse/components/mui/StyledComponents'
+
+import * as profileService from '../../services/profileService'
 
 const ProfileDetail = ({ user }) => {
   const { profileId } = useParams()
