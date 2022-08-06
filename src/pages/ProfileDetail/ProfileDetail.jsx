@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
+// MUI
 import Box from '@mui/material/Box'
 import List from '@mui/material/List'
 import Stack from '@mui/material/Stack'
@@ -14,10 +15,12 @@ import ListItemText from '@mui/material/ListItemText'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import { StyledCard, CenteredBox } from '../../pages/Browse/components/mui/StyledComponents'
 
+// Components
 import Bookmarks from './components/Bookmarks'
 import Followers from './components/Followers'
 import UserCard from '../../components/UserCard/UserCard'
 
+// Services
 import * as profileService from '../../services/profileService'
 
 const ProfileDetail = ({ user }) => {
@@ -38,15 +41,12 @@ const ProfileDetail = ({ user }) => {
     fetchProfile()
   }, [profileId])
 
-  console.log('render')
-
   return (
     profile &&
     <CenteredBox sx={{ flexDirection: 'column' }}>
       <h1 style={{ color: 'white' }}>
         Hello. This is {profile._id === user.profile ? 'your profile.' : `${profile.name}'s profile.`}
       </h1>
-      Bookmarks:
       <Bookmarks bookmarks={bookmarks} setBookmarks={setBookmarks} user={user} profile={profile} />
       Followers:
       <Stack

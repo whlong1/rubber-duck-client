@@ -11,6 +11,7 @@ const Bookmarks = ({ bookmarks, setBookmarks, user, profile }) => {
 
   return (
     <>
+      <h3>Bookmarks</h3>
       {bookmarks.map((post) => (
         <div key={post._id}>
           {user.profile === profile._id
