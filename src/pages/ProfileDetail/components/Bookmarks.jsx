@@ -1,8 +1,11 @@
+import PostCard from '../../../components/PostCard/PostCard'
 
-const Bookmarks = ({bookmarks}) => {
+const Bookmarks = ({ bookmarks }) => {
   return (
     <>
-      bookmarks
+      {bookmarks.map((post) => (
+        <PostCard key={post._id} post={post} />
+      ))}
     </>
   )
 }
