@@ -47,7 +47,7 @@ const ProfileDetail = ({ user }) => {
         Hello. This is {profile._id === user.profile ? 'your profile.' : `${profile.name}'s profile.`}
       </h1>
       Bookmarks:
-      <Bookmarks bookmarks={bookmarks} setBookmarks={setBookmarks} />
+      <Bookmarks bookmarks={bookmarks} setBookmarks={setBookmarks} user={user} profile={profile} />
       Followers:
       <Stack
         spacing={2}

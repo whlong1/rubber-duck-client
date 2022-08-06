@@ -1,9 +1,7 @@
 import PostCard from '../../../components/PostCard/PostCard'
-
 import * as postService from '../../../services/postService'
 
-const Bookmarks = ({ bookmarks, setBookmarks }) => {
-
+const Bookmarks = ({ bookmarks, setBookmarks, user, profile }) => {
   const removeBookmark = async (id) => {
     const res = await postService.removeBookmark(id)
     if (res.msg === 'Success') {
@@ -15,7 +13,9 @@ const Bookmarks = ({ bookmarks, setBookmarks }) => {
     <>
       {bookmarks.map((post) => (
         <div key={post._id}>
-          <button onClick={() => removeBookmark(post._id)}>Remove</button>
+          {user.profile === profile._id
+            && <button onClick={() => removeBookmark(post._id)}>Remove</button>
+          }
           <PostCard
             post={{
               ...post,
