@@ -14,10 +14,12 @@ import ListItemText from '@mui/material/ListItemText'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import { StyledCard, CenteredBox } from '../../pages/Browse/components/mui/StyledComponents'
 
+import Bookmarks from './components/Bookmarks'
 import Followers from './components/Followers'
 import UserCard from '../../components/UserCard/UserCard'
 
 import * as profileService from '../../services/profileService'
+import { Book } from '@mui/icons-material'
 
 const ProfileDetail = ({ user }) => {
   const { profileId } = useParams()
@@ -45,6 +47,11 @@ const ProfileDetail = ({ user }) => {
       <h1 style={{ color: 'white' }}>
         Hello. This is {profile._id === user.profile ? 'your profile.' : `${profile.name}'s profile.`}
       </h1>
+
+      <Bookmarks bookmarks={bookmarks} />
+
+
+
       Followers:
       <Stack
         spacing={2}
