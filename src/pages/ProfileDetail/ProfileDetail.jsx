@@ -19,7 +19,6 @@ import Followers from './components/Followers'
 import UserCard from '../../components/UserCard/UserCard'
 
 import * as profileService from '../../services/profileService'
-import { Book } from '@mui/icons-material'
 
 const ProfileDetail = ({ user }) => {
   const { profileId } = useParams()
@@ -38,8 +37,6 @@ const ProfileDetail = ({ user }) => {
     }
     fetchProfile()
   }, [profileId])
-
-  console.log(bookmarks)
 
   return (
     profile &&

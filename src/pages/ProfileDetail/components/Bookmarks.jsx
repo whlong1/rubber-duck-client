@@ -4,7 +4,15 @@ const Bookmarks = ({ bookmarks }) => {
   return (
     <>
       {bookmarks.map((post) => (
-        <PostCard key={post._id} post={post} />
+        <PostCard
+          key={post._id}
+          post={{
+            ...post,
+            text: post.iterations[0].text,
+            rating: post.iterations[0].rating,
+            createdAt: post.iterations[0].createdAt
+          }}
+        />
       ))}
     </>
   )
