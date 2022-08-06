@@ -38,17 +38,16 @@ const ProfileDetail = ({ user }) => {
     fetchProfile()
   }, [profileId])
 
+  console.log('render')
+
   return (
     profile &&
     <CenteredBox sx={{ flexDirection: 'column' }}>
       <h1 style={{ color: 'white' }}>
         Hello. This is {profile._id === user.profile ? 'your profile.' : `${profile.name}'s profile.`}
       </h1>
-
-      <Bookmarks bookmarks={bookmarks} />
-
-
-
+      Bookmarks:
+      <Bookmarks bookmarks={bookmarks} setBookmarks={setBookmarks} />
       Followers:
       <Stack
         spacing={2}
