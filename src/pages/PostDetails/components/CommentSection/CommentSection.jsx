@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import NewComment from "./NewComment"
 import CommentList from "./CommentList"
 
-const CommentSection = ({ iteration }) => {
+const CommentSection = ({ postId, iteration }) => {
   const [comments, setComments] = useState([])
   console.log(iteration)
 
@@ -13,7 +13,12 @@ const CommentSection = ({ iteration }) => {
 
   return (
     <div>
-      <NewComment comments={comments} setComments={setComments} />
+      <NewComment
+        postId={postId}
+        iteration={iteration}
+        comments={comments}
+        setComments={setComments}
+      />
       <CommentList comments={comments} />
     </div>
   )
