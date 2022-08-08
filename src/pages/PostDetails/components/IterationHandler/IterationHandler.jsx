@@ -3,6 +3,7 @@ import { useState } from "react"
 import SideNav from "./SideNav"
 import VoteHandler from "./VoteHandler"
 import IterationDisplay from "./IterationDisplay"
+import CommentSection from '../CommentSection/CommentSection'
 
 const IterationHandler = ({ user, postId, iterations }) => {
   const [index, setIndex] = useState(0)
@@ -13,6 +14,7 @@ const IterationHandler = ({ user, postId, iterations }) => {
     <div style={{ display: 'flex' }}>
       <SideNav index={index} setIndex={setIndex} iterations={iterationsArr} />
       <IterationDisplay iteration={selectedIteration} />
+      <CommentSection postId={postId} iteration={selectedIteration} />
       <VoteHandler
         user={user}
         postId={postId}
