@@ -1,7 +1,8 @@
-const NewComment = () => {
+const NewComment = ({ comments, setComments }) => {
+  
   return (
     <div>
-      New Comment
+
     </div>
   )
 }
