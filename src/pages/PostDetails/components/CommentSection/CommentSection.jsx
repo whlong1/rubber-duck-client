@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react"
 
+// Components
 import NewComment from "./NewComment"
 import CommentList from "./CommentList"
 
 const CommentSection = ({ postId, iteration }) => {
   const [comments, setComments] = useState([])
-  console.log(iteration)
 
   useEffect(() => {
     setComments(iteration.comments)
