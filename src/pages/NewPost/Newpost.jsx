@@ -16,7 +16,7 @@ import AutoStoriesIcon from '@mui/icons-material/AutoStories'
 import { StyledCard, StyledBox } from '../Browse/components/mui/StyledComponents'
 
 // Components
-import NewPostForm from './components/NewPostForm'
+import NewTopicForm from './components/NewTopicForm'
 import CategoryList from '../Browse/components/CategoryList'
 
 // Services
@@ -34,7 +34,11 @@ function NewPost() {
     category: 'Math'
   })
 
-  useEffect(() => setTopicForm({ ...topicForm, category: selected?.name || 'Math' }), [selected])
+  useEffect(() => {
+    setTopicForm((obj) => (
+      { ...obj, category: selected?.name || 'Math' }
+    ))
+  }, [selected])
 
   const categories = [
     { name: 'Math', color: '#F75847', icon: <FunctionsIcon /> },
@@ -98,22 +102,22 @@ function NewPost() {
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'flex-end', paddingBottom: '1rem' }} >
           {dropdown
-            ? <NewPostForm
-                topicForm={topicForm}
-                submitTopic={submitTopic}
-                setTopicForm={setTopicForm}
-                categories={categories}
-                setDropdown={setDropdown}
-                selected={selected}
-              />
-            : <Fab 
-                color='success' 
-                variant="extended" 
-                onClick={() => setDropdown(true)}
-                sx={{ backgroundColor: selected?.color, color: 'white' }} 
-              >
-                <AddIcon sx={{ mr: 1 }} />Add A Topic
-              </Fab>
+            ? <NewTopicForm
+              topicForm={topicForm}
+              submitTopic={submitTopic}
+              setTopicForm={setTopicForm}
+              categories={categories}
+              setDropdown={setDropdown}
+              selected={selected}
+            />
+            : <Fab
+              color='success'
+              variant="extended"
+              onClick={() => setDropdown(true)}
+              sx={{ backgroundColor: selected?.color, color: 'white' }}
+            >
+              <AddIcon sx={{ mr: 1 }} />Add A Topic
+            </Fab>
           }
         </Box>
       </Box>
