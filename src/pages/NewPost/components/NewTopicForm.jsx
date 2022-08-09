@@ -3,7 +3,7 @@ import Select from '@mui/material/Select'
 import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
 
-const NewPostForm = ({ topicForm, submitTopic, setTopicForm, categories, setDropdown, selected }) => {
+const NewTopicForm = ({ topicForm, submitTopic, setTopicForm, categories, setDropdown, selected }) => {
   return ( 
     <form onSubmit={(e) => submitTopic(e, selected)}>
       <h3>Enter your new topic</h3>
@@ -33,4 +33,4 @@ const NewPostForm = ({ topicForm, submitTopic, setTopicForm, categories, setDrop
    );
 }
  
-export default NewPostForm;
+export default NewTopicForm
