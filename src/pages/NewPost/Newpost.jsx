@@ -34,7 +34,11 @@ function NewPost() {
     category: 'Math'
   })
 
-  useEffect(() => setTopicForm({ ...topicForm, category: selected?.name || 'Math' }), [selected])
+  useEffect(() => {
+    setTopicForm((obj) => (
+      { ...obj, category: selected?.name || 'Math' }
+    ))
+  }, [selected])
 
   const categories = [
     { name: 'Math', color: '#F75847', icon: <FunctionsIcon /> },
@@ -99,21 +103,21 @@ function NewPost() {
         <Box sx={{ display: 'flex', alignItems: 'flex-end', paddingBottom: '1rem' }} >
           {dropdown
             ? <NewTopicForm
-                topicForm={topicForm}
-                submitTopic={submitTopic}
-                setTopicForm={setTopicForm}
-                categories={categories}
-                setDropdown={setDropdown}
-                selected={selected}
-              />
-            : <Fab 
-                color='success' 
-                variant="extended" 
-                onClick={() => setDropdown(true)}
-                sx={{ backgroundColor: selected?.color, color: 'white' }} 
-              >
-                <AddIcon sx={{ mr: 1 }} />Add A Topic
-              </Fab>
+              topicForm={topicForm}
+              submitTopic={submitTopic}
+              setTopicForm={setTopicForm}
+              categories={categories}
+              setDropdown={setDropdown}
+              selected={selected}
+            />
+            : <Fab
+              color='success'
+              variant="extended"
+              onClick={() => setDropdown(true)}
+              sx={{ backgroundColor: selected?.color, color: 'white' }}
+            >
+              <AddIcon sx={{ mr: 1 }} />Add A Topic
+            </Fab>
           }
         </Box>
       </Box>
