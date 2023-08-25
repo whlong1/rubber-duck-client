@@ -17,7 +17,7 @@ const History = () => {
           </div>
           <div className='history-textblock'>
             <p>
-              The Feynman Learning Technique is a simple way of approaching anything new you want to learn. Why use it? Because learning doesn't happen from skimming through a book or remembering enough to pass a test. Information is learned when you can explain it and use it in a wide variety of situations. The Feynman Technique gets more mileage from the ideas you encounter instead of rendering anything new into isolated, useless factoids.
+            The Feynman Learning Technique offers an effective method for understanding new concepts. It's rooted in the belief that true learning goes beyond just reading a book or passing an exam. Genuine understanding occurs when you can articulate and apply knowledge across diverse scenarios. The Feynman Technique ensures you extract maximum value from new ideas, preventing them from becoming isolated and irrelevant pieces of information.
             </p>
           </div>
         </>
