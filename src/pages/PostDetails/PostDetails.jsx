@@ -4,8 +4,7 @@ import * as postService from '../../services/postService'
 import './PostDetails.css'
 
 // Components
-import Bookmarker from './components/Bookmarker'
-import ViewCounter from './components/ViewCounter'
+// ViewCounter and Bookmarker removed until styled
 import UserCard from '../../components/UserCard/UserCard'
 import DetailsTopMenu from './components/DetailsTopMenu'
 import IterationHandler from './components/IterationHandler/IterationHandler'
@@ -43,8 +42,6 @@ const PostDetails = ({ user }) => {
   return (
     post &&
     <>
-      <Bookmarker post={post} />
-      <ViewCounter post={post} />
       <DetailsTopMenu user={user} topic={post.topic} post={post} />
       <Box style={userBoxStyle}>
         <UserCard author={post.author} />
